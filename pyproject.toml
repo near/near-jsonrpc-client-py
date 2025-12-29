@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "near-jsonrpc-client"
+version = "0.1.0"
+description = "Python client for NEAR JSON-RPC"
+requires-python = ">=3.9"
+
+dependencies = [
+    "httpx",
+    "pydantic>=2",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
