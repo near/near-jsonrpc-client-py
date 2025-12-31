@@ -80,7 +80,7 @@ jobs:
           BRANCH="regenerate-openapi-${GITHUB_RUN_NUMBER}-${SHORT_SHA}"
           git checkout -b "$BRANCH"
 
-           git add client/ models/
+          git add client/ models/
 
           echo "=== GIT STATUS ==="
           git status
