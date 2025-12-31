@@ -311,26 +311,19 @@ jobs:
         if: steps.create_tag_api.outputs.tag_created == 'true'
         env:
           PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+          PACKAGE_VERSION: ${{ steps.create_tag_api.outputs.created_tag }}
         run: |
           set -euo pipefail
-          # ensure we are on the tagged main commit
           git fetch origin --tags --force
           git checkout main
           git reset --hard origin/main
-
+      
           python -m pip install --upgrade pip
           python -m pip install build twine
-
-          # build sdist and wheel
+      
           python -m build --sdist --wheel
-
-          # upload to PyPI using token stored in secrets (set PYPI_API_TOKEN)
-          if [ -z "${PYPI_API_TOKEN:-}" ]; then
-            echo "::error::PYPI_API_TOKEN secret is not set. Skipping PyPI upload."
-            exit 1
-          fi
-
           python -m twine upload --non-interactive -u __token__ -p "${PYPI_API_TOKEN}" dist/*
+
 
       - name: Final output
         run: |
