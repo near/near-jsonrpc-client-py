@@ -10,25 +10,31 @@ from generator.model_test_generator import ModelTestGenerator
 
 OPENAPI_URL = "https://raw.githubusercontent.com/near/nearcore/master/chain/jsonrpc/openapi/openapi.json"
 
-spec = load_openapi(OPENAPI_URL)
-ctx = GeneratorContext(spec)
 
-model_generator.generate_models(ctx)
+def main():
+    spec = load_openapi(OPENAPI_URL)
+    ctx = GeneratorContext(spec)
 
-samples_dir = Path("tests/fixtures/json")
-MockGenerator.generate(ctx, [samples_dir])
+    model_generator.generate_models(ctx)
 
-ModelTestGenerator.generate_tests_for_models(
-    ctx=ctx,
-    output_dir=Path("tests"),
-)
+    samples_dir = Path("tests/fixtures/json")
+    MockGenerator.generate(ctx, [samples_dir])
 
-ApiGenerator.generate(ctx, output_dir=Path("client"), models_module="models")
+    ModelTestGenerator.generate_tests_for_models(
+        ctx=ctx,
+        output_dir=Path("tests"),
+    )
 
-ClientTestGenerator.generate(
-    ctx,
-    output_dir=Path("tests"),
-    models_module="models",
-    client_module="client",
-    rpc_base_url="https://rpc.mainnet.near.org",
-)
+    ApiGenerator.generate(ctx, output_dir=Path("client"), models_module="models")
+
+    ClientTestGenerator.generate(
+        ctx,
+        output_dir=Path("tests"),
+        models_module="models",
+        client_module="client",
+        rpc_base_url="https://rpc.mainnet.near.org",
+    )
+
+
+if __name__ == "__main__":
+    main()
