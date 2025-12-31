@@ -1,0 +1,10 @@
+Metadata-Version: 2.4
+Name: near-jsonrpc-client
+Version: 0.1.0
+Summary: Python client for NEAR JSON-RPC
+Requires-Python: >=3.11
+License-File: LICENSE
+Requires-Dist: httpx
+Requires-Dist: pydantic>=2
+Dynamic: license-file
+Dynamic: requires-python
