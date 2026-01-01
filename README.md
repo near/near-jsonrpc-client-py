@@ -1,8 +1,10 @@
 # NEAR JSON-RPC Python Client
 
+[![Build Status](https://img.shields.io/github/actions/workflow/status/near/near-jsonrpc-client-kotlin/ci-cd.yml?branch=main)](https://github.com/hosseinkarami-dev/near-jsonrpc-client-py/actions)
 ![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)
 ![Type Safe](https://img.shields.io/badge/type--safe-yes-success.svg)
+![Release Badge](https://img.shields.io/github/tag/hosseinkarami-dev/near-jsonrpc-client-py.svg?label=release)
 
 A **type-safe**, Pythonic client for the NEAR Protocol JSON-RPC API.
 
@@ -19,6 +21,7 @@ A **type-safe**, Pythonic client for the NEAR Protocol JSON-RPC API.
 * [Handling Responses & Errors](#-handling-responses--errors)
 * [Testing](#-testing)
 * [Contributing](#-contributing)
+* [Deployment Guide](#-deployment-guide)
 * [License](#-license)
 * [References](#-references)
 
@@ -166,7 +169,7 @@ The client raises structured exceptions:
 Example:
 
 ```python
-from client import RpcError, HttpError, RequestTimeoutError, ClientError
+from near_jsonrpc_client import RpcError, HttpError, RequestTimeoutError, ClientError
 
 try:
     block = client.block(params=params)
@@ -200,6 +203,12 @@ except ClientError as e:
 ## 📜 License
 
 This project is licensed under the Apache-2.0 License. See LICENSE for details.
+
+---
+
+## 📦 Deployment Guide
+
+For detailed instructions on project structure, CI/CD workflow, versioning, and deployment steps, see the [DEPLOYMENT.md](./DEPLOYMENT.md) file.
 
 ---
 
