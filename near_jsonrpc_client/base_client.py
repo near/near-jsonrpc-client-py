@@ -37,6 +37,11 @@ def _parse_response(response_model: Type[BaseModel], response_json: dict):
     try:
         parsed = response_model.model_validate(response_json)
     except Exception as e:
+        print(response_json)
+
+        if response_json["result"]["error"] is not None:
+            raise ClientError(response_json["result"]["error"]) from e
+
         raise ClientError("Invalid response format") from e
 
     inner = parsed.root

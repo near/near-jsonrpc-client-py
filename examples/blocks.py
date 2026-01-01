@@ -1,7 +1,7 @@
 import asyncio
 from near_jsonrpc_client import NearClientAsync, ClientError, RpcError, HttpError, RequestTimeoutError
 from near_jsonrpc_models import RpcBlockRequest, BlockId, CryptoHash, BlockIdBlockHeight, BlockIdCryptoHash, \
-    RpcBlockRequestBlockId
+    RpcBlockRequestBlockId, RpcBlockRequestFinality
 
 
 async def main():
@@ -34,7 +34,11 @@ async def main():
         )
 
         block = await client.block(params=params)
-        print("Block Result:", block)
+        print("Block Result1:", block)
+
+        params = RpcBlockRequest(RpcBlockRequestFinality(finality='final'))
+        block = await client.block(params=params)
+        print("Block Result2:", block)
 
     except RpcError as e:
         print(f"{e}: {e.error}")

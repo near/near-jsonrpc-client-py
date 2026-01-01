@@ -1,6 +1,7 @@
 import asyncio
 from near_jsonrpc_client import NearClientAsync, ClientError, RpcError, HttpError, RequestTimeoutError
-from near_jsonrpc_models import RpcQueryRequest, AccountId, FunctionArgs, RpcQueryRequestCallFunctionByFinality
+from near_jsonrpc_models import RpcQueryRequest, AccountId, FunctionArgs, RpcQueryRequestCallFunctionByFinality, \
+    RpcQueryRequestViewAccountByFinality, Finality
 
 
 async def main():
@@ -9,8 +10,8 @@ async def main():
     try:
         params = RpcQueryRequest(
             RpcQueryRequestCallFunctionByFinality(
-                finality='final',
-                account_id=AccountId(root='wrap.testnet'),
+                finality=Finality('final').root,
+                account_id=AccountId(root='wrap.near'),
                 args_base64=FunctionArgs('e30='),
                 method_name='ft_balance_of2',
                 request_type='call_function',
@@ -18,7 +19,18 @@ async def main():
         )
 
         tx = await client.query(params=params)
-        print("Tx:", tx)
+        print("call ft balance:", tx)
+
+        params = RpcQueryRequest(
+            RpcQueryRequestViewAccountByFinality(
+                finality=Finality('final').root,
+                account_id=AccountId(root='wrap.near').root,
+                request_type='view_account',
+            )
+        )
+
+        tx = await client.query(params=params)
+        print("call view account by finality:", tx)
 
     except RpcError as e:
         print(f"{e}: {e.error}")
