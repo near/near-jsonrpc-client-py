@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "near-jsonrpc-client"
 version = "0.1.0"
-description = "Python client for NEAR JSON-RPC"
+description = "A typed Python client for the NEAR JSON-RPC API with Pydantic models and async HTTP support"
 requires-python = ">=3.9"
 
 dependencies = [
