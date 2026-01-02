@@ -1,0 +1,20 @@
+from near_jsonrpc_models.error_wrapper_for_rpc_light_client_next_block_error import ErrorWrapperForRpcLightClientNextBlockError
+from near_jsonrpc_models.rpc_light_client_next_block_response import RpcLightClientNextBlockResponse
+from pydantic import BaseModel
+from pydantic import RootModel
+from typing import Union
+
+
+class JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockErrorResult(BaseModel):
+    id: str
+    jsonrpc: str
+    result: RpcLightClientNextBlockResponse
+
+class JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockErrorError(BaseModel):
+    id: str
+    jsonrpc: str
+    error: ErrorWrapperForRpcLightClientNextBlockError
+
+class JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockError(RootModel[Union[JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockErrorResult, JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockErrorError]]):
+    pass
+
