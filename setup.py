@@ -7,7 +7,6 @@ setup(
     name="near-jsonrpc-client",
     version=PACKAGE_VERSION,
     description="A Python client for interacting with NEAR JSON-RPC API",
-    long_description="This is a Python client for interacting with the NEAR Protocol using JSON-RPC.",
     packages=find_packages(include=["near_jsonrpc_client*", "near_jsonrpc_models*"]),
     install_requires=[
         "httpx>=0.24",
