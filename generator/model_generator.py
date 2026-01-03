@@ -1,11 +1,9 @@
-# model_generator.py
 import ast
 import os
 import re
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, Optional, Set
-from typing import List, Tuple
+from typing import Any, Dict, Optional, Set, List, Tuple
 
 from generator.context import GeneratorContext
 from generator.helpers.name_resolvers import snake_case, pascal_case, to_class_name
@@ -101,7 +99,7 @@ def _inject_class_docstring(class_def: str, class_name: str, description: Option
 
 
 # -------------------------
-# validator helpers
+# validators
 # -------------------------
 def generate_pattern_properties_validator(field_name: str, pattern: str) -> str:
     method_name = f"validate_{field_name}_keys"
@@ -142,19 +140,23 @@ def generate_datetime_string_parser_validator(field_name: str) -> str:
 
 
 # -------------------------
-# helper: ensure unique class/alias names within generation context
-# deterministic, avoids double-Option/Option11 and produces minimal numeric suffix when needed
+# unique-name helper
 # -------------------------
-def _ensure_unique_name(candidate: str, used: Set[str]) -> str:
+def _ensure_unique_name(candidate: str, used: Set[str], from_title: bool = False) -> str:
     """
-    Ensure unique candidate. If taken, append the smallest positive integer to the 'base' (base = candidate without trailing digits).
-    Deterministic and produces minimal numeric suffix.
+    Deterministic minimal-suffix unique namer.
+    If candidate unused -> return and mark used.
+    If from_title is True and candidate already used -> return candidate as-is (do NOT append numeric suffix).
+    Else append smallest positive integer to the candidate's base (base = candidate without trailing digits).
     """
     if candidate not in used:
         used.add(candidate)
         return candidate
 
-    # strip trailing digits
+    if from_title:
+        # keep candidate as-is when it was derived from a title — do not append numeric suffix
+        return candidate
+
     m = re.match(r"^(.*?)(\d+)$", candidate)
     base = m.group(1) if m else candidate
     if not base:
@@ -170,40 +172,64 @@ def _ensure_unique_name(candidate: str, used: Set[str]) -> str:
 
 
 # -------------------------
-# helper: descriptive suffix generator
-# prefer discriminant enum value, then title, then distinctive prop names, else OptionN
+# descriptive suffix helpers
 # -------------------------
-def _make_descriptive_suffix(schema_name: str, props: Dict[str, Any], prop_freq: Dict[str, int], fallback_idx: int) -> str:
-    # 1) look for 'type' property that is a single-member enum
-    type_prop = props.get("type")
-    if isinstance(type_prop, dict) and isinstance(type_prop.get("enum"), list) and type_prop.get("enum"):
-        return pascal_case(type_prop["enum"][0])
+def _prop_name_to_suffix(part: str) -> str:
+    """
+    Convert a property name like 'block_id' -> 'BlockId', 'tx_hash' -> 'TxHash' (but we prefer 'Id' when prop name endswith '_id').
+    """
+    # keep underscores, use pascal_case from helper
+    return pascal_case(part)
 
-    # 2) prefer explicit title in props? (handled by callers usually)
-    # 3) if there's a 'name' property with enum -> use it
-    name_prop = props.get("name")
-    if isinstance(name_prop, dict) and isinstance(name_prop.get("enum"), list) and name_prop.get("enum"):
-        return pascal_case(name_prop["enum"][0])
 
-    # 4) look for a distinctive single property
-    if len(props) == 1:
-        only = next(iter(props.keys()))
-        return pascal_case(only)
+def _make_suffix_from_props(props: Dict[str, Any], prop_order: List[str]) -> Optional[str]:
+    """
+    Build suffix using properties in the given order.
+    Returns None if props empty.
+    Example: ['block_id','shard_id'] -> 'BlockIdShardId'
+    """
+    if not prop_order:
+        return None
+    parts = []
+    for p in prop_order:
+        # only include props that actually exist in props dict
+        if p in props:
+            parts.append(_prop_name_to_suffix(p))
+    if parts:
+        return "".join(parts)
+    # fallback: if props dict exists but we couldn't order, pick first two keys
+    keys = list(props.keys())
+    if keys:
+        return "".join(_prop_name_to_suffix(k) for k in keys[:2])
+    return None
 
-    # 5) otherwise pick the most distinctive properties (lowest frequency), take up to two and combine
-    if props:
-        candidates = sorted(props.keys(), key=lambda n: (prop_freq.get(n, 0), n))
-        chosen = candidates[:2]  # up to two props
-        joined = "".join(pascal_case(p) for p in chosen)
-        if joined:
-            return joined
 
-    # 6) fallback: Option{fallback_idx}
-    return f"Option{fallback_idx}"
+def _extract_single_name_enum(props: Dict[str, Any]) -> Optional[str]:
+    if not isinstance(props, dict):
+        return None
+
+    def extract_from_field(field_name: str) -> Optional[str]:
+        field = props.get(field_name)
+        if not isinstance(field, dict):
+            return None
+
+        enum_val = None
+        if "enum" in field and isinstance(field["enum"], list) and len(field["enum"]) == 1:
+            enum_val = field["enum"][0]
+        elif "const" in field:
+            enum_val = field["const"]
+
+        if isinstance(enum_val, str) and enum_val.strip():
+            return pascal_case(enum_val)
+
+        return None
+
+    # Priority: name first, then type
+    return extract_from_field("name") or extract_from_field("type")
 
 
 # -------------------------
-# type resolution (unchanged)
+# type resolution (unchanged in essence)
 # returns (placeholder/python-object, annotation-string)
 # -------------------------
 def get_python_type_and_string(
@@ -218,7 +244,7 @@ def get_python_type_and_string(
     if extra_defs is None:
         extra_defs = []
 
-    # --- special: allOf single-$ref -> return referenced model type ---
+    # special allOf single-$ref
     if "allOf" in field_data and isinstance(field_data["allOf"], list):
         if len(field_data["allOf"]) == 1 and isinstance(field_data["allOf"][0], dict) and "$ref" in field_data["allOf"][0]:
             ref = field_data["allOf"][0]["$ref"]
@@ -226,7 +252,7 @@ def get_python_type_and_string(
             imports.add(f"from near_jsonrpc_models.{snake_case(model_name)} import {model_name}")
             return model_name, model_name
 
-    # Inline enum -> Literal (string enums)
+    # inline enum -> Literal
     if "enum" in field_data and field_data.get("type") == "string" and "$ref" not in field_data:
         imports.add("from typing import Literal")
         vals = field_data["enum"]
@@ -244,7 +270,7 @@ def get_python_type_and_string(
             union = f"{name} | None"
             return union, union
 
-    # oneOf collapse of single-member string-enums -> return combined Literal
+    # oneOf string-enum collapse
     if "oneOf" in field_data:
         flattenable = True
         vals = []
@@ -450,7 +476,6 @@ def get_python_type_and_string(
 
 # -------------------------
 # Build BaseModel from properties dict
-# Accepts extra_defs list to collect nested/alias defs
 # -------------------------
 def _build_class_from_properties(class_name: str, props: Dict[str, Any], required_fields: List[str],
                                  ctx: GeneratorContext, imports: Set[str],
@@ -520,11 +545,11 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
     imports: Set[str] = {"from pydantic import BaseModel"}
     extra_class_defs: List[str] = []
 
-    # global set of used names (avoid collisions across all generated schemas)
+    # used class names across generation context (schema names only)
     used_class_names: Set[str] = set(pascal_case(s) for s in ctx.schemas.keys())
     used_class_names.add(pascal_case(schema_name))
 
-    # ---- handle simple aliases ----
+    # handle simple alias $ref or single allOf-$ref
     if isinstance(schema_data, dict):
         if "$ref" in schema_data and set(schema_data.keys()).issubset({"$ref", "description"}):
             ref = pascal_case(schema_data["$ref"].split("/")[-1])
@@ -537,7 +562,7 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
             desc_block = f'"""{description}"""\n\n' if description else ""
             return f"{desc_block}{import_stmt}\n\n\n{pascal_case(schema_name)} = {ref}\n"
 
-    # top-level enums/primitives handled earlier (kept as before)
+    # top-level enum None / string enums handled similarly to previous implementations
     if schema_data.get("enum") == [None]:
         desc = f'"""{description}"""\n\n' if description else ""
         imports_local = {"from pydantic import RootModel", "from types import NoneType"}
@@ -555,7 +580,7 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
         class_def = f"class {enum_name}(RootModel[Literal[{lit}]]):\n    pass\n\n"
         return f"{desc_block}{import_block}\n\n\n{class_def}"
 
-    # oneOf handling
+    # oneOf handling (improved naming: prefer title then property-derived suffixes then name-enum)
     if "oneOf" in schema_data:
         all_string_enums = True
         val_to_desc: Dict[str, Optional[str]] = {}
@@ -581,11 +606,12 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
             class_def = f"class {pascal_case(schema_name)}(RootModel[Literal[{lit_vals}]]):\n    pass\n\n"
             return f"{desc_block}{import_block}\n\n\n{class_def}"
 
-        # complex oneOf -> produce option classes
+        # complex oneOf -> create option classes
         option_names: List[str] = []
-        option_defs: List[str] = []
+        option_defs: List[Tuple[Optional[str], str]] = []
         imports.add("from pydantic import BaseModel")
 
+        # compute property frequency among object options to pick distinctive names
         obj_options = [opt for opt in schema_data["oneOf"] if isinstance(opt, dict) and opt.get("type") == "object" and "properties" in opt]
         prop_freq: Dict[str, int] = {}
         for o in obj_options:
@@ -596,7 +622,7 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
         for opt in schema_data["oneOf"]:
             idx += 1
 
-            # merged allOf option
+            # handle merged allOf
             if isinstance(opt, dict) and "allOf" in opt and isinstance(opt["allOf"], list):
                 merged_props = dict(properties or {})
                 merged_required = set(required_fields or [])
@@ -620,15 +646,23 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
                         merged_props[k] = v
                 merged_required.update(opt.get("required", []))
 
-                # choose suffix: title > type enum > name enum > distinctive props > OptionN
-                suffix = None
+                # Priority for suffix: title -> single-name enum -> props -> fallback OptionN
+                name_suffix = _extract_single_name_enum(merged_props)
                 if isinstance(title, str) and title.strip():
                     suffix = pascal_case(title)
-                if suffix is None:
-                    suffix = _make_descriptive_suffix(pascal_case(schema_name), merged_props, prop_freq, idx)
+                    from_title = True
+                elif name_suffix:
+                    suffix = name_suffix
+                    from_title = False
+                else:
+                    prop_order = list(merged_props.keys())
+                    suffix = _make_suffix_from_props(merged_props, prop_order)
+                    if not suffix:
+                        suffix = f"Option{idx}"
+                    from_title = False
 
                 combined = to_class_name(pascal_case(schema_name), suffix)
-                combined = _ensure_unique_name(combined, used_class_names)
+                combined = _ensure_unique_name(combined, used_class_names, from_title=from_title)
                 local_nested: List[str] = []
                 merged_required_list = list(merged_required)
                 class_def = _build_class_from_properties(combined, merged_props, merged_required_list,
@@ -651,7 +685,7 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
                 option_names.append(combined)
                 continue
 
-            # string enum option -> alias RootModel[Literal[...]]
+            # string enum -> RootModel alias
             if isinstance(opt, dict) and opt.get("type") == "string" and isinstance(opt.get("enum"), list) and opt.get("enum"):
                 vals = opt["enum"]
                 raw = vals[0] if vals else f"Option{idx}"
@@ -676,50 +710,71 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
             if isinstance(opt, dict) and "$ref" in opt:
                 ref = pascal_case(opt["$ref"].split("/")[-1])
                 title = opt.get("title")
-                if isinstance(title, str) and title.strip():
-                    suffix = pascal_case(title)
-                else:
-                    suffix = ref
-                combined = to_class_name(pascal_case(schema_name), suffix)
-                combined = _ensure_unique_name(combined, used_class_names)
-                imports.add(f"from near_jsonrpc_models.{snake_case(ref)} import {ref}")
-                local_nested: List[str] = []
-                strict_opt = opt.get("additionalProperties") is False
+                # build merged props so we can produce descriptive suffix
                 merged_props = dict(properties or {})
-                merged_required = list(set(required_fields or []) | set(opt.get("required", [])))
                 if isinstance(opt.get("properties"), dict):
                     for k, v in opt.get("properties", {}).items():
                         merged_props[k] = v
+                merged_required = list(set(required_fields or []) | set(opt.get("required", [])))
+
+                # Priority: title -> single-name enum -> props -> ref
+                name_suffix = _extract_single_name_enum(merged_props)
+                if isinstance(title, str) and title.strip():
+                    suffix = pascal_case(title)
+                    from_title = True
+                elif name_suffix:
+                    suffix = name_suffix
+                    from_title = False
+                else:
+                    prop_order = list(merged_props.keys())
+                    suffix = _make_suffix_from_props(merged_props, prop_order)
+                    if not suffix:
+                        suffix = ref
+                    from_title = False
+
+                combined = to_class_name(pascal_case(schema_name), suffix)
+                combined = _ensure_unique_name(combined, used_class_names, from_title=from_title)
+                imports.add(f"from near_jsonrpc_models.{snake_case(ref)} import {ref}")
+                local_nested: List[str] = []
+                strict_opt = opt.get("additionalProperties") is False
                 class_def = _build_class_from_properties(combined, merged_props, merged_required, ctx, imports, extra_defs=local_nested, strict=strict_opt)
                 header_base = f"class {combined}("
                 if header_base in class_def:
                     lines = class_def.splitlines(True)
-                    if lines:
-                        first_line = lines[0]
-                        if "(BaseModel):" in first_line:
-                            lines[0] = first_line.replace("(BaseModel):", f"({ref}):")
-                        elif "(StrictBaseModel):" in first_line:
-                            lines[0] = first_line.replace("(StrictBaseModel):", f"({ref}):")
-                        else:
-                            lines[0] = re.sub(r"\(.*\):", f"({ref}):", lines[0])
-                        class_def = "".join(lines)
+                    first = lines[0]
+                    if "(BaseModel):" in first:
+                        lines[0] = first.replace("(BaseModel):", f"({ref}):")
+                    elif "(StrictBaseModel):" in first:
+                        lines[0] = first.replace("(StrictBaseModel):", f"({ref}):")
+                    else:
+                        lines[0] = re.sub(r"\(.*\):", f"({ref}):", lines[0])
+                    class_def = "".join(lines)
                 class_def = _inject_class_docstring(class_def, combined, opt.get("description"))
                 option_defs.extend((None, d) for d in local_nested)
                 option_defs.append((combined, class_def))
                 option_names.append(combined)
                 continue
 
-            # inline object option -> use descriptive suffix (type enum / prop names / OptionN fallback)
+            # inline object option -> prefer title -> name enum -> props-derived suffix (keeps 'BlockIdShardId' instead of 'BlockShardId')
             if isinstance(opt, dict) and opt.get("type") == "object" and "properties" in opt:
                 props = opt.get("properties", {})
                 title = opt.get("title")
-                suffix = None
+                # priority: title -> single-name enum -> props -> OptionN
+                name_suffix = _extract_single_name_enum(props)
                 if isinstance(title, str) and title.strip():
                     suffix = pascal_case(title)
-                if suffix is None:
-                    suffix = _make_descriptive_suffix(pascal_case(schema_name), props, prop_freq, idx)
+                    from_title = True
+                elif name_suffix:
+                    suffix = name_suffix
+                    from_title = False
+                else:
+                    prop_order = list(props.keys())
+                    suffix = _make_suffix_from_props(props, prop_order)
+                    if not suffix:
+                        suffix = f"Option{idx}"
+                    from_title = False
                 combined = to_class_name(pascal_case(schema_name), suffix)
-                combined = _ensure_unique_name(combined, used_class_names)
+                combined = _ensure_unique_name(combined, used_class_names, from_title=from_title)
                 local_nested: List[str] = []
                 strict_opt = opt.get("additionalProperties") is False
                 merged_props = dict(properties or {})
@@ -733,7 +788,7 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
                 option_names.append(combined)
                 continue
 
-            # fallback variant
+            # fallback
             combined = f"{pascal_case(schema_name)}Variant{idx}"
             combined = _ensure_unique_name(combined, used_class_names)
             fallback_def = f"class {combined}(BaseModel):\n    value: Any\n\n"
@@ -753,7 +808,7 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
         wrapper_def = f"class {pascal_case(schema_name)}(RootModel[Union[{union_inner}]]):\n    pass\n\n"
         return f"{desc_block}{import_block}\n\n\n{defs_code}{wrapper_def}"
 
-    # anyOf handling (prefer descriptive suffixes from props to avoid OptionN)
+    # anyOf handling (prefer title then name-enum then props-based suffixes)
     if "anyOf" in schema_data:
         opts = schema_data["anyOf"]
         parts: List[str] = []
@@ -771,12 +826,15 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
             t = opt.get("type")
             title = opt.get("title")
             desc = opt.get("description") or ""
+            # prefer title when available for primitives; otherwise OptionN
             if isinstance(title, str) and title.strip():
                 suffix = pascal_case(title)
+                from_title = True
             else:
                 suffix = f"Option{idx_local}"
+                from_title = False
             alias_candidate = to_class_name(pascal_case(schema_name), suffix)
-            alias_candidate = _ensure_unique_name(alias_candidate, used_class_names)
+            alias_candidate = _ensure_unique_name(alias_candidate, used_class_names, from_title=from_title)
             if alias_candidate in used_aliases:
                 alias_candidate = _ensure_unique_name(alias_candidate, used_class_names)
             used_aliases.add(alias_candidate)
@@ -867,20 +925,33 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
             if isinstance(opt, dict) and "$ref" in opt:
                 ref = pascal_case(opt["$ref"].split("/")[-1])
                 title = opt.get("title")
-                if isinstance(title, str) and title.strip():
-                    suffix = pascal_case(title)
-                else:
-                    suffix = ref
-                alias_candidate = to_class_name(pascal_case(schema_name), suffix)
-                alias_candidate = _ensure_unique_name(alias_candidate, used_class_names)
-                if alias_candidate in used_aliases:
-                    alias_candidate = _ensure_unique_name(alias_candidate, used_class_names)
-                used_aliases.add(alias_candidate)
-                imports.add(f"from near_jsonrpc_models.{snake_case(ref)} import {ref}")
+                # build merged_props and check for single-name enum
                 merged_props = dict(properties or {})
                 if isinstance(opt.get("properties"), dict):
                     for k, v in opt.get("properties", {}).items():
                         merged_props[k] = v
+
+                name_suffix = _extract_single_name_enum(merged_props)
+                # priority: title -> name enum -> props -> ref
+                if isinstance(title, str) and title.strip():
+                    suffix = pascal_case(title)
+                    from_title = True
+                elif name_suffix:
+                    suffix = name_suffix
+                    from_title = False
+                else:
+                    prop_order = list(merged_props.keys())
+                    suffix = _make_suffix_from_props(merged_props, prop_order)
+                    if not suffix:
+                        suffix = ref
+                    from_title = False
+
+                alias_candidate = to_class_name(pascal_case(schema_name), suffix)
+                alias_candidate = _ensure_unique_name(alias_candidate, used_class_names, from_title=from_title)
+                if alias_candidate in used_aliases:
+                    alias_candidate = _ensure_unique_name(alias_candidate, used_class_names)
+                used_aliases.add(alias_candidate)
+                imports.add(f"from near_jsonrpc_models.{snake_case(ref)} import {ref}")
                 merged_required = list(set(required_fields or []) | set(opt.get("required", [])))
                 local_nested: List[str] = []
                 class_def = _build_class_from_properties(alias_candidate, merged_props, merged_required, ctx, imports, extra_defs=local_nested, strict=opt.get("additionalProperties") is False)
@@ -907,15 +978,23 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
 
             if isinstance(opt, dict) and opt.get("type") == "object" and "properties" in opt:
                 title = opt.get("title")
-                suffix = None
+                props = opt.get("properties", {})
+                # priority: title -> single-name enum -> props -> OptionN
+                name_suffix = _extract_single_name_enum(props)
                 if isinstance(title, str) and title.strip():
                     suffix = pascal_case(title)
-                if suffix is None:
-                    # prefer discriminant 'type' enum
-                    props = opt.get("properties", {})
-                    suffix = _make_descriptive_suffix(pascal_case(schema_name), props, {}, idx)
+                    from_title = True
+                elif name_suffix:
+                    suffix = name_suffix
+                    from_title = False
+                else:
+                    prop_order = list(props.keys())
+                    suffix = _make_suffix_from_props(props, prop_order)
+                    if not suffix:
+                        suffix = f"Option{idx}"
+                    from_title = False
                 inline_name = to_class_name(pascal_case(schema_name), suffix)
-                inline_name = _ensure_unique_name(inline_name, used_class_names)
+                inline_name = _ensure_unique_name(inline_name, used_class_names, from_title=from_title)
                 nested: List[str] = []
                 strict_opt = opt.get("additionalProperties") is False
                 merged_props = dict(properties or {})
@@ -1047,7 +1126,7 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
             import_block = "\n".join(sorted(imports))
             return f"{desc}{import_block}\n\n\n{class_def}"
 
-    # fallback: generate BaseModel / StrictBaseModel class depending on top-level additionalProperties
+    # fallback: object -> BaseModel/StrictBaseModel
     imports.add("from pydantic import BaseModel")
     top_strict = isinstance(schema_data, dict) and schema_data.get("additionalProperties") is False
     if top_strict:
@@ -1177,7 +1256,7 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
 
 
 # -------------------------
-# IO helpers (unchanged)
+# IO helpers
 # -------------------------
 def save_model_to_file(model_code: str, schema_name: str, out_dir: str) -> None:
     os.makedirs(out_dir, exist_ok=True)
