@@ -1,5 +1,6 @@
 # NEAR JSON-RPC Python Client
 
+[![Build Status](https://img.shields.io/github/actions/workflow/status/near/near-jsonrpc-client-kotlin/ci-cd.yml?branch=main)](https://github.com/hosseinkarami-dev/near-jsonrpc-client-py/actions)
 ![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)
 ![Type Safe](https://img.shields.io/badge/type--safe-yes-success.svg)
