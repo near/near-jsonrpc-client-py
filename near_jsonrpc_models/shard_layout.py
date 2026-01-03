@@ -17,18 +17,18 @@ from pydantic import RootModel
 from typing import Union
 
 
-class ShardLayoutV4(StrictBaseModel):
+class ShardLayoutV0Option(StrictBaseModel):
     V0: ShardLayoutV0
 
-class ShardLayoutV5(StrictBaseModel):
+class ShardLayoutV1Option(StrictBaseModel):
     V1: ShardLayoutV1
 
-class ShardLayoutV6(StrictBaseModel):
+class ShardLayoutV2Option(StrictBaseModel):
     V2: ShardLayoutV2
 
-class ShardLayoutV7(StrictBaseModel):
+class ShardLayoutV3Option(StrictBaseModel):
     V3: ShardLayoutV3
 
-class ShardLayout(RootModel[Union[ShardLayoutV4, ShardLayoutV5, ShardLayoutV6, ShardLayoutV7]]):
+class ShardLayout(RootModel[Union[ShardLayoutV0Option, ShardLayoutV1Option, ShardLayoutV2Option, ShardLayoutV3Option]]):
     pass
 
