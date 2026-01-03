@@ -1,0 +1,17 @@
+from near_jsonrpc_models.final_execution_outcome_view import FinalExecutionOutcomeView
+from near_jsonrpc_models.final_execution_outcome_with_receipt_view import FinalExecutionOutcomeWithReceiptView
+from near_jsonrpc_models.tx_execution_status import TxExecutionStatus
+from pydantic import BaseModel
+from pydantic import RootModel
+from typing import Union
+
+
+class RpcTransactionResponseFinalExecutionOutcomeWithReceiptView(FinalExecutionOutcomeWithReceiptView):
+    final_execution_status: TxExecutionStatus
+
+class RpcTransactionResponseFinalExecutionOutcomeView(FinalExecutionOutcomeView):
+    final_execution_status: TxExecutionStatus
+
+class RpcTransactionResponse(RootModel[Union[RpcTransactionResponseFinalExecutionOutcomeWithReceiptView, RpcTransactionResponseFinalExecutionOutcomeView]]):
+    pass
+
