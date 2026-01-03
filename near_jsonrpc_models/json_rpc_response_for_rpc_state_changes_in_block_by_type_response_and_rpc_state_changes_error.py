@@ -1,0 +1,20 @@
+from near_jsonrpc_models.error_wrapper_for_rpc_state_changes_error import ErrorWrapperForRpcStateChangesError
+from near_jsonrpc_models.rpc_state_changes_in_block_by_type_response import RpcStateChangesInBlockByTypeResponse
+from pydantic import BaseModel
+from pydantic import RootModel
+from typing import Union
+
+
+class JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesErrorResult(BaseModel):
+    id: str
+    jsonrpc: str
+    result: RpcStateChangesInBlockByTypeResponse
+
+class JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesErrorError(BaseModel):
+    id: str
+    jsonrpc: str
+    error: ErrorWrapperForRpcStateChangesError
+
+class JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesError(RootModel[Union[JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesErrorResult, JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesErrorError]]):
+    pass
+
