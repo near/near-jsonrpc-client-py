@@ -36,8 +36,6 @@ class VMConfigView(BaseModel):
     reftypes_bulk_memory: bool = None
     # Gas cost of a regular operation.
     regular_op_cost: conint(ge=0, le=4294967295) = None
-    # See [VMConfig::saturating_float_to_int](crate::vm::Config::saturating_float_to_int).
-    saturating_float_to_int: bool = None
     # See [VMConfig::storage_get_mode](crate::vm::Config::storage_get_mode).
     storage_get_mode: StorageGetMode = None
     # See [VMConfig::vm_kind](crate::vm::Config::vm_kind).
