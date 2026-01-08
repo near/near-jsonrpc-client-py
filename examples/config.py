@@ -17,8 +17,8 @@ def main():
         print(f"{e}: status: {e.status_code}, body: {e.body}")
     except ClientError as e:
         print("Invalid response:", e)
-
-    client.close()
+    finally:
+        client.close()
 
 
 main()

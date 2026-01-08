@@ -23,12 +23,16 @@ class HttpError(ClientError):
 class RpcError(ClientError):
     """JSON-RPC error object wrapping the Pydantic error model."""
 
-    def __init__(self, error: BaseModel):
+    def __init__(self, error: BaseModel | str):
         self.error = error
-        super().__init__(getattr(error, "message", "RPC Error"))
+
+        if isinstance(error, BaseModel):
+            super().__init__(getattr(error, "message", "RPC Error"))
+        else:
+            super().__init__(error)
 
 
-class RequestTimeoutError(ClientError):
+class RpcTimeoutError(ClientError):
     """Timeout Error"""
 
     def __init__(self):
