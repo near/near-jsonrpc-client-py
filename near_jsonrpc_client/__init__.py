@@ -23,5 +23,5 @@ __all__ = [
     "TransportError",
     "HttpError",
     "RpcError",
-    "RequestTimeoutError"
+    "RpcTimeoutError"
 ]
