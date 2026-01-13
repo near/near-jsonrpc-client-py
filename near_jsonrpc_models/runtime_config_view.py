@@ -17,7 +17,7 @@ class RuntimeConfigView(BaseModel):
     # The configuration for congestion control.
     congestion_control_config: CongestionControlConfigView = None
     # Configuration for dynamic resharding feature.
-    dynamic_resharding_config: DynamicReshardingConfigView = Field(default_factory=lambda: DynamicReshardingConfigView(**{'max_number_of_shards': 999999999999999, 'memory_usage_threshold': 999999999999999, 'min_child_memory_usage': 999999999999999, 'min_epochs_between_resharding': 999999999999999}))
+    dynamic_resharding_config: DynamicReshardingConfigView = Field(default_factory=lambda: DynamicReshardingConfigView(**{'block_split_shards': [], 'force_split_shards': [], 'max_number_of_shards': 999999999999999, 'memory_usage_threshold': 999999999999999, 'min_child_memory_usage': 999999999999999, 'min_epochs_between_resharding': 999999999999999}))
     # Amount of yN per byte required to have on the account.  See
     # <https://nomicon.io/Economics/Economics.html#state-stake> for details.
     storage_amount_per_byte: NearToken = None
