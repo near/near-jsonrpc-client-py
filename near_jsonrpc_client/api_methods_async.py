@@ -202,28 +202,6 @@ class APIMixinAsync:
             params=params,
         )
 
-    async def experimental_view_gas_key(self: NearBaseClientAsync, *, params: near_jsonrpc_models.RpcViewGasKeyRequest) -> near_jsonrpc_models.RpcViewGasKeyResponse:
-        """
-        Returns information about a single gas key for given account.
-        High-level method: returns the result model or raises NearClientError/NearRpcError/NearHttpError.
-        """
-        return await self._call(
-            request_model=near_jsonrpc_models.JsonRpcRequestForExperimentalViewGasKey,
-            response_model=near_jsonrpc_models.JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyError,
-            params=params,
-        )
-
-    async def experimental_view_gas_key_list(self: NearBaseClientAsync, *, params: near_jsonrpc_models.RpcViewGasKeyListRequest) -> near_jsonrpc_models.RpcViewGasKeyListResponse:
-        """
-        Returns all gas keys for a given account.
-        High-level method: returns the result model or raises NearClientError/NearRpcError/NearHttpError.
-        """
-        return await self._call(
-            request_model=near_jsonrpc_models.JsonRpcRequestForExperimentalViewGasKeyList,
-            response_model=near_jsonrpc_models.JsonRpcResponseForRpcViewGasKeyListResponseAndRpcViewGasKeyListError,
-            params=params,
-        )
-
     async def experimental_view_state(self: NearBaseClientAsync, *, params: near_jsonrpc_models.RpcViewStateRequest) -> near_jsonrpc_models.RpcViewStateResponse:
         """
         Returns the state (key-value pairs) of a contract based on the key prefix.

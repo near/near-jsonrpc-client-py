@@ -1,4 +1,3 @@
-from near_jsonrpc_models.access_key_permission_view import AccessKeyPermissionView
 from near_jsonrpc_models.access_key_view import AccessKeyView
 from near_jsonrpc_models.account_id import AccountId
 from near_jsonrpc_models.crypto_hash import CryptoHash
@@ -12,7 +11,6 @@ from near_jsonrpc_models.signature import Signature
 from near_jsonrpc_models.strict_model import StrictBaseModel
 from pydantic import BaseModel
 from pydantic import RootModel
-from pydantic import conint
 from typing import Dict
 from typing import Literal
 from typing import Union
@@ -107,27 +105,6 @@ class ActionViewDeterministicStateInitPayload(BaseModel):
 class ActionViewDeterministicStateInit(StrictBaseModel):
     DeterministicStateInit: ActionViewDeterministicStateInitPayload
 
-class ActionViewAddGasKeyPayload(BaseModel):
-    num_nonces: conint(ge=0, le=4294967295)
-    permission: AccessKeyPermissionView
-    public_key: PublicKey
-
-class ActionViewAddGasKey(StrictBaseModel):
-    AddGasKey: ActionViewAddGasKeyPayload
-
-class ActionViewDeleteGasKeyPayload(BaseModel):
-    public_key: PublicKey
-
-class ActionViewDeleteGasKey(StrictBaseModel):
-    DeleteGasKey: ActionViewDeleteGasKeyPayload
-
-class ActionViewTransferToGasKeyPayload(BaseModel):
-    amount: NearToken
-    public_key: PublicKey
-
-class ActionViewTransferToGasKey(StrictBaseModel):
-    TransferToGasKey: ActionViewTransferToGasKeyPayload
-
-class ActionView(RootModel[Union[ActionViewCreateAccount, ActionViewDeployContract, ActionViewFunctionCall, ActionViewTransfer, ActionViewStake, ActionViewAddKey, ActionViewDeleteKey, ActionViewDeleteAccount, ActionViewDelegate, ActionViewDeployGlobalContract, ActionViewDeployGlobalContractByAccountId, ActionViewUseGlobalContract, ActionViewUseGlobalContractByAccountId, ActionViewDeterministicStateInit, ActionViewAddGasKey, ActionViewDeleteGasKey, ActionViewTransferToGasKey]]):
+class ActionView(RootModel[Union[ActionViewCreateAccount, ActionViewDeployContract, ActionViewFunctionCall, ActionViewTransfer, ActionViewStake, ActionViewAddKey, ActionViewDeleteKey, ActionViewDeleteAccount, ActionViewDelegate, ActionViewDeployGlobalContract, ActionViewDeployGlobalContractByAccountId, ActionViewUseGlobalContract, ActionViewUseGlobalContractByAccountId, ActionViewDeterministicStateInit]]):
     pass
 

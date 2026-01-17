@@ -26,20 +26,10 @@ class RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesByBlockId(BaseMod
     changes_type: Literal['single_access_key_changes']
     keys: List[AccountWithPublicKey]
 
-class RpcStateChangesInBlockByTypeRequestSingleGasKeyChangesByBlockId(BaseModel):
-    block_id: BlockId
-    changes_type: Literal['single_gas_key_changes']
-    keys: List[AccountWithPublicKey]
-
 class RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesByBlockId(BaseModel):
     block_id: BlockId
     account_ids: List[AccountId]
     changes_type: Literal['all_access_key_changes']
-
-class RpcStateChangesInBlockByTypeRequestAllGasKeyChangesByBlockId(BaseModel):
-    block_id: BlockId
-    account_ids: List[AccountId]
-    changes_type: Literal['all_gas_key_changes']
 
 class RpcStateChangesInBlockByTypeRequestContractCodeChangesByBlockId(BaseModel):
     block_id: BlockId
@@ -62,20 +52,10 @@ class RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesByFinality(BaseMo
     changes_type: Literal['single_access_key_changes']
     keys: List[AccountWithPublicKey]
 
-class RpcStateChangesInBlockByTypeRequestSingleGasKeyChangesByFinality(BaseModel):
-    finality: Finality
-    changes_type: Literal['single_gas_key_changes']
-    keys: List[AccountWithPublicKey]
-
 class RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesByFinality(BaseModel):
     finality: Finality
     account_ids: List[AccountId]
     changes_type: Literal['all_access_key_changes']
-
-class RpcStateChangesInBlockByTypeRequestAllGasKeyChangesByFinality(BaseModel):
-    finality: Finality
-    account_ids: List[AccountId]
-    changes_type: Literal['all_gas_key_changes']
 
 class RpcStateChangesInBlockByTypeRequestContractCodeChangesByFinality(BaseModel):
     finality: Finality
@@ -98,20 +78,10 @@ class RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesBySyncCheckpoint(
     changes_type: Literal['single_access_key_changes']
     keys: List[AccountWithPublicKey]
 
-class RpcStateChangesInBlockByTypeRequestSingleGasKeyChangesBySyncCheckpoint(BaseModel):
-    sync_checkpoint: SyncCheckpoint
-    changes_type: Literal['single_gas_key_changes']
-    keys: List[AccountWithPublicKey]
-
 class RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesBySyncCheckpoint(BaseModel):
     sync_checkpoint: SyncCheckpoint
     account_ids: List[AccountId]
     changes_type: Literal['all_access_key_changes']
-
-class RpcStateChangesInBlockByTypeRequestAllGasKeyChangesBySyncCheckpoint(BaseModel):
-    sync_checkpoint: SyncCheckpoint
-    account_ids: List[AccountId]
-    changes_type: Literal['all_gas_key_changes']
 
 class RpcStateChangesInBlockByTypeRequestContractCodeChangesBySyncCheckpoint(BaseModel):
     sync_checkpoint: SyncCheckpoint
@@ -124,6 +94,6 @@ class RpcStateChangesInBlockByTypeRequestDataChangesBySyncCheckpoint(BaseModel):
     changes_type: Literal['data_changes']
     key_prefix_base64: StoreKey
 
-class RpcStateChangesInBlockByTypeRequest(RootModel[Union[RpcStateChangesInBlockByTypeRequestAccountChangesByBlockId, RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesByBlockId, RpcStateChangesInBlockByTypeRequestSingleGasKeyChangesByBlockId, RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesByBlockId, RpcStateChangesInBlockByTypeRequestAllGasKeyChangesByBlockId, RpcStateChangesInBlockByTypeRequestContractCodeChangesByBlockId, RpcStateChangesInBlockByTypeRequestDataChangesByBlockId, RpcStateChangesInBlockByTypeRequestAccountChangesByFinality, RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesByFinality, RpcStateChangesInBlockByTypeRequestSingleGasKeyChangesByFinality, RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesByFinality, RpcStateChangesInBlockByTypeRequestAllGasKeyChangesByFinality, RpcStateChangesInBlockByTypeRequestContractCodeChangesByFinality, RpcStateChangesInBlockByTypeRequestDataChangesByFinality, RpcStateChangesInBlockByTypeRequestAccountChangesBySyncCheckpoint, RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesBySyncCheckpoint, RpcStateChangesInBlockByTypeRequestSingleGasKeyChangesBySyncCheckpoint, RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesBySyncCheckpoint, RpcStateChangesInBlockByTypeRequestAllGasKeyChangesBySyncCheckpoint, RpcStateChangesInBlockByTypeRequestContractCodeChangesBySyncCheckpoint, RpcStateChangesInBlockByTypeRequestDataChangesBySyncCheckpoint]]):
+class RpcStateChangesInBlockByTypeRequest(RootModel[Union[RpcStateChangesInBlockByTypeRequestAccountChangesByBlockId, RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesByBlockId, RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesByBlockId, RpcStateChangesInBlockByTypeRequestContractCodeChangesByBlockId, RpcStateChangesInBlockByTypeRequestDataChangesByBlockId, RpcStateChangesInBlockByTypeRequestAccountChangesByFinality, RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesByFinality, RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesByFinality, RpcStateChangesInBlockByTypeRequestContractCodeChangesByFinality, RpcStateChangesInBlockByTypeRequestDataChangesByFinality, RpcStateChangesInBlockByTypeRequestAccountChangesBySyncCheckpoint, RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesBySyncCheckpoint, RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesBySyncCheckpoint, RpcStateChangesInBlockByTypeRequestContractCodeChangesBySyncCheckpoint, RpcStateChangesInBlockByTypeRequestDataChangesBySyncCheckpoint]]):
     pass
 
