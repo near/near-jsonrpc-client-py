@@ -279,10 +279,6 @@ if TYPE_CHECKING:
     from .action_error_kind import ActionErrorKindDelegateActionNonceTooLarge
     from .action_error_kind import ActionErrorKindGlobalContractDoesNotExistPayload
     from .action_error_kind import ActionErrorKindGlobalContractDoesNotExist
-    from .action_error_kind import ActionErrorKindGasKeyDoesNotExistPayload
-    from .action_error_kind import ActionErrorKindGasKeyDoesNotExist
-    from .action_error_kind import ActionErrorKindGasKeyAlreadyExistsPayload
-    from .action_error_kind import ActionErrorKindGasKeyAlreadyExists
     from .action_error_kind import ActionErrorKind
     from .json_rpc_request_for_broadcast_tx_async import JsonRpcRequestForBroadcastTxAsync
     from .rpc_health_request import RpcHealthRequest
@@ -504,12 +500,6 @@ if TYPE_CHECKING:
     from .state_change_with_cause_view import StateChangeWithCauseViewAccessKeyUpdate
     from .state_change_with_cause_view import StateChangeWithCauseViewAccessKeyDeletionChange
     from .state_change_with_cause_view import StateChangeWithCauseViewAccessKeyDeletion
-    from .state_change_with_cause_view import StateChangeWithCauseViewGasKeyUpdateChange
-    from .state_change_with_cause_view import StateChangeWithCauseViewGasKeyUpdate
-    from .state_change_with_cause_view import StateChangeWithCauseViewGasKeyNonceUpdateChange
-    from .state_change_with_cause_view import StateChangeWithCauseViewGasKeyNonceUpdate
-    from .state_change_with_cause_view import StateChangeWithCauseViewGasKeyDeletionChange
-    from .state_change_with_cause_view import StateChangeWithCauseViewGasKeyDeletion
     from .state_change_with_cause_view import StateChangeWithCauseViewDataUpdateChange
     from .state_change_with_cause_view import StateChangeWithCauseViewDataUpdate
     from .state_change_with_cause_view import StateChangeWithCauseViewDataDeletionChange
@@ -584,10 +574,6 @@ if TYPE_CHECKING:
     from .actions_validation_error import ActionsValidationErrorDeterministicStateInitKeyLengthExceeded
     from .actions_validation_error import ActionsValidationErrorDeterministicStateInitValueLengthExceededPayload
     from .actions_validation_error import ActionsValidationErrorDeterministicStateInitValueLengthExceeded
-    from .actions_validation_error import ActionsValidationErrorGasKeyPermissionInvalidPayload
-    from .actions_validation_error import ActionsValidationErrorGasKeyPermissionInvalid
-    from .actions_validation_error import ActionsValidationErrorGasKeyTooManyNoncesRequestedPayload
-    from .actions_validation_error import ActionsValidationErrorGasKeyTooManyNoncesRequested
     from .actions_validation_error import ActionsValidationError
     from .tracked_shards_config import TrackedShardsConfigNoShards
     from .tracked_shards_config import TrackedShardsConfigShards
@@ -645,8 +631,6 @@ if TYPE_CHECKING:
     from .rpc_query_response import RpcQueryResponseCallResult
     from .rpc_query_response import RpcQueryResponseAccessKeyView
     from .rpc_query_response import RpcQueryResponseAccessKeyList
-    from .rpc_query_response import RpcQueryResponseGasKeyView
-    from .rpc_query_response import RpcQueryResponseGasKeyList
     from .rpc_query_response import RpcQueryResponse
     from .json_rpc_request_for_experimental_genesis_config import JsonRpcRequestForExperimentalGenesisConfig
     from .json_rpc_response_for_rpc_protocol_config_response_and_rpc_protocol_config_error import JsonRpcResponseForRpcProtocolConfigResponseAndRpcProtocolConfigErrorResult
@@ -671,23 +655,17 @@ if TYPE_CHECKING:
     from .signed_transaction_view import SignedTransactionView
     from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAccountChangesByBlockId
     from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesByBlockId
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestSingleGasKeyChangesByBlockId
     from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesByBlockId
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAllGasKeyChangesByBlockId
     from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestContractCodeChangesByBlockId
     from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestDataChangesByBlockId
     from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAccountChangesByFinality
     from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesByFinality
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestSingleGasKeyChangesByFinality
     from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesByFinality
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAllGasKeyChangesByFinality
     from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestContractCodeChangesByFinality
     from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestDataChangesByFinality
     from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAccountChangesBySyncCheckpoint
     from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesBySyncCheckpoint
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestSingleGasKeyChangesBySyncCheckpoint
     from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesBySyncCheckpoint
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAllGasKeyChangesBySyncCheckpoint
     from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestContractCodeChangesBySyncCheckpoint
     from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestDataChangesBySyncCheckpoint
     from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequest
@@ -828,9 +806,6 @@ if TYPE_CHECKING:
     from .non_delegate_action import NonDelegateActionDeployGlobalContract
     from .non_delegate_action import NonDelegateActionUseGlobalContract
     from .non_delegate_action import NonDelegateActionDeterministicStateInit
-    from .non_delegate_action import NonDelegateActionAddGasKey
-    from .non_delegate_action import NonDelegateActionDeleteGasKey
-    from .non_delegate_action import NonDelegateActionTransferToGasKey
     from .non_delegate_action import NonDelegateAction
     from .action_error import ActionError
     from .epoch_id import EpochId
@@ -939,8 +914,6 @@ if TYPE_CHECKING:
     from .rpc_query_request import RpcQueryRequestViewStateByBlockId
     from .rpc_query_request import RpcQueryRequestViewAccessKeyByBlockId
     from .rpc_query_request import RpcQueryRequestViewAccessKeyListByBlockId
-    from .rpc_query_request import RpcQueryRequestViewGasKeyByBlockId
-    from .rpc_query_request import RpcQueryRequestViewGasKeyListByBlockId
     from .rpc_query_request import RpcQueryRequestCallFunctionByBlockId
     from .rpc_query_request import RpcQueryRequestViewGlobalContractCodeByBlockId
     from .rpc_query_request import RpcQueryRequestViewGlobalContractCodeByAccountIdByBlockId
@@ -949,8 +922,6 @@ if TYPE_CHECKING:
     from .rpc_query_request import RpcQueryRequestViewStateByFinality
     from .rpc_query_request import RpcQueryRequestViewAccessKeyByFinality
     from .rpc_query_request import RpcQueryRequestViewAccessKeyListByFinality
-    from .rpc_query_request import RpcQueryRequestViewGasKeyByFinality
-    from .rpc_query_request import RpcQueryRequestViewGasKeyListByFinality
     from .rpc_query_request import RpcQueryRequestCallFunctionByFinality
     from .rpc_query_request import RpcQueryRequestViewGlobalContractCodeByFinality
     from .rpc_query_request import RpcQueryRequestViewGlobalContractCodeByAccountIdByFinality
@@ -959,8 +930,6 @@ if TYPE_CHECKING:
     from .rpc_query_request import RpcQueryRequestViewStateBySyncCheckpoint
     from .rpc_query_request import RpcQueryRequestViewAccessKeyBySyncCheckpoint
     from .rpc_query_request import RpcQueryRequestViewAccessKeyListBySyncCheckpoint
-    from .rpc_query_request import RpcQueryRequestViewGasKeyBySyncCheckpoint
-    from .rpc_query_request import RpcQueryRequestViewGasKeyListBySyncCheckpoint
     from .rpc_query_request import RpcQueryRequestCallFunctionBySyncCheckpoint
     from .rpc_query_request import RpcQueryRequestViewGlobalContractCodeBySyncCheckpoint
     from .rpc_query_request import RpcQueryRequestViewGlobalContractCodeByAccountIdBySyncCheckpoint
@@ -1044,12 +1013,6 @@ if TYPE_CHECKING:
     from .action_view import ActionViewUseGlobalContractByAccountId
     from .action_view import ActionViewDeterministicStateInitPayload
     from .action_view import ActionViewDeterministicStateInit
-    from .action_view import ActionViewAddGasKeyPayload
-    from .action_view import ActionViewAddGasKey
-    from .action_view import ActionViewDeleteGasKeyPayload
-    from .action_view import ActionViewDeleteGasKey
-    from .action_view import ActionViewTransferToGasKeyPayload
-    from .action_view import ActionViewTransferToGasKey
     from .action_view import ActionView
     from .rpc_congestion_level_request import RpcCongestionLevelRequestBlockShardId
     from .rpc_congestion_level_request import RpcCongestionLevelRequestChunkHash
@@ -1173,10 +1136,6 @@ __all__ = [
     'ActionErrorKindDeleteKeyDoesNotExist',
     'ActionErrorKindDeleteKeyDoesNotExistPayload',
     'ActionErrorKindFunctionCallError',
-    'ActionErrorKindGasKeyAlreadyExists',
-    'ActionErrorKindGasKeyAlreadyExistsPayload',
-    'ActionErrorKindGasKeyDoesNotExist',
-    'ActionErrorKindGasKeyDoesNotExistPayload',
     'ActionErrorKindGlobalContractDoesNotExist',
     'ActionErrorKindGlobalContractDoesNotExistPayload',
     'ActionErrorKindInsufficientStake',
@@ -1191,8 +1150,6 @@ __all__ = [
     'ActionErrorKindTriesToUnstake',
     'ActionErrorKindTriesToUnstakePayload',
     'ActionView',
-    'ActionViewAddGasKey',
-    'ActionViewAddGasKeyPayload',
     'ActionViewAddKey',
     'ActionViewAddKeyPayload',
     'ActionViewCreateAccount',
@@ -1200,8 +1157,6 @@ __all__ = [
     'ActionViewDelegatePayload',
     'ActionViewDeleteAccount',
     'ActionViewDeleteAccountPayload',
-    'ActionViewDeleteGasKey',
-    'ActionViewDeleteGasKeyPayload',
     'ActionViewDeleteKey',
     'ActionViewDeleteKeyPayload',
     'ActionViewDeployContract',
@@ -1218,8 +1173,6 @@ __all__ = [
     'ActionViewStakePayload',
     'ActionViewTransfer',
     'ActionViewTransferPayload',
-    'ActionViewTransferToGasKey',
-    'ActionViewTransferToGasKeyPayload',
     'ActionViewUseGlobalContract',
     'ActionViewUseGlobalContractByAccountId',
     'ActionViewUseGlobalContractByAccountIdPayload',
@@ -1242,10 +1195,6 @@ __all__ = [
     'ActionsValidationErrorFunctionCallMethodNameLengthExceeded',
     'ActionsValidationErrorFunctionCallMethodNameLengthExceededPayload',
     'ActionsValidationErrorFunctionCallZeroAttachedGas',
-    'ActionsValidationErrorGasKeyPermissionInvalid',
-    'ActionsValidationErrorGasKeyPermissionInvalidPayload',
-    'ActionsValidationErrorGasKeyTooManyNoncesRequested',
-    'ActionsValidationErrorGasKeyTooManyNoncesRequestedPayload',
     'ActionsValidationErrorIntegerOverflow',
     'ActionsValidationErrorInvalidAccountId',
     'ActionsValidationErrorInvalidAccountIdPayload',
@@ -1711,11 +1660,9 @@ __all__ = [
     'NetworkInfoView',
     'NextEpochValidatorInfo',
     'NonDelegateAction',
-    'NonDelegateActionAddGasKey',
     'NonDelegateActionAddKey',
     'NonDelegateActionCreateAccount',
     'NonDelegateActionDeleteAccount',
-    'NonDelegateActionDeleteGasKey',
     'NonDelegateActionDeleteKey',
     'NonDelegateActionDeployContract',
     'NonDelegateActionDeployGlobalContract',
@@ -1723,7 +1670,6 @@ __all__ = [
     'NonDelegateActionFunctionCall',
     'NonDelegateActionStake',
     'NonDelegateActionTransfer',
-    'NonDelegateActionTransferToGasKey',
     'NonDelegateActionUseGlobalContract',
     'PeerId',
     'PeerInfoView',
@@ -1902,12 +1848,6 @@ __all__ = [
     'RpcQueryRequestViewCodeByBlockId',
     'RpcQueryRequestViewCodeByFinality',
     'RpcQueryRequestViewCodeBySyncCheckpoint',
-    'RpcQueryRequestViewGasKeyByBlockId',
-    'RpcQueryRequestViewGasKeyByFinality',
-    'RpcQueryRequestViewGasKeyBySyncCheckpoint',
-    'RpcQueryRequestViewGasKeyListByBlockId',
-    'RpcQueryRequestViewGasKeyListByFinality',
-    'RpcQueryRequestViewGasKeyListBySyncCheckpoint',
     'RpcQueryRequestViewGlobalContractCodeByAccountIdByBlockId',
     'RpcQueryRequestViewGlobalContractCodeByAccountIdByFinality',
     'RpcQueryRequestViewGlobalContractCodeByAccountIdBySyncCheckpoint',
@@ -1923,8 +1863,6 @@ __all__ = [
     'RpcQueryResponseAccountView',
     'RpcQueryResponseCallResult',
     'RpcQueryResponseContractCodeView',
-    'RpcQueryResponseGasKeyList',
-    'RpcQueryResponseGasKeyView',
     'RpcQueryResponseViewStateResult',
     'RpcReceiptError',
     'RpcReceiptErrorInternalError',
@@ -1956,9 +1894,6 @@ __all__ = [
     'RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesByBlockId',
     'RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesByFinality',
     'RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesBySyncCheckpoint',
-    'RpcStateChangesInBlockByTypeRequestAllGasKeyChangesByBlockId',
-    'RpcStateChangesInBlockByTypeRequestAllGasKeyChangesByFinality',
-    'RpcStateChangesInBlockByTypeRequestAllGasKeyChangesBySyncCheckpoint',
     'RpcStateChangesInBlockByTypeRequestContractCodeChangesByBlockId',
     'RpcStateChangesInBlockByTypeRequestContractCodeChangesByFinality',
     'RpcStateChangesInBlockByTypeRequestContractCodeChangesBySyncCheckpoint',
@@ -1968,9 +1903,6 @@ __all__ = [
     'RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesByBlockId',
     'RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesByFinality',
     'RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesBySyncCheckpoint',
-    'RpcStateChangesInBlockByTypeRequestSingleGasKeyChangesByBlockId',
-    'RpcStateChangesInBlockByTypeRequestSingleGasKeyChangesByFinality',
-    'RpcStateChangesInBlockByTypeRequestSingleGasKeyChangesBySyncCheckpoint',
     'RpcStateChangesInBlockByTypeResponse',
     'RpcStateChangesInBlockRequest',
     'RpcStateChangesInBlockRequestBlockId',
@@ -2173,12 +2105,6 @@ __all__ = [
     'StateChangeWithCauseViewDataDeletionChange',
     'StateChangeWithCauseViewDataUpdate',
     'StateChangeWithCauseViewDataUpdateChange',
-    'StateChangeWithCauseViewGasKeyDeletion',
-    'StateChangeWithCauseViewGasKeyDeletionChange',
-    'StateChangeWithCauseViewGasKeyNonceUpdate',
-    'StateChangeWithCauseViewGasKeyNonceUpdateChange',
-    'StateChangeWithCauseViewGasKeyUpdate',
-    'StateChangeWithCauseViewGasKeyUpdateChange',
     'StateItem',
     'StateSyncConfig',
     'StatusSyncInfo',
@@ -2520,10 +2446,6 @@ _CLASS_TO_MODULE = {
     'ActionErrorKindDelegateActionNonceTooLarge': 'action_error_kind',
     'ActionErrorKindGlobalContractDoesNotExistPayload': 'action_error_kind',
     'ActionErrorKindGlobalContractDoesNotExist': 'action_error_kind',
-    'ActionErrorKindGasKeyDoesNotExistPayload': 'action_error_kind',
-    'ActionErrorKindGasKeyDoesNotExist': 'action_error_kind',
-    'ActionErrorKindGasKeyAlreadyExistsPayload': 'action_error_kind',
-    'ActionErrorKindGasKeyAlreadyExists': 'action_error_kind',
     'ActionErrorKind': 'action_error_kind',
     'JsonRpcRequestForBroadcastTxAsync': 'json_rpc_request_for_broadcast_tx_async',
     'RpcHealthRequest': 'rpc_health_request',
@@ -2745,12 +2667,6 @@ _CLASS_TO_MODULE = {
     'StateChangeWithCauseViewAccessKeyUpdate': 'state_change_with_cause_view',
     'StateChangeWithCauseViewAccessKeyDeletionChange': 'state_change_with_cause_view',
     'StateChangeWithCauseViewAccessKeyDeletion': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewGasKeyUpdateChange': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewGasKeyUpdate': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewGasKeyNonceUpdateChange': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewGasKeyNonceUpdate': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewGasKeyDeletionChange': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewGasKeyDeletion': 'state_change_with_cause_view',
     'StateChangeWithCauseViewDataUpdateChange': 'state_change_with_cause_view',
     'StateChangeWithCauseViewDataUpdate': 'state_change_with_cause_view',
     'StateChangeWithCauseViewDataDeletionChange': 'state_change_with_cause_view',
@@ -2825,10 +2741,6 @@ _CLASS_TO_MODULE = {
     'ActionsValidationErrorDeterministicStateInitKeyLengthExceeded': 'actions_validation_error',
     'ActionsValidationErrorDeterministicStateInitValueLengthExceededPayload': 'actions_validation_error',
     'ActionsValidationErrorDeterministicStateInitValueLengthExceeded': 'actions_validation_error',
-    'ActionsValidationErrorGasKeyPermissionInvalidPayload': 'actions_validation_error',
-    'ActionsValidationErrorGasKeyPermissionInvalid': 'actions_validation_error',
-    'ActionsValidationErrorGasKeyTooManyNoncesRequestedPayload': 'actions_validation_error',
-    'ActionsValidationErrorGasKeyTooManyNoncesRequested': 'actions_validation_error',
     'ActionsValidationError': 'actions_validation_error',
     'TrackedShardsConfigNoShards': 'tracked_shards_config',
     'TrackedShardsConfigShards': 'tracked_shards_config',
@@ -2886,8 +2798,6 @@ _CLASS_TO_MODULE = {
     'RpcQueryResponseCallResult': 'rpc_query_response',
     'RpcQueryResponseAccessKeyView': 'rpc_query_response',
     'RpcQueryResponseAccessKeyList': 'rpc_query_response',
-    'RpcQueryResponseGasKeyView': 'rpc_query_response',
-    'RpcQueryResponseGasKeyList': 'rpc_query_response',
     'RpcQueryResponse': 'rpc_query_response',
     'JsonRpcRequestForExperimentalGenesisConfig': 'json_rpc_request_for_experimental_genesis_config',
     'JsonRpcResponseForRpcProtocolConfigResponseAndRpcProtocolConfigErrorResult': 'json_rpc_response_for_rpc_protocol_config_response_and_rpc_protocol_config_error',
@@ -2912,23 +2822,17 @@ _CLASS_TO_MODULE = {
     'SignedTransactionView': 'signed_transaction_view',
     'RpcStateChangesInBlockByTypeRequestAccountChangesByBlockId': 'rpc_state_changes_in_block_by_type_request',
     'RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesByBlockId': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequestSingleGasKeyChangesByBlockId': 'rpc_state_changes_in_block_by_type_request',
     'RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesByBlockId': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequestAllGasKeyChangesByBlockId': 'rpc_state_changes_in_block_by_type_request',
     'RpcStateChangesInBlockByTypeRequestContractCodeChangesByBlockId': 'rpc_state_changes_in_block_by_type_request',
     'RpcStateChangesInBlockByTypeRequestDataChangesByBlockId': 'rpc_state_changes_in_block_by_type_request',
     'RpcStateChangesInBlockByTypeRequestAccountChangesByFinality': 'rpc_state_changes_in_block_by_type_request',
     'RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesByFinality': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequestSingleGasKeyChangesByFinality': 'rpc_state_changes_in_block_by_type_request',
     'RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesByFinality': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequestAllGasKeyChangesByFinality': 'rpc_state_changes_in_block_by_type_request',
     'RpcStateChangesInBlockByTypeRequestContractCodeChangesByFinality': 'rpc_state_changes_in_block_by_type_request',
     'RpcStateChangesInBlockByTypeRequestDataChangesByFinality': 'rpc_state_changes_in_block_by_type_request',
     'RpcStateChangesInBlockByTypeRequestAccountChangesBySyncCheckpoint': 'rpc_state_changes_in_block_by_type_request',
     'RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesBySyncCheckpoint': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequestSingleGasKeyChangesBySyncCheckpoint': 'rpc_state_changes_in_block_by_type_request',
     'RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesBySyncCheckpoint': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequestAllGasKeyChangesBySyncCheckpoint': 'rpc_state_changes_in_block_by_type_request',
     'RpcStateChangesInBlockByTypeRequestContractCodeChangesBySyncCheckpoint': 'rpc_state_changes_in_block_by_type_request',
     'RpcStateChangesInBlockByTypeRequestDataChangesBySyncCheckpoint': 'rpc_state_changes_in_block_by_type_request',
     'RpcStateChangesInBlockByTypeRequest': 'rpc_state_changes_in_block_by_type_request',
@@ -3069,9 +2973,6 @@ _CLASS_TO_MODULE = {
     'NonDelegateActionDeployGlobalContract': 'non_delegate_action',
     'NonDelegateActionUseGlobalContract': 'non_delegate_action',
     'NonDelegateActionDeterministicStateInit': 'non_delegate_action',
-    'NonDelegateActionAddGasKey': 'non_delegate_action',
-    'NonDelegateActionDeleteGasKey': 'non_delegate_action',
-    'NonDelegateActionTransferToGasKey': 'non_delegate_action',
     'NonDelegateAction': 'non_delegate_action',
     'ActionError': 'action_error',
     'EpochId': 'epoch_id',
@@ -3180,8 +3081,6 @@ _CLASS_TO_MODULE = {
     'RpcQueryRequestViewStateByBlockId': 'rpc_query_request',
     'RpcQueryRequestViewAccessKeyByBlockId': 'rpc_query_request',
     'RpcQueryRequestViewAccessKeyListByBlockId': 'rpc_query_request',
-    'RpcQueryRequestViewGasKeyByBlockId': 'rpc_query_request',
-    'RpcQueryRequestViewGasKeyListByBlockId': 'rpc_query_request',
     'RpcQueryRequestCallFunctionByBlockId': 'rpc_query_request',
     'RpcQueryRequestViewGlobalContractCodeByBlockId': 'rpc_query_request',
     'RpcQueryRequestViewGlobalContractCodeByAccountIdByBlockId': 'rpc_query_request',
@@ -3190,8 +3089,6 @@ _CLASS_TO_MODULE = {
     'RpcQueryRequestViewStateByFinality': 'rpc_query_request',
     'RpcQueryRequestViewAccessKeyByFinality': 'rpc_query_request',
     'RpcQueryRequestViewAccessKeyListByFinality': 'rpc_query_request',
-    'RpcQueryRequestViewGasKeyByFinality': 'rpc_query_request',
-    'RpcQueryRequestViewGasKeyListByFinality': 'rpc_query_request',
     'RpcQueryRequestCallFunctionByFinality': 'rpc_query_request',
     'RpcQueryRequestViewGlobalContractCodeByFinality': 'rpc_query_request',
     'RpcQueryRequestViewGlobalContractCodeByAccountIdByFinality': 'rpc_query_request',
@@ -3200,8 +3097,6 @@ _CLASS_TO_MODULE = {
     'RpcQueryRequestViewStateBySyncCheckpoint': 'rpc_query_request',
     'RpcQueryRequestViewAccessKeyBySyncCheckpoint': 'rpc_query_request',
     'RpcQueryRequestViewAccessKeyListBySyncCheckpoint': 'rpc_query_request',
-    'RpcQueryRequestViewGasKeyBySyncCheckpoint': 'rpc_query_request',
-    'RpcQueryRequestViewGasKeyListBySyncCheckpoint': 'rpc_query_request',
     'RpcQueryRequestCallFunctionBySyncCheckpoint': 'rpc_query_request',
     'RpcQueryRequestViewGlobalContractCodeBySyncCheckpoint': 'rpc_query_request',
     'RpcQueryRequestViewGlobalContractCodeByAccountIdBySyncCheckpoint': 'rpc_query_request',
@@ -3285,12 +3180,6 @@ _CLASS_TO_MODULE = {
     'ActionViewUseGlobalContractByAccountId': 'action_view',
     'ActionViewDeterministicStateInitPayload': 'action_view',
     'ActionViewDeterministicStateInit': 'action_view',
-    'ActionViewAddGasKeyPayload': 'action_view',
-    'ActionViewAddGasKey': 'action_view',
-    'ActionViewDeleteGasKeyPayload': 'action_view',
-    'ActionViewDeleteGasKey': 'action_view',
-    'ActionViewTransferToGasKeyPayload': 'action_view',
-    'ActionViewTransferToGasKey': 'action_view',
     'ActionView': 'action_view',
     'RpcCongestionLevelRequestBlockShardId': 'rpc_congestion_level_request',
     'RpcCongestionLevelRequestChunkHash': 'rpc_congestion_level_request',

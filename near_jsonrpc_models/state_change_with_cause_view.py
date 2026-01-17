@@ -1,7 +1,6 @@
 from near_jsonrpc_models.access_key_view import AccessKeyView
 from near_jsonrpc_models.account_id import AccountId
 from near_jsonrpc_models.crypto_hash import CryptoHash
-from near_jsonrpc_models.gas_key import GasKey
 from near_jsonrpc_models.near_token import NearToken
 from near_jsonrpc_models.public_key import PublicKey
 from near_jsonrpc_models.state_change_cause_view import StateChangeCauseView
@@ -58,36 +57,6 @@ class StateChangeWithCauseViewAccessKeyDeletion(BaseModel):
     change: StateChangeWithCauseViewAccessKeyDeletionChange
     type: Literal['access_key_deletion']
 
-class StateChangeWithCauseViewGasKeyUpdateChange(BaseModel):
-    account_id: AccountId
-    gas_key: GasKey
-    public_key: PublicKey
-
-class StateChangeWithCauseViewGasKeyUpdate(BaseModel):
-    cause: StateChangeCauseView
-    change: StateChangeWithCauseViewGasKeyUpdateChange
-    type: Literal['gas_key_update']
-
-class StateChangeWithCauseViewGasKeyNonceUpdateChange(BaseModel):
-    account_id: AccountId
-    index: conint(ge=0, le=4294967295)
-    nonce: conint(ge=0, le=18446744073709551615)
-    public_key: PublicKey
-
-class StateChangeWithCauseViewGasKeyNonceUpdate(BaseModel):
-    cause: StateChangeCauseView
-    change: StateChangeWithCauseViewGasKeyNonceUpdateChange
-    type: Literal['gas_key_nonce_update']
-
-class StateChangeWithCauseViewGasKeyDeletionChange(BaseModel):
-    account_id: AccountId
-    public_key: PublicKey
-
-class StateChangeWithCauseViewGasKeyDeletion(BaseModel):
-    cause: StateChangeCauseView
-    change: StateChangeWithCauseViewGasKeyDeletionChange
-    type: Literal['gas_key_deletion']
-
 class StateChangeWithCauseViewDataUpdateChange(BaseModel):
     account_id: AccountId
     key_base64: StoreKey
@@ -124,6 +93,6 @@ class StateChangeWithCauseViewContractCodeDeletion(BaseModel):
     change: StateChangeWithCauseViewContractCodeDeletionChange
     type: Literal['contract_code_deletion']
 
-class StateChangeWithCauseView(RootModel[Union[StateChangeWithCauseViewAccountUpdate, StateChangeWithCauseViewAccountDeletion, StateChangeWithCauseViewAccessKeyUpdate, StateChangeWithCauseViewAccessKeyDeletion, StateChangeWithCauseViewGasKeyUpdate, StateChangeWithCauseViewGasKeyNonceUpdate, StateChangeWithCauseViewGasKeyDeletion, StateChangeWithCauseViewDataUpdate, StateChangeWithCauseViewDataDeletion, StateChangeWithCauseViewContractCodeUpdate, StateChangeWithCauseViewContractCodeDeletion]]):
+class StateChangeWithCauseView(RootModel[Union[StateChangeWithCauseViewAccountUpdate, StateChangeWithCauseViewAccountDeletion, StateChangeWithCauseViewAccessKeyUpdate, StateChangeWithCauseViewAccessKeyDeletion, StateChangeWithCauseViewDataUpdate, StateChangeWithCauseViewDataDeletion, StateChangeWithCauseViewContractCodeUpdate, StateChangeWithCauseViewContractCodeDeletion]]):
     pass
 
