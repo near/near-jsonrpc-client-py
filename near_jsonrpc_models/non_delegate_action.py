@@ -11,7 +11,9 @@ from near_jsonrpc_models.function_call_action import FunctionCallAction
 from near_jsonrpc_models.stake_action import StakeAction
 from near_jsonrpc_models.strict_model import StrictBaseModel
 from near_jsonrpc_models.transfer_action import TransferAction
+from near_jsonrpc_models.transfer_to_gas_key_action import TransferToGasKeyAction
 from near_jsonrpc_models.use_global_contract_action import UseGlobalContractAction
+from near_jsonrpc_models.withdraw_from_gas_key_action import WithdrawFromGasKeyAction
 from pydantic import BaseModel
 from pydantic import RootModel
 from typing import Union
@@ -54,6 +56,12 @@ class NonDelegateActionUseGlobalContract(StrictBaseModel):
 class NonDelegateActionDeterministicStateInit(StrictBaseModel):
     DeterministicStateInit: DeterministicStateInitAction
 
-class NonDelegateAction(RootModel[Union[NonDelegateActionCreateAccount, NonDelegateActionDeployContract, NonDelegateActionFunctionCall, NonDelegateActionTransfer, NonDelegateActionStake, NonDelegateActionAddKey, NonDelegateActionDeleteKey, NonDelegateActionDeleteAccount, NonDelegateActionDeployGlobalContract, NonDelegateActionUseGlobalContract, NonDelegateActionDeterministicStateInit]]):
+class NonDelegateActionTransferToGasKey(StrictBaseModel):
+    TransferToGasKey: TransferToGasKeyAction
+
+class NonDelegateActionWithdrawFromGasKey(StrictBaseModel):
+    WithdrawFromGasKey: WithdrawFromGasKeyAction
+
+class NonDelegateAction(RootModel[Union[NonDelegateActionCreateAccount, NonDelegateActionDeployContract, NonDelegateActionFunctionCall, NonDelegateActionTransfer, NonDelegateActionStake, NonDelegateActionAddKey, NonDelegateActionDeleteKey, NonDelegateActionDeleteAccount, NonDelegateActionDeployGlobalContract, NonDelegateActionUseGlobalContract, NonDelegateActionDeterministicStateInit, NonDelegateActionTransferToGasKey, NonDelegateActionWithdrawFromGasKey]]):
     pass
 

@@ -8,6 +8,7 @@ from near_jsonrpc_models.view_state_result import ViewStateResult
 from pydantic import BaseModel
 from pydantic import RootModel
 from pydantic import conint
+from typing import Any
 from typing import Union
 
 
@@ -35,6 +36,6 @@ class RpcQueryResponseAccessKeyList(AccessKeyList):
     block_hash: CryptoHash
     block_height: conint(ge=0, le=18446744073709551615)
 
-class RpcQueryResponse(RootModel[Union[RpcQueryResponseAccountView, RpcQueryResponseContractCodeView, RpcQueryResponseViewStateResult, RpcQueryResponseCallResult, RpcQueryResponseAccessKeyView, RpcQueryResponseAccessKeyList]]):
+class RpcQueryResponse(RootModel[Union[RpcQueryResponseAccountView, RpcQueryResponseContractCodeView, RpcQueryResponseViewStateResult, RpcQueryResponseCallResult, RpcQueryResponseAccessKeyView, RpcQueryResponseAccessKeyList, Any]]):
     pass
 
