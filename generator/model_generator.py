@@ -434,6 +434,52 @@ def get_python_type_and_string(
             args_str = ", ".join(args)
             return f"conlist({item_annotation}, {args_str})" if args_str else f"conlist({item_annotation})"
 
+        # --- handle tuple-style fixed-length arrays where items is a list ---
+        if isinstance(items, list):
+            sub_ann_list: List[str] = []
+            for i, sub_item in enumerate(items):
+                # $ref case
+                if isinstance(sub_item, dict) and "$ref" in sub_item:
+                    ref_model = pascal_case(sub_item["$ref"].split("/")[-1])
+                    imports.add(f"from near_jsonrpc_models.{snake_case(ref_model)} import {ref_model}")
+                    sub_ann_list.append(ref_model)
+                    continue
+
+                # inline object -> create nested class
+                if isinstance(sub_item, dict) and sub_item.get("type") == "object" and "properties" in sub_item:
+                    root = parent_name if parent_name else pascal_case(field or "Anon")
+                    item_class = to_class_name(root, f"{field.capitalize()}Item{i}")
+                    nested_defs: List[str] = []
+                    class_def = _build_class_from_properties(
+                        item_class,
+                        sub_item.get("properties", {}),
+                        sub_item.get("required", []),
+                        ctx,
+                        imports,
+                        extra_defs=nested_defs,
+                        strict=sub_item.get("additionalProperties") is False,
+                    )
+                    extra_defs.extend(nested_defs)
+                    extra_defs.append(class_def)
+                    sub_ann_list.append(item_class)
+                    continue
+
+                # general case: recurse to resolve type/annotation string
+                if isinstance(sub_item, dict):
+                    sub_type = sub_item.get("type", "string")
+                    _, sub_str = get_python_type_and_string(f"{field}_{i}", sub_type, sub_item, ctx, imports,
+                                                           parent_name=parent_name, extra_defs=extra_defs)
+                    sub_ann_list.append(sub_str)
+                else:
+                    # unexpected shape; fallback to Any
+                    imports.add("from typing import Any")
+                    sub_ann_list.append("Any")
+
+            imports.add("from typing import Tuple")
+            py = f"Tuple[{', '.join(sub_ann_list)}]"
+            return py, py
+        # --- end tuple-style handling ---
+
         if isinstance(items, dict) and items.get("type") == "object" and "properties" in items:
             root = parent_name if parent_name else pascal_case(field or "Anon")
             item_class = to_class_name(root, f"{field.capitalize()}Item")
@@ -506,6 +552,7 @@ def get_python_type_and_string(
         return "Dict[str, Any]", "Dict[str, Any]"
 
     return str, "str"
+
 
 
 # -------------------------
