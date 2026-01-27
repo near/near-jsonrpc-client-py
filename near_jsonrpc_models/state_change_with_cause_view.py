@@ -57,6 +57,17 @@ class StateChangeWithCauseViewAccessKeyDeletion(BaseModel):
     change: StateChangeWithCauseViewAccessKeyDeletionChange
     type: Literal['access_key_deletion']
 
+class StateChangeWithCauseViewGasKeyNonceUpdateChange(BaseModel):
+    account_id: AccountId
+    index: conint(ge=0, le=4294967295)
+    nonce: conint(ge=0, le=18446744073709551615)
+    public_key: PublicKey
+
+class StateChangeWithCauseViewGasKeyNonceUpdate(BaseModel):
+    cause: StateChangeCauseView
+    change: StateChangeWithCauseViewGasKeyNonceUpdateChange
+    type: Literal['gas_key_nonce_update']
+
 class StateChangeWithCauseViewDataUpdateChange(BaseModel):
     account_id: AccountId
     key_base64: StoreKey
@@ -93,6 +104,6 @@ class StateChangeWithCauseViewContractCodeDeletion(BaseModel):
     change: StateChangeWithCauseViewContractCodeDeletionChange
     type: Literal['contract_code_deletion']
 
-class StateChangeWithCauseView(RootModel[Union[StateChangeWithCauseViewAccountUpdate, StateChangeWithCauseViewAccountDeletion, StateChangeWithCauseViewAccessKeyUpdate, StateChangeWithCauseViewAccessKeyDeletion, StateChangeWithCauseViewDataUpdate, StateChangeWithCauseViewDataDeletion, StateChangeWithCauseViewContractCodeUpdate, StateChangeWithCauseViewContractCodeDeletion]]):
+class StateChangeWithCauseView(RootModel[Union[StateChangeWithCauseViewAccountUpdate, StateChangeWithCauseViewAccountDeletion, StateChangeWithCauseViewAccessKeyUpdate, StateChangeWithCauseViewAccessKeyDeletion, StateChangeWithCauseViewGasKeyNonceUpdate, StateChangeWithCauseViewDataUpdate, StateChangeWithCauseViewDataDeletion, StateChangeWithCauseViewContractCodeUpdate, StateChangeWithCauseViewContractCodeDeletion]]):
     pass
 
