@@ -587,8 +587,8 @@ if TYPE_CHECKING:
     from .actions_validation_error import ActionsValidationErrorDeterministicStateInitKeyLengthExceeded
     from .actions_validation_error import ActionsValidationErrorDeterministicStateInitValueLengthExceededPayload
     from .actions_validation_error import ActionsValidationErrorDeterministicStateInitValueLengthExceeded
-    from .actions_validation_error import ActionsValidationErrorGasKeyTooManyNoncesRequestedPayload
-    from .actions_validation_error import ActionsValidationErrorGasKeyTooManyNoncesRequested
+    from .actions_validation_error import ActionsValidationErrorGasKeyInvalidNumNoncesPayload
+    from .actions_validation_error import ActionsValidationErrorGasKeyInvalidNumNonces
     from .actions_validation_error import ActionsValidationErrorAddGasKeyWithNonZeroBalancePayload
     from .actions_validation_error import ActionsValidationErrorAddGasKeyWithNonZeroBalance
     from .actions_validation_error import ActionsValidationErrorGasKeyFunctionCallAllowanceNotAllowed
@@ -870,6 +870,8 @@ if TYPE_CHECKING:
     from .invalid_tx_error import InvalidTxErrorShardCongested
     from .invalid_tx_error import InvalidTxErrorShardStuckPayload
     from .invalid_tx_error import InvalidTxErrorShardStuck
+    from .invalid_tx_error import InvalidTxErrorInvalidNonceIndexPayload
+    from .invalid_tx_error import InvalidTxErrorInvalidNonceIndex
     from .invalid_tx_error import InvalidTxError
     from .storage_error import StorageErrorStorageInternalError
     from .storage_error import StorageErrorMissingTrieValue
@@ -1240,8 +1242,8 @@ __all__ = [
     'ActionsValidationErrorFunctionCallMethodNameLengthExceededPayload',
     'ActionsValidationErrorFunctionCallZeroAttachedGas',
     'ActionsValidationErrorGasKeyFunctionCallAllowanceNotAllowed',
-    'ActionsValidationErrorGasKeyTooManyNoncesRequested',
-    'ActionsValidationErrorGasKeyTooManyNoncesRequestedPayload',
+    'ActionsValidationErrorGasKeyInvalidNumNonces',
+    'ActionsValidationErrorGasKeyInvalidNumNoncesPayload',
     'ActionsValidationErrorIntegerOverflow',
     'ActionsValidationErrorInvalidAccountId',
     'ActionsValidationErrorInvalidAccountIdPayload',
@@ -1540,6 +1542,8 @@ __all__ = [
     'InvalidTxErrorInvalidAccessKeyError',
     'InvalidTxErrorInvalidChain',
     'InvalidTxErrorInvalidNonce',
+    'InvalidTxErrorInvalidNonceIndex',
+    'InvalidTxErrorInvalidNonceIndexPayload',
     'InvalidTxErrorInvalidNoncePayload',
     'InvalidTxErrorInvalidReceiverId',
     'InvalidTxErrorInvalidReceiverIdPayload',
@@ -2810,8 +2814,8 @@ _CLASS_TO_MODULE = {
     'ActionsValidationErrorDeterministicStateInitKeyLengthExceeded': 'actions_validation_error',
     'ActionsValidationErrorDeterministicStateInitValueLengthExceededPayload': 'actions_validation_error',
     'ActionsValidationErrorDeterministicStateInitValueLengthExceeded': 'actions_validation_error',
-    'ActionsValidationErrorGasKeyTooManyNoncesRequestedPayload': 'actions_validation_error',
-    'ActionsValidationErrorGasKeyTooManyNoncesRequested': 'actions_validation_error',
+    'ActionsValidationErrorGasKeyInvalidNumNoncesPayload': 'actions_validation_error',
+    'ActionsValidationErrorGasKeyInvalidNumNonces': 'actions_validation_error',
     'ActionsValidationErrorAddGasKeyWithNonZeroBalancePayload': 'actions_validation_error',
     'ActionsValidationErrorAddGasKeyWithNonZeroBalance': 'actions_validation_error',
     'ActionsValidationErrorGasKeyFunctionCallAllowanceNotAllowed': 'actions_validation_error',
@@ -3093,6 +3097,8 @@ _CLASS_TO_MODULE = {
     'InvalidTxErrorShardCongested': 'invalid_tx_error',
     'InvalidTxErrorShardStuckPayload': 'invalid_tx_error',
     'InvalidTxErrorShardStuck': 'invalid_tx_error',
+    'InvalidTxErrorInvalidNonceIndexPayload': 'invalid_tx_error',
+    'InvalidTxErrorInvalidNonceIndex': 'invalid_tx_error',
     'InvalidTxError': 'invalid_tx_error',
     'StorageErrorStorageInternalError': 'storage_error',
     'StorageErrorMissingTrieValue': 'storage_error',
