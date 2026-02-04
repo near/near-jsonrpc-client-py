@@ -133,8 +133,8 @@ class ActionsValidationErrorDeterministicStateInitValueLengthExceeded(StrictBase
     DeterministicStateInitValueLengthExceeded: ActionsValidationErrorDeterministicStateInitValueLengthExceededPayload
 
 class ActionsValidationErrorGasKeyInvalidNumNoncesPayload(BaseModel):
-    limit: conint(ge=0, le=4294967295)
-    requested_nonces: conint(ge=0, le=4294967295)
+    limit: conint(ge=0, le=65535)
+    requested_nonces: conint(ge=0, le=65535)
 
 class ActionsValidationErrorGasKeyInvalidNumNonces(StrictBaseModel):
     GasKeyInvalidNumNonces: ActionsValidationErrorGasKeyInvalidNumNoncesPayload

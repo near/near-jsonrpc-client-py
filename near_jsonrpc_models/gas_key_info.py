@@ -5,4 +5,4 @@ from pydantic import conint
 
 class GasKeyInfo(BaseModel):
     balance: NearToken
-    num_nonces: conint(ge=0, le=4294967295)
+    num_nonces: conint(ge=0, le=65535)

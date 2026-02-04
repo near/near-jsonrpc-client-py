@@ -59,7 +59,7 @@ class StateChangeWithCauseViewAccessKeyDeletion(BaseModel):
 
 class StateChangeWithCauseViewGasKeyNonceUpdateChange(BaseModel):
     account_id: AccountId
-    index: conint(ge=0, le=4294967295)
+    index: conint(ge=0, le=65535)
     nonce: conint(ge=0, le=18446744073709551615)
     public_key: PublicKey
 

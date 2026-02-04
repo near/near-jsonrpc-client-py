@@ -25,7 +25,7 @@ class AccessKeyPermissionViewGasKeyFunctionCallPayload(BaseModel):
     allowance: NearToken | None = None
     balance: NearToken
     method_names: List[str]
-    num_nonces: conint(ge=0, le=4294967295)
+    num_nonces: conint(ge=0, le=65535)
     receiver_id: str
 
 class AccessKeyPermissionViewGasKeyFunctionCall(StrictBaseModel):
@@ -33,7 +33,7 @@ class AccessKeyPermissionViewGasKeyFunctionCall(StrictBaseModel):
 
 class AccessKeyPermissionViewGasKeyFullAccessPayload(BaseModel):
     balance: NearToken
-    num_nonces: conint(ge=0, le=4294967295)
+    num_nonces: conint(ge=0, le=65535)
 
 class AccessKeyPermissionViewGasKeyFullAccess(StrictBaseModel):
     GasKeyFullAccess: AccessKeyPermissionViewGasKeyFullAccessPayload
