@@ -132,9 +132,9 @@ new transaction until it can make progress again."""
 
 class InvalidTxErrorInvalidNonceIndexPayload(BaseModel):
     # Number of nonces supported by the key. 0 means no nonce_index allowed (regular key).
-    num_nonces: conint(ge=0, le=4294967295)
+    num_nonces: conint(ge=0, le=65535)
     # The nonce_index from the transaction (None if missing).
-    tx_nonce_index: conint(ge=0, le=4294967295) | None = None
+    tx_nonce_index: conint(ge=0, le=65535) | None = None
 
 class InvalidTxErrorInvalidNonceIndex(StrictBaseModel):
     """Transaction is specifying an invalid nonce index. Gas key transactions
