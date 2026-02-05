@@ -141,6 +141,15 @@ class InvalidTxErrorInvalidNonceIndex(StrictBaseModel):
 must have a nonce_index in valid range, regular transactions must not."""
     InvalidNonceIndex: InvalidTxErrorInvalidNonceIndexPayload
 
-class InvalidTxError(RootModel[Union[InvalidTxErrorInvalidAccessKeyError, InvalidTxErrorInvalidSignerId, InvalidTxErrorSignerDoesNotExist, InvalidTxErrorInvalidNonce, InvalidTxErrorNonceTooLarge, InvalidTxErrorInvalidReceiverId, InvalidTxErrorInvalidSignature, InvalidTxErrorNotEnoughBalance, InvalidTxErrorLackBalanceForState, InvalidTxErrorCostOverflow, InvalidTxErrorInvalidChain, InvalidTxErrorExpired, InvalidTxErrorActionsValidation, InvalidTxErrorTransactionSizeExceeded, InvalidTxErrorInvalidTransactionVersion, InvalidTxErrorStorageError, InvalidTxErrorShardCongested, InvalidTxErrorShardStuck, InvalidTxErrorInvalidNonceIndex]]):
+class InvalidTxErrorNotEnoughGasKeyBalancePayload(BaseModel):
+    balance: NearToken
+    cost: NearToken
+    signer_id: AccountId
+
+class InvalidTxErrorNotEnoughGasKeyBalance(StrictBaseModel):
+    """Gas key does not have enough balance to cover gas costs."""
+    NotEnoughGasKeyBalance: InvalidTxErrorNotEnoughGasKeyBalancePayload
+
+class InvalidTxError(RootModel[Union[InvalidTxErrorInvalidAccessKeyError, InvalidTxErrorInvalidSignerId, InvalidTxErrorSignerDoesNotExist, InvalidTxErrorInvalidNonce, InvalidTxErrorNonceTooLarge, InvalidTxErrorInvalidReceiverId, InvalidTxErrorInvalidSignature, InvalidTxErrorNotEnoughBalance, InvalidTxErrorLackBalanceForState, InvalidTxErrorCostOverflow, InvalidTxErrorInvalidChain, InvalidTxErrorExpired, InvalidTxErrorActionsValidation, InvalidTxErrorTransactionSizeExceeded, InvalidTxErrorInvalidTransactionVersion, InvalidTxErrorStorageError, InvalidTxErrorShardCongested, InvalidTxErrorShardStuck, InvalidTxErrorInvalidNonceIndex, InvalidTxErrorNotEnoughGasKeyBalance]]):
     pass
 
