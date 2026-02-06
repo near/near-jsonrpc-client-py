@@ -872,6 +872,8 @@ if TYPE_CHECKING:
     from .invalid_tx_error import InvalidTxErrorShardStuck
     from .invalid_tx_error import InvalidTxErrorInvalidNonceIndexPayload
     from .invalid_tx_error import InvalidTxErrorInvalidNonceIndex
+    from .invalid_tx_error import InvalidTxErrorNotEnoughGasKeyBalancePayload
+    from .invalid_tx_error import InvalidTxErrorNotEnoughGasKeyBalance
     from .invalid_tx_error import InvalidTxError
     from .storage_error import StorageErrorStorageInternalError
     from .storage_error import StorageErrorMissingTrieValue
@@ -1557,6 +1559,8 @@ __all__ = [
     'InvalidTxErrorNonceTooLargePayload',
     'InvalidTxErrorNotEnoughBalance',
     'InvalidTxErrorNotEnoughBalancePayload',
+    'InvalidTxErrorNotEnoughGasKeyBalance',
+    'InvalidTxErrorNotEnoughGasKeyBalancePayload',
     'InvalidTxErrorShardCongested',
     'InvalidTxErrorShardCongestedPayload',
     'InvalidTxErrorShardStuck',
@@ -3099,6 +3103,8 @@ _CLASS_TO_MODULE = {
     'InvalidTxErrorShardStuck': 'invalid_tx_error',
     'InvalidTxErrorInvalidNonceIndexPayload': 'invalid_tx_error',
     'InvalidTxErrorInvalidNonceIndex': 'invalid_tx_error',
+    'InvalidTxErrorNotEnoughGasKeyBalancePayload': 'invalid_tx_error',
+    'InvalidTxErrorNotEnoughGasKeyBalance': 'invalid_tx_error',
     'InvalidTxError': 'invalid_tx_error',
     'StorageErrorStorageInternalError': 'storage_error',
     'StorageErrorMissingTrieValue': 'storage_error',
