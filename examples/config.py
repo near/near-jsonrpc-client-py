@@ -2,7 +2,7 @@ from near_jsonrpc_client import RpcTimeoutError, NearClientSync, RpcClientError,
 
 
 def main():
-    client = NearClientSync(base_url="https://rpc.mainnet.near.org")
+    client = NearClientSync(rpc_urls="https://rpc.mainnet.near.org")
 
     try:
         config = client.genesis_config()

@@ -3,7 +3,7 @@ from near_jsonrpc_client import NearClientAsync, RpcClientError, RpcError, RpcHt
 
 
 async def main():
-    client = NearClientAsync(base_url="https://rpc.mainnet.near.org")
+    client = NearClientAsync(rpc_urls="https://rpc.mainnet.near.org")
 
     try:
         status = await client.status()

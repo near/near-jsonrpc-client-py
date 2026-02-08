@@ -1457,4 +1457,15 @@ def generate_models(ctx, models_dir):
         model_code = generate_model(schema_name, schema_data, ctx)
         save_model_to_file(model_code, schema_name, models_dir)
     generate_models_init_py(models_dir=models_dir)
+
+    strict_model_code = """from pydantic import BaseModel, ConfigDict
+
+
+class StrictBaseModel(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+"""
+    strict_model_file = models_path / "strict_model.py"
+    with open(strict_model_file, "w") as f:
+        f.write(strict_model_code)
+
     print(f"✅ Models generated successfully")

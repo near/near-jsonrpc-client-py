@@ -5,7 +5,7 @@ from near_jsonrpc_models import RpcQueryRequest, AccountId, FunctionArgs, RpcQue
 
 
 async def main():
-    client = NearClientAsync(base_url="https://rpc.mainnet.near.org")
+    client = NearClientAsync(rpc_urls="https://rpc.mainnet.near.org")
 
     try:
         params = RpcQueryRequest(

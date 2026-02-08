@@ -6,7 +6,7 @@ from near_jsonrpc_models import CryptoHash, RpcTransactionStatusRequest, Account
 
 
 async def main():
-    client = NearClientAsync(base_url="https://rpc.mainnet.near.org")
+    client = NearClientAsync(rpc_urls="https://rpc.mainnet.near.org")
 
     try:
         params = RpcTransactionStatusRequest(

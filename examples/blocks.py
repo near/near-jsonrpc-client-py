@@ -5,7 +5,7 @@ from near_jsonrpc_models import RpcBlockRequest, BlockId, CryptoHash, BlockIdBlo
 
 
 async def main():
-    client = NearClientAsync(base_url="https://rpc.mainnet.near.org")
+    client = NearClientAsync(rpc_urls="https://rpc.mainnet.near.org")
 
     try:
         params = RpcBlockRequest(

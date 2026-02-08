@@ -1,4 +1,5 @@
-from typing import Type
+import random
+from typing import Type, Union, List
 from uuid import uuid4
 
 import httpx
@@ -52,23 +53,24 @@ def _parse_response(response_model: Type[BaseModel], response_json: dict):
 # ===================== Async Client =====================
 class NearBaseClientAsync:
     def __init__(
-        self,
-        *,
-        base_url: str,
-        timeout: float = 10.0,
-        headers: dict[str, str] | None = None,
+            self,
+            *,
+            rpc_urls: Union[List[str], str],
+            timeout: float = 10.0,
+            headers: dict[str, str] | None = None,
     ):
+        self.rpc_urls = rpc_urls if isinstance(rpc_urls, list) else [rpc_urls]
         self._transport = HttpTransportAsync(
-            base_url=base_url, timeout=timeout, headers=headers
+            base_url=random.choice(self.rpc_urls), timeout=timeout, headers=headers
         )
 
     async def _call(
-        self,
-        *,
-        request_model: Type[BaseModel],
-        response_model: Type[BaseModel],
-        params: BaseModel,
-        debug=False
+            self,
+            *,
+            request_model: Type[BaseModel],
+            response_model: Type[BaseModel],
+            params: BaseModel,
+            debug=False
     ):
         request = request_model(
             jsonrpc="2.0",
@@ -103,23 +105,24 @@ class NearBaseClientAsync:
 # ===================== Sync Client =====================
 class NearBaseClientSync:
     def __init__(
-        self,
-        *,
-        base_url: str,
-        timeout: float = 10.0,
-        headers: dict[str, str] | None = None,
+            self,
+            *,
+            rpc_urls: Union[List[str], str],
+            timeout: float = 10.0,
+            headers: dict[str, str] | None = None,
     ):
+        self.rpc_urls = rpc_urls if isinstance(rpc_urls, list) else [rpc_urls]
         self._transport = HttpTransportSync(
-            base_url=base_url, timeout=timeout, headers=headers
+            base_url=random.choice(self.rpc_urls), timeout=timeout, headers=headers
         )
 
     def _call(
-        self,
-        *,
-        request_model: Type[BaseModel],
-        response_model: Type[BaseModel],
-        params: BaseModel,
-        debug=False
+            self,
+            *,
+            request_model: Type[BaseModel],
+            response_model: Type[BaseModel],
+            params: BaseModel,
+            debug=False
     ):
         request = request_model(
             jsonrpc="2.0",

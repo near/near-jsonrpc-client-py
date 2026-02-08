@@ -102,7 +102,7 @@ from near_jsonrpc_models import RpcBlockRequest, BlockId, RpcBlockRequestBlockId
 
 
 async def main():
-    client = NearClientAsync(base_url="https://rpc.mainnet.near.org")
+    client = NearClientAsync(rpc_urls="https://rpc.mainnet.near.org")
 
     params = RpcBlockRequest(
         RpcBlockRequestBlockId(
@@ -125,7 +125,7 @@ asyncio.run(main())
 from near_jsonrpc_client import NearClientSync
 from near_jsonrpc_models import RpcBlockRequest, BlockId, RpcBlockRequestBlockId, BlockIdBlockHeight
 
-client = NearClientSync(base_url="https://rpc.mainnet.near.org")
+client = NearClientSync(rpc_urls="https://rpc.mainnet.near.org")
 
 params = RpcBlockRequest(
     RpcBlockRequestBlockId(

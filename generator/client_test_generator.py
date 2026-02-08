@@ -159,7 +159,7 @@ class ClientTestGenerator:
         lines.append(f"    {safe_desc}")
         lines.append('    """')
         lines.append("")
-        lines.append(f"    client = NearClientSync(base_url=\"{rpc_base_url}\")")
+        lines.append(f"    client = NearClientSync(rpc_urls=\"{rpc_base_url}\")")
         lines.append("")
         # runtime fixture loader usage
         lines.append(f"    req_fixture = load_mock_json('{req_fixture_name}.json')")
