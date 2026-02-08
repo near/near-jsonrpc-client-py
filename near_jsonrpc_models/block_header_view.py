@@ -1,7 +1,9 @@
 """Contains main info about the block."""
 
+from near_jsonrpc_models.account_id import AccountId
 from near_jsonrpc_models.crypto_hash import CryptoHash
 from near_jsonrpc_models.near_token import NearToken
+from near_jsonrpc_models.shard_id import ShardId
 from near_jsonrpc_models.signature import Signature
 from near_jsonrpc_models.slashed_validator import SlashedValidator
 from near_jsonrpc_models.validator_stake_view import ValidatorStakeView
@@ -9,6 +11,7 @@ from pydantic import BaseModel
 from pydantic import Field
 from pydantic import conint
 from typing import List
+from typing import Tuple
 
 
 class BlockHeaderView(BaseModel):
@@ -42,6 +45,7 @@ class BlockHeaderView(BaseModel):
     random_value: CryptoHash
     # TODO(2271): deprecated.
     rent_paid: NearToken = Field(default_factory=lambda: NearToken('0'))
+    shard_split: Tuple[ShardId, AccountId] | None = None
     # Signature of the block producer.
     signature: Signature
     # Legacy json number. Should not be used.

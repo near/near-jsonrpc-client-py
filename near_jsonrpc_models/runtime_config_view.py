@@ -2,13 +2,11 @@
 
 from near_jsonrpc_models.account_creation_config_view import AccountCreationConfigView
 from near_jsonrpc_models.congestion_control_config_view import CongestionControlConfigView
-from near_jsonrpc_models.dynamic_resharding_config_view import DynamicReshardingConfigView
 from near_jsonrpc_models.near_token import NearToken
 from near_jsonrpc_models.runtime_fees_config_view import RuntimeFeesConfigView
 from near_jsonrpc_models.vmconfig_view import VMConfigView
 from near_jsonrpc_models.witness_config_view import WitnessConfigView
 from pydantic import BaseModel
-from pydantic import Field
 
 
 class RuntimeConfigView(BaseModel):
@@ -16,8 +14,6 @@ class RuntimeConfigView(BaseModel):
     account_creation_config: AccountCreationConfigView = None
     # The configuration for congestion control.
     congestion_control_config: CongestionControlConfigView = None
-    # Configuration for dynamic resharding feature.
-    dynamic_resharding_config: DynamicReshardingConfigView = Field(default_factory=lambda: DynamicReshardingConfigView(**{'block_split_shards': [], 'force_split_shards': [], 'max_number_of_shards': 999999999999999, 'memory_usage_threshold': 999999999999999, 'min_child_memory_usage': 999999999999999, 'min_epochs_between_resharding': 999999999999999}))
     # Amount of yN per byte required to have on the account.  See
     # <https://nomicon.io/Economics/Economics.html#state-stake> for details.
     storage_amount_per_byte: NearToken = None
