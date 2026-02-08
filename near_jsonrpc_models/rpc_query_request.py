@@ -40,6 +40,12 @@ class RpcQueryRequestViewAccessKeyListByBlockId(BaseModel):
     account_id: AccountId
     request_type: Literal['view_access_key_list']
 
+class RpcQueryRequestViewGasKeyNoncesByBlockId(BaseModel):
+    block_id: BlockId
+    account_id: AccountId
+    public_key: PublicKey
+    request_type: Literal['view_gas_key_nonces']
+
 class RpcQueryRequestCallFunctionByBlockId(BaseModel):
     block_id: BlockId
     account_id: AccountId
@@ -84,6 +90,12 @@ class RpcQueryRequestViewAccessKeyListByFinality(BaseModel):
     finality: Finality
     account_id: AccountId
     request_type: Literal['view_access_key_list']
+
+class RpcQueryRequestViewGasKeyNoncesByFinality(BaseModel):
+    finality: Finality
+    account_id: AccountId
+    public_key: PublicKey
+    request_type: Literal['view_gas_key_nonces']
 
 class RpcQueryRequestCallFunctionByFinality(BaseModel):
     finality: Finality
@@ -130,6 +142,12 @@ class RpcQueryRequestViewAccessKeyListBySyncCheckpoint(BaseModel):
     account_id: AccountId
     request_type: Literal['view_access_key_list']
 
+class RpcQueryRequestViewGasKeyNoncesBySyncCheckpoint(BaseModel):
+    sync_checkpoint: SyncCheckpoint
+    account_id: AccountId
+    public_key: PublicKey
+    request_type: Literal['view_gas_key_nonces']
+
 class RpcQueryRequestCallFunctionBySyncCheckpoint(BaseModel):
     sync_checkpoint: SyncCheckpoint
     account_id: AccountId
@@ -147,6 +165,6 @@ class RpcQueryRequestViewGlobalContractCodeByAccountIdBySyncCheckpoint(BaseModel
     account_id: AccountId
     request_type: Literal['view_global_contract_code_by_account_id']
 
-class RpcQueryRequest(RootModel[Union[RpcQueryRequestViewAccountByBlockId, RpcQueryRequestViewCodeByBlockId, RpcQueryRequestViewStateByBlockId, RpcQueryRequestViewAccessKeyByBlockId, RpcQueryRequestViewAccessKeyListByBlockId, RpcQueryRequestCallFunctionByBlockId, RpcQueryRequestViewGlobalContractCodeByBlockId, RpcQueryRequestViewGlobalContractCodeByAccountIdByBlockId, RpcQueryRequestViewAccountByFinality, RpcQueryRequestViewCodeByFinality, RpcQueryRequestViewStateByFinality, RpcQueryRequestViewAccessKeyByFinality, RpcQueryRequestViewAccessKeyListByFinality, RpcQueryRequestCallFunctionByFinality, RpcQueryRequestViewGlobalContractCodeByFinality, RpcQueryRequestViewGlobalContractCodeByAccountIdByFinality, RpcQueryRequestViewAccountBySyncCheckpoint, RpcQueryRequestViewCodeBySyncCheckpoint, RpcQueryRequestViewStateBySyncCheckpoint, RpcQueryRequestViewAccessKeyBySyncCheckpoint, RpcQueryRequestViewAccessKeyListBySyncCheckpoint, RpcQueryRequestCallFunctionBySyncCheckpoint, RpcQueryRequestViewGlobalContractCodeBySyncCheckpoint, RpcQueryRequestViewGlobalContractCodeByAccountIdBySyncCheckpoint]]):
+class RpcQueryRequest(RootModel[Union[RpcQueryRequestViewAccountByBlockId, RpcQueryRequestViewCodeByBlockId, RpcQueryRequestViewStateByBlockId, RpcQueryRequestViewAccessKeyByBlockId, RpcQueryRequestViewAccessKeyListByBlockId, RpcQueryRequestViewGasKeyNoncesByBlockId, RpcQueryRequestCallFunctionByBlockId, RpcQueryRequestViewGlobalContractCodeByBlockId, RpcQueryRequestViewGlobalContractCodeByAccountIdByBlockId, RpcQueryRequestViewAccountByFinality, RpcQueryRequestViewCodeByFinality, RpcQueryRequestViewStateByFinality, RpcQueryRequestViewAccessKeyByFinality, RpcQueryRequestViewAccessKeyListByFinality, RpcQueryRequestViewGasKeyNoncesByFinality, RpcQueryRequestCallFunctionByFinality, RpcQueryRequestViewGlobalContractCodeByFinality, RpcQueryRequestViewGlobalContractCodeByAccountIdByFinality, RpcQueryRequestViewAccountBySyncCheckpoint, RpcQueryRequestViewCodeBySyncCheckpoint, RpcQueryRequestViewStateBySyncCheckpoint, RpcQueryRequestViewAccessKeyBySyncCheckpoint, RpcQueryRequestViewAccessKeyListBySyncCheckpoint, RpcQueryRequestViewGasKeyNoncesBySyncCheckpoint, RpcQueryRequestCallFunctionBySyncCheckpoint, RpcQueryRequestViewGlobalContractCodeBySyncCheckpoint, RpcQueryRequestViewGlobalContractCodeByAccountIdBySyncCheckpoint]]):
     pass
 
