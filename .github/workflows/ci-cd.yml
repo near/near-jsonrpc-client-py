@@ -105,7 +105,7 @@ jobs:
           echo "pr_required=true" >> "$GITHUB_OUTPUT"
           echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
 
-      - name: Auto-create and merge PR (capture merge SHA)
+      - name: Auto-create and merge PR (with delay + retry)
         if: steps.commit.outputs.pr_required == 'true'
         id: auto_merge
         uses: actions/github-script@v6
@@ -114,11 +114,13 @@ jobs:
           script: |
             const fs = require('fs');
 
+            const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
             const branch = '${{ steps.commit.outputs.branch }}';
             const title = `chore: regenerate client from OpenAPI (${branch})`;
             const body = `This PR regenerates the NEAR RPC client and models from the latest OpenAPI spec.\n\nAutomatically merged after generation.`;
 
-            // Create PR
+            // 1. Create PR
             const pr = await github.rest.pulls.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -128,31 +130,58 @@ jobs:
               body
             });
 
-            // Merge PR (squash)
-            const mergeRes = await github.rest.pulls.merge({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: pr.data.number,
-              merge_method: "squash"
-            });
+            console.log(`PR #${pr.data.number} created. Waiting before merge to avoid throttling...`);
 
-            let merge_sha = mergeRes.data && mergeRes.data.sha ? mergeRes.data.sha : '';
+            // 2. Initial delay to avoid secondary rate limit
+            await sleep(30_000);
+
+            // 3. Try merge with retry + backoff
+            const MAX_ATTEMPTS = 3;
+            let mergeRes;
+            for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+              try {
+                mergeRes = await github.rest.pulls.merge({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: pr.data.number,
+                  merge_method: "squash"
+                });
+                console.log(`Merged PR #${pr.data.number} on attempt ${attempt}`);
+                break;
+              } catch (err) {
+                if (err.status === 429 && attempt < MAX_ATTEMPTS) {
+                  const backoff = 30 * attempt;
+                  console.warn(
+                    `Merge throttled (HTTP 429). Retry ${attempt}/${MAX_ATTEMPTS} after ${backoff}s...`
+                  );
+                  await sleep(backoff * 1000);
+                  continue;
+                }
+                throw err;
+              }
+            }
+
+            if (!mergeRes || !mergeRes.data) {
+              throw new Error('Merge failed after retries.');
+            }
+
+            // 4. Resolve merge SHA
+            let merge_sha = mergeRes.data.sha;
             if (!merge_sha) {
-              // fallback: read PR info to get merge_commit_sha (or head.sha)
               const prInfo = await github.rest.pulls.get({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 pull_number: pr.data.number
               });
-              merge_sha = prInfo.data.merge_commit_sha || prInfo.data.head.sha || '';
+              merge_sha = prInfo.data.merge_commit_sha || prInfo.data.head.sha;
             }
 
             if (!merge_sha) {
-              throw new Error('Could not determine merge commit SHA after merging PR.');
+              throw new Error('Could not determine merge commit SHA.');
             }
 
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `merge_sha=${merge_sha}\n`);
-            console.log(`Merged PR #${pr.data.number} -> ${merge_sha}`);
+            console.log(`PR #${pr.data.number} merged at ${merge_sha}`);
 
       - name: Output when no changes
         if: steps.commit.outputs.pr_required != 'true'
