@@ -795,7 +795,7 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
             if isinstance(opt, dict) and "$ref" in opt:
                 ref = pascal_case(opt["$ref"].split("/")[-1])
                 title = opt.get("title")
-                # build merged props so we can produce descriptive suffix if needed
+                # build merged_props so we can produce descriptive suffix if needed
                 merged_props = dict(properties or {})
                 if isinstance(opt.get("properties"), dict):
                     for k, v in opt.get("properties", {}).items():
@@ -846,7 +846,7 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
                 option_names.append(combined)
                 continue
 
-            # inline object option -> prefer title -> name enum -> props-derived suffix (keeps 'BlockIdShardId' instead of 'BlockShardId')
+            # inline object option -> prefer title -> single-name enum -> props-derived suffix (keeps 'BlockIdShardId' instead of 'BlockShardId')
             if isinstance(opt, dict) and opt.get("type") == "object" and "properties" in opt:
                 props = opt.get("properties", {})
                 title = opt.get("title")
@@ -872,7 +872,7 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
                 local_nested: List[str] = []
                 strict_opt = opt.get("additionalProperties") is False
                 merged_props = dict(properties or {})
-                for k, v in (props or {}).items():
+                for k, v in (opt.get("properties") or {}).items():
                     merged_props[k] = v
                 merged_required = list(set(required_fields or []) | set(opt.get("required", [])))
                 class_def = _build_class_from_properties(combined, merged_props, merged_required, ctx, imports, extra_defs=local_nested, strict=strict_opt)
@@ -1005,7 +1005,11 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
                     lit_vals = ", ".join(repr(v) for v in dedup_vals)
                     local_defs.append((f'"""{desc}"""\n' if desc else "") + f"class {alias_candidate}(RootModel[Literal[{lit_vals}]]):\n    pass\n\n")
                     return alias_candidate
-                local_defs.append((f'"""{desc}"""\n' if desc else "") + f"class {alias_candidate}(RootModel[str]):\n    pass\n\n")
+                local_defs.append(
+                    (f'"""{desc}"""\n' if desc else "")
+                    + f"class {alias_candidate}(RootModel[str]):\n    pass\n\n"
+                )
+
                 return alias_candidate
 
             if t == "boolean":
@@ -1014,8 +1018,13 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
 
             return None
 
+        # Determine whether parent schema is object-like (we'll use this to avoid converting primitives/arrays into Union members)
+        parent_is_object = schema_data.get("type") == "object" or bool(properties)
+
         for opt in opts:
             idx += 1
+
+            # If option is a $ref, handle it (object-like)
             if isinstance(opt, dict) and "$ref" in opt:
                 ref = pascal_case(opt["$ref"].split("/")[-1])
                 title = opt.get("title")
@@ -1072,6 +1081,21 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
                 parts.append(alias_candidate)
                 continue
 
+            # If parent is object-like, skip options that are purely primitive/array (they cannot represent the required object)
+            opt_is_object_like = isinstance(opt, dict) and (
+                opt.get("type") == "object"
+                or "properties" in opt
+                or "$ref" in opt
+                or "allOf" in opt
+                or "oneOf" in opt
+                or "anyOf" in opt
+            )
+            if parent_is_object and not opt_is_object_like:
+                # skip primitive/array option — schema requires an object at the root, so such options are not valid as top-level Union members
+                # (we intentionally avoid adding Any or creating OptionN for these)
+                continue
+
+            # try primitive alias generation (only reached for non-primitive-parent contexts OR object-like opts)
             alias = make_alias_for_primitive(opt, idx)
             if alias:
                 parts.append(alias)
@@ -1111,6 +1135,7 @@ def generate_model(schema_name: str, schema_data: Dict[str, Any], ctx: Generator
                 parts.append(inline_name)
                 continue
 
+            # fallback
             imports.add("from typing import Any")
             parts.append("Any")
 
