@@ -105,6 +105,20 @@ class ActionViewDeterministicStateInitPayload(BaseModel):
 class ActionViewDeterministicStateInit(StrictBaseModel):
     DeterministicStateInit: ActionViewDeterministicStateInitPayload
 
-class ActionView(RootModel[Union[ActionViewCreateAccount, ActionViewDeployContract, ActionViewFunctionCall, ActionViewTransfer, ActionViewStake, ActionViewAddKey, ActionViewDeleteKey, ActionViewDeleteAccount, ActionViewDelegate, ActionViewDeployGlobalContract, ActionViewDeployGlobalContractByAccountId, ActionViewUseGlobalContract, ActionViewUseGlobalContractByAccountId, ActionViewDeterministicStateInit]]):
+class ActionViewTransferToGasKeyPayload(BaseModel):
+    deposit: NearToken
+    public_key: PublicKey
+
+class ActionViewTransferToGasKey(StrictBaseModel):
+    TransferToGasKey: ActionViewTransferToGasKeyPayload
+
+class ActionViewWithdrawFromGasKeyPayload(BaseModel):
+    amount: NearToken
+    public_key: PublicKey
+
+class ActionViewWithdrawFromGasKey(StrictBaseModel):
+    WithdrawFromGasKey: ActionViewWithdrawFromGasKeyPayload
+
+class ActionView(RootModel[Union[ActionViewCreateAccount, ActionViewDeployContract, ActionViewFunctionCall, ActionViewTransfer, ActionViewStake, ActionViewAddKey, ActionViewDeleteKey, ActionViewDeleteAccount, ActionViewDelegate, ActionViewDeployGlobalContract, ActionViewDeployGlobalContractByAccountId, ActionViewUseGlobalContract, ActionViewUseGlobalContractByAccountId, ActionViewDeterministicStateInit, ActionViewTransferToGasKey, ActionViewWithdrawFromGasKey]]):
     pass
 
