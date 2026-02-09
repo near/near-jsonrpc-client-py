@@ -7,6 +7,7 @@ from pydantic import conint
 
 class ReceiptView(BaseModel):
     predecessor_id: AccountId
+    # Deprecated, retained for backward compatibility.
     priority: conint(ge=0, le=18446744073709551615) = 0
     receipt: ReceiptEnumView
     receipt_id: CryptoHash

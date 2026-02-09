@@ -130,6 +130,26 @@ class InvalidTxErrorShardStuck(StrictBaseModel):
 new transaction until it can make progress again."""
     ShardStuck: InvalidTxErrorShardStuckPayload
 
-class InvalidTxError(RootModel[Union[InvalidTxErrorInvalidAccessKeyError, InvalidTxErrorInvalidSignerId, InvalidTxErrorSignerDoesNotExist, InvalidTxErrorInvalidNonce, InvalidTxErrorNonceTooLarge, InvalidTxErrorInvalidReceiverId, InvalidTxErrorInvalidSignature, InvalidTxErrorNotEnoughBalance, InvalidTxErrorLackBalanceForState, InvalidTxErrorCostOverflow, InvalidTxErrorInvalidChain, InvalidTxErrorExpired, InvalidTxErrorActionsValidation, InvalidTxErrorTransactionSizeExceeded, InvalidTxErrorInvalidTransactionVersion, InvalidTxErrorStorageError, InvalidTxErrorShardCongested, InvalidTxErrorShardStuck]]):
+class InvalidTxErrorInvalidNonceIndexPayload(BaseModel):
+    # Number of nonces supported by the key. 0 means no nonce_index allowed (regular key).
+    num_nonces: conint(ge=0, le=65535)
+    # The nonce_index from the transaction (None if missing).
+    tx_nonce_index: conint(ge=0, le=65535) | None = None
+
+class InvalidTxErrorInvalidNonceIndex(StrictBaseModel):
+    """Transaction is specifying an invalid nonce index. Gas key transactions
+must have a nonce_index in valid range, regular transactions must not."""
+    InvalidNonceIndex: InvalidTxErrorInvalidNonceIndexPayload
+
+class InvalidTxErrorNotEnoughGasKeyBalancePayload(BaseModel):
+    balance: NearToken
+    cost: NearToken
+    signer_id: AccountId
+
+class InvalidTxErrorNotEnoughGasKeyBalance(StrictBaseModel):
+    """Gas key does not have enough balance to cover gas costs."""
+    NotEnoughGasKeyBalance: InvalidTxErrorNotEnoughGasKeyBalancePayload
+
+class InvalidTxError(RootModel[Union[InvalidTxErrorInvalidAccessKeyError, InvalidTxErrorInvalidSignerId, InvalidTxErrorSignerDoesNotExist, InvalidTxErrorInvalidNonce, InvalidTxErrorNonceTooLarge, InvalidTxErrorInvalidReceiverId, InvalidTxErrorInvalidSignature, InvalidTxErrorNotEnoughBalance, InvalidTxErrorLackBalanceForState, InvalidTxErrorCostOverflow, InvalidTxErrorInvalidChain, InvalidTxErrorExpired, InvalidTxErrorActionsValidation, InvalidTxErrorTransactionSizeExceeded, InvalidTxErrorInvalidTransactionVersion, InvalidTxErrorStorageError, InvalidTxErrorShardCongested, InvalidTxErrorShardStuck, InvalidTxErrorInvalidNonceIndex, InvalidTxErrorNotEnoughGasKeyBalance]]):
     pass
 
