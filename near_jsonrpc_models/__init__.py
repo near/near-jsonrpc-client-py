@@ -135,6 +135,7 @@ if TYPE_CHECKING:
     from .error_wrapper_for_rpc_view_access_key_error import ErrorWrapperForRpcViewAccessKeyError
     from .json_rpc_request_for_experimental_protocol_config import JsonRpcRequestForExperimentalProtocolConfig
     from .fee import Fee
+    from .strict_model import StrictBaseModel
     from .error_wrapper_for_genesis_config_error import ErrorWrapperForGenesisConfigErrorRequestValidationError
     from .error_wrapper_for_genesis_config_error import ErrorWrapperForGenesisConfigErrorHandlerError
     from .error_wrapper_for_genesis_config_error import ErrorWrapperForGenesisConfigErrorInternalError
@@ -2181,6 +2182,7 @@ __all__ = [
     'StorageUsageConfigView',
     'StoreKey',
     'StoreValue',
+    'StrictBaseModel',
     'SyncCheckpoint',
     'SyncConcurrency',
     'SyncConfig',
@@ -2364,6 +2366,7 @@ _CLASS_TO_MODULE = {
     'ErrorWrapperForRpcViewAccessKeyError': 'error_wrapper_for_rpc_view_access_key_error',
     'JsonRpcRequestForExperimentalProtocolConfig': 'json_rpc_request_for_experimental_protocol_config',
     'Fee': 'fee',
+    'StrictBaseModel': 'strict_model',
     'ErrorWrapperForGenesisConfigErrorRequestValidationError': 'error_wrapper_for_genesis_config_error',
     'ErrorWrapperForGenesisConfigErrorHandlerError': 'error_wrapper_for_genesis_config_error',
     'ErrorWrapperForGenesisConfigErrorInternalError': 'error_wrapper_for_genesis_config_error',
