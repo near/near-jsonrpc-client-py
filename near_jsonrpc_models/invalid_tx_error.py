@@ -2,6 +2,7 @@
 
 from near_jsonrpc_models.account_id import AccountId
 from near_jsonrpc_models.actions_validation_error import ActionsValidationError
+from near_jsonrpc_models.deposit_cost_failure_reason import DepositCostFailureReason
 from near_jsonrpc_models.invalid_access_key_error import InvalidAccessKeyError
 from near_jsonrpc_models.near_token import NearToken
 from near_jsonrpc_models.storage_error import StorageError
@@ -150,6 +151,17 @@ class InvalidTxErrorNotEnoughGasKeyBalance(StrictBaseModel):
     """Gas key does not have enough balance to cover gas costs."""
     NotEnoughGasKeyBalance: InvalidTxErrorNotEnoughGasKeyBalancePayload
 
-class InvalidTxError(RootModel[Union[InvalidTxErrorInvalidAccessKeyError, InvalidTxErrorInvalidSignerId, InvalidTxErrorSignerDoesNotExist, InvalidTxErrorInvalidNonce, InvalidTxErrorNonceTooLarge, InvalidTxErrorInvalidReceiverId, InvalidTxErrorInvalidSignature, InvalidTxErrorNotEnoughBalance, InvalidTxErrorLackBalanceForState, InvalidTxErrorCostOverflow, InvalidTxErrorInvalidChain, InvalidTxErrorExpired, InvalidTxErrorActionsValidation, InvalidTxErrorTransactionSizeExceeded, InvalidTxErrorInvalidTransactionVersion, InvalidTxErrorStorageError, InvalidTxErrorShardCongested, InvalidTxErrorShardStuck, InvalidTxErrorInvalidNonceIndex, InvalidTxErrorNotEnoughGasKeyBalance]]):
+class InvalidTxErrorNotEnoughBalanceForDepositPayload(BaseModel):
+    balance: NearToken
+    cost: NearToken
+    reason: DepositCostFailureReason
+    signer_id: AccountId
+
+class InvalidTxErrorNotEnoughBalanceForDeposit(StrictBaseModel):
+    """Gas key transaction failed because the account could not cover the deposit cost.
+Gas is still charged from the gas key in this case."""
+    NotEnoughBalanceForDeposit: InvalidTxErrorNotEnoughBalanceForDepositPayload
+
+class InvalidTxError(RootModel[Union[InvalidTxErrorInvalidAccessKeyError, InvalidTxErrorInvalidSignerId, InvalidTxErrorSignerDoesNotExist, InvalidTxErrorInvalidNonce, InvalidTxErrorNonceTooLarge, InvalidTxErrorInvalidReceiverId, InvalidTxErrorInvalidSignature, InvalidTxErrorNotEnoughBalance, InvalidTxErrorLackBalanceForState, InvalidTxErrorCostOverflow, InvalidTxErrorInvalidChain, InvalidTxErrorExpired, InvalidTxErrorActionsValidation, InvalidTxErrorTransactionSizeExceeded, InvalidTxErrorInvalidTransactionVersion, InvalidTxErrorStorageError, InvalidTxErrorShardCongested, InvalidTxErrorShardStuck, InvalidTxErrorInvalidNonceIndex, InvalidTxErrorNotEnoughGasKeyBalance, InvalidTxErrorNotEnoughBalanceForDeposit]]):
     pass
 

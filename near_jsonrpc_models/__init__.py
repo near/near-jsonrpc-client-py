@@ -192,9 +192,9 @@ if TYPE_CHECKING:
     from .rpc_light_client_next_block_error import RpcLightClientNextBlockErrorEpochOutOfBounds
     from .rpc_light_client_next_block_error import RpcLightClientNextBlockError
     from .access_key import AccessKey
-    from .rpc_validator_request import RpcValidatorRequestLatest
     from .rpc_validator_request import RpcValidatorRequestEpochId
     from .rpc_validator_request import RpcValidatorRequestBlockId
+    from .rpc_validator_request import RpcValidatorRequestLatest
     from .rpc_validator_request import RpcValidatorRequest
     from .account_id import AccountId
     from .account_with_public_key import AccountWithPublicKey
@@ -874,6 +874,8 @@ if TYPE_CHECKING:
     from .invalid_tx_error import InvalidTxErrorInvalidNonceIndex
     from .invalid_tx_error import InvalidTxErrorNotEnoughGasKeyBalancePayload
     from .invalid_tx_error import InvalidTxErrorNotEnoughGasKeyBalance
+    from .invalid_tx_error import InvalidTxErrorNotEnoughBalanceForDepositPayload
+    from .invalid_tx_error import InvalidTxErrorNotEnoughBalanceForDeposit
     from .invalid_tx_error import InvalidTxError
     from .storage_error import StorageErrorStorageInternalError
     from .storage_error import StorageErrorMissingTrieValue
@@ -1060,6 +1062,7 @@ if TYPE_CHECKING:
     from .json_rpc_response_for_genesis_config_and_genesis_config_error import JsonRpcResponseForGenesisConfigAndGenesisConfigErrorError
     from .json_rpc_response_for_genesis_config_and_genesis_config_error import JsonRpcResponseForGenesisConfigAndGenesisConfigError
     from .epoch_sync_config import EpochSyncConfig
+    from .deposit_cost_failure_reason import DepositCostFailureReason
     from .json_rpc_request_for_health import JsonRpcRequestForHealth
     from .receipt_view import ReceiptView
     from .error_wrapper_for_rpc_split_storage_info_error import ErrorWrapperForRpcSplitStorageInfoErrorRequestValidationError
@@ -1304,6 +1307,7 @@ __all__ = [
     'DeleteKeyAction',
     'DeployContractAction',
     'DeployGlobalContractAction',
+    'DepositCostFailureReason',
     'DetailedDebugStatus',
     'DeterministicAccountStateInit',
     'DeterministicAccountStateInitV1',
@@ -1558,6 +1562,8 @@ __all__ = [
     'InvalidTxErrorNonceTooLarge',
     'InvalidTxErrorNonceTooLargePayload',
     'InvalidTxErrorNotEnoughBalance',
+    'InvalidTxErrorNotEnoughBalanceForDeposit',
+    'InvalidTxErrorNotEnoughBalanceForDepositPayload',
     'InvalidTxErrorNotEnoughBalancePayload',
     'InvalidTxErrorNotEnoughGasKeyBalance',
     'InvalidTxErrorNotEnoughGasKeyBalancePayload',
@@ -2423,9 +2429,9 @@ _CLASS_TO_MODULE = {
     'RpcLightClientNextBlockErrorEpochOutOfBounds': 'rpc_light_client_next_block_error',
     'RpcLightClientNextBlockError': 'rpc_light_client_next_block_error',
     'AccessKey': 'access_key',
-    'RpcValidatorRequestLatest': 'rpc_validator_request',
     'RpcValidatorRequestEpochId': 'rpc_validator_request',
     'RpcValidatorRequestBlockId': 'rpc_validator_request',
+    'RpcValidatorRequestLatest': 'rpc_validator_request',
     'RpcValidatorRequest': 'rpc_validator_request',
     'AccountId': 'account_id',
     'AccountWithPublicKey': 'account_with_public_key',
@@ -3105,6 +3111,8 @@ _CLASS_TO_MODULE = {
     'InvalidTxErrorInvalidNonceIndex': 'invalid_tx_error',
     'InvalidTxErrorNotEnoughGasKeyBalancePayload': 'invalid_tx_error',
     'InvalidTxErrorNotEnoughGasKeyBalance': 'invalid_tx_error',
+    'InvalidTxErrorNotEnoughBalanceForDepositPayload': 'invalid_tx_error',
+    'InvalidTxErrorNotEnoughBalanceForDeposit': 'invalid_tx_error',
     'InvalidTxError': 'invalid_tx_error',
     'StorageErrorStorageInternalError': 'storage_error',
     'StorageErrorMissingTrieValue': 'storage_error',
@@ -3291,6 +3299,7 @@ _CLASS_TO_MODULE = {
     'JsonRpcResponseForGenesisConfigAndGenesisConfigErrorError': 'json_rpc_response_for_genesis_config_and_genesis_config_error',
     'JsonRpcResponseForGenesisConfigAndGenesisConfigError': 'json_rpc_response_for_genesis_config_and_genesis_config_error',
     'EpochSyncConfig': 'epoch_sync_config',
+    'DepositCostFailureReason': 'deposit_cost_failure_reason',
     'JsonRpcRequestForHealth': 'json_rpc_request_for_health',
     'ReceiptView': 'receipt_view',
     'ErrorWrapperForRpcSplitStorageInfoErrorRequestValidationError': 'error_wrapper_for_rpc_split_storage_info_error',
