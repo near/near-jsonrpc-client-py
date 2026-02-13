@@ -9,6 +9,7 @@ from near_jsonrpc_models.shard_id import ShardId
 from near_jsonrpc_models.strict_model import StrictBaseModel
 from pydantic import BaseModel
 from pydantic import RootModel
+from pydantic import conint
 from typing import List
 from typing import Union
 
@@ -38,6 +39,7 @@ class ReceiptEnumViewGlobalContractDistributionPayload(BaseModel):
     already_delivered_shards: List[ShardId]
     code: str
     id: GlobalContractIdentifier
+    nonce: conint(ge=0, le=18446744073709551615) | None = None
     target_shard: ShardId
 
 class ReceiptEnumViewGlobalContractDistribution(StrictBaseModel):
