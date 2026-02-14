@@ -4,11 +4,11 @@ from pydantic import conint
 
 
 class EpochSyncConfig(BaseModel):
-    # This serves as two purposes: (1) the node will not epoch sync and instead resort to
-    # header sync, if the genesis block is within this many blocks from the current block;
-    # (2) the node will reject an epoch sync proof if the provided proof is for an epoch
-    # that is more than this many blocks behind the current block.
-    epoch_sync_horizon: conint(ge=0, le=18446744073709551615) = None
+    # Number of epochs behind the network head beyond which the node will use
+    # epoch sync instead of header sync. Also the maximum age (in epochs) of
+    # accepted epoch sync proofs. At the consumption site, this is multiplied
+    # by epoch_length to get the horizon in blocks.
+    epoch_sync_horizon_num_epochs: conint(ge=0, le=18446744073709551615) = 4
     # Timeout for epoch sync requests. The node will continue retrying indefinitely even
     # if this timeout is exceeded.
     timeout_for_epoch_sync: DurationAsStdSchemaProvider = None
