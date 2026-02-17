@@ -605,6 +605,7 @@ if TYPE_CHECKING:
     from .final_execution_outcome_view import FinalExecutionOutcomeView
     from .finality import Finality
     from .access_key_info_view import AccessKeyInfoView
+    from .trie_split import TrieSplit
     from .rpc_known_producer import RpcKnownProducer
     from .rpc_gas_price_response import RpcGasPriceResponse
     from .json_rpc_response_for_rpc_network_info_response_and_rpc_network_info_error import JsonRpcResponseForRpcNetworkInfoResponseAndRpcNetworkInfoErrorResult
@@ -2208,6 +2209,7 @@ __all__ = [
     'TrackedShardsConfigShards',
     'TransferAction',
     'TransferToGasKeyAction',
+    'TrieSplit',
     'TxExecutionError',
     'TxExecutionErrorActionError',
     'TxExecutionErrorInvalidTxError',
@@ -2846,6 +2848,7 @@ _CLASS_TO_MODULE = {
     'FinalExecutionOutcomeView': 'final_execution_outcome_view',
     'Finality': 'finality',
     'AccessKeyInfoView': 'access_key_info_view',
+    'TrieSplit': 'trie_split',
     'RpcKnownProducer': 'rpc_known_producer',
     'RpcGasPriceResponse': 'rpc_gas_price_response',
     'JsonRpcResponseForRpcNetworkInfoResponseAndRpcNetworkInfoErrorResult': 'json_rpc_response_for_rpc_network_info_response_and_rpc_network_info_error',

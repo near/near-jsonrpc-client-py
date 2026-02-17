@@ -7,6 +7,7 @@ from near_jsonrpc_models.near_gas import NearGas
 from near_jsonrpc_models.near_token import NearToken
 from near_jsonrpc_models.shard_id import ShardId
 from near_jsonrpc_models.signature import Signature
+from near_jsonrpc_models.trie_split import TrieSplit
 from near_jsonrpc_models.validator_stake_view import ValidatorStakeView
 from pydantic import BaseModel
 from pydantic import Field
@@ -29,6 +30,11 @@ class ChunkHeaderView(BaseModel):
     outgoing_receipts_root: CryptoHash
     prev_block_hash: CryptoHash
     prev_state_root: CryptoHash
+    # Proposed trie split for dynamic resharding
+    # `None`: field missing (`ShardChunkHeaderInnerV4` or earlier)
+    # `Some(None)`: field present, but not set (`ChunkHeaderInnerV5` or later)
+    # `Some(Some(split))`: field present and set
+    proposed_split: TrieSplit | None = None
     # TODO(2271): deprecated.
     rent_paid: NearToken = Field(default_factory=lambda: NearToken('0'))
     shard_id: ShardId
