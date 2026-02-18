@@ -13,6 +13,8 @@ class VMConfigView(BaseModel):
     discard_custom_sections: bool = None
     # See [VMConfig::eth_implicit_accounts](crate::vm::Config::eth_implicit_accounts).
     eth_implicit_accounts: bool = None
+    # See [VMConfig::eth_implicit_global_contract](crate::vm::Config::eth_implicit_global_contract).
+    eth_implicit_global_contract: bool = None
     # Costs for runtime externals
     ext_costs: ExtCostsConfigView = None
     # See [VMConfig::fix_contract_loading_cost](crate::vm::Config::fix_contract_loading_cost).
