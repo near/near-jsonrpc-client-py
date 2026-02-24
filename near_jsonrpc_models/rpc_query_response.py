@@ -4,6 +4,7 @@ from near_jsonrpc_models.account_view import AccountView
 from near_jsonrpc_models.call_result import CallResult
 from near_jsonrpc_models.contract_code_view import ContractCodeView
 from near_jsonrpc_models.crypto_hash import CryptoHash
+from near_jsonrpc_models.gas_key_nonces_view import GasKeyNoncesView
 from near_jsonrpc_models.view_state_result import ViewStateResult
 from pydantic import BaseModel
 from pydantic import RootModel
@@ -35,6 +36,10 @@ class RpcQueryResponseAccessKeyList(AccessKeyList):
     block_hash: CryptoHash
     block_height: conint(ge=0, le=18446744073709551615)
 
-class RpcQueryResponse(RootModel[Union[RpcQueryResponseAccountView, RpcQueryResponseContractCodeView, RpcQueryResponseViewStateResult, RpcQueryResponseCallResult, RpcQueryResponseAccessKeyView, RpcQueryResponseAccessKeyList]]):
+class RpcQueryResponseGasKeyNoncesView(GasKeyNoncesView):
+    block_hash: CryptoHash
+    block_height: conint(ge=0, le=18446744073709551615)
+
+class RpcQueryResponse(RootModel[Union[RpcQueryResponseAccountView, RpcQueryResponseContractCodeView, RpcQueryResponseViewStateResult, RpcQueryResponseCallResult, RpcQueryResponseAccessKeyView, RpcQueryResponseAccessKeyList, RpcQueryResponseGasKeyNoncesView]]):
     pass
 
