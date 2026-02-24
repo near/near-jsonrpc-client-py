@@ -652,6 +652,7 @@ if TYPE_CHECKING:
     from .rpc_query_response import RpcQueryResponseCallResult
     from .rpc_query_response import RpcQueryResponseAccessKeyView
     from .rpc_query_response import RpcQueryResponseAccessKeyList
+    from .rpc_query_response import RpcQueryResponseGasKeyNoncesView
     from .rpc_query_response import RpcQueryResponse
     from .json_rpc_request_for_experimental_genesis_config import JsonRpcRequestForExperimentalGenesisConfig
     from .json_rpc_response_for_rpc_protocol_config_response_and_rpc_protocol_config_error import JsonRpcResponseForRpcProtocolConfigResponseAndRpcProtocolConfigErrorResult
@@ -1117,6 +1118,7 @@ if TYPE_CHECKING:
     from .error_wrapper_for_rpc_protocol_config_error import ErrorWrapperForRpcProtocolConfigErrorInternalError
     from .error_wrapper_for_rpc_protocol_config_error import ErrorWrapperForRpcProtocolConfigError
     from .json_rpc_request_for_experimental_tx_status import JsonRpcRequestForExperimentalTxStatus
+    from .gas_key_nonces_view import GasKeyNoncesView
     from .finality import Finality
     from .json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error import JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorResult
     from .json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error import JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorError
@@ -1467,6 +1469,7 @@ __all__ = [
     'GasKeyInfo',
     'GasKeyInfoView',
     'GasKeyList',
+    'GasKeyNoncesView',
     'GasKeyView',
     'GenesisConfig',
     'GenesisConfigError',
@@ -1935,6 +1938,7 @@ __all__ = [
     'RpcQueryResponseAccountView',
     'RpcQueryResponseCallResult',
     'RpcQueryResponseContractCodeView',
+    'RpcQueryResponseGasKeyNoncesView',
     'RpcQueryResponseViewStateResult',
     'RpcReceiptError',
     'RpcReceiptErrorInternalError',
@@ -2895,6 +2899,7 @@ _CLASS_TO_MODULE = {
     'RpcQueryResponseCallResult': 'rpc_query_response',
     'RpcQueryResponseAccessKeyView': 'rpc_query_response',
     'RpcQueryResponseAccessKeyList': 'rpc_query_response',
+    'RpcQueryResponseGasKeyNoncesView': 'rpc_query_response',
     'RpcQueryResponse': 'rpc_query_response',
     'JsonRpcRequestForExperimentalGenesisConfig': 'json_rpc_request_for_experimental_genesis_config',
     'JsonRpcResponseForRpcProtocolConfigResponseAndRpcProtocolConfigErrorResult': 'json_rpc_response_for_rpc_protocol_config_response_and_rpc_protocol_config_error',
@@ -3360,6 +3365,7 @@ _CLASS_TO_MODULE = {
     'ErrorWrapperForRpcProtocolConfigErrorInternalError': 'error_wrapper_for_rpc_protocol_config_error',
     'ErrorWrapperForRpcProtocolConfigError': 'error_wrapper_for_rpc_protocol_config_error',
     'JsonRpcRequestForExperimentalTxStatus': 'json_rpc_request_for_experimental_tx_status',
+    'GasKeyNoncesView': 'gas_key_nonces_view',
     'Finality': 'finality',
     'JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorResult': 'json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error',
     'JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorError': 'json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error',
