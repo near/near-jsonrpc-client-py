@@ -19,6 +19,8 @@ class VMConfigView(BaseModel):
     ext_costs: ExtCostsConfigView = None
     # See [VMConfig::fix_contract_loading_cost](crate::vm::Config::fix_contract_loading_cost).
     fix_contract_loading_cost: bool = None
+    # See [VMConfig::gas_key_host_fns](crate::vm::Config::gas_key_host_fns).
+    gas_key_host_fns: bool = None
     # See [VMConfig::global_contract_host_fns](crate::vm::Config::global_contract_host_fns).
     global_contract_host_fns: bool = None
     # Gas cost of a growing memory by single page.
