@@ -171,6 +171,10 @@ class RpcClientConfigResponse(BaseModel):
     # Limit of the size of per-shard transaction pool measured in bytes. If not set, the size
     # will be unbounded.
     transaction_pool_size_limit: conint(ge=0, le=18446744073709551615) | None = None
+    # TTL in blocks for gapped strict-nonce transactions in the pool. Transactions with a
+    # nonce gap whose block_hash is older than this many blocks are evicted during
+    # prepare_transactions.
+    transaction_pool_strict_nonce_ttl_blocks: conint(ge=0, le=18446744073709551615) = None
     transaction_request_handler_threads: conint(ge=0, le=4294967295) = None
     # Upper bound of the byte size of contract state that is still viewable. None is no limit
     trie_viewer_state_size_limit: conint(ge=0, le=18446744073709551615) | None = None
