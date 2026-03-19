@@ -126,6 +126,8 @@ class RpcClientConfigResponse(BaseModel):
     # Saving the latest witnesses is useful for analysis and debugging.
     # This option can cause extra load on the database and is not recommended for production use.
     save_latest_witnesses: bool = None
+    # Whether to persist receipt-to-tx origin mappings to disk or not.
+    save_receipt_to_tx: bool = None
     # Whether to persist state changes on disk or not.
     save_state_changes: bool = None
     # save_trie_changes should be set to true iff
