@@ -125,6 +125,17 @@ class APIMixinAsync:
             params=params,
         )
 
+    async def experimental_receipt_to_tx(self: NearBaseClientAsync, *, params: near_jsonrpc_models.RpcReceiptToTxRequest) -> near_jsonrpc_models.RpcReceiptToTxResponse:
+        """
+        Resolves a receipt ID back to the originating transaction hash and sender account
+        High-level method: returns the result model or raises NearClientError/NearRpcError/NearHttpError.
+        """
+        return await self._call(
+            request_model=near_jsonrpc_models.JsonRpcRequestForExperimentalReceiptToTx,
+            response_model=near_jsonrpc_models.JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxError,
+            params=params,
+        )
+
     async def experimental_split_storage_info(self: NearBaseClientAsync, *, params: near_jsonrpc_models.RpcSplitStorageInfoRequest) -> near_jsonrpc_models.RpcSplitStorageInfoResponse:
         """
         Contains the split storage information. More info on split storage [here](https://near-nodes.io/archival/split-storage-archival)

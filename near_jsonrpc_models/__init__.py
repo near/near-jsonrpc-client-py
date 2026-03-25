@@ -153,6 +153,15 @@ if TYPE_CHECKING:
     from .json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error import JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyErrorResult
     from .json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error import JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyErrorError
     from .json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error import JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyError
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorUnknownReceiptInfo
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorUnknownReceipt
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorDepthExceededInfo
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorDepthExceeded
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorUnsupportedInfo
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorUnsupported
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorInternalErrorInfo
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorInternalError
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxError
     from .storage_error import StorageErrorStorageInternalError
     from .storage_error import StorageErrorMissingTrieValue
     from .storage_error import StorageErrorUnexpectedTrieValue
@@ -233,6 +242,7 @@ if TYPE_CHECKING:
     from .state_change_cause_view import StateChangeCauseViewMigration
     from .state_change_cause_view import StateChangeCauseViewBandwidthSchedulerStateUpdate
     from .state_change_cause_view import StateChangeCauseView
+    from .rpc_receipt_to_tx_response import RpcReceiptToTxResponse
     from .account_id_validity_rules_version import AccountIdValidityRulesVersion
     from .fee import Fee
     from .account_creation_config_view import AccountCreationConfigView
@@ -481,6 +491,7 @@ if TYPE_CHECKING:
     from .rpc_view_gas_key_error import RpcViewGasKeyErrorInternalErrorInfo
     from .rpc_view_gas_key_error import RpcViewGasKeyErrorInternalError
     from .rpc_view_gas_key_error import RpcViewGasKeyError
+    from .rpc_receipt_to_tx_request import RpcReceiptToTxRequest
     from .store_key import StoreKey
     from .gas_key_nonces_view import GasKeyNoncesView
     from .data_receipt_creation_config_view import DataReceiptCreationConfigView
@@ -839,6 +850,9 @@ if TYPE_CHECKING:
     from .actions_validation_error import ActionsValidationError
     from .gas_key_view import GasKeyView
     from .witness_config_view import WitnessConfigView
+    from .json_rpc_response_for_rpc_receipt_to_tx_response_and_rpc_receipt_to_tx_error import JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxErrorResult
+    from .json_rpc_response_for_rpc_receipt_to_tx_response_and_rpc_receipt_to_tx_error import JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxErrorError
+    from .json_rpc_response_for_rpc_receipt_to_tx_response_and_rpc_receipt_to_tx_error import JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxError
     from .chunk_distribution_uris import ChunkDistributionUris
     from .external_storage_config import ExternalStorageConfig
     from .genesis_config_request import GenesisConfigRequest
@@ -944,6 +958,10 @@ if TYPE_CHECKING:
     from .action_error import ActionError
     from .access_key import AccessKey
     from .stake_action import StakeAction
+    from .error_wrapper_for_rpc_receipt_to_tx_error import ErrorWrapperForRpcReceiptToTxErrorRequestValidationError
+    from .error_wrapper_for_rpc_receipt_to_tx_error import ErrorWrapperForRpcReceiptToTxErrorHandlerError
+    from .error_wrapper_for_rpc_receipt_to_tx_error import ErrorWrapperForRpcReceiptToTxErrorInternalError
+    from .error_wrapper_for_rpc_receipt_to_tx_error import ErrorWrapperForRpcReceiptToTxError
     from .tx_execution_status import TxExecutionStatus
     from .signed_delegate_action import SignedDelegateAction
     from .rpc_call_function_response import RpcCallFunctionResponse
@@ -1116,6 +1134,7 @@ if TYPE_CHECKING:
     from .rpc_status_response import RpcStatusResponse
     from .delete_key_action import DeleteKeyAction
     from .current_epoch_validator_info import CurrentEpochValidatorInfo
+    from .json_rpc_request_for_experimental_receipt_to_tx import JsonRpcRequestForExperimentalReceiptToTx
     from .error_wrapper_for_rpc_block_error import ErrorWrapperForRpcBlockErrorRequestValidationError
     from .error_wrapper_for_rpc_block_error import ErrorWrapperForRpcBlockErrorHandlerError
     from .error_wrapper_for_rpc_block_error import ErrorWrapperForRpcBlockErrorInternalError
@@ -1379,6 +1398,10 @@ __all__ = [
     'ErrorWrapperForRpcReceiptErrorHandlerError',
     'ErrorWrapperForRpcReceiptErrorInternalError',
     'ErrorWrapperForRpcReceiptErrorRequestValidationError',
+    'ErrorWrapperForRpcReceiptToTxError',
+    'ErrorWrapperForRpcReceiptToTxErrorHandlerError',
+    'ErrorWrapperForRpcReceiptToTxErrorInternalError',
+    'ErrorWrapperForRpcReceiptToTxErrorRequestValidationError',
     'ErrorWrapperForRpcSplitStorageInfoError',
     'ErrorWrapperForRpcSplitStorageInfoErrorHandlerError',
     'ErrorWrapperForRpcSplitStorageInfoErrorInternalError',
@@ -1602,6 +1625,7 @@ __all__ = [
     'JsonRpcRequestForExperimentalMaintenanceWindows',
     'JsonRpcRequestForExperimentalProtocolConfig',
     'JsonRpcRequestForExperimentalReceipt',
+    'JsonRpcRequestForExperimentalReceiptToTx',
     'JsonRpcRequestForExperimentalSplitStorageInfo',
     'JsonRpcRequestForExperimentalTxStatus',
     'JsonRpcRequestForExperimentalValidatorsOrdered',
@@ -1678,6 +1702,9 @@ __all__ = [
     'JsonRpcResponseForRpcReceiptResponseAndRpcReceiptError',
     'JsonRpcResponseForRpcReceiptResponseAndRpcReceiptErrorError',
     'JsonRpcResponseForRpcReceiptResponseAndRpcReceiptErrorResult',
+    'JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxError',
+    'JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxErrorError',
+    'JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxErrorResult',
     'JsonRpcResponseForRpcSplitStorageInfoResponseAndRpcSplitStorageInfoError',
     'JsonRpcResponseForRpcSplitStorageInfoResponseAndRpcSplitStorageInfoErrorError',
     'JsonRpcResponseForRpcSplitStorageInfoResponseAndRpcSplitStorageInfoErrorResult',
@@ -1949,6 +1976,17 @@ __all__ = [
     'RpcReceiptErrorUnknownReceiptInfo',
     'RpcReceiptRequest',
     'RpcReceiptResponse',
+    'RpcReceiptToTxError',
+    'RpcReceiptToTxErrorDepthExceeded',
+    'RpcReceiptToTxErrorDepthExceededInfo',
+    'RpcReceiptToTxErrorInternalError',
+    'RpcReceiptToTxErrorInternalErrorInfo',
+    'RpcReceiptToTxErrorUnknownReceipt',
+    'RpcReceiptToTxErrorUnknownReceiptInfo',
+    'RpcReceiptToTxErrorUnsupported',
+    'RpcReceiptToTxErrorUnsupportedInfo',
+    'RpcReceiptToTxRequest',
+    'RpcReceiptToTxResponse',
     'RpcRequestValidationErrorKind',
     'RpcRequestValidationErrorKindMethodNotFound',
     'RpcRequestValidationErrorKindMethodNotFoundInfo',
@@ -2402,6 +2440,15 @@ _CLASS_TO_MODULE = {
     'JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyErrorResult': 'json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error',
     'JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyErrorError': 'json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error',
     'JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyError': 'json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error',
+    'RpcReceiptToTxErrorUnknownReceiptInfo': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorUnknownReceipt': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorDepthExceededInfo': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorDepthExceeded': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorUnsupportedInfo': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorUnsupported': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorInternalErrorInfo': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorInternalError': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxError': 'rpc_receipt_to_tx_error',
     'StorageErrorStorageInternalError': 'storage_error',
     'StorageErrorMissingTrieValue': 'storage_error',
     'StorageErrorUnexpectedTrieValue': 'storage_error',
@@ -2482,6 +2529,7 @@ _CLASS_TO_MODULE = {
     'StateChangeCauseViewMigration': 'state_change_cause_view',
     'StateChangeCauseViewBandwidthSchedulerStateUpdate': 'state_change_cause_view',
     'StateChangeCauseView': 'state_change_cause_view',
+    'RpcReceiptToTxResponse': 'rpc_receipt_to_tx_response',
     'AccountIdValidityRulesVersion': 'account_id_validity_rules_version',
     'Fee': 'fee',
     'AccountCreationConfigView': 'account_creation_config_view',
@@ -2730,6 +2778,7 @@ _CLASS_TO_MODULE = {
     'RpcViewGasKeyErrorInternalErrorInfo': 'rpc_view_gas_key_error',
     'RpcViewGasKeyErrorInternalError': 'rpc_view_gas_key_error',
     'RpcViewGasKeyError': 'rpc_view_gas_key_error',
+    'RpcReceiptToTxRequest': 'rpc_receipt_to_tx_request',
     'StoreKey': 'store_key',
     'GasKeyNoncesView': 'gas_key_nonces_view',
     'DataReceiptCreationConfigView': 'data_receipt_creation_config_view',
@@ -3088,6 +3137,9 @@ _CLASS_TO_MODULE = {
     'ActionsValidationError': 'actions_validation_error',
     'GasKeyView': 'gas_key_view',
     'WitnessConfigView': 'witness_config_view',
+    'JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxErrorResult': 'json_rpc_response_for_rpc_receipt_to_tx_response_and_rpc_receipt_to_tx_error',
+    'JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxErrorError': 'json_rpc_response_for_rpc_receipt_to_tx_response_and_rpc_receipt_to_tx_error',
+    'JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxError': 'json_rpc_response_for_rpc_receipt_to_tx_response_and_rpc_receipt_to_tx_error',
     'ChunkDistributionUris': 'chunk_distribution_uris',
     'ExternalStorageConfig': 'external_storage_config',
     'GenesisConfigRequest': 'genesis_config_request',
@@ -3193,6 +3245,10 @@ _CLASS_TO_MODULE = {
     'ActionError': 'action_error',
     'AccessKey': 'access_key',
     'StakeAction': 'stake_action',
+    'ErrorWrapperForRpcReceiptToTxErrorRequestValidationError': 'error_wrapper_for_rpc_receipt_to_tx_error',
+    'ErrorWrapperForRpcReceiptToTxErrorHandlerError': 'error_wrapper_for_rpc_receipt_to_tx_error',
+    'ErrorWrapperForRpcReceiptToTxErrorInternalError': 'error_wrapper_for_rpc_receipt_to_tx_error',
+    'ErrorWrapperForRpcReceiptToTxError': 'error_wrapper_for_rpc_receipt_to_tx_error',
     'TxExecutionStatus': 'tx_execution_status',
     'SignedDelegateAction': 'signed_delegate_action',
     'RpcCallFunctionResponse': 'rpc_call_function_response',
@@ -3365,6 +3421,7 @@ _CLASS_TO_MODULE = {
     'RpcStatusResponse': 'rpc_status_response',
     'DeleteKeyAction': 'delete_key_action',
     'CurrentEpochValidatorInfo': 'current_epoch_validator_info',
+    'JsonRpcRequestForExperimentalReceiptToTx': 'json_rpc_request_for_experimental_receipt_to_tx',
     'ErrorWrapperForRpcBlockErrorRequestValidationError': 'error_wrapper_for_rpc_block_error',
     'ErrorWrapperForRpcBlockErrorHandlerError': 'error_wrapper_for_rpc_block_error',
     'ErrorWrapperForRpcBlockErrorInternalError': 'error_wrapper_for_rpc_block_error',
