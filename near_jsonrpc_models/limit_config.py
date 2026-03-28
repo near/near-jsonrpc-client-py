@@ -23,10 +23,16 @@ class LimitConfig(BaseModel):
     max_contract_size: conint(ge=0, le=18446744073709551615) = None
     # If present, stores max number of elements in a single contract's table
     max_elements_per_contract_table: conint(ge=0, le=4294967295) | None = None
+    # If present, stores max byte size of a single function body in a contract
+    max_function_body_size: conint(ge=0, le=18446744073709551615) | None = None
     # If present, stores max number of functions in one contract
     max_functions_number_per_contract: conint(ge=0, le=18446744073709551615) | None = None
     # Max amount of gas that can be used, excluding gas attached to promises.
     max_gas_burnt: NearGas = None
+    # If present, stores max byte size of the wasm code after gas instrumentation.
+    # This prevents Cranelift's 24-bit SSA counter from overflowing on
+    # pathologically large contracts.
+    max_instrumented_code_size: conint(ge=0, le=18446744073709551615) | None = None
     # Max length of any method name (without terminating character).
     max_length_method_name: conint(ge=0, le=18446744073709551615) = None
     # Max length of returned data
