@@ -13,8 +13,6 @@ from typing import List
 
 
 class GenesisConfig(BaseModel):
-    # Expected number of hidden validators per shard.
-    avg_hidden_validator_seats_per_shard: List[conint(ge=0, le=18446744073709551615)]
     # Threshold for kicking out block producers, between 0 and 100.
     block_producer_kickout_threshold: conint(ge=0, le=255)
     # ID of the blockchain. This must be unique for every blockchain.
@@ -58,14 +56,8 @@ class GenesisConfig(BaseModel):
     minimum_validators_per_shard: conint(ge=0, le=18446744073709551615) = 1
     # Number of block producer seats at genesis.
     num_block_producer_seats: conint(ge=0, le=18446744073709551615)
-    # Defines number of shards and number of block producer seats per each shard at genesis.
-    # Note: not used with protocol_feature_chunk_only_producers -- replaced by minimum_validators_per_shard
-    # Note: not used before as all block producers produce chunks for all shards
-    num_block_producer_seats_per_shard: List[conint(ge=0, le=18446744073709551615)]
     # Expected number of blocks per year
     num_blocks_per_year: conint(ge=0, le=18446744073709551615)
-    # Deprecated.
-    num_chunk_only_producer_seats: conint(ge=0, le=18446744073709551615) = 300
     # Number of chunk producers.
     # Don't mess it up with chunk-only producers feature which is deprecated.
     num_chunk_producer_seats: conint(ge=0, le=18446744073709551615) = 100
