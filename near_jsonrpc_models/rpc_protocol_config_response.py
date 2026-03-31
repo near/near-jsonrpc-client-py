@@ -12,8 +12,6 @@ from typing import List
 
 
 class RpcProtocolConfigResponse(BaseModel):
-    # Expected number of hidden validators per shard.
-    avg_hidden_validator_seats_per_shard: List[conint(ge=0, le=18446744073709551615)] = None
     # Threshold for kicking out block producers, between 0 and 100.
     block_producer_kickout_threshold: conint(ge=0, le=255) = None
     # ID of the blockchain. This must be unique for every blockchain.
@@ -54,8 +52,6 @@ class RpcProtocolConfigResponse(BaseModel):
     minimum_validators_per_shard: conint(ge=0, le=18446744073709551615) = None
     # Number of block producer seats at genesis.
     num_block_producer_seats: conint(ge=0, le=18446744073709551615) = None
-    # Defines number of shards and number of block producer seats per each shard at genesis.
-    num_block_producer_seats_per_shard: List[conint(ge=0, le=18446744073709551615)] = None
     # Expected number of blocks per year
     num_blocks_per_year: conint(ge=0, le=18446744073709551615) = None
     # Online maximum threshold above which validator gets full reward.
