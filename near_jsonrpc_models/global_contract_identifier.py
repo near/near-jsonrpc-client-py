@@ -6,12 +6,12 @@ from pydantic import RootModel
 from typing import Union
 
 
-class GlobalContractIdentifierCodeHash(StrictBaseModel):
-    CodeHash: CryptoHash
+class GlobalContractIdentifierHash(StrictBaseModel):
+    hash: CryptoHash
 
 class GlobalContractIdentifierAccountId(StrictBaseModel):
-    AccountId: AccountId
+    account_id: AccountId
 
-class GlobalContractIdentifier(RootModel[Union[GlobalContractIdentifierCodeHash, GlobalContractIdentifierAccountId]]):
+class GlobalContractIdentifier(RootModel[Union[GlobalContractIdentifierHash, GlobalContractIdentifierAccountId]]):
     pass
 
