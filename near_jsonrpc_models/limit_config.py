@@ -19,6 +19,12 @@ class LimitConfig(BaseModel):
     max_actions_per_receipt: conint(ge=0, le=18446744073709551615) = None
     # Max length of arguments in a function call action.
     max_arguments_length: conint(ge=0, le=18446744073709551615) = None
+    # If present, stores max total number of basic blocks across all functions in a contract.
+    # This caps total compilation time for a contract.
+    max_blocks_per_contract: conint(ge=0, le=18446744073709551615) | None = None
+    # If present, stores max number of basic blocks (block/loop/if) in a single function.
+    # This caps per-function compilation time in Cranelift.
+    max_blocks_per_function: conint(ge=0, le=18446744073709551615) | None = None
     # Max contract size
     max_contract_size: conint(ge=0, le=18446744073709551615) = None
     # If present, stores max number of elements in a single contract's table
