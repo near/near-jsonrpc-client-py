@@ -207,6 +207,15 @@ class HostErrorEd25519VerifyInvalidInput(StrictBaseModel):
 derived from bytes)."""
     Ed25519VerifyInvalidInput: HostErrorEd25519VerifyInvalidInputPayload
 
-class HostError(RootModel[Union[HostErrorBadUTF16, HostErrorBadUTF8, HostErrorGasExceeded, HostErrorGasLimitExceeded, HostErrorBalanceExceeded, HostErrorEmptyMethodName, HostErrorGuestPanic, HostErrorIntegerOverflow, HostErrorInvalidPromiseIndex, HostErrorCannotAppendActionToJointPromise, HostErrorCannotReturnJointPromise, HostErrorInvalidPromiseResultIndex, HostErrorInvalidRegisterId, HostErrorIteratorWasInvalidated, HostErrorMemoryAccessViolation, HostErrorInvalidReceiptIndex, HostErrorInvalidIteratorIndex, HostErrorInvalidAccountId, HostErrorInvalidMethodName, HostErrorInvalidPublicKey, HostErrorProhibitedInView, HostErrorNumberOfLogsExceeded, HostErrorKeyLengthExceeded, HostErrorValueLengthExceeded, HostErrorTotalLogLengthExceeded, HostErrorNumberPromisesExceeded, HostErrorNumberInputDataDependenciesExceeded, HostErrorReturnedValueLengthExceeded, HostErrorContractSizeExceeded, HostErrorDeprecated, HostErrorECRecoverError, HostErrorAltBn128InvalidInput, HostErrorEd25519VerifyInvalidInput]]):
+class HostErrorP256VerifyInvalidInputPayload(BaseModel):
+    msg: str
+
+class HostErrorP256VerifyInvalidInput(StrictBaseModel):
+    """Input length mismatch for p256 signature verification (signature is not 64
+bytes or public key is not 33 bytes). Parse failures of otherwise
+well-sized inputs return 0 from the host function instead of aborting."""
+    P256VerifyInvalidInput: HostErrorP256VerifyInvalidInputPayload
+
+class HostError(RootModel[Union[HostErrorBadUTF16, HostErrorBadUTF8, HostErrorGasExceeded, HostErrorGasLimitExceeded, HostErrorBalanceExceeded, HostErrorEmptyMethodName, HostErrorGuestPanic, HostErrorIntegerOverflow, HostErrorInvalidPromiseIndex, HostErrorCannotAppendActionToJointPromise, HostErrorCannotReturnJointPromise, HostErrorInvalidPromiseResultIndex, HostErrorInvalidRegisterId, HostErrorIteratorWasInvalidated, HostErrorMemoryAccessViolation, HostErrorInvalidReceiptIndex, HostErrorInvalidIteratorIndex, HostErrorInvalidAccountId, HostErrorInvalidMethodName, HostErrorInvalidPublicKey, HostErrorProhibitedInView, HostErrorNumberOfLogsExceeded, HostErrorKeyLengthExceeded, HostErrorValueLengthExceeded, HostErrorTotalLogLengthExceeded, HostErrorNumberPromisesExceeded, HostErrorNumberInputDataDependenciesExceeded, HostErrorReturnedValueLengthExceeded, HostErrorContractSizeExceeded, HostErrorDeprecated, HostErrorECRecoverError, HostErrorAltBn128InvalidInput, HostErrorEd25519VerifyInvalidInput, HostErrorP256VerifyInvalidInput]]):
     pass
 

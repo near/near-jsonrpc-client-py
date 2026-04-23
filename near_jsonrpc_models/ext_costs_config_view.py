@@ -62,6 +62,10 @@ class ExtCostsConfigView(BaseModel):
     log_base: NearGas = None
     # Cost for logging per byte
     log_byte: NearGas = None
+    # Cost of P-256 ECDSA signature verification base
+    p256_verify_base: NearGas = None
+    # Cost of P-256 ECDSA signature verification per byte
+    p256_verify_byte: NearGas = None
     # Cost for calling `promise_and`
     promise_and_base: NearGas = None
     # Cost for calling `promise_and` for each promise
