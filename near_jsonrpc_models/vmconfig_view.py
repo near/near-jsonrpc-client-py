@@ -38,6 +38,8 @@ class VMConfigView(BaseModel):
     linear_op_unit_cost: conint(ge=0, le=18446744073709551615) = None
     # See [VMConfig::one_yocto_on_promise](crate::vm::Config::one_yocto_on_promise).
     one_yocto_on_promise: bool = None
+    # See [VMConfig::p256_verify_host_fn](crate::vm::Config::p256_verify_host_fn).
+    p256_verify_host_fn: bool = None
     # See [VMConfig::reftypes_bulk_memory](crate::vm::Config::reftypes_bulk_memory).
     reftypes_bulk_memory: bool = None
     # Gas cost of a regular operation.
