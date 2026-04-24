@@ -1,3 +1,4 @@
+from near_jsonrpc_models.shard_id import ShardId
 from pydantic import BaseModel
 from pydantic import RootModel
 from typing import Any
@@ -20,6 +21,13 @@ class RpcStateChangesErrorInternalError(BaseModel):
     info: RpcStateChangesErrorInternalErrorInfo
     name: Literal['INTERNAL_ERROR']
 
-class RpcStateChangesError(RootModel[Union[RpcStateChangesErrorUnknownBlock, RpcStateChangesErrorNotSyncedYet, RpcStateChangesErrorInternalError]]):
+class RpcStateChangesErrorShardNotAppliedInfo(BaseModel):
+    shard_id: ShardId
+
+class RpcStateChangesErrorShardNotApplied(BaseModel):
+    info: RpcStateChangesErrorShardNotAppliedInfo
+    name: Literal['SHARD_NOT_APPLIED']
+
+class RpcStateChangesError(RootModel[Union[RpcStateChangesErrorUnknownBlock, RpcStateChangesErrorNotSyncedYet, RpcStateChangesErrorInternalError, RpcStateChangesErrorShardNotApplied]]):
     pass
 
