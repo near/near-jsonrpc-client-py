@@ -515,6 +515,8 @@ if TYPE_CHECKING:
     from .actions_validation_error import ActionsValidationErrorAddGasKeyWithNonZeroBalancePayload
     from .actions_validation_error import ActionsValidationErrorAddGasKeyWithNonZeroBalance
     from .actions_validation_error import ActionsValidationErrorGasKeyFunctionCallAllowanceNotAllowed
+    from .actions_validation_error import ActionsValidationErrorTotalNumberOfDeployActionsExceededPayload
+    from .actions_validation_error import ActionsValidationErrorTotalNumberOfDeployActionsExceeded
     from .actions_validation_error import ActionsValidationError
     from .json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error import JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorResult
     from .json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error import JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorError
@@ -1287,6 +1289,8 @@ __all__ = [
     'ActionsValidationErrorInvalidDeterministicStateInitReceiverPayload',
     'ActionsValidationErrorTotalNumberOfActionsExceeded',
     'ActionsValidationErrorTotalNumberOfActionsExceededPayload',
+    'ActionsValidationErrorTotalNumberOfDeployActionsExceeded',
+    'ActionsValidationErrorTotalNumberOfDeployActionsExceededPayload',
     'ActionsValidationErrorTotalPrepaidGasExceeded',
     'ActionsValidationErrorTotalPrepaidGasExceededPayload',
     'ActionsValidationErrorUnsuitableStakingKey',
@@ -2810,6 +2814,8 @@ _CLASS_TO_MODULE = {
     'ActionsValidationErrorAddGasKeyWithNonZeroBalancePayload': 'actions_validation_error',
     'ActionsValidationErrorAddGasKeyWithNonZeroBalance': 'actions_validation_error',
     'ActionsValidationErrorGasKeyFunctionCallAllowanceNotAllowed': 'actions_validation_error',
+    'ActionsValidationErrorTotalNumberOfDeployActionsExceededPayload': 'actions_validation_error',
+    'ActionsValidationErrorTotalNumberOfDeployActionsExceeded': 'actions_validation_error',
     'ActionsValidationError': 'actions_validation_error',
     'JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorResult': 'json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error',
     'JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorError': 'json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error',
