@@ -27,6 +27,9 @@ class LimitConfig(BaseModel):
     max_blocks_per_function: conint(ge=0, le=18446744073709551615) | None = None
     # Max contract size
     max_contract_size: conint(ge=0, le=18446744073709551615) = None
+    # Max number of `DeployContract` and `DeployGlobalContract` actions
+    # combined within a single receipt.
+    max_deploy_actions_per_receipt: conint(ge=0, le=18446744073709551615) = None
     # If present, stores max number of elements in a single contract's table
     max_elements_per_contract_table: conint(ge=0, le=4294967295) | None = None
     # If present, stores max byte size of a single function body in a contract
