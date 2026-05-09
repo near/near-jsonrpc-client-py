@@ -86,6 +86,9 @@ class LimitConfig(BaseModel):
     max_total_prepaid_gas: NearGas = None
     # Max transaction size
     max_transaction_size: conint(ge=0, le=18446744073709551615) = None
+    # If present, stores max number of entries in the wasm type section that
+    # a contract may declare.
+    max_types_per_contract: conint(ge=0, le=18446744073709551615) | None = None
     # Maximum number of bytes for payload passed over a yield resume.
     max_yield_payload_size: conint(ge=0, le=18446744073709551615) = None
     # Hard limit on the size of storage proof generated while executing a single receipt.
