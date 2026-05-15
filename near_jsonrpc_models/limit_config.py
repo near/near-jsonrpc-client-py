@@ -67,6 +67,10 @@ class LimitConfig(BaseModel):
     # have this number of registers, no subsequent writes to the registers
     # will succeed even if they replace an existing register.
     max_number_registers: conint(ge=0, le=18446744073709551615) = None
+    # If present, stores the max operand stack size (in bytes) at any point
+    # during the execution of a single function. Per-function: not summed
+    # across recursion. Computed by `finite_wasm::max_stack`.
+    max_operand_stack_bytes_per_function: conint(ge=0, le=18446744073709551615) | None = None
     max_params_per_contract: conint(ge=0, le=18446744073709551615) | None = None
     max_params_per_function: conint(ge=0, le=18446744073709551615) | None = None
     # Max number of promises that a function call can create
