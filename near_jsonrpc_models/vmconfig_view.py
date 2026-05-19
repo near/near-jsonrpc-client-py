@@ -7,8 +7,6 @@ from pydantic import conint
 
 
 class VMConfigView(BaseModel):
-    # See [VMConfig::deterministic_account_ids](crate::vm::Config::deterministic_account_ids).
-    deterministic_account_ids: bool = None
     # See [VMConfig::discard_custom_sections](crate::vm::Config::discard_custom_sections).
     discard_custom_sections: bool = None
     # See [VMConfig::eth_implicit_accounts](crate::vm::Config::eth_implicit_accounts).

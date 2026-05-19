@@ -20,8 +20,6 @@ from typing import List
 class RpcClientConfigResponse(BaseModel):
     # Not clear old data, set `true` for archive nodes.
     archive: bool = None
-    # Horizon at which instead of fetching block, fetch full state.
-    block_fetch_horizon: conint(ge=0, le=18446744073709551615) = None
     # Behind this horizon header fetch kicks in.
     block_header_fetch_horizon: conint(ge=0, le=18446744073709551615) = None
     # Duration to check for producing / skipping block.
@@ -50,6 +48,17 @@ class RpcClientConfigResponse(BaseModel):
     # Configuration for a cloud-based archival writer. If this config is present, the writer is enabled and
     # writes chunk-related data based on the tracked shards.
     cloud_archival_writer: CloudArchivalWriterConfig | None = None
+    # Max warming submissions allowed in the pool's queue. Submissions
+    # over the cap bump `near_contract_cache_warming_dropped_total`. `0`
+    # disables warming (same as setting
+    # `contract_cache_warming_pool_thread_count` to 0).
+    contract_cache_warming_max_item_count: conint(ge=0, le=4294967295) = None
+    # Number of worker threads in the contract cache-warming pool. The
+    # pool runs at the lowest realtime priority of any near pool, so the
+    # threads yield to chunk application and witness work. Setting this
+    # to 0 disables warming (the pool is never instantiated). See
+    # [`contract_cache_warming_max_item_count`] for the other disable knob.
+    contract_cache_warming_pool_thread_count: conint(ge=0, le=4294967295) = None
     # If true, the node won't forward transactions to next the chunk producers.
     disable_tx_routing: bool = None
     # Time between running doomslug timer.
@@ -150,9 +159,6 @@ class RpcClientConfigResponse(BaseModel):
     state_requests_per_throttle_period: conint(ge=0, le=4294967295) = None
     # Options for syncing state.
     state_sync: StateSyncConfig = None
-    # Whether to use the State Sync mechanism.
-    # If disabled, the node will do Block Sync instead of State Sync.
-    state_sync_enabled: bool = None
     # Additional waiting period after a failed request to external storage
     state_sync_external_backoff: conlist(conint(ge=0, le=18446744073709551615), min_length=2, max_length=2) = None
     # How long to wait for a response from centralized state sync
