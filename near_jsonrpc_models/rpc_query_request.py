@@ -8,6 +8,7 @@ from near_jsonrpc_models.store_key import StoreKey
 from near_jsonrpc_models.sync_checkpoint import SyncCheckpoint
 from pydantic import BaseModel
 from pydantic import RootModel
+from pydantic import conint
 from typing import Literal
 from typing import Union
 
@@ -25,7 +26,9 @@ class RpcQueryRequestViewCodeByBlockId(BaseModel):
 class RpcQueryRequestViewStateByBlockId(BaseModel):
     block_id: BlockId
     account_id: AccountId
+    after_key_base64: StoreKey | None = None
     include_proof: bool = None
+    limit: conint(ge=1, le=4294967295) | None = None
     prefix_base64: StoreKey
     request_type: Literal['view_state']
 
@@ -76,7 +79,9 @@ class RpcQueryRequestViewCodeByFinality(BaseModel):
 class RpcQueryRequestViewStateByFinality(BaseModel):
     finality: Finality
     account_id: AccountId
+    after_key_base64: StoreKey | None = None
     include_proof: bool = None
+    limit: conint(ge=1, le=4294967295) | None = None
     prefix_base64: StoreKey
     request_type: Literal['view_state']
 
@@ -127,7 +132,9 @@ class RpcQueryRequestViewCodeBySyncCheckpoint(BaseModel):
 class RpcQueryRequestViewStateBySyncCheckpoint(BaseModel):
     sync_checkpoint: SyncCheckpoint
     account_id: AccountId
+    after_key_base64: StoreKey | None = None
     include_proof: bool = None
+    limit: conint(ge=1, le=4294967295) | None = None
     prefix_base64: StoreKey
     request_type: Literal['view_state']
 

@@ -23,7 +23,7 @@ class RpcClientConfigResponse(BaseModel):
     # Behind this horizon header fetch kicks in.
     block_header_fetch_horizon: conint(ge=0, le=18446744073709551615) = None
     # Duration to check for producing / skipping block.
-    block_production_tracking_delay: conlist(conint(ge=0, le=18446744073709551615), min_length=2, max_length=2) = None
+    block_production_tracking_delay: MutableConfigValue = None
     # Time between check to perform catchup.
     catchup_step_period: conlist(conint(ge=0, le=18446744073709551615), min_length=2, max_length=2) = None
     # Chain id for status.
@@ -38,7 +38,7 @@ class RpcClientConfigResponse(BaseModel):
     # Number of threads for ChunkValidationActor pool.
     chunk_validation_threads: conint(ge=0, le=4294967295) = None
     # Multiplier for the wait time for all chunks to be received.
-    chunk_wait_mult: conlist(conint(ge=-2147483648, le=2147483647), min_length=2, max_length=2) = None
+    chunk_wait_mult: MutableConfigValue = None
     # Height horizon for the chunk cache. A chunk is removed from the cache
     # if its height + chunks_cache_height_horizon < largest_seen_height.
     # The default value is DEFAULT_CHUNKS_CACHE_HEIGHT_HORIZON.
@@ -62,7 +62,7 @@ class RpcClientConfigResponse(BaseModel):
     # If true, the node won't forward transactions to next the chunk producers.
     disable_tx_routing: bool = None
     # Time between running doomslug timer.
-    doomslug_step_period: conlist(conint(ge=0, le=18446744073709551615), min_length=2, max_length=2) = None
+    doomslug_step_period: MutableConfigValue = None
     # If true, transactions for the next chunk will be prepared early, right after the previous chunk's
     # post-state is ready. This can help produce chunks faster, for high-throughput chains.
     # The current implementation increases latency on low-load chains, which will be fixed in the future.
@@ -92,15 +92,15 @@ class RpcClientConfigResponse(BaseModel):
     # Enable coloring of the logs
     log_summary_style: LogSummaryStyle = None
     # Maximum wait for approvals before producing block.
-    max_block_production_delay: conlist(conint(ge=0, le=18446744073709551615), min_length=2, max_length=2) = None
+    max_block_production_delay: MutableConfigValue = None
     # Maximum duration before skipping given height.
-    max_block_wait_delay: conlist(conint(ge=0, le=18446744073709551615), min_length=2, max_length=2) = None
+    max_block_wait_delay: MutableConfigValue = None
     # Max burnt gas per view method.  If present, overrides value stored in
     # genesis file.  The value only affects the RPCs without influencing the
     # protocol thus changing it per-node doesn’t affect the blockchain.
     max_gas_burnt_view: NearGas | None = None
     # Minimum duration before producing block.
-    min_block_production_delay: conlist(conint(ge=0, le=18446744073709551615), min_length=2, max_length=2) = None
+    min_block_production_delay: MutableConfigValue = None
     # Minimum number of peers to start syncing.
     min_num_peers: conint(ge=0, le=4294967295) = None
     # Number of block producer seats
