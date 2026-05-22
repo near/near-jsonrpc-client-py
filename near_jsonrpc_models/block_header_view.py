@@ -2,6 +2,7 @@
 
 from near_jsonrpc_models.account_id import AccountId
 from near_jsonrpc_models.crypto_hash import CryptoHash
+from near_jsonrpc_models.epoch_id import EpochId
 from near_jsonrpc_models.near_token import NearToken
 from near_jsonrpc_models.shard_id import ShardId
 from near_jsonrpc_models.signature import Signature
@@ -41,6 +42,7 @@ class BlockHeaderView(BaseModel):
     # The hash of the previous Block
     prev_hash: CryptoHash
     prev_height: conint(ge=0, le=18446744073709551615) | None = None
+    prev_last_certified_block_epoch_id: EpochId | None = None
     prev_state_root: CryptoHash
     random_value: CryptoHash
     # TODO(2271): deprecated.

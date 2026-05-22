@@ -508,6 +508,7 @@ if TYPE_CHECKING:
     from .json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error import JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorResult
     from .json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error import JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorError
     from .json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error import JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsError
+    from .key_handle import KeyHandle
     from .delete_gas_key_action import DeleteGasKeyAction
     from .rpc_client_config_request import RpcClientConfigRequest
     from .json_rpc_request_for_experimental_congestion_level import JsonRpcRequestForExperimentalCongestionLevel
@@ -1754,6 +1755,7 @@ __all__ = [
     'JsonRpcResponseForRpcViewStateResponseAndRpcViewStateError',
     'JsonRpcResponseForRpcViewStateResponseAndRpcViewStateErrorError',
     'JsonRpcResponseForRpcViewStateResponseAndRpcViewStateErrorResult',
+    'KeyHandle',
     'KnownProducerView',
     'LightClientBlockLiteView',
     'LimitConfig',
@@ -2807,6 +2809,7 @@ _CLASS_TO_MODULE = {
     'JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorResult': 'json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error',
     'JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorError': 'json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error',
     'JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsError': 'json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error',
+    'KeyHandle': 'key_handle',
     'DeleteGasKeyAction': 'delete_gas_key_action',
     'RpcClientConfigRequest': 'rpc_client_config_request',
     'JsonRpcRequestForExperimentalCongestionLevel': 'json_rpc_request_for_experimental_congestion_level',
