@@ -1,8 +1,8 @@
 from near_jsonrpc_models.access_key_view import AccessKeyView
 from near_jsonrpc_models.account_id import AccountId
 from near_jsonrpc_models.crypto_hash import CryptoHash
-from near_jsonrpc_models.key_handle import KeyHandle
 from near_jsonrpc_models.near_token import NearToken
+from near_jsonrpc_models.public_key_handle import PublicKeyHandle
 from near_jsonrpc_models.state_change_cause_view import StateChangeCauseView
 from near_jsonrpc_models.store_key import StoreKey
 from near_jsonrpc_models.store_value import StoreValue
@@ -41,7 +41,7 @@ class StateChangeWithCauseViewAccountDeletion(BaseModel):
 class StateChangeWithCauseViewAccessKeyUpdateChange(BaseModel):
     access_key: AccessKeyView
     account_id: AccountId
-    public_key: KeyHandle
+    public_key: PublicKeyHandle
 
 class StateChangeWithCauseViewAccessKeyUpdate(BaseModel):
     cause: StateChangeCauseView
@@ -50,7 +50,7 @@ class StateChangeWithCauseViewAccessKeyUpdate(BaseModel):
 
 class StateChangeWithCauseViewAccessKeyDeletionChange(BaseModel):
     account_id: AccountId
-    public_key: KeyHandle
+    public_key: PublicKeyHandle
 
 class StateChangeWithCauseViewAccessKeyDeletion(BaseModel):
     cause: StateChangeCauseView
@@ -61,7 +61,7 @@ class StateChangeWithCauseViewGasKeyNonceUpdateChange(BaseModel):
     account_id: AccountId
     index: conint(ge=0, le=65535)
     nonce: conint(ge=0, le=18446744073709551615)
-    public_key: KeyHandle
+    public_key: PublicKeyHandle
 
 class StateChangeWithCauseViewGasKeyNonceUpdate(BaseModel):
     cause: StateChangeCauseView
