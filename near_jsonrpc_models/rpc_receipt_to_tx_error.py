@@ -35,6 +35,32 @@ class RpcReceiptToTxErrorInternalError(BaseModel):
     info: RpcReceiptToTxErrorInternalErrorInfo
     name: Literal['INTERNAL_ERROR']
 
-class RpcReceiptToTxError(RootModel[Union[RpcReceiptToTxErrorUnknownReceipt, RpcReceiptToTxErrorDepthExceeded, RpcReceiptToTxErrorUnsupported, RpcReceiptToTxErrorInternalError]]):
+class RpcReceiptToTxErrorOutcomesNotStored(BaseModel):
+    name: Literal['OUTCOMES_NOT_STORED']
+
+class RpcReceiptToTxErrorWindowTooLargeInfo(BaseModel):
+    maximum: conint(ge=0, le=18446744073709551615)
+    requested: conint(ge=0, le=18446744073709551615)
+
+class RpcReceiptToTxErrorWindowTooLarge(BaseModel):
+    info: RpcReceiptToTxErrorWindowTooLargeInfo
+    name: Literal['WINDOW_TOO_LARGE']
+
+class RpcReceiptToTxErrorMalformedHintInfo(BaseModel):
+    error_message: str
+
+class RpcReceiptToTxErrorMalformedHint(BaseModel):
+    info: RpcReceiptToTxErrorMalformedHintInfo
+    name: Literal['MALFORMED_HINT']
+
+class RpcReceiptToTxErrorBudgetExceededInfo(BaseModel):
+    limit: conint(ge=0, le=18446744073709551615)
+    scanned: conint(ge=0, le=18446744073709551615)
+
+class RpcReceiptToTxErrorBudgetExceeded(BaseModel):
+    info: RpcReceiptToTxErrorBudgetExceededInfo
+    name: Literal['BUDGET_EXCEEDED']
+
+class RpcReceiptToTxError(RootModel[Union[RpcReceiptToTxErrorUnknownReceipt, RpcReceiptToTxErrorDepthExceeded, RpcReceiptToTxErrorUnsupported, RpcReceiptToTxErrorInternalError, RpcReceiptToTxErrorOutcomesNotStored, RpcReceiptToTxErrorWindowTooLarge, RpcReceiptToTxErrorMalformedHint, RpcReceiptToTxErrorBudgetExceeded]]):
     pass
 
