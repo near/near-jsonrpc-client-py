@@ -1081,6 +1081,13 @@ if TYPE_CHECKING:
     from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorUnsupported
     from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorInternalErrorInfo
     from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorInternalError
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorOutcomesNotStored
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorWindowTooLargeInfo
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorWindowTooLarge
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorMalformedHintInfo
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorMalformedHint
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorBudgetExceededInfo
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorBudgetExceeded
     from .rpc_receipt_to_tx_error import RpcReceiptToTxError
     from .rpc_validator_response import RpcValidatorResponse
     from .rpc_transaction_status_request import RpcTransactionStatusRequestSignedTxBase64
@@ -1991,14 +1998,21 @@ __all__ = [
     'RpcReceiptRequest',
     'RpcReceiptResponse',
     'RpcReceiptToTxError',
+    'RpcReceiptToTxErrorBudgetExceeded',
+    'RpcReceiptToTxErrorBudgetExceededInfo',
     'RpcReceiptToTxErrorDepthExceeded',
     'RpcReceiptToTxErrorDepthExceededInfo',
     'RpcReceiptToTxErrorInternalError',
     'RpcReceiptToTxErrorInternalErrorInfo',
+    'RpcReceiptToTxErrorMalformedHint',
+    'RpcReceiptToTxErrorMalformedHintInfo',
+    'RpcReceiptToTxErrorOutcomesNotStored',
     'RpcReceiptToTxErrorUnknownReceipt',
     'RpcReceiptToTxErrorUnknownReceiptInfo',
     'RpcReceiptToTxErrorUnsupported',
     'RpcReceiptToTxErrorUnsupportedInfo',
+    'RpcReceiptToTxErrorWindowTooLarge',
+    'RpcReceiptToTxErrorWindowTooLargeInfo',
     'RpcReceiptToTxRequest',
     'RpcReceiptToTxResponse',
     'RpcRequestValidationErrorKind',
@@ -3384,6 +3398,13 @@ _CLASS_TO_MODULE = {
     'RpcReceiptToTxErrorUnsupported': 'rpc_receipt_to_tx_error',
     'RpcReceiptToTxErrorInternalErrorInfo': 'rpc_receipt_to_tx_error',
     'RpcReceiptToTxErrorInternalError': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorOutcomesNotStored': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorWindowTooLargeInfo': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorWindowTooLarge': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorMalformedHintInfo': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorMalformedHint': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorBudgetExceededInfo': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorBudgetExceeded': 'rpc_receipt_to_tx_error',
     'RpcReceiptToTxError': 'rpc_receipt_to_tx_error',
     'RpcValidatorResponse': 'rpc_validator_response',
     'RpcTransactionStatusRequestSignedTxBase64': 'rpc_transaction_status_request',
