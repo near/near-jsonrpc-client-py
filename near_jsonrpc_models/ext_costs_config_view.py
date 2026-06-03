@@ -160,6 +160,9 @@ class ExtCostsConfigView(BaseModel):
     yield_create_base: NearGas = None
     # Per byte cost of arguments and method name.
     yield_create_byte: NearGas = None
+    # Base cost for creating a yield promise with a user-provided yield ID
+    # (covers the additional trie writes for the yield_id<->data_id mapping).
+    yield_create_with_id_base: NearGas = None
     # Base cost for resuming a yield receipt.
     yield_resume_base: NearGas = None
     # Per byte cost of resume payload.
