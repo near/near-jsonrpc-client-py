@@ -7,6 +7,8 @@ from pydantic import conint
 
 
 class VMConfigView(BaseModel):
+    # See [VMConfig::bls12381_not_in_group_fix](crate::vm::Config::bls12381_not_in_group_fix).
+    bls12381_not_in_group_fix: bool = None
     # See [VMConfig::chain_id_host_fn](crate::vm::Config::chain_id_host_fn).
     chain_id_host_fn: bool = None
     # See [VMConfig::discard_custom_sections](crate::vm::Config::discard_custom_sections).
