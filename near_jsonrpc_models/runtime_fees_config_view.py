@@ -3,6 +3,7 @@
 from near_jsonrpc_models.action_creation_config_view import ActionCreationConfigView
 from near_jsonrpc_models.data_receipt_creation_config_view import DataReceiptCreationConfigView
 from near_jsonrpc_models.fee import Fee
+from near_jsonrpc_models.near_gas import NearGas
 from near_jsonrpc_models.storage_usage_config_view import StorageUsageConfigView
 from pydantic import BaseModel
 from pydantic import conint
@@ -23,6 +24,9 @@ class RuntimeFeesConfigView(BaseModel):
     burnt_gas_reward: conlist(conint(ge=-2147483648, le=2147483647), min_length=2, max_length=2) = None
     # Describes the cost of creating a data receipt, `DataReceipt`.
     data_receipt_creation_config: DataReceiptCreationConfigView = None
+    # Describes the extra cost of verifying an ML-DSA-65 signature above the
+    # cost of verifying the standard signature types.
+    ml_dsa_65_verification_cost: NearGas = None
     # Pessimistic gas price inflation ratio.
     pessimistic_gas_price_inflation_ratio: conlist(conint(ge=-2147483648, le=2147483647), min_length=2, max_length=2) = None
     # Describes fees for storage.
