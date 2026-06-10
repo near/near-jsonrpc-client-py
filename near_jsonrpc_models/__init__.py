@@ -930,6 +930,7 @@ if TYPE_CHECKING:
     from .json_rpc_response_for_rpc_state_changes_in_block_by_type_response_and_rpc_state_changes_error import JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesErrorError
     from .json_rpc_response_for_rpc_state_changes_in_block_by_type_response_and_rpc_state_changes_error import JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesError
     from .json_rpc_request_for_next_light_client_block import JsonRpcRequestForNextLightClientBlock
+    from .spice_chunk_endorsement_stats import SpiceChunkEndorsementStats
     from .deposit_cost_failure_reason import DepositCostFailureReason
     from .state_item import StateItem
     from .action_error import ActionError
@@ -2216,6 +2217,7 @@ __all__ = [
     'SignedTransaction',
     'SignedTransactionView',
     'SlashedValidator',
+    'SpiceChunkEndorsementStats',
     'StakeAction',
     'StateChangeCauseView',
     'StateChangeCauseViewActionReceiptGasReward',
@@ -3247,6 +3249,7 @@ _CLASS_TO_MODULE = {
     'JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesErrorError': 'json_rpc_response_for_rpc_state_changes_in_block_by_type_response_and_rpc_state_changes_error',
     'JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesError': 'json_rpc_response_for_rpc_state_changes_in_block_by_type_response_and_rpc_state_changes_error',
     'JsonRpcRequestForNextLightClientBlock': 'json_rpc_request_for_next_light_client_block',
+    'SpiceChunkEndorsementStats': 'spice_chunk_endorsement_stats',
     'DepositCostFailureReason': 'deposit_cost_failure_reason',
     'StateItem': 'state_item',
     'ActionError': 'action_error',

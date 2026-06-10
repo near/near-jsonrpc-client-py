@@ -7,6 +7,7 @@ from near_jsonrpc_models.near_token import NearToken
 from near_jsonrpc_models.shard_id import ShardId
 from near_jsonrpc_models.signature import Signature
 from near_jsonrpc_models.slashed_validator import SlashedValidator
+from near_jsonrpc_models.spice_chunk_endorsement_stats import SpiceChunkEndorsementStats
 from near_jsonrpc_models.validator_stake_view import ValidatorStakeView
 from pydantic import BaseModel
 from pydantic import Field
@@ -50,6 +51,7 @@ class BlockHeaderView(BaseModel):
     shard_split: Tuple[ShardId, AccountId] | None = None
     # Signature of the block producer.
     signature: Signature
+    spice_chunk_endorsement_stats: List[SpiceChunkEndorsementStats] | None = None
     # Legacy json number. Should not be used.
     timestamp: conint(ge=0, le=18446744073709551615)
     timestamp_nanosec: str
