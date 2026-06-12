@@ -255,6 +255,7 @@ if TYPE_CHECKING:
     from .invalid_access_key_error import InvalidAccessKeyErrorNotEnoughAllowancePayload
     from .invalid_access_key_error import InvalidAccessKeyErrorNotEnoughAllowance
     from .invalid_access_key_error import InvalidAccessKeyErrorDepositWithFunctionCall
+    from .invalid_access_key_error import InvalidAccessKeyErrorDelegateActionRequiresNonGasKey
     from .invalid_access_key_error import InvalidAccessKeyError
     from .function_call_permission import FunctionCallPermission
     from .receipt_validation_error import ReceiptValidationErrorInvalidPredecessorIdPayload
@@ -1593,6 +1594,7 @@ __all__ = [
     'InvalidAccessKeyError',
     'InvalidAccessKeyErrorAccessKeyNotFound',
     'InvalidAccessKeyErrorAccessKeyNotFoundPayload',
+    'InvalidAccessKeyErrorDelegateActionRequiresNonGasKey',
     'InvalidAccessKeyErrorDepositWithFunctionCall',
     'InvalidAccessKeyErrorMethodNameMismatch',
     'InvalidAccessKeyErrorMethodNameMismatchPayload',
@@ -2582,6 +2584,7 @@ _CLASS_TO_MODULE = {
     'InvalidAccessKeyErrorNotEnoughAllowancePayload': 'invalid_access_key_error',
     'InvalidAccessKeyErrorNotEnoughAllowance': 'invalid_access_key_error',
     'InvalidAccessKeyErrorDepositWithFunctionCall': 'invalid_access_key_error',
+    'InvalidAccessKeyErrorDelegateActionRequiresNonGasKey': 'invalid_access_key_error',
     'InvalidAccessKeyError': 'invalid_access_key_error',
     'FunctionCallPermission': 'function_call_permission',
     'ReceiptValidationErrorInvalidPredecessorIdPayload': 'receipt_validation_error',
