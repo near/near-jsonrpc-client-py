@@ -50,6 +50,8 @@ if TYPE_CHECKING:
     from .action_error_kind import ActionErrorKindInsufficientGasKeyBalance
     from .action_error_kind import ActionErrorKindGasKeyBalanceTooHighPayload
     from .action_error_kind import ActionErrorKindGasKeyBalanceTooHigh
+    from .action_error_kind import ActionErrorKindDelegateActionInvalidNonceIndexPayload
+    from .action_error_kind import ActionErrorKindDelegateActionInvalidNonceIndex
     from .action_error_kind import ActionErrorKind
     from .rpc_light_client_next_block_request import RpcLightClientNextBlockRequest
     from .error_wrapper_for_rpc_client_config_error import ErrorWrapperForRpcClientConfigErrorRequestValidationError
@@ -86,6 +88,7 @@ if TYPE_CHECKING:
     from .delete_key_action import DeleteKeyAction
     from .gas_key_info import GasKeyInfo
     from .storage_usage_config_view import StorageUsageConfigView
+    from .delegate_action_v2 import DelegateActionV2
     from .error_wrapper_for_rpc_status_error import ErrorWrapperForRpcStatusErrorRequestValidationError
     from .error_wrapper_for_rpc_status_error import ErrorWrapperForRpcStatusErrorHandlerError
     from .error_wrapper_for_rpc_status_error import ErrorWrapperForRpcStatusErrorInternalError
@@ -256,6 +259,7 @@ if TYPE_CHECKING:
     from .invalid_access_key_error import InvalidAccessKeyErrorNotEnoughAllowance
     from .invalid_access_key_error import InvalidAccessKeyErrorDepositWithFunctionCall
     from .invalid_access_key_error import InvalidAccessKeyErrorDelegateActionRequiresNonGasKey
+    from .invalid_access_key_error import InvalidAccessKeyErrorDelegateActionRequiresGasKey
     from .invalid_access_key_error import InvalidAccessKeyError
     from .function_call_permission import FunctionCallPermission
     from .receipt_validation_error import ReceiptValidationErrorInvalidPredecessorIdPayload
@@ -674,6 +678,8 @@ if TYPE_CHECKING:
     from .rpc_protocol_config_error import RpcProtocolConfigError
     from .slashed_validator import SlashedValidator
     from .peer_id import PeerId
+    from .versioned_delegate_action_payload import VersionedDelegateActionPayloadV2
+    from .versioned_delegate_action_payload import VersionedDelegateActionPayload
     from .json_rpc_request_for_client_config import JsonRpcRequestForClientConfig
     from .rpc_light_client_block_proof_response import RpcLightClientBlockProofResponse
     from .json_rpc_response_for_genesis_config_and_genesis_config_error import JsonRpcResponseForGenesisConfigAndGenesisConfigErrorResult
@@ -732,6 +738,7 @@ if TYPE_CHECKING:
     from .execution_metadata_view import ExecutionMetadataView
     from .shard_id import ShardId
     from .delete_account_action import DeleteAccountAction
+    from .versioned_signed_delegate_action import VersionedSignedDelegateAction
     from .json_rpc_request_for_experimental_changes import JsonRpcRequestForExperimentalChanges
     from .rpc_call_function_request import RpcCallFunctionRequestBlockId
     from .rpc_call_function_request import RpcCallFunctionRequestFinality
@@ -847,6 +854,11 @@ if TYPE_CHECKING:
     from .access_key_list import AccessKeyList
     from .method_resolve_error import MethodResolveError
     from .contract_code_view import ContractCodeView
+    from .transaction_nonce import TransactionNonceNoncePayload
+    from .transaction_nonce import TransactionNonceNonce
+    from .transaction_nonce import TransactionNonceGasKeyNoncePayload
+    from .transaction_nonce import TransactionNonceGasKeyNonce
+    from .transaction_nonce import TransactionNonce
     from .bandwidth_request_bitmap import BandwidthRequestBitmap
     from .validator_stake_view import ValidatorStakeViewValidatorStakeStructVersion
     from .validator_stake_view import ValidatorStakeView
@@ -949,6 +961,8 @@ if TYPE_CHECKING:
     from .action_view import ActionViewDeleteAccount
     from .action_view import ActionViewDelegatePayload
     from .action_view import ActionViewDelegate
+    from .action_view import ActionViewDelegateV2Payload
+    from .action_view import ActionViewDelegateV2
     from .action_view import ActionViewDeployGlobalContractPayload
     from .action_view import ActionViewDeployGlobalContract
     from .action_view import ActionViewDeployGlobalContractByAccountIdPayload
@@ -1214,6 +1228,8 @@ __all__ = [
     'ActionErrorKindDelegateActionAccessKeyError',
     'ActionErrorKindDelegateActionExpired',
     'ActionErrorKindDelegateActionInvalidNonce',
+    'ActionErrorKindDelegateActionInvalidNonceIndex',
+    'ActionErrorKindDelegateActionInvalidNonceIndexPayload',
     'ActionErrorKindDelegateActionInvalidNoncePayload',
     'ActionErrorKindDelegateActionInvalidSignature',
     'ActionErrorKindDelegateActionNonceTooLarge',
@@ -1252,6 +1268,8 @@ __all__ = [
     'ActionViewCreateAccount',
     'ActionViewDelegate',
     'ActionViewDelegatePayload',
+    'ActionViewDelegateV2',
+    'ActionViewDelegateV2Payload',
     'ActionViewDeleteAccount',
     'ActionViewDeleteAccountPayload',
     'ActionViewDeleteKey',
@@ -1356,6 +1374,7 @@ __all__ = [
     'DataReceiptCreationConfigView',
     'DataReceiverView',
     'DelegateAction',
+    'DelegateActionV2',
     'DeleteAccountAction',
     'DeleteGasKeyAction',
     'DeleteKeyAction',
@@ -1594,6 +1613,7 @@ __all__ = [
     'InvalidAccessKeyError',
     'InvalidAccessKeyErrorAccessKeyNotFound',
     'InvalidAccessKeyErrorAccessKeyNotFoundPayload',
+    'InvalidAccessKeyErrorDelegateActionRequiresGasKey',
     'InvalidAccessKeyErrorDelegateActionRequiresNonGasKey',
     'InvalidAccessKeyErrorDepositWithFunctionCall',
     'InvalidAccessKeyErrorMethodNameMismatch',
@@ -2293,6 +2313,11 @@ __all__ = [
     'TrackedShardsConfigSchedule',
     'TrackedShardsConfigShadowValidator',
     'TrackedShardsConfigShards',
+    'TransactionNonce',
+    'TransactionNonceGasKeyNonce',
+    'TransactionNonceGasKeyNoncePayload',
+    'TransactionNonceNonce',
+    'TransactionNonceNoncePayload',
     'TransferAction',
     'TransferToGasKeyAction',
     'TrieSplit',
@@ -2323,6 +2348,9 @@ __all__ = [
     'ValidatorStakeViewV1',
     'ValidatorStakeViewValidatorStakeStructVersion',
     'Version',
+    'VersionedDelegateActionPayload',
+    'VersionedDelegateActionPayloadV2',
+    'VersionedSignedDelegateAction',
     'ViewStateResult',
     'WasmTrap',
     'WithdrawFromGasKeyAction',
@@ -2379,6 +2407,8 @@ _CLASS_TO_MODULE = {
     'ActionErrorKindInsufficientGasKeyBalance': 'action_error_kind',
     'ActionErrorKindGasKeyBalanceTooHighPayload': 'action_error_kind',
     'ActionErrorKindGasKeyBalanceTooHigh': 'action_error_kind',
+    'ActionErrorKindDelegateActionInvalidNonceIndexPayload': 'action_error_kind',
+    'ActionErrorKindDelegateActionInvalidNonceIndex': 'action_error_kind',
     'ActionErrorKind': 'action_error_kind',
     'RpcLightClientNextBlockRequest': 'rpc_light_client_next_block_request',
     'ErrorWrapperForRpcClientConfigErrorRequestValidationError': 'error_wrapper_for_rpc_client_config_error',
@@ -2415,6 +2445,7 @@ _CLASS_TO_MODULE = {
     'DeleteKeyAction': 'delete_key_action',
     'GasKeyInfo': 'gas_key_info',
     'StorageUsageConfigView': 'storage_usage_config_view',
+    'DelegateActionV2': 'delegate_action_v2',
     'ErrorWrapperForRpcStatusErrorRequestValidationError': 'error_wrapper_for_rpc_status_error',
     'ErrorWrapperForRpcStatusErrorHandlerError': 'error_wrapper_for_rpc_status_error',
     'ErrorWrapperForRpcStatusErrorInternalError': 'error_wrapper_for_rpc_status_error',
@@ -2585,6 +2616,7 @@ _CLASS_TO_MODULE = {
     'InvalidAccessKeyErrorNotEnoughAllowance': 'invalid_access_key_error',
     'InvalidAccessKeyErrorDepositWithFunctionCall': 'invalid_access_key_error',
     'InvalidAccessKeyErrorDelegateActionRequiresNonGasKey': 'invalid_access_key_error',
+    'InvalidAccessKeyErrorDelegateActionRequiresGasKey': 'invalid_access_key_error',
     'InvalidAccessKeyError': 'invalid_access_key_error',
     'FunctionCallPermission': 'function_call_permission',
     'ReceiptValidationErrorInvalidPredecessorIdPayload': 'receipt_validation_error',
@@ -3003,6 +3035,8 @@ _CLASS_TO_MODULE = {
     'RpcProtocolConfigError': 'rpc_protocol_config_error',
     'SlashedValidator': 'slashed_validator',
     'PeerId': 'peer_id',
+    'VersionedDelegateActionPayloadV2': 'versioned_delegate_action_payload',
+    'VersionedDelegateActionPayload': 'versioned_delegate_action_payload',
     'JsonRpcRequestForClientConfig': 'json_rpc_request_for_client_config',
     'RpcLightClientBlockProofResponse': 'rpc_light_client_block_proof_response',
     'JsonRpcResponseForGenesisConfigAndGenesisConfigErrorResult': 'json_rpc_response_for_genesis_config_and_genesis_config_error',
@@ -3061,6 +3095,7 @@ _CLASS_TO_MODULE = {
     'ExecutionMetadataView': 'execution_metadata_view',
     'ShardId': 'shard_id',
     'DeleteAccountAction': 'delete_account_action',
+    'VersionedSignedDelegateAction': 'versioned_signed_delegate_action',
     'JsonRpcRequestForExperimentalChanges': 'json_rpc_request_for_experimental_changes',
     'RpcCallFunctionRequestBlockId': 'rpc_call_function_request',
     'RpcCallFunctionRequestFinality': 'rpc_call_function_request',
@@ -3176,6 +3211,11 @@ _CLASS_TO_MODULE = {
     'AccessKeyList': 'access_key_list',
     'MethodResolveError': 'method_resolve_error',
     'ContractCodeView': 'contract_code_view',
+    'TransactionNonceNoncePayload': 'transaction_nonce',
+    'TransactionNonceNonce': 'transaction_nonce',
+    'TransactionNonceGasKeyNoncePayload': 'transaction_nonce',
+    'TransactionNonceGasKeyNonce': 'transaction_nonce',
+    'TransactionNonce': 'transaction_nonce',
     'BandwidthRequestBitmap': 'bandwidth_request_bitmap',
     'ValidatorStakeViewValidatorStakeStructVersion': 'validator_stake_view',
     'ValidatorStakeView': 'validator_stake_view',
@@ -3278,6 +3318,8 @@ _CLASS_TO_MODULE = {
     'ActionViewDeleteAccount': 'action_view',
     'ActionViewDelegatePayload': 'action_view',
     'ActionViewDelegate': 'action_view',
+    'ActionViewDelegateV2Payload': 'action_view',
+    'ActionViewDelegateV2': 'action_view',
     'ActionViewDeployGlobalContractPayload': 'action_view',
     'ActionViewDeployGlobalContract': 'action_view',
     'ActionViewDeployGlobalContractByAccountIdPayload': 'action_view',

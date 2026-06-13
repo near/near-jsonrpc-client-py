@@ -9,6 +9,7 @@ from near_jsonrpc_models.near_token import NearToken
 from near_jsonrpc_models.public_key import PublicKey
 from near_jsonrpc_models.signature import Signature
 from near_jsonrpc_models.strict_model import StrictBaseModel
+from near_jsonrpc_models.versioned_delegate_action_payload import VersionedDelegateActionPayload
 from pydantic import BaseModel
 from pydantic import RootModel
 from typing import Dict
@@ -73,6 +74,13 @@ class ActionViewDelegatePayload(BaseModel):
 class ActionViewDelegate(StrictBaseModel):
     Delegate: ActionViewDelegatePayload
 
+class ActionViewDelegateV2Payload(BaseModel):
+    delegate_action: VersionedDelegateActionPayload
+    signature: Signature
+
+class ActionViewDelegateV2(StrictBaseModel):
+    DelegateV2: ActionViewDelegateV2Payload
+
 class ActionViewDeployGlobalContractPayload(BaseModel):
     code: str
 
@@ -119,6 +127,6 @@ class ActionViewWithdrawFromGasKeyPayload(BaseModel):
 class ActionViewWithdrawFromGasKey(StrictBaseModel):
     WithdrawFromGasKey: ActionViewWithdrawFromGasKeyPayload
 
-class ActionView(RootModel[Union[ActionViewCreateAccount, ActionViewDeployContract, ActionViewFunctionCall, ActionViewTransfer, ActionViewStake, ActionViewAddKey, ActionViewDeleteKey, ActionViewDeleteAccount, ActionViewDelegate, ActionViewDeployGlobalContract, ActionViewDeployGlobalContractByAccountId, ActionViewUseGlobalContract, ActionViewUseGlobalContractByAccountId, ActionViewDeterministicStateInit, ActionViewTransferToGasKey, ActionViewWithdrawFromGasKey]]):
+class ActionView(RootModel[Union[ActionViewCreateAccount, ActionViewDeployContract, ActionViewFunctionCall, ActionViewTransfer, ActionViewStake, ActionViewAddKey, ActionViewDeleteKey, ActionViewDeleteAccount, ActionViewDelegate, ActionViewDelegateV2, ActionViewDeployGlobalContract, ActionViewDeployGlobalContractByAccountId, ActionViewUseGlobalContract, ActionViewUseGlobalContractByAccountId, ActionViewDeterministicStateInit, ActionViewTransferToGasKey, ActionViewWithdrawFromGasKey]]):
     pass
 
