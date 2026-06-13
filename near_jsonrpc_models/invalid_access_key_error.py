@@ -49,11 +49,16 @@ class InvalidAccessKeyErrorNotEnoughAllowance(StrictBaseModel):
 class InvalidAccessKeyErrorDepositWithFunctionCall(RootModel[Literal['DepositWithFunctionCall']]):
     pass
 
-"""Gas keys track nonces per index in dedicated storage, which the delegate
-action path does not support, so a gas key can't sign a delegate action."""
+"""Gas keys track nonces per index in dedicated storage, which a plain
+access key nonce does not select, so a gas key must sign a `DelegateV2`
+with a gas key nonce instead."""
 class InvalidAccessKeyErrorDelegateActionRequiresNonGasKey(RootModel[Literal['DelegateActionRequiresNonGasKey']]):
     pass
 
-class InvalidAccessKeyError(RootModel[Union[InvalidAccessKeyErrorAccessKeyNotFound, InvalidAccessKeyErrorReceiverMismatch, InvalidAccessKeyErrorMethodNameMismatch, InvalidAccessKeyErrorRequiresFullAccess, InvalidAccessKeyErrorNotEnoughAllowance, InvalidAccessKeyErrorDepositWithFunctionCall, InvalidAccessKeyErrorDelegateActionRequiresNonGasKey]]):
+"""A delegate action with a gas key nonce must be signed by a gas key."""
+class InvalidAccessKeyErrorDelegateActionRequiresGasKey(RootModel[Literal['DelegateActionRequiresGasKey']]):
+    pass
+
+class InvalidAccessKeyError(RootModel[Union[InvalidAccessKeyErrorAccessKeyNotFound, InvalidAccessKeyErrorReceiverMismatch, InvalidAccessKeyErrorMethodNameMismatch, InvalidAccessKeyErrorRequiresFullAccess, InvalidAccessKeyErrorNotEnoughAllowance, InvalidAccessKeyErrorDepositWithFunctionCall, InvalidAccessKeyErrorDelegateActionRequiresNonGasKey, InvalidAccessKeyErrorDelegateActionRequiresGasKey]]):
     pass
 
