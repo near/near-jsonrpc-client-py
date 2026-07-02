@@ -607,8 +607,6 @@ if TYPE_CHECKING:
     from .json_rpc_response_for_rpc_query_response_and_rpc_query_error import JsonRpcResponseForRpcQueryResponseAndRpcQueryErrorResult
     from .json_rpc_response_for_rpc_query_response_and_rpc_query_error import JsonRpcResponseForRpcQueryResponseAndRpcQueryErrorError
     from .json_rpc_response_for_rpc_query_response_and_rpc_query_error import JsonRpcResponseForRpcQueryResponseAndRpcQueryError
-    from .sync_config import SyncConfigPeers
-    from .sync_config import SyncConfigExternalStorage
     from .sync_config import SyncConfig
     from .json_rpc_request_for_experimental_receipt_to_tx import JsonRpcRequestForExperimentalReceiptToTx
     from .json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error import JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyErrorResult
@@ -2303,8 +2301,6 @@ __all__ = [
     'SyncCheckpoint',
     'SyncConcurrency',
     'SyncConfig',
-    'SyncConfigExternalStorage',
-    'SyncConfigPeers',
     'Tier1ProxyView',
     'TrackedShardsConfig',
     'TrackedShardsConfigAccounts',
@@ -2964,8 +2960,6 @@ _CLASS_TO_MODULE = {
     'JsonRpcResponseForRpcQueryResponseAndRpcQueryErrorResult': 'json_rpc_response_for_rpc_query_response_and_rpc_query_error',
     'JsonRpcResponseForRpcQueryResponseAndRpcQueryErrorError': 'json_rpc_response_for_rpc_query_response_and_rpc_query_error',
     'JsonRpcResponseForRpcQueryResponseAndRpcQueryError': 'json_rpc_response_for_rpc_query_response_and_rpc_query_error',
-    'SyncConfigPeers': 'sync_config',
-    'SyncConfigExternalStorage': 'sync_config',
     'SyncConfig': 'sync_config',
     'JsonRpcRequestForExperimentalReceiptToTx': 'json_rpc_request_for_experimental_receipt_to_tx',
     'JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyErrorResult': 'json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error',

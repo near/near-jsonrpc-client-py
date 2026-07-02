@@ -174,9 +174,7 @@ class RpcClientConfigResponse(BaseModel):
     state_requests_per_throttle_period: conint(ge=0, le=4294967295) = None
     # Options for syncing state.
     state_sync: StateSyncConfig = None
-    # Additional waiting period after a failed request to external storage
-    state_sync_external_backoff: conlist(conint(ge=0, le=18446744073709551615), min_length=2, max_length=2) = None
-    # How long to wait for a response from centralized state sync
+    # How long to wait for a state sync block request response
     state_sync_external_timeout: conlist(conint(ge=0, le=18446744073709551615), min_length=2, max_length=2) = None
     # How long to wait for a response from p2p state sync
     state_sync_p2p_timeout: conlist(conint(ge=0, le=18446744073709551615), min_length=2, max_length=2) = None
