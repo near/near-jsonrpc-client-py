@@ -90,6 +90,10 @@ class ExtCostsConfigView(BaseModel):
     sha256_base: NearGas = None
     # Cost of getting sha256 per byte
     sha256_byte: NearGas = None
+    # Cost of getting sha3-256 base
+    sha3_256_base: NearGas = None
+    # Cost of getting sha3-256 per byte
+    sha3_256_byte: NearGas = None
     # Storage trie check for key existence cost base
     storage_has_key_base: NearGas = None
     # Storage trie check for key existence per key byte
