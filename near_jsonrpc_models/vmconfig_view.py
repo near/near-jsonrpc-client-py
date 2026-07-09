@@ -44,6 +44,8 @@ class VMConfigView(BaseModel):
     reftypes_bulk_memory: bool = None
     # Gas cost of a regular operation.
     regular_op_cost: conint(ge=0, le=4294967295) = None
+    # See [VMConfig::sha3_host_fns](crate::vm::Config::sha3_host_fns).
+    sha3_host_fns: bool = None
     # See [VMConfig::storage_get_mode](crate::vm::Config::storage_get_mode).
     storage_get_mode: StorageGetMode = None
     # See [VMConfig::vm_kind](crate::vm::Config::vm_kind).
