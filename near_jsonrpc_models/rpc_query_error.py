@@ -91,6 +91,16 @@ class RpcQueryErrorUnknownGasKey(BaseModel):
     info: RpcQueryErrorUnknownGasKeyInfo
     name: Literal['UNKNOWN_GAS_KEY']
 
+class RpcQueryErrorTooManyAccessKeysInfo(BaseModel):
+    block_hash: CryptoHash
+    block_height: conint(ge=0, le=18446744073709551615)
+    limit: conint(ge=0, le=4294967295)
+    requested_account_id: AccountId
+
+class RpcQueryErrorTooManyAccessKeys(BaseModel):
+    info: RpcQueryErrorTooManyAccessKeysInfo
+    name: Literal['TOO_MANY_ACCESS_KEYS']
+
 class RpcQueryErrorContractExecutionErrorInfo(BaseModel):
     block_hash: CryptoHash
     block_height: conint(ge=0, le=18446744073709551615)
@@ -117,6 +127,6 @@ class RpcQueryErrorInternalError(BaseModel):
     info: RpcQueryErrorInternalErrorInfo
     name: Literal['INTERNAL_ERROR']
 
-class RpcQueryError(RootModel[Union[RpcQueryErrorNoSyncedBlocks, RpcQueryErrorUnavailableShard, RpcQueryErrorGarbageCollectedBlock, RpcQueryErrorUnknownBlock, RpcQueryErrorInvalidAccount, RpcQueryErrorUnknownAccount, RpcQueryErrorNoContractCode, RpcQueryErrorTooLargeContractState, RpcQueryErrorUnknownAccessKey, RpcQueryErrorUnknownGasKey, RpcQueryErrorContractExecutionError, RpcQueryErrorNoGlobalContractCode, RpcQueryErrorInternalError]]):
+class RpcQueryError(RootModel[Union[RpcQueryErrorNoSyncedBlocks, RpcQueryErrorUnavailableShard, RpcQueryErrorGarbageCollectedBlock, RpcQueryErrorUnknownBlock, RpcQueryErrorInvalidAccount, RpcQueryErrorUnknownAccount, RpcQueryErrorNoContractCode, RpcQueryErrorTooLargeContractState, RpcQueryErrorUnknownAccessKey, RpcQueryErrorUnknownGasKey, RpcQueryErrorTooManyAccessKeys, RpcQueryErrorContractExecutionError, RpcQueryErrorNoGlobalContractCode, RpcQueryErrorInternalError]]):
     pass
 

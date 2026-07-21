@@ -347,6 +347,7 @@ if TYPE_CHECKING:
     from .actions_validation_error import ActionsValidationErrorGasKeyFunctionCallAllowanceNotAllowed
     from .actions_validation_error import ActionsValidationErrorTotalNumberOfDeployActionsExceededPayload
     from .actions_validation_error import ActionsValidationErrorTotalNumberOfDeployActionsExceeded
+    from .actions_validation_error import ActionsValidationErrorFunctionCallEmptyMethodName
     from .actions_validation_error import ActionsValidationError
     from .epoch_sync_config import EpochSyncConfig
     from .external_storage_location import ExternalStorageLocationS3Payload
@@ -1087,6 +1088,8 @@ if TYPE_CHECKING:
     from .rpc_query_error import RpcQueryErrorUnknownAccessKey
     from .rpc_query_error import RpcQueryErrorUnknownGasKeyInfo
     from .rpc_query_error import RpcQueryErrorUnknownGasKey
+    from .rpc_query_error import RpcQueryErrorTooManyAccessKeysInfo
+    from .rpc_query_error import RpcQueryErrorTooManyAccessKeys
     from .rpc_query_error import RpcQueryErrorContractExecutionErrorInfo
     from .rpc_query_error import RpcQueryErrorContractExecutionError
     from .rpc_query_error import RpcQueryErrorNoGlobalContractCodeInfo
@@ -1311,6 +1314,7 @@ __all__ = [
     'ActionsValidationErrorDeterministicStateInitValueLengthExceededPayload',
     'ActionsValidationErrorFunctionCallArgumentsLengthExceeded',
     'ActionsValidationErrorFunctionCallArgumentsLengthExceededPayload',
+    'ActionsValidationErrorFunctionCallEmptyMethodName',
     'ActionsValidationErrorFunctionCallMethodNameLengthExceeded',
     'ActionsValidationErrorFunctionCallMethodNameLengthExceededPayload',
     'ActionsValidationErrorFunctionCallZeroAttachedGas',
@@ -1973,6 +1977,8 @@ __all__ = [
     'RpcQueryErrorNoSyncedBlocks',
     'RpcQueryErrorTooLargeContractState',
     'RpcQueryErrorTooLargeContractStateInfo',
+    'RpcQueryErrorTooManyAccessKeys',
+    'RpcQueryErrorTooManyAccessKeysInfo',
     'RpcQueryErrorUnavailableShard',
     'RpcQueryErrorUnavailableShardInfo',
     'RpcQueryErrorUnknownAccessKey',
@@ -2700,6 +2706,7 @@ _CLASS_TO_MODULE = {
     'ActionsValidationErrorGasKeyFunctionCallAllowanceNotAllowed': 'actions_validation_error',
     'ActionsValidationErrorTotalNumberOfDeployActionsExceededPayload': 'actions_validation_error',
     'ActionsValidationErrorTotalNumberOfDeployActionsExceeded': 'actions_validation_error',
+    'ActionsValidationErrorFunctionCallEmptyMethodName': 'actions_validation_error',
     'ActionsValidationError': 'actions_validation_error',
     'EpochSyncConfig': 'epoch_sync_config',
     'ExternalStorageLocationS3Payload': 'external_storage_location',
@@ -3440,6 +3447,8 @@ _CLASS_TO_MODULE = {
     'RpcQueryErrorUnknownAccessKey': 'rpc_query_error',
     'RpcQueryErrorUnknownGasKeyInfo': 'rpc_query_error',
     'RpcQueryErrorUnknownGasKey': 'rpc_query_error',
+    'RpcQueryErrorTooManyAccessKeysInfo': 'rpc_query_error',
+    'RpcQueryErrorTooManyAccessKeys': 'rpc_query_error',
     'RpcQueryErrorContractExecutionErrorInfo': 'rpc_query_error',
     'RpcQueryErrorContractExecutionError': 'rpc_query_error',
     'RpcQueryErrorNoGlobalContractCodeInfo': 'rpc_query_error',
