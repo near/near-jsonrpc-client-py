@@ -4,6 +4,7 @@ from near_jsonrpc_models.crypto_hash import CryptoHash
 from near_jsonrpc_models.finality import Finality
 from near_jsonrpc_models.function_args import FunctionArgs
 from near_jsonrpc_models.public_key import PublicKey
+from near_jsonrpc_models.public_key_handle import PublicKeyHandle
 from near_jsonrpc_models.store_key import StoreKey
 from near_jsonrpc_models.sync_checkpoint import SyncCheckpoint
 from pydantic import BaseModel
@@ -41,6 +42,8 @@ class RpcQueryRequestViewAccessKeyByBlockId(BaseModel):
 class RpcQueryRequestViewAccessKeyListByBlockId(BaseModel):
     block_id: BlockId
     account_id: AccountId
+    after_key: PublicKeyHandle | None = None
+    limit: conint(ge=1, le=4294967295) | None = None
     request_type: Literal['view_access_key_list']
 
 class RpcQueryRequestViewGasKeyNoncesByBlockId(BaseModel):
@@ -94,6 +97,8 @@ class RpcQueryRequestViewAccessKeyByFinality(BaseModel):
 class RpcQueryRequestViewAccessKeyListByFinality(BaseModel):
     finality: Finality
     account_id: AccountId
+    after_key: PublicKeyHandle | None = None
+    limit: conint(ge=1, le=4294967295) | None = None
     request_type: Literal['view_access_key_list']
 
 class RpcQueryRequestViewGasKeyNoncesByFinality(BaseModel):
@@ -147,6 +152,8 @@ class RpcQueryRequestViewAccessKeyBySyncCheckpoint(BaseModel):
 class RpcQueryRequestViewAccessKeyListBySyncCheckpoint(BaseModel):
     sync_checkpoint: SyncCheckpoint
     account_id: AccountId
+    after_key: PublicKeyHandle | None = None
+    limit: conint(ge=1, le=4294967295) | None = None
     request_type: Literal['view_access_key_list']
 
 class RpcQueryRequestViewGasKeyNoncesBySyncCheckpoint(BaseModel):

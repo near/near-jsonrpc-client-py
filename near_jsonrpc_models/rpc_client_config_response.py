@@ -206,5 +206,8 @@ class RpcClientConfigResponse(BaseModel):
     tx_routing_height_horizon: conint(ge=0, le=18446744073709551615) = None
     # Version of the binary.
     version: Version = None
+    # Upper bound on the number of access keys returned by a `view_access_key_list`
+    # query.
+    view_access_keys_limit: conint(ge=0, le=4294967295) = None
     # Number of threads for ViewClientActor pool.
     view_client_threads: conint(ge=0, le=4294967295) = None
