@@ -7,6 +7,7 @@ from typing import List
 
 
 class ViewStateResult(BaseModel):
+    # Cursor to resume from: present when more entries remain, absent when the listing is complete.
     last_key: StoreKey | None = None
     proof: List[str] = None
     values: List[StateItem]
