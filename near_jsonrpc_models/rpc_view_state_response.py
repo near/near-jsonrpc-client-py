@@ -11,6 +11,7 @@ from typing import List
 class RpcViewStateResponse(BaseModel):
     block_hash: CryptoHash
     block_height: conint(ge=0, le=18446744073709551615)
+    # Cursor to resume from: present when more entries remain, absent when the listing is complete.
     last_key: StoreKey | None = None
     proof: List[str] = None
     values: List[StateItem]

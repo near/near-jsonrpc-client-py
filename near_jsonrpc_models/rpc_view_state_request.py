@@ -11,24 +11,30 @@ from typing import Union
 
 class RpcViewStateRequestBlockId(BaseModel):
     account_id: AccountId
+    # Resume listing after this key (exclusive); must start with `prefix`.
     after_key_base64: StoreKey | None = None
     include_proof: bool = False
+    # Maximum number of entries to return in this page.
     limit: conint(ge=1, le=4294967295) | None = None
     prefix_base64: StoreKey
     block_id: BlockId
 
 class RpcViewStateRequestFinality(BaseModel):
     account_id: AccountId
+    # Resume listing after this key (exclusive); must start with `prefix`.
     after_key_base64: StoreKey | None = None
     include_proof: bool = False
+    # Maximum number of entries to return in this page.
     limit: conint(ge=1, le=4294967295) | None = None
     prefix_base64: StoreKey
     finality: Finality
 
 class RpcViewStateRequestSyncCheckpoint(BaseModel):
     account_id: AccountId
+    # Resume listing after this key (exclusive); must start with `prefix`.
     after_key_base64: StoreKey | None = None
     include_proof: bool = False
+    # Maximum number of entries to return in this page.
     limit: conint(ge=1, le=4294967295) | None = None
     prefix_base64: StoreKey
     sync_checkpoint: SyncCheckpoint
