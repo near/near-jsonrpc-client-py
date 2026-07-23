@@ -505,6 +505,11 @@ if TYPE_CHECKING:
     from .global_contract_identifier_view import GlobalContractIdentifierViewAccountId
     from .global_contract_identifier_view import GlobalContractIdentifierView
     from .delegate_action import DelegateAction
+    from .timeout_error_cause import TimeoutErrorCauseCause
+    from .timeout_error_cause import TimeoutErrorCauseCauseStatus
+    from .timeout_error_cause import TimeoutErrorCauseCauseShardId
+    from .timeout_error_cause import TimeoutErrorCauseCauseDebugInfo
+    from .timeout_error_cause import TimeoutErrorCause
     from .block_id import BlockIdBlockHeight
     from .block_id import BlockIdCryptoHash
     from .block_id import BlockId
@@ -2308,6 +2313,11 @@ __all__ = [
     'SyncConcurrency',
     'SyncConfig',
     'Tier1ProxyView',
+    'TimeoutErrorCause',
+    'TimeoutErrorCauseCause',
+    'TimeoutErrorCauseCauseDebugInfo',
+    'TimeoutErrorCauseCauseShardId',
+    'TimeoutErrorCauseCauseStatus',
     'TrackedShardsConfig',
     'TrackedShardsConfigAccounts',
     'TrackedShardsConfigAllShards',
@@ -2864,6 +2874,11 @@ _CLASS_TO_MODULE = {
     'GlobalContractIdentifierViewAccountId': 'global_contract_identifier_view',
     'GlobalContractIdentifierView': 'global_contract_identifier_view',
     'DelegateAction': 'delegate_action',
+    'TimeoutErrorCauseCause': 'timeout_error_cause',
+    'TimeoutErrorCauseCauseStatus': 'timeout_error_cause',
+    'TimeoutErrorCauseCauseShardId': 'timeout_error_cause',
+    'TimeoutErrorCauseCauseDebugInfo': 'timeout_error_cause',
+    'TimeoutErrorCause': 'timeout_error_cause',
     'BlockIdBlockHeight': 'block_id',
     'BlockIdCryptoHash': 'block_id',
     'BlockId': 'block_id',
