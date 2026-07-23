@@ -1,4 +1,5 @@
 from near_jsonrpc_models.crypto_hash import CryptoHash
+from near_jsonrpc_models.timeout_error_cause import TimeoutErrorCause
 from pydantic import BaseModel
 from pydantic import RootModel
 from typing import Any
@@ -36,6 +37,9 @@ class RpcTransactionErrorInternalError(BaseModel):
     name: Literal['INTERNAL_ERROR']
 
 class RpcTransactionErrorTimeoutError(BaseModel):
+    """`None` when the response comes from a node running an older version that omitted the
+cause, so newer clients can still parse it."""
+    info: TimeoutErrorCause | None = None
     name: Literal['TIMEOUT_ERROR']
 
 class RpcTransactionError(RootModel[Union[RpcTransactionErrorInvalidTransaction, RpcTransactionErrorDoesNotTrackShard, RpcTransactionErrorRequestRouted, RpcTransactionErrorUnknownTransaction, RpcTransactionErrorInternalError, RpcTransactionErrorTimeoutError]]):

@@ -15,13 +15,19 @@ from typing import Union
 
 class StateChangeWithCauseViewAccountUpdateChange(BaseModel):
     account_id: AccountId
+    # Liquid (non-staked) account balance, in yoctoNEAR.
     amount: NearToken
+    # Hash of the deployed contract code; the all-`1`s hash when no contract is deployed.
     code_hash: CryptoHash
+    # Set when the account uses a global contract referenced by the deploying account id.
     global_contract_account_id: AccountId | None = None
+    # Set when the account uses a global contract referenced by code hash.
     global_contract_hash: CryptoHash | None = None
+    # Staked balance locked for validation, in yoctoNEAR.
     locked: NearToken
-    # TODO(2271): deprecated.
+    # Deprecated and unused. TODO(2271): remove.
     storage_paid_at: conint(ge=0, le=18446744073709551615) = 0
+    # Total storage used by the account, in bytes.
     storage_usage: conint(ge=0, le=18446744073709551615)
 
 class StateChangeWithCauseViewAccountUpdate(BaseModel):
