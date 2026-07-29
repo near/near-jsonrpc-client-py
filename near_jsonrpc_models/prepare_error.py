@@ -6,12 +6,12 @@ This  most likely indicates the module isn't valid.Instantiate: Error happened d
 
 This might indicate that `start` function trapped, or module isn't
 instantiable and/or un-linkable.Memory: Error creating memory.TooManyFunctions: Contract contains too many functions.TooManyLocals: Contract contains too many locals.TooManyTables: Contract contains too many tables.TooManyTableElements: Contract contains too many table elements.FunctionBodyTooLarge: A function body in the contract exceeds the size limit.InstrumentedCodeTooLarge: The instrumented code exceeds the size limit.TooManyBlocksPerFunction: A function contains too many basic blocks.TooManyBlocksPerContract: A contract contains too many basic blocks.TooManyTypes: Contract declares too many entries in the wasm type section.TooManyParamsPerFunction: All contract functions combined have more than `max_params_per_contract` parameters.TooManyParamsPerContract: A function has more than `max_params_per_function` parameters.OperandStackTooLarge: A function's max operand-stack size (in bytes) exceeds
-`max_operand_stack_bytes_per_function`."""
+`max_operand_stack_bytes_per_function`.TooManyGlobals: Contract declares too many entries in the wasm global section."""
 
 from pydantic import RootModel
 from typing import Literal
 
 
-class PrepareError(RootModel[Literal['Serialization', 'Deserialization', 'InternalMemoryDeclared', 'GasInstrumentation', 'StackHeightInstrumentation', 'Instantiate', 'Memory', 'TooManyFunctions', 'TooManyLocals', 'TooManyTables', 'TooManyTableElements', 'FunctionBodyTooLarge', 'InstrumentedCodeTooLarge', 'TooManyBlocksPerFunction', 'TooManyBlocksPerContract', 'TooManyTypes', 'TooManyParamsPerFunction', 'TooManyParamsPerContract', 'OperandStackTooLarge']]):
+class PrepareError(RootModel[Literal['Serialization', 'Deserialization', 'InternalMemoryDeclared', 'GasInstrumentation', 'StackHeightInstrumentation', 'Instantiate', 'Memory', 'TooManyFunctions', 'TooManyLocals', 'TooManyTables', 'TooManyTableElements', 'FunctionBodyTooLarge', 'InstrumentedCodeTooLarge', 'TooManyBlocksPerFunction', 'TooManyBlocksPerContract', 'TooManyTypes', 'TooManyParamsPerFunction', 'TooManyParamsPerContract', 'OperandStackTooLarge', 'TooManyGlobals']]):
     pass
 
