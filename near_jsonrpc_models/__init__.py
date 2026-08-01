@@ -347,6 +347,8 @@ if TYPE_CHECKING:
     from .host_error import HostErrorEd25519VerifyInvalidInput
     from .host_error import HostErrorP256VerifyInvalidInputPayload
     from .host_error import HostErrorP256VerifyInvalidInput
+    from .host_error import HostErrorMlDsaVerifyInvalidInputPayload
+    from .host_error import HostErrorMlDsaVerifyInvalidInput
     from .host_error import HostError
     from .stake_action import StakeAction
     from .error_wrapper_for_rpc_view_account_error import ErrorWrapperForRpcViewAccountErrorRequestValidationError
@@ -1598,6 +1600,8 @@ __all__ = [
     'HostErrorKeyLengthExceeded',
     'HostErrorKeyLengthExceededPayload',
     'HostErrorMemoryAccessViolation',
+    'HostErrorMlDsaVerifyInvalidInput',
+    'HostErrorMlDsaVerifyInvalidInputPayload',
     'HostErrorNumberInputDataDependenciesExceeded',
     'HostErrorNumberInputDataDependenciesExceededPayload',
     'HostErrorNumberOfLogsExceeded',
@@ -2716,6 +2720,8 @@ _CLASS_TO_MODULE = {
     'HostErrorEd25519VerifyInvalidInput': 'host_error',
     'HostErrorP256VerifyInvalidInputPayload': 'host_error',
     'HostErrorP256VerifyInvalidInput': 'host_error',
+    'HostErrorMlDsaVerifyInvalidInputPayload': 'host_error',
+    'HostErrorMlDsaVerifyInvalidInput': 'host_error',
     'HostError': 'host_error',
     'StakeAction': 'stake_action',
     'ErrorWrapperForRpcViewAccountErrorRequestValidationError': 'error_wrapper_for_rpc_view_account_error',

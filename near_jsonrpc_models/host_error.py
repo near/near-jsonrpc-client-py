@@ -216,6 +216,16 @@ bytes or public key is not 33 bytes). Parse failures of otherwise
 well-sized inputs return 0 from the host function instead of aborting."""
     P256VerifyInvalidInput: HostErrorP256VerifyInvalidInputPayload
 
-class HostError(RootModel[Union[HostErrorBadUTF16, HostErrorBadUTF8, HostErrorGasExceeded, HostErrorGasLimitExceeded, HostErrorBalanceExceeded, HostErrorEmptyMethodName, HostErrorGuestPanic, HostErrorIntegerOverflow, HostErrorInvalidPromiseIndex, HostErrorCannotAppendActionToJointPromise, HostErrorCannotReturnJointPromise, HostErrorInvalidPromiseResultIndex, HostErrorInvalidRegisterId, HostErrorIteratorWasInvalidated, HostErrorMemoryAccessViolation, HostErrorInvalidReceiptIndex, HostErrorInvalidIteratorIndex, HostErrorInvalidAccountId, HostErrorInvalidMethodName, HostErrorInvalidPublicKey, HostErrorProhibitedInView, HostErrorNumberOfLogsExceeded, HostErrorKeyLengthExceeded, HostErrorValueLengthExceeded, HostErrorTotalLogLengthExceeded, HostErrorNumberPromisesExceeded, HostErrorNumberInputDataDependenciesExceeded, HostErrorReturnedValueLengthExceeded, HostErrorContractSizeExceeded, HostErrorDeprecated, HostErrorECRecoverError, HostErrorAltBn128InvalidInput, HostErrorEd25519VerifyInvalidInput, HostErrorP256VerifyInvalidInput]]):
+class HostErrorMlDsaVerifyInvalidInputPayload(BaseModel):
+    msg: str
+
+class HostErrorMlDsaVerifyInvalidInput(StrictBaseModel):
+    """Input length mismatch for ML-DSA-65 signature verification (signature is
+not 3309 bytes or public key is not 1952 bytes). Parse failures of
+otherwise well-sized inputs return 0 from the host function instead of
+aborting."""
+    MlDsaVerifyInvalidInput: HostErrorMlDsaVerifyInvalidInputPayload
+
+class HostError(RootModel[Union[HostErrorBadUTF16, HostErrorBadUTF8, HostErrorGasExceeded, HostErrorGasLimitExceeded, HostErrorBalanceExceeded, HostErrorEmptyMethodName, HostErrorGuestPanic, HostErrorIntegerOverflow, HostErrorInvalidPromiseIndex, HostErrorCannotAppendActionToJointPromise, HostErrorCannotReturnJointPromise, HostErrorInvalidPromiseResultIndex, HostErrorInvalidRegisterId, HostErrorIteratorWasInvalidated, HostErrorMemoryAccessViolation, HostErrorInvalidReceiptIndex, HostErrorInvalidIteratorIndex, HostErrorInvalidAccountId, HostErrorInvalidMethodName, HostErrorInvalidPublicKey, HostErrorProhibitedInView, HostErrorNumberOfLogsExceeded, HostErrorKeyLengthExceeded, HostErrorValueLengthExceeded, HostErrorTotalLogLengthExceeded, HostErrorNumberPromisesExceeded, HostErrorNumberInputDataDependenciesExceeded, HostErrorReturnedValueLengthExceeded, HostErrorContractSizeExceeded, HostErrorDeprecated, HostErrorECRecoverError, HostErrorAltBn128InvalidInput, HostErrorEd25519VerifyInvalidInput, HostErrorP256VerifyInvalidInput, HostErrorMlDsaVerifyInvalidInput]]):
     pass
 
