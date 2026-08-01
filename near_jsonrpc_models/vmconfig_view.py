@@ -36,6 +36,8 @@ class VMConfigView(BaseModel):
     linear_op_base_cost: conint(ge=0, le=18446744073709551615) = None
     # Unit gas cost of a linear operation
     linear_op_unit_cost: conint(ge=0, le=18446744073709551615) = None
+    # See [VMConfig::ml_dsa_verify_host_fn](crate::vm::Config::ml_dsa_verify_host_fn).
+    ml_dsa_verify_host_fn: bool = None
     # See [VMConfig::one_yocto_on_promise](crate::vm::Config::one_yocto_on_promise).
     one_yocto_on_promise: bool = None
     # See [VMConfig::p256_verify_host_fn](crate::vm::Config::p256_verify_host_fn).
