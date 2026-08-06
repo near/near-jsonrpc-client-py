@@ -41,7 +41,7 @@ class RpcClientConfigResponse(BaseModel):
     chunk_wait_mult: MutableConfigValue = None
     # Height horizon for the chunk cache. A chunk is removed from the cache
     # if its height + chunks_cache_height_horizon < largest_seen_height.
-    # The default value is DEFAULT_CHUNKS_CACHE_HEIGHT_HORIZON.
+    # The default value is given by default_chunks_cache_height_horizon().
     chunks_cache_height_horizon: conint(ge=0, le=18446744073709551615) = None
     # Number of threads to execute background migration work in client.
     client_background_migration_threads: conint(ge=0, le=4294967295) = None
