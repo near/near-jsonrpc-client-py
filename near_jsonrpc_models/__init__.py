@@ -424,6 +424,8 @@ if TYPE_CHECKING:
     from .action_error_kind import ActionErrorKindGasKeyBalanceTooHigh
     from .action_error_kind import ActionErrorKindDelegateActionInvalidNonceIndexPayload
     from .action_error_kind import ActionErrorKindDelegateActionInvalidNonceIndex
+    from .action_error_kind import ActionErrorKindTotalPromiseInputSizeExceededPayload
+    from .action_error_kind import ActionErrorKindTotalPromiseInputSizeExceeded
     from .action_error_kind import ActionErrorKind
     from .json_rpc_response_for_crypto_hash_and_rpc_transaction_error import JsonRpcResponseForCryptoHashAndRpcTransactionErrorResult
     from .json_rpc_response_for_crypto_hash_and_rpc_transaction_error import JsonRpcResponseForCryptoHashAndRpcTransactionErrorError
@@ -1266,6 +1268,8 @@ __all__ = [
     'ActionErrorKindNewReceiptValidationError',
     'ActionErrorKindOnlyImplicitAccountCreationAllowed',
     'ActionErrorKindOnlyImplicitAccountCreationAllowedPayload',
+    'ActionErrorKindTotalPromiseInputSizeExceeded',
+    'ActionErrorKindTotalPromiseInputSizeExceededPayload',
     'ActionErrorKindTriesToStake',
     'ActionErrorKindTriesToStakePayload',
     'ActionErrorKindTriesToUnstake',
@@ -2797,6 +2801,8 @@ _CLASS_TO_MODULE = {
     'ActionErrorKindGasKeyBalanceTooHigh': 'action_error_kind',
     'ActionErrorKindDelegateActionInvalidNonceIndexPayload': 'action_error_kind',
     'ActionErrorKindDelegateActionInvalidNonceIndex': 'action_error_kind',
+    'ActionErrorKindTotalPromiseInputSizeExceededPayload': 'action_error_kind',
+    'ActionErrorKindTotalPromiseInputSizeExceeded': 'action_error_kind',
     'ActionErrorKind': 'action_error_kind',
     'JsonRpcResponseForCryptoHashAndRpcTransactionErrorResult': 'json_rpc_response_for_crypto_hash_and_rpc_transaction_error',
     'JsonRpcResponseForCryptoHashAndRpcTransactionErrorError': 'json_rpc_response_for_crypto_hash_and_rpc_transaction_error',
