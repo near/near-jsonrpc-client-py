@@ -80,6 +80,9 @@ class LimitConfig(BaseModel):
     max_promises_per_function_call_action: conint(ge=0, le=18446744073709551615) = None
     # Max receipt size
     max_receipt_size: conint(ge=0, le=18446744073709551615) = None
+    # Max combined size (in bytes) of the resolved promise inputs a single
+    # receipt may consume.
+    max_receipt_total_input_size: conint(ge=0, le=18446744073709551615) = None
     # Maximum number of bytes that can be stored in a single register.
     max_register_size: conint(ge=0, le=18446744073709551615) = None
     # How tall the stack is allowed to grow?
