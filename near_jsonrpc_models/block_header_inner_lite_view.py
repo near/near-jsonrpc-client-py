@@ -8,6 +8,9 @@ from pydantic import conint
 class BlockHeaderInnerLiteView(BaseModel):
     # The merkle root of all the block hashes
     block_merkle_root: CryptoHash
+    # Merkle root over the block's certified chunk execution results.
+    # `None` for pre-spice headers.
+    chunk_execution_root: CryptoHash | None = None
     # The epoch to which the block that is the current known head belongs
     epoch_id: CryptoHash
     height: conint(ge=0, le=18446744073709551615)
