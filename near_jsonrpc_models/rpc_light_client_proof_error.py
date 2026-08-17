@@ -1,5 +1,6 @@
 from near_jsonrpc_models.crypto_hash import CryptoHash
 from near_jsonrpc_models.shard_id import ShardId
+from near_jsonrpc_models.spice_chunk_id import SpiceChunkId
 from pydantic import BaseModel
 from pydantic import RootModel
 from pydantic import conint
@@ -43,6 +44,22 @@ class RpcLightClientProofErrorUnavailableShard(BaseModel):
     info: RpcLightClientProofErrorUnavailableShardInfo
     name: Literal['UNAVAILABLE_SHARD']
 
+class RpcLightClientProofErrorChunkNotCertifiedInfo(BaseModel):
+    chunk_id: SpiceChunkId
+
+class RpcLightClientProofErrorChunkNotCertified(BaseModel):
+    info: RpcLightClientProofErrorChunkNotCertifiedInfo
+    name: Literal['CHUNK_NOT_CERTIFIED']
+
+class RpcLightClientProofErrorLightClientHeadTooOldInfo(BaseModel):
+    certifying_block_height: conint(ge=0, le=18446744073709551615)
+    chunk_id: SpiceChunkId
+    head_height: conint(ge=0, le=18446744073709551615)
+
+class RpcLightClientProofErrorLightClientHeadTooOld(BaseModel):
+    info: RpcLightClientProofErrorLightClientHeadTooOldInfo
+    name: Literal['LIGHT_CLIENT_HEAD_TOO_OLD']
+
 class RpcLightClientProofErrorInternalErrorInfo(BaseModel):
     error_message: str
 
@@ -50,6 +67,6 @@ class RpcLightClientProofErrorInternalError(BaseModel):
     info: RpcLightClientProofErrorInternalErrorInfo
     name: Literal['INTERNAL_ERROR']
 
-class RpcLightClientProofError(RootModel[Union[RpcLightClientProofErrorUnknownBlock, RpcLightClientProofErrorInconsistentState, RpcLightClientProofErrorNotConfirmed, RpcLightClientProofErrorUnknownTransactionOrReceipt, RpcLightClientProofErrorUnavailableShard, RpcLightClientProofErrorInternalError]]):
+class RpcLightClientProofError(RootModel[Union[RpcLightClientProofErrorUnknownBlock, RpcLightClientProofErrorInconsistentState, RpcLightClientProofErrorNotConfirmed, RpcLightClientProofErrorUnknownTransactionOrReceipt, RpcLightClientProofErrorUnavailableShard, RpcLightClientProofErrorChunkNotCertified, RpcLightClientProofErrorLightClientHeadTooOld, RpcLightClientProofErrorInternalError]]):
     pass
 
