@@ -11,6 +11,9 @@ from pydantic import conint
 class CloudArchivalWriterConfig(BaseModel):
     # Determines whether block-related data should be written to cloud storage.
     archive_block_data: bool = False
+    # Delay between consecutive batches while the writer is catching up, pacing
+    # how fast it uploads to the storage backend.
+    catch_up_throttle: DurationAsStdSchemaProvider = Field(default_factory=lambda: DurationAsStdSchemaProvider(**{'nanos': 100000000, 'secs': 1}))
     # Interval at which the system checks for new blocks or chunks to archive.
     polling_interval: DurationAsStdSchemaProvider = Field(default_factory=lambda: DurationAsStdSchemaProvider(**{'nanos': 0, 'secs': 1}))
     # Cadence of state snapshots, in epochs. Higher values reduce bucket cost at

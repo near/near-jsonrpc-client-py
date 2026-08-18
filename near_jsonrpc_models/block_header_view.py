@@ -24,6 +24,7 @@ class BlockHeaderView(BaseModel):
     challenges_result: List[SlashedValidator]
     challenges_root: CryptoHash
     chunk_endorsements: List[List[conint(ge=0, le=255)]] | None = None
+    chunk_execution_root: CryptoHash | None = None
     chunk_headers_root: CryptoHash
     chunk_mask: List[bool]
     chunk_receipts_root: CryptoHash
