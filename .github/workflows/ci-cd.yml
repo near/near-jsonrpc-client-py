@@ -62,10 +62,16 @@ jobs:
           echo "Generator completed successfully."
           echo "pr_required=true" >> "$GITHUB_OUTPUT"
 
-      - name: Run quick project build (no tests)
+      - name: Install package
         run: |
-          # perform a light sanity check (install editable package or run linters if needed)
-          python -m pip install -e . || true
+          python -m pip install -e .
+
+      - name: Run test suite
+        run: |
+          # Tests were written to tests/ by the generator step above; running them
+          # here gates everything below (commit, merge, tag, release, PyPI publish)
+          # on the regenerated client actually working.
+          pytest -v
 
       - name: Prepare branch, commit regenerated sources
         id: commit
