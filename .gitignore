@@ -2,3 +2,7 @@ near_jsonrpc_client.egg-info/
 dist/
 build/
 .idea
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
