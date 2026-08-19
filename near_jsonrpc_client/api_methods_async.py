@@ -81,6 +81,17 @@ class APIMixinAsync:
             params=params,
         )
 
+    async def experimental_light_client_chunk_execution_proof(self: NearBaseClientAsync, *, params: near_jsonrpc_models.RpcLightClientChunkExecutionProofRequest) -> near_jsonrpc_models.RpcLightClientChunkExecutionProofResponse:
+        """
+        Returns a proof that a chunk's certified execution roots are committed by the chain, verifiable against a trusted light client head.
+        High-level method: returns the result model or raises NearClientError/NearRpcError/NearHttpError.
+        """
+        return await self._call(
+            request_model=near_jsonrpc_models.JsonRpcRequestForExperimentalLightClientChunkExecutionProof,
+            response_model=near_jsonrpc_models.JsonRpcResponseForRpcLightClientChunkExecutionProofResponseAndRpcLightClientProofError,
+            params=params,
+        )
+
     async def experimental_light_client_proof(self: NearBaseClientAsync, *, params: near_jsonrpc_models.RpcLightClientExecutionProofRequest) -> near_jsonrpc_models.RpcLightClientExecutionProofResponse:
         """
         Returns the proofs for a transaction execution.
