@@ -92,6 +92,17 @@ class APIMixinSync:
             params=params,
         )
 
+    def experimental_light_client_execution_outcome_proof(self: NearBaseClientSync, *, params: near_jsonrpc_models.RpcLightClientExecutionOutcomeProofRequest) -> near_jsonrpc_models.RpcLightClientExecutionOutcomeProofResponse:
+        """
+        Returns a transaction or receipt execution outcome together with its proof against the chunk's certified outcome root, verifiable against a trusted light client head.
+        High-level method: returns the result model or raises NearClientError/NearRpcError/NearHttpError.
+        """
+        return self._call(
+            request_model=near_jsonrpc_models.JsonRpcRequestForExperimentalLightClientExecutionOutcomeProof,
+            response_model=near_jsonrpc_models.JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofError,
+            params=params,
+        )
+
     def experimental_light_client_proof(self: NearBaseClientSync, *, params: near_jsonrpc_models.RpcLightClientExecutionProofRequest) -> near_jsonrpc_models.RpcLightClientExecutionProofResponse:
         """
         Returns the proofs for a transaction execution.
@@ -100,6 +111,17 @@ class APIMixinSync:
         return self._call(
             request_model=near_jsonrpc_models.JsonRpcRequestForExperimentalLightClientProof,
             response_model=near_jsonrpc_models.JsonRpcResponseForRpcLightClientExecutionProofResponseAndRpcLightClientProofError,
+            params=params,
+        )
+
+    def experimental_light_client_state_proof(self: NearBaseClientSync, *, params: near_jsonrpc_models.RpcLightClientStateProofRequest) -> near_jsonrpc_models.RpcLightClientStateProofResponse:
+        """
+        Returns a value from a shard's state together with its trie proof against the chunk's certified state root, verifiable against a trusted light client head.
+        High-level method: returns the result model or raises NearClientError/NearRpcError/NearHttpError.
+        """
+        return self._call(
+            request_model=near_jsonrpc_models.JsonRpcRequestForExperimentalLightClientStateProof,
+            response_model=near_jsonrpc_models.JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofError,
             params=params,
         )
 

@@ -1,0 +1,8 @@
+from near_jsonrpc_models.chunk_execution_proof_view import ChunkExecutionProofView
+from near_jsonrpc_models.execution_outcome_with_id_view import ExecutionOutcomeWithIdView
+from pydantic import BaseModel
+
+
+class RpcLightClientExecutionOutcomeProofResponse(BaseModel):
+    chunk_execution_proof: ChunkExecutionProofView
+    outcome_proof: ExecutionOutcomeWithIdView
