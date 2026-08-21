@@ -84,6 +84,7 @@ if TYPE_CHECKING:
     from .json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error import JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyErrorError
     from .json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error import JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyError
     from .action_creation_config_view import ActionCreationConfigView
+    from .rpc_light_client_execution_outcome_proof_response import RpcLightClientExecutionOutcomeProofResponse
     from .merkle_path_item import MerklePathItem
     from .chunk_execution_roots import ChunkExecutionRootsV1Option
     from .chunk_execution_roots import ChunkExecutionRoots
@@ -96,6 +97,12 @@ if TYPE_CHECKING:
     from .rpc_light_client_proof_error import RpcLightClientProofErrorUnknownTransactionOrReceipt
     from .rpc_light_client_proof_error import RpcLightClientProofErrorUnavailableShardInfo
     from .rpc_light_client_proof_error import RpcLightClientProofErrorUnavailableShard
+    from .rpc_light_client_proof_error import RpcLightClientProofErrorShardNotTrackedInfo
+    from .rpc_light_client_proof_error import RpcLightClientProofErrorShardNotTracked
+    from .rpc_light_client_proof_error import RpcLightClientProofErrorTargetShardMismatchInfo
+    from .rpc_light_client_proof_error import RpcLightClientProofErrorTargetShardMismatch
+    from .rpc_light_client_proof_error import RpcLightClientProofErrorStateNotAvailableInfo
+    from .rpc_light_client_proof_error import RpcLightClientProofErrorStateNotAvailable
     from .rpc_light_client_proof_error import RpcLightClientProofErrorChunkNotCertifiedInfo
     from .rpc_light_client_proof_error import RpcLightClientProofErrorChunkNotCertified
     from .rpc_light_client_proof_error import RpcLightClientProofErrorLightClientHeadTooOldInfo
@@ -129,6 +136,7 @@ if TYPE_CHECKING:
     from .receipt_enum_view import ReceiptEnumView
     from .json_rpc_request_for_health import JsonRpcRequestForHealth
     from .account_id import AccountId
+    from .rpc_light_client_state_proof_response import RpcLightClientStateProofResponse
     from .json_rpc_request_for_status import JsonRpcRequestForStatus
     from .validator_kickout_view import ValidatorKickoutView
     from .json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error import JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorResult
@@ -246,6 +254,9 @@ if TYPE_CHECKING:
     from .near_gas import NearGas
     from .spice_chunk_id import SpiceChunkId
     from .bandwidth_requests_v1 import BandwidthRequestsV1
+    from .json_rpc_response_for_rpc_light_client_state_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofErrorResult
+    from .json_rpc_response_for_rpc_light_client_state_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofErrorError
+    from .json_rpc_response_for_rpc_light_client_state_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofError
     from .json_rpc_request_for_validators import JsonRpcRequestForValidators
     from .rpc_client_config_response import RpcClientConfigResponse
     from .rpc_view_state_error import RpcViewStateErrorUnknownBlockInfo
@@ -446,6 +457,9 @@ if TYPE_CHECKING:
     from .json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error import JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorResult
     from .json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error import JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorError
     from .json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error import JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsError
+    from .json_rpc_response_for_rpc_light_client_execution_outcome_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofErrorResult
+    from .json_rpc_response_for_rpc_light_client_execution_outcome_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofErrorError
+    from .json_rpc_response_for_rpc_light_client_execution_outcome_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofError
     from .account_with_public_key import AccountWithPublicKey
     from .chunk_hash import ChunkHash
     from .account_data_view import AccountDataView
@@ -486,6 +500,9 @@ if TYPE_CHECKING:
     from .rpc_view_account_error import RpcViewAccountErrorInternalErrorInfo
     from .rpc_view_account_error import RpcViewAccountErrorInternalError
     from .rpc_view_account_error import RpcViewAccountError
+    from .rpc_light_client_execution_outcome_proof_request import RpcLightClientExecutionOutcomeProofRequestTransaction
+    from .rpc_light_client_execution_outcome_proof_request import RpcLightClientExecutionOutcomeProofRequestReceipt
+    from .rpc_light_client_execution_outcome_proof_request import RpcLightClientExecutionOutcomeProofRequest
     from .function_call_permission import FunctionCallPermission
     from .rpc_health_request import RpcHealthRequest
     from .congestion_info_view import CongestionInfoView
@@ -619,6 +636,7 @@ if TYPE_CHECKING:
     from .json_rpc_response_for_rpc_light_client_next_block_response_and_rpc_light_client_next_block_error import JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockErrorResult
     from .json_rpc_response_for_rpc_light_client_next_block_response_and_rpc_light_client_next_block_error import JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockErrorError
     from .json_rpc_response_for_rpc_light_client_next_block_response_and_rpc_light_client_next_block_error import JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockError
+    from .json_rpc_request_for_experimental_light_client_execution_outcome_proof import JsonRpcRequestForExperimentalLightClientExecutionOutcomeProof
     from .next_epoch_validator_info import NextEpochValidatorInfo
     from .json_rpc_request_for_experimental_view_access_key_list import JsonRpcRequestForExperimentalViewAccessKeyList
     from .versioned_delegate_action_payload import VersionedDelegateActionPayloadV2
@@ -807,6 +825,7 @@ if TYPE_CHECKING:
     from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorBudgetExceededInfo
     from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorBudgetExceeded
     from .rpc_receipt_to_tx_error import RpcReceiptToTxError
+    from .rpc_light_client_state_proof_request import RpcLightClientStateProofRequest
     from .rpc_congestion_level_response import RpcCongestionLevelResponse
     from .direction import Direction
     from .rpc_call_function_request import RpcCallFunctionRequestBlockId
@@ -817,6 +836,11 @@ if TYPE_CHECKING:
     from .json_rpc_response_for_rpc_gas_price_response_and_rpc_gas_price_error import JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceErrorResult
     from .json_rpc_response_for_rpc_gas_price_response_and_rpc_gas_price_error import JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceErrorError
     from .json_rpc_response_for_rpc_gas_price_response_and_rpc_gas_price_error import JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceError
+    from .state_proof_target import StateProofTargetAccountIdTargetType
+    from .state_proof_target import StateProofTargetAccountIdTargetType1
+    from .state_proof_target import StateProofTargetAccountIdKeyTargetType
+    from .state_proof_target import StateProofTargetAccountIdPublicKeyTargetType
+    from .state_proof_target import StateProofTarget
     from .rpc_protocol_config_error import RpcProtocolConfigErrorUnknownBlock
     from .rpc_protocol_config_error import RpcProtocolConfigErrorInternalErrorInfo
     from .rpc_protocol_config_error import RpcProtocolConfigErrorInternalError
@@ -963,6 +987,8 @@ if TYPE_CHECKING:
     from .runtime_config_view import RuntimeConfigView
     from .deploy_contract_action import DeployContractAction
     from .rpc_validator_response import RpcValidatorResponse
+    from .state_proof_view import StateProofView
+    from .json_rpc_request_for_experimental_light_client_state_proof import JsonRpcRequestForExperimentalLightClientStateProof
     from .error_wrapper_for_rpc_split_storage_info_error import ErrorWrapperForRpcSplitStorageInfoErrorRequestValidationError
     from .error_wrapper_for_rpc_split_storage_info_error import ErrorWrapperForRpcSplitStorageInfoErrorHandlerError
     from .error_wrapper_for_rpc_split_storage_info_error import ErrorWrapperForRpcSplitStorageInfoErrorInternalError
@@ -1710,7 +1736,9 @@ __all__ = [
     'JsonRpcRequestForExperimentalGenesisConfig',
     'JsonRpcRequestForExperimentalLightClientBlockProof',
     'JsonRpcRequestForExperimentalLightClientChunkExecutionProof',
+    'JsonRpcRequestForExperimentalLightClientExecutionOutcomeProof',
     'JsonRpcRequestForExperimentalLightClientProof',
+    'JsonRpcRequestForExperimentalLightClientStateProof',
     'JsonRpcRequestForExperimentalMaintenanceWindows',
     'JsonRpcRequestForExperimentalProtocolConfig',
     'JsonRpcRequestForExperimentalReceipt',
@@ -1776,12 +1804,18 @@ __all__ = [
     'JsonRpcResponseForRpcLightClientChunkExecutionProofResponseAndRpcLightClientProofError',
     'JsonRpcResponseForRpcLightClientChunkExecutionProofResponseAndRpcLightClientProofErrorError',
     'JsonRpcResponseForRpcLightClientChunkExecutionProofResponseAndRpcLightClientProofErrorResult',
+    'JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofError',
+    'JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofErrorError',
+    'JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofErrorResult',
     'JsonRpcResponseForRpcLightClientExecutionProofResponseAndRpcLightClientProofError',
     'JsonRpcResponseForRpcLightClientExecutionProofResponseAndRpcLightClientProofErrorError',
     'JsonRpcResponseForRpcLightClientExecutionProofResponseAndRpcLightClientProofErrorResult',
     'JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockError',
     'JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockErrorError',
     'JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockErrorResult',
+    'JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofError',
+    'JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofErrorError',
+    'JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofErrorResult',
     'JsonRpcResponseForRpcNetworkInfoResponseAndRpcNetworkInfoError',
     'JsonRpcResponseForRpcNetworkInfoResponseAndRpcNetworkInfoErrorError',
     'JsonRpcResponseForRpcNetworkInfoResponseAndRpcNetworkInfoErrorResult',
@@ -1960,6 +1994,10 @@ __all__ = [
     'RpcLightClientBlockProofResponse',
     'RpcLightClientChunkExecutionProofRequest',
     'RpcLightClientChunkExecutionProofResponse',
+    'RpcLightClientExecutionOutcomeProofRequest',
+    'RpcLightClientExecutionOutcomeProofRequestReceipt',
+    'RpcLightClientExecutionOutcomeProofRequestTransaction',
+    'RpcLightClientExecutionOutcomeProofResponse',
     'RpcLightClientExecutionProofRequest',
     'RpcLightClientExecutionProofRequestReceipt',
     'RpcLightClientExecutionProofRequestTransaction',
@@ -1983,11 +2021,19 @@ __all__ = [
     'RpcLightClientProofErrorLightClientHeadTooOldInfo',
     'RpcLightClientProofErrorNotConfirmed',
     'RpcLightClientProofErrorNotConfirmedInfo',
+    'RpcLightClientProofErrorShardNotTracked',
+    'RpcLightClientProofErrorShardNotTrackedInfo',
+    'RpcLightClientProofErrorStateNotAvailable',
+    'RpcLightClientProofErrorStateNotAvailableInfo',
+    'RpcLightClientProofErrorTargetShardMismatch',
+    'RpcLightClientProofErrorTargetShardMismatchInfo',
     'RpcLightClientProofErrorUnavailableShard',
     'RpcLightClientProofErrorUnavailableShardInfo',
     'RpcLightClientProofErrorUnknownBlock',
     'RpcLightClientProofErrorUnknownTransactionOrReceipt',
     'RpcLightClientProofErrorUnknownTransactionOrReceiptInfo',
+    'RpcLightClientStateProofRequest',
+    'RpcLightClientStateProofResponse',
     'RpcMaintenanceWindowsError',
     'RpcMaintenanceWindowsErrorInternalError',
     'RpcMaintenanceWindowsErrorInternalErrorInfo',
@@ -2337,6 +2383,12 @@ __all__ = [
     'StateChangeWithCauseViewGasKeyNonceUpdate',
     'StateChangeWithCauseViewGasKeyNonceUpdateChange',
     'StateItem',
+    'StateProofTarget',
+    'StateProofTargetAccountIdKeyTargetType',
+    'StateProofTargetAccountIdPublicKeyTargetType',
+    'StateProofTargetAccountIdTargetType',
+    'StateProofTargetAccountIdTargetType1',
+    'StateProofView',
     'StateSyncConfig',
     'StatusSyncInfo',
     'StorageError',
@@ -2495,6 +2547,7 @@ _CLASS_TO_MODULE = {
     'JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyErrorError': 'json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error',
     'JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyError': 'json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error',
     'ActionCreationConfigView': 'action_creation_config_view',
+    'RpcLightClientExecutionOutcomeProofResponse': 'rpc_light_client_execution_outcome_proof_response',
     'MerklePathItem': 'merkle_path_item',
     'ChunkExecutionRootsV1Option': 'chunk_execution_roots',
     'ChunkExecutionRoots': 'chunk_execution_roots',
@@ -2507,6 +2560,12 @@ _CLASS_TO_MODULE = {
     'RpcLightClientProofErrorUnknownTransactionOrReceipt': 'rpc_light_client_proof_error',
     'RpcLightClientProofErrorUnavailableShardInfo': 'rpc_light_client_proof_error',
     'RpcLightClientProofErrorUnavailableShard': 'rpc_light_client_proof_error',
+    'RpcLightClientProofErrorShardNotTrackedInfo': 'rpc_light_client_proof_error',
+    'RpcLightClientProofErrorShardNotTracked': 'rpc_light_client_proof_error',
+    'RpcLightClientProofErrorTargetShardMismatchInfo': 'rpc_light_client_proof_error',
+    'RpcLightClientProofErrorTargetShardMismatch': 'rpc_light_client_proof_error',
+    'RpcLightClientProofErrorStateNotAvailableInfo': 'rpc_light_client_proof_error',
+    'RpcLightClientProofErrorStateNotAvailable': 'rpc_light_client_proof_error',
     'RpcLightClientProofErrorChunkNotCertifiedInfo': 'rpc_light_client_proof_error',
     'RpcLightClientProofErrorChunkNotCertified': 'rpc_light_client_proof_error',
     'RpcLightClientProofErrorLightClientHeadTooOldInfo': 'rpc_light_client_proof_error',
@@ -2540,6 +2599,7 @@ _CLASS_TO_MODULE = {
     'ReceiptEnumView': 'receipt_enum_view',
     'JsonRpcRequestForHealth': 'json_rpc_request_for_health',
     'AccountId': 'account_id',
+    'RpcLightClientStateProofResponse': 'rpc_light_client_state_proof_response',
     'JsonRpcRequestForStatus': 'json_rpc_request_for_status',
     'ValidatorKickoutView': 'validator_kickout_view',
     'JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorResult': 'json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error',
@@ -2657,6 +2717,9 @@ _CLASS_TO_MODULE = {
     'NearGas': 'near_gas',
     'SpiceChunkId': 'spice_chunk_id',
     'BandwidthRequestsV1': 'bandwidth_requests_v1',
+    'JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofErrorResult': 'json_rpc_response_for_rpc_light_client_state_proof_response_and_rpc_light_client_proof_error',
+    'JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofErrorError': 'json_rpc_response_for_rpc_light_client_state_proof_response_and_rpc_light_client_proof_error',
+    'JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofError': 'json_rpc_response_for_rpc_light_client_state_proof_response_and_rpc_light_client_proof_error',
     'JsonRpcRequestForValidators': 'json_rpc_request_for_validators',
     'RpcClientConfigResponse': 'rpc_client_config_response',
     'RpcViewStateErrorUnknownBlockInfo': 'rpc_view_state_error',
@@ -2857,6 +2920,9 @@ _CLASS_TO_MODULE = {
     'JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorResult': 'json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error',
     'JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorError': 'json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error',
     'JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsError': 'json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error',
+    'JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofErrorResult': 'json_rpc_response_for_rpc_light_client_execution_outcome_proof_response_and_rpc_light_client_proof_error',
+    'JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofErrorError': 'json_rpc_response_for_rpc_light_client_execution_outcome_proof_response_and_rpc_light_client_proof_error',
+    'JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofError': 'json_rpc_response_for_rpc_light_client_execution_outcome_proof_response_and_rpc_light_client_proof_error',
     'AccountWithPublicKey': 'account_with_public_key',
     'ChunkHash': 'chunk_hash',
     'AccountDataView': 'account_data_view',
@@ -2897,6 +2963,9 @@ _CLASS_TO_MODULE = {
     'RpcViewAccountErrorInternalErrorInfo': 'rpc_view_account_error',
     'RpcViewAccountErrorInternalError': 'rpc_view_account_error',
     'RpcViewAccountError': 'rpc_view_account_error',
+    'RpcLightClientExecutionOutcomeProofRequestTransaction': 'rpc_light_client_execution_outcome_proof_request',
+    'RpcLightClientExecutionOutcomeProofRequestReceipt': 'rpc_light_client_execution_outcome_proof_request',
+    'RpcLightClientExecutionOutcomeProofRequest': 'rpc_light_client_execution_outcome_proof_request',
     'FunctionCallPermission': 'function_call_permission',
     'RpcHealthRequest': 'rpc_health_request',
     'CongestionInfoView': 'congestion_info_view',
@@ -3030,6 +3099,7 @@ _CLASS_TO_MODULE = {
     'JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockErrorResult': 'json_rpc_response_for_rpc_light_client_next_block_response_and_rpc_light_client_next_block_error',
     'JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockErrorError': 'json_rpc_response_for_rpc_light_client_next_block_response_and_rpc_light_client_next_block_error',
     'JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockError': 'json_rpc_response_for_rpc_light_client_next_block_response_and_rpc_light_client_next_block_error',
+    'JsonRpcRequestForExperimentalLightClientExecutionOutcomeProof': 'json_rpc_request_for_experimental_light_client_execution_outcome_proof',
     'NextEpochValidatorInfo': 'next_epoch_validator_info',
     'JsonRpcRequestForExperimentalViewAccessKeyList': 'json_rpc_request_for_experimental_view_access_key_list',
     'VersionedDelegateActionPayloadV2': 'versioned_delegate_action_payload',
@@ -3218,6 +3288,7 @@ _CLASS_TO_MODULE = {
     'RpcReceiptToTxErrorBudgetExceededInfo': 'rpc_receipt_to_tx_error',
     'RpcReceiptToTxErrorBudgetExceeded': 'rpc_receipt_to_tx_error',
     'RpcReceiptToTxError': 'rpc_receipt_to_tx_error',
+    'RpcLightClientStateProofRequest': 'rpc_light_client_state_proof_request',
     'RpcCongestionLevelResponse': 'rpc_congestion_level_response',
     'Direction': 'direction',
     'RpcCallFunctionRequestBlockId': 'rpc_call_function_request',
@@ -3228,6 +3299,11 @@ _CLASS_TO_MODULE = {
     'JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceErrorResult': 'json_rpc_response_for_rpc_gas_price_response_and_rpc_gas_price_error',
     'JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceErrorError': 'json_rpc_response_for_rpc_gas_price_response_and_rpc_gas_price_error',
     'JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceError': 'json_rpc_response_for_rpc_gas_price_response_and_rpc_gas_price_error',
+    'StateProofTargetAccountIdTargetType': 'state_proof_target',
+    'StateProofTargetAccountIdTargetType1': 'state_proof_target',
+    'StateProofTargetAccountIdKeyTargetType': 'state_proof_target',
+    'StateProofTargetAccountIdPublicKeyTargetType': 'state_proof_target',
+    'StateProofTarget': 'state_proof_target',
     'RpcProtocolConfigErrorUnknownBlock': 'rpc_protocol_config_error',
     'RpcProtocolConfigErrorInternalErrorInfo': 'rpc_protocol_config_error',
     'RpcProtocolConfigErrorInternalError': 'rpc_protocol_config_error',
@@ -3374,6 +3450,8 @@ _CLASS_TO_MODULE = {
     'RuntimeConfigView': 'runtime_config_view',
     'DeployContractAction': 'deploy_contract_action',
     'RpcValidatorResponse': 'rpc_validator_response',
+    'StateProofView': 'state_proof_view',
+    'JsonRpcRequestForExperimentalLightClientStateProof': 'json_rpc_request_for_experimental_light_client_state_proof',
     'ErrorWrapperForRpcSplitStorageInfoErrorRequestValidationError': 'error_wrapper_for_rpc_split_storage_info_error',
     'ErrorWrapperForRpcSplitStorageInfoErrorHandlerError': 'error_wrapper_for_rpc_split_storage_info_error',
     'ErrorWrapperForRpcSplitStorageInfoErrorInternalError': 'error_wrapper_for_rpc_split_storage_info_error',

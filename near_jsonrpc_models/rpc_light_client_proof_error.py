@@ -1,3 +1,4 @@
+from near_jsonrpc_models.account_id import AccountId
 from near_jsonrpc_models.crypto_hash import CryptoHash
 from near_jsonrpc_models.shard_id import ShardId
 from near_jsonrpc_models.spice_chunk_id import SpiceChunkId
@@ -44,6 +45,29 @@ class RpcLightClientProofErrorUnavailableShard(BaseModel):
     info: RpcLightClientProofErrorUnavailableShardInfo
     name: Literal['UNAVAILABLE_SHARD']
 
+class RpcLightClientProofErrorShardNotTrackedInfo(BaseModel):
+    shard_id: ShardId
+
+class RpcLightClientProofErrorShardNotTracked(BaseModel):
+    info: RpcLightClientProofErrorShardNotTrackedInfo
+    name: Literal['SHARD_NOT_TRACKED']
+
+class RpcLightClientProofErrorTargetShardMismatchInfo(BaseModel):
+    account_id: AccountId
+    account_shard_id: ShardId
+    requested_shard_id: ShardId
+
+class RpcLightClientProofErrorTargetShardMismatch(BaseModel):
+    info: RpcLightClientProofErrorTargetShardMismatchInfo
+    name: Literal['TARGET_SHARD_MISMATCH']
+
+class RpcLightClientProofErrorStateNotAvailableInfo(BaseModel):
+    chunk_id: SpiceChunkId
+
+class RpcLightClientProofErrorStateNotAvailable(BaseModel):
+    info: RpcLightClientProofErrorStateNotAvailableInfo
+    name: Literal['STATE_NOT_AVAILABLE']
+
 class RpcLightClientProofErrorChunkNotCertifiedInfo(BaseModel):
     chunk_id: SpiceChunkId
 
@@ -67,6 +91,6 @@ class RpcLightClientProofErrorInternalError(BaseModel):
     info: RpcLightClientProofErrorInternalErrorInfo
     name: Literal['INTERNAL_ERROR']
 
-class RpcLightClientProofError(RootModel[Union[RpcLightClientProofErrorUnknownBlock, RpcLightClientProofErrorInconsistentState, RpcLightClientProofErrorNotConfirmed, RpcLightClientProofErrorUnknownTransactionOrReceipt, RpcLightClientProofErrorUnavailableShard, RpcLightClientProofErrorChunkNotCertified, RpcLightClientProofErrorLightClientHeadTooOld, RpcLightClientProofErrorInternalError]]):
+class RpcLightClientProofError(RootModel[Union[RpcLightClientProofErrorUnknownBlock, RpcLightClientProofErrorInconsistentState, RpcLightClientProofErrorNotConfirmed, RpcLightClientProofErrorUnknownTransactionOrReceipt, RpcLightClientProofErrorUnavailableShard, RpcLightClientProofErrorShardNotTracked, RpcLightClientProofErrorTargetShardMismatch, RpcLightClientProofErrorStateNotAvailable, RpcLightClientProofErrorChunkNotCertified, RpcLightClientProofErrorLightClientHeadTooOld, RpcLightClientProofErrorInternalError]]):
     pass
 
