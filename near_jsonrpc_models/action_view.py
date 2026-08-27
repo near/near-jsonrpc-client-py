@@ -7,6 +7,7 @@ from near_jsonrpc_models.global_contract_identifier_view import GlobalContractId
 from near_jsonrpc_models.near_gas import NearGas
 from near_jsonrpc_models.near_token import NearToken
 from near_jsonrpc_models.public_key import PublicKey
+from near_jsonrpc_models.raw_state_init import RawStateInit
 from near_jsonrpc_models.signature import Signature
 from near_jsonrpc_models.strict_model import StrictBaseModel
 from near_jsonrpc_models.versioned_delegate_action_payload import VersionedDelegateActionPayload
@@ -127,6 +128,13 @@ class ActionViewWithdrawFromGasKeyPayload(BaseModel):
 class ActionViewWithdrawFromGasKey(StrictBaseModel):
     WithdrawFromGasKey: ActionViewWithdrawFromGasKeyPayload
 
-class ActionView(RootModel[Union[ActionViewCreateAccount, ActionViewDeployContract, ActionViewFunctionCall, ActionViewTransfer, ActionViewStake, ActionViewAddKey, ActionViewDeleteKey, ActionViewDeleteAccount, ActionViewDelegate, ActionViewDelegateV2, ActionViewDeployGlobalContract, ActionViewDeployGlobalContractByAccountId, ActionViewUseGlobalContract, ActionViewUseGlobalContractByAccountId, ActionViewDeterministicStateInit, ActionViewTransferToGasKey, ActionViewWithdrawFromGasKey]]):
+class ActionViewUniversalStateInitPayload(BaseModel):
+    deposit: NearToken
+    state_init: RawStateInit
+
+class ActionViewUniversalStateInit(StrictBaseModel):
+    UniversalStateInit: ActionViewUniversalStateInitPayload
+
+class ActionView(RootModel[Union[ActionViewCreateAccount, ActionViewDeployContract, ActionViewFunctionCall, ActionViewTransfer, ActionViewStake, ActionViewAddKey, ActionViewDeleteKey, ActionViewDeleteAccount, ActionViewDelegate, ActionViewDelegateV2, ActionViewDeployGlobalContract, ActionViewDeployGlobalContractByAccountId, ActionViewUseGlobalContract, ActionViewUseGlobalContractByAccountId, ActionViewDeterministicStateInit, ActionViewTransferToGasKey, ActionViewWithdrawFromGasKey, ActionViewUniversalStateInit]]):
     pass
 
