@@ -162,6 +162,49 @@ actions in one receipt exceeded the limit."""
 class ActionsValidationErrorFunctionCallEmptyMethodName(RootModel[Literal['FunctionCallEmptyMethodName']]):
     pass
 
-class ActionsValidationError(RootModel[Union[ActionsValidationErrorDeleteActionMustBeFinal, ActionsValidationErrorTotalPrepaidGasExceeded, ActionsValidationErrorTotalNumberOfActionsExceeded, ActionsValidationErrorAddKeyMethodNamesNumberOfBytesExceeded, ActionsValidationErrorAddKeyMethodNameLengthExceeded, ActionsValidationErrorIntegerOverflow, ActionsValidationErrorInvalidAccountId, ActionsValidationErrorContractSizeExceeded, ActionsValidationErrorFunctionCallMethodNameLengthExceeded, ActionsValidationErrorFunctionCallArgumentsLengthExceeded, ActionsValidationErrorUnsuitableStakingKey, ActionsValidationErrorFunctionCallZeroAttachedGas, ActionsValidationErrorDelegateActionMustBeOnlyOne, ActionsValidationErrorUnsupportedProtocolFeature, ActionsValidationErrorInvalidDeterministicStateInitReceiver, ActionsValidationErrorDeterministicStateInitKeyLengthExceeded, ActionsValidationErrorDeterministicStateInitValueLengthExceeded, ActionsValidationErrorGasKeyInvalidNumNonces, ActionsValidationErrorAddGasKeyWithNonZeroBalance, ActionsValidationErrorGasKeyFunctionCallAllowanceNotAllowed, ActionsValidationErrorTotalNumberOfDeployActionsExceeded, ActionsValidationErrorFunctionCallEmptyMethodName]]):
+class ActionsValidationErrorInvalidUniversalStateInitReceiverPayload(BaseModel):
+    derived_id: AccountId
+    receiver_id: AccountId
+
+class ActionsValidationErrorInvalidUniversalStateInitReceiver(StrictBaseModel):
+    """The receiver id of a `UniversalStateInit` action does not match the id
+derived from its state init."""
+    InvalidUniversalStateInitReceiver: ActionsValidationErrorInvalidUniversalStateInitReceiverPayload
+
+class ActionsValidationErrorUniversalStateInitKeyLengthExceededPayload(BaseModel):
+    length: conint(ge=0, le=18446744073709551615)
+    limit: conint(ge=0, le=18446744073709551615)
+
+class ActionsValidationErrorUniversalStateInitKeyLengthExceeded(StrictBaseModel):
+    """A storage key in a `UniversalStateInit` state init exceeds the limit."""
+    UniversalStateInitKeyLengthExceeded: ActionsValidationErrorUniversalStateInitKeyLengthExceededPayload
+
+class ActionsValidationErrorUniversalStateInitValueLengthExceededPayload(BaseModel):
+    length: conint(ge=0, le=18446744073709551615)
+    limit: conint(ge=0, le=18446744073709551615)
+
+class ActionsValidationErrorUniversalStateInitValueLengthExceeded(StrictBaseModel):
+    """A storage value in a `UniversalStateInit` state init exceeds the limit."""
+    UniversalStateInitValueLengthExceeded: ActionsValidationErrorUniversalStateInitValueLengthExceededPayload
+
+"""The bytes in `RawStateInit` do not decode into `UniversalStateInit`."""
+class ActionsValidationErrorMalformedUniversalStateInit(RootModel[Literal['MalformedUniversalStateInit']]):
+    pass
+
+class ActionsValidationErrorRemovedProtocolFeaturePayload(BaseModel):
+    protocol_feature: str
+    version: conint(ge=0, le=4294967295)
+
+class ActionsValidationErrorRemovedProtocolFeature(StrictBaseModel):
+    """The transaction includes a feature that was removed at or before the
+current protocol version. The counterpart of
+`UnsupportedProtocolFeature`, which covers features not yet available."""
+    RemovedProtocolFeature: ActionsValidationErrorRemovedProtocolFeaturePayload
+
+"""A `WithdrawFromGasKey` action must not be nested inside a delegate action."""
+class ActionsValidationErrorWithdrawFromGasKeyNotAllowedInDelegate(RootModel[Literal['WithdrawFromGasKeyNotAllowedInDelegate']]):
+    pass
+
+class ActionsValidationError(RootModel[Union[ActionsValidationErrorDeleteActionMustBeFinal, ActionsValidationErrorTotalPrepaidGasExceeded, ActionsValidationErrorTotalNumberOfActionsExceeded, ActionsValidationErrorAddKeyMethodNamesNumberOfBytesExceeded, ActionsValidationErrorAddKeyMethodNameLengthExceeded, ActionsValidationErrorIntegerOverflow, ActionsValidationErrorInvalidAccountId, ActionsValidationErrorContractSizeExceeded, ActionsValidationErrorFunctionCallMethodNameLengthExceeded, ActionsValidationErrorFunctionCallArgumentsLengthExceeded, ActionsValidationErrorUnsuitableStakingKey, ActionsValidationErrorFunctionCallZeroAttachedGas, ActionsValidationErrorDelegateActionMustBeOnlyOne, ActionsValidationErrorUnsupportedProtocolFeature, ActionsValidationErrorInvalidDeterministicStateInitReceiver, ActionsValidationErrorDeterministicStateInitKeyLengthExceeded, ActionsValidationErrorDeterministicStateInitValueLengthExceeded, ActionsValidationErrorGasKeyInvalidNumNonces, ActionsValidationErrorAddGasKeyWithNonZeroBalance, ActionsValidationErrorGasKeyFunctionCallAllowanceNotAllowed, ActionsValidationErrorTotalNumberOfDeployActionsExceeded, ActionsValidationErrorFunctionCallEmptyMethodName, ActionsValidationErrorInvalidUniversalStateInitReceiver, ActionsValidationErrorUniversalStateInitKeyLengthExceeded, ActionsValidationErrorUniversalStateInitValueLengthExceeded, ActionsValidationErrorMalformedUniversalStateInit, ActionsValidationErrorRemovedProtocolFeature, ActionsValidationErrorWithdrawFromGasKeyNotAllowedInDelegate]]):
     pass
 

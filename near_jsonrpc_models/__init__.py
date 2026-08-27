@@ -307,6 +307,8 @@ if TYPE_CHECKING:
     from .action_view import ActionViewTransferToGasKey
     from .action_view import ActionViewWithdrawFromGasKeyPayload
     from .action_view import ActionViewWithdrawFromGasKey
+    from .action_view import ActionViewUniversalStateInitPayload
+    from .action_view import ActionViewUniversalStateInit
     from .action_view import ActionView
     from .shard_layout_v2 import ShardLayoutV2
     from .compilation_error import CompilationErrorCodeDoesNotExistPayload
@@ -386,6 +388,7 @@ if TYPE_CHECKING:
     from .rpc_maintenance_windows_error import RpcMaintenanceWindowsErrorInternalErrorInfo
     from .rpc_maintenance_windows_error import RpcMaintenanceWindowsErrorInternalError
     from .rpc_maintenance_windows_error import RpcMaintenanceWindowsError
+    from .universal_state_init_action import UniversalStateInitAction
     from .storage_error import StorageErrorStorageInternalError
     from .storage_error import StorageErrorMissingTrieValue
     from .storage_error import StorageErrorUnexpectedTrieValue
@@ -527,6 +530,7 @@ if TYPE_CHECKING:
     from .non_delegate_action import NonDelegateActionDeterministicStateInit
     from .non_delegate_action import NonDelegateActionTransferToGasKey
     from .non_delegate_action import NonDelegateActionWithdrawFromGasKey
+    from .non_delegate_action import NonDelegateActionUniversalStateInit
     from .non_delegate_action import NonDelegateAction
     from .json_rpc_request_for_experimental_view_access_key import JsonRpcRequestForExperimentalViewAccessKey
     from .rpc_maintenance_windows_request import RpcMaintenanceWindowsRequest
@@ -1061,6 +1065,16 @@ if TYPE_CHECKING:
     from .actions_validation_error import ActionsValidationErrorTotalNumberOfDeployActionsExceededPayload
     from .actions_validation_error import ActionsValidationErrorTotalNumberOfDeployActionsExceeded
     from .actions_validation_error import ActionsValidationErrorFunctionCallEmptyMethodName
+    from .actions_validation_error import ActionsValidationErrorInvalidUniversalStateInitReceiverPayload
+    from .actions_validation_error import ActionsValidationErrorInvalidUniversalStateInitReceiver
+    from .actions_validation_error import ActionsValidationErrorUniversalStateInitKeyLengthExceededPayload
+    from .actions_validation_error import ActionsValidationErrorUniversalStateInitKeyLengthExceeded
+    from .actions_validation_error import ActionsValidationErrorUniversalStateInitValueLengthExceededPayload
+    from .actions_validation_error import ActionsValidationErrorUniversalStateInitValueLengthExceeded
+    from .actions_validation_error import ActionsValidationErrorMalformedUniversalStateInit
+    from .actions_validation_error import ActionsValidationErrorRemovedProtocolFeaturePayload
+    from .actions_validation_error import ActionsValidationErrorRemovedProtocolFeature
+    from .actions_validation_error import ActionsValidationErrorWithdrawFromGasKeyNotAllowedInDelegate
     from .actions_validation_error import ActionsValidationError
     from .block_id import BlockIdBlockHeight
     from .block_id import BlockIdCryptoHash
@@ -1088,6 +1102,7 @@ if TYPE_CHECKING:
     from .json_rpc_response_for_rpc_validator_response_and_rpc_validator_error import JsonRpcResponseForRpcValidatorResponseAndRpcValidatorErrorResult
     from .json_rpc_response_for_rpc_validator_response_and_rpc_validator_error import JsonRpcResponseForRpcValidatorResponseAndRpcValidatorErrorError
     from .json_rpc_response_for_rpc_validator_response_and_rpc_validator_error import JsonRpcResponseForRpcValidatorResponseAndRpcValidatorError
+    from .raw_state_init import RawStateInit
     from .error_wrapper_for_rpc_block_error import ErrorWrapperForRpcBlockErrorRequestValidationError
     from .error_wrapper_for_rpc_block_error import ErrorWrapperForRpcBlockErrorHandlerError
     from .error_wrapper_for_rpc_block_error import ErrorWrapperForRpcBlockErrorInternalError
@@ -1198,6 +1213,7 @@ if TYPE_CHECKING:
     from .action_error_kind import ActionErrorKindTotalPromiseInputSizeExceeded
     from .action_error_kind import ActionErrorKindReceiptStorageProofSizeExceededPayload
     from .action_error_kind import ActionErrorKindReceiptStorageProofSizeExceeded
+    from .action_error_kind import ActionErrorKindMalformedUniversalStateInit
     from .action_error_kind import ActionErrorKind
     from .epoch_sync_config import EpochSyncConfig
     from .rpc_light_client_chunk_execution_proof_response import RpcLightClientChunkExecutionProofResponse
@@ -1308,6 +1324,7 @@ __all__ = [
     'ActionErrorKindInsufficientStakePayload',
     'ActionErrorKindLackBalanceForState',
     'ActionErrorKindLackBalanceForStatePayload',
+    'ActionErrorKindMalformedUniversalStateInit',
     'ActionErrorKindNewReceiptValidationError',
     'ActionErrorKindOnlyImplicitAccountCreationAllowed',
     'ActionErrorKindOnlyImplicitAccountCreationAllowedPayload',
@@ -1347,6 +1364,8 @@ __all__ = [
     'ActionViewTransferPayload',
     'ActionViewTransferToGasKey',
     'ActionViewTransferToGasKeyPayload',
+    'ActionViewUniversalStateInit',
+    'ActionViewUniversalStateInitPayload',
     'ActionViewUseGlobalContract',
     'ActionViewUseGlobalContractByAccountId',
     'ActionViewUseGlobalContractByAccountIdPayload',
@@ -1382,16 +1401,26 @@ __all__ = [
     'ActionsValidationErrorInvalidAccountIdPayload',
     'ActionsValidationErrorInvalidDeterministicStateInitReceiver',
     'ActionsValidationErrorInvalidDeterministicStateInitReceiverPayload',
+    'ActionsValidationErrorInvalidUniversalStateInitReceiver',
+    'ActionsValidationErrorInvalidUniversalStateInitReceiverPayload',
+    'ActionsValidationErrorMalformedUniversalStateInit',
+    'ActionsValidationErrorRemovedProtocolFeature',
+    'ActionsValidationErrorRemovedProtocolFeaturePayload',
     'ActionsValidationErrorTotalNumberOfActionsExceeded',
     'ActionsValidationErrorTotalNumberOfActionsExceededPayload',
     'ActionsValidationErrorTotalNumberOfDeployActionsExceeded',
     'ActionsValidationErrorTotalNumberOfDeployActionsExceededPayload',
     'ActionsValidationErrorTotalPrepaidGasExceeded',
     'ActionsValidationErrorTotalPrepaidGasExceededPayload',
+    'ActionsValidationErrorUniversalStateInitKeyLengthExceeded',
+    'ActionsValidationErrorUniversalStateInitKeyLengthExceededPayload',
+    'ActionsValidationErrorUniversalStateInitValueLengthExceeded',
+    'ActionsValidationErrorUniversalStateInitValueLengthExceededPayload',
     'ActionsValidationErrorUnsuitableStakingKey',
     'ActionsValidationErrorUnsuitableStakingKeyPayload',
     'ActionsValidationErrorUnsupportedProtocolFeature',
     'ActionsValidationErrorUnsupportedProtocolFeaturePayload',
+    'ActionsValidationErrorWithdrawFromGasKeyNotAllowedInDelegate',
     'AddGasKeyAction',
     'AddKeyAction',
     'BandwidthRequest',
@@ -1896,6 +1925,7 @@ __all__ = [
     'NonDelegateActionStake',
     'NonDelegateActionTransfer',
     'NonDelegateActionTransferToGasKey',
+    'NonDelegateActionUniversalStateInit',
     'NonDelegateActionUseGlobalContract',
     'NonDelegateActionWithdrawFromGasKey',
     'NonceMode',
@@ -1906,6 +1936,7 @@ __all__ = [
     'PublicKey',
     'PublicKeyHandle',
     'RangeOfUint64',
+    'RawStateInit',
     'ReceiptEnumView',
     'ReceiptEnumViewAction',
     'ReceiptEnumViewActionPayload',
@@ -2431,6 +2462,7 @@ __all__ = [
     'TxExecutionErrorActionError',
     'TxExecutionErrorInvalidTxError',
     'TxExecutionStatus',
+    'UniversalStateInitAction',
     'UseGlobalContractAction',
     'VMConfigView',
     'VMKind',
@@ -2770,6 +2802,8 @@ _CLASS_TO_MODULE = {
     'ActionViewTransferToGasKey': 'action_view',
     'ActionViewWithdrawFromGasKeyPayload': 'action_view',
     'ActionViewWithdrawFromGasKey': 'action_view',
+    'ActionViewUniversalStateInitPayload': 'action_view',
+    'ActionViewUniversalStateInit': 'action_view',
     'ActionView': 'action_view',
     'ShardLayoutV2': 'shard_layout_v2',
     'CompilationErrorCodeDoesNotExistPayload': 'compilation_error',
@@ -2849,6 +2883,7 @@ _CLASS_TO_MODULE = {
     'RpcMaintenanceWindowsErrorInternalErrorInfo': 'rpc_maintenance_windows_error',
     'RpcMaintenanceWindowsErrorInternalError': 'rpc_maintenance_windows_error',
     'RpcMaintenanceWindowsError': 'rpc_maintenance_windows_error',
+    'UniversalStateInitAction': 'universal_state_init_action',
     'StorageErrorStorageInternalError': 'storage_error',
     'StorageErrorMissingTrieValue': 'storage_error',
     'StorageErrorUnexpectedTrieValue': 'storage_error',
@@ -2990,6 +3025,7 @@ _CLASS_TO_MODULE = {
     'NonDelegateActionDeterministicStateInit': 'non_delegate_action',
     'NonDelegateActionTransferToGasKey': 'non_delegate_action',
     'NonDelegateActionWithdrawFromGasKey': 'non_delegate_action',
+    'NonDelegateActionUniversalStateInit': 'non_delegate_action',
     'NonDelegateAction': 'non_delegate_action',
     'JsonRpcRequestForExperimentalViewAccessKey': 'json_rpc_request_for_experimental_view_access_key',
     'RpcMaintenanceWindowsRequest': 'rpc_maintenance_windows_request',
@@ -3524,6 +3560,16 @@ _CLASS_TO_MODULE = {
     'ActionsValidationErrorTotalNumberOfDeployActionsExceededPayload': 'actions_validation_error',
     'ActionsValidationErrorTotalNumberOfDeployActionsExceeded': 'actions_validation_error',
     'ActionsValidationErrorFunctionCallEmptyMethodName': 'actions_validation_error',
+    'ActionsValidationErrorInvalidUniversalStateInitReceiverPayload': 'actions_validation_error',
+    'ActionsValidationErrorInvalidUniversalStateInitReceiver': 'actions_validation_error',
+    'ActionsValidationErrorUniversalStateInitKeyLengthExceededPayload': 'actions_validation_error',
+    'ActionsValidationErrorUniversalStateInitKeyLengthExceeded': 'actions_validation_error',
+    'ActionsValidationErrorUniversalStateInitValueLengthExceededPayload': 'actions_validation_error',
+    'ActionsValidationErrorUniversalStateInitValueLengthExceeded': 'actions_validation_error',
+    'ActionsValidationErrorMalformedUniversalStateInit': 'actions_validation_error',
+    'ActionsValidationErrorRemovedProtocolFeaturePayload': 'actions_validation_error',
+    'ActionsValidationErrorRemovedProtocolFeature': 'actions_validation_error',
+    'ActionsValidationErrorWithdrawFromGasKeyNotAllowedInDelegate': 'actions_validation_error',
     'ActionsValidationError': 'actions_validation_error',
     'BlockIdBlockHeight': 'block_id',
     'BlockIdCryptoHash': 'block_id',
@@ -3551,6 +3597,7 @@ _CLASS_TO_MODULE = {
     'JsonRpcResponseForRpcValidatorResponseAndRpcValidatorErrorResult': 'json_rpc_response_for_rpc_validator_response_and_rpc_validator_error',
     'JsonRpcResponseForRpcValidatorResponseAndRpcValidatorErrorError': 'json_rpc_response_for_rpc_validator_response_and_rpc_validator_error',
     'JsonRpcResponseForRpcValidatorResponseAndRpcValidatorError': 'json_rpc_response_for_rpc_validator_response_and_rpc_validator_error',
+    'RawStateInit': 'raw_state_init',
     'ErrorWrapperForRpcBlockErrorRequestValidationError': 'error_wrapper_for_rpc_block_error',
     'ErrorWrapperForRpcBlockErrorHandlerError': 'error_wrapper_for_rpc_block_error',
     'ErrorWrapperForRpcBlockErrorInternalError': 'error_wrapper_for_rpc_block_error',
@@ -3661,6 +3708,7 @@ _CLASS_TO_MODULE = {
     'ActionErrorKindTotalPromiseInputSizeExceeded': 'action_error_kind',
     'ActionErrorKindReceiptStorageProofSizeExceededPayload': 'action_error_kind',
     'ActionErrorKindReceiptStorageProofSizeExceeded': 'action_error_kind',
+    'ActionErrorKindMalformedUniversalStateInit': 'action_error_kind',
     'ActionErrorKind': 'action_error_kind',
     'EpochSyncConfig': 'epoch_sync_config',
     'RpcLightClientChunkExecutionProofResponse': 'rpc_light_client_chunk_execution_proof_response',

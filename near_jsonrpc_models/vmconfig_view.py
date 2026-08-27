@@ -50,6 +50,8 @@ class VMConfigView(BaseModel):
     sha3_host_fns: bool = None
     # See [VMConfig::storage_get_mode](crate::vm::Config::storage_get_mode).
     storage_get_mode: StorageGetMode = None
+    # See [VMConfig::universal_accounts](crate::vm::Config::universal_accounts).
+    universal_accounts: bool = None
     # See [VMConfig::vm_kind](crate::vm::Config::vm_kind).
     vm_kind: VMKind = None
     # See [VMConfig::yield_with_id_host_fns](crate::vm::Config::yield_with_id_host_fns).
