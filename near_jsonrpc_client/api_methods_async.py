@@ -182,7 +182,7 @@ class APIMixinAsync:
 
     async def experimental_tx_status(self: NearBaseClientAsync, *, params: near_jsonrpc_models.RpcTransactionStatusRequest) -> near_jsonrpc_models.RpcTransactionResponse:
         """
-        Queries status of a transaction by hash, returning the final transaction result and details of all receipts.
+        [Deprecated] Queries status of a transaction by hash, returning the final transaction result and details of all receipts. Consider using `tx_status` instead.
         High-level method: returns the result model or raises NearClientError/NearRpcError/NearHttpError.
         """
         return await self._call(
@@ -456,6 +456,17 @@ class APIMixinAsync:
         """
         return await self._call(
             request_model=near_jsonrpc_models.JsonRpcRequestForTx,
+            response_model=near_jsonrpc_models.JsonRpcResponseForRpcTransactionResponseAndRpcTransactionError,
+            params=params,
+        )
+
+    async def tx_status(self: NearBaseClientAsync, *, params: near_jsonrpc_models.RpcTransactionStatusRequest) -> near_jsonrpc_models.RpcTransactionResponse:
+        """
+        Queries status of a transaction by hash, returning the final transaction result and details of all receipts.
+        High-level method: returns the result model or raises NearClientError/NearRpcError/NearHttpError.
+        """
+        return await self._call(
+            request_model=near_jsonrpc_models.JsonRpcRequestForTxStatus,
             response_model=near_jsonrpc_models.JsonRpcResponseForRpcTransactionResponseAndRpcTransactionError,
             params=params,
         )
