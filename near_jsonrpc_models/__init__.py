@@ -537,6 +537,7 @@ if TYPE_CHECKING:
     from .tx_execution_status import TxExecutionStatus
     from .public_key import PublicKey
     from .signed_transaction_view import SignedTransactionView
+    from .json_rpc_request_for_tx_status import JsonRpcRequestForTxStatus
     from .json_rpc_request_for_experimental_split_storage_info import JsonRpcRequestForExperimentalSplitStorageInfo
     from .json_rpc_request_for_maintenance_windows import JsonRpcRequestForMaintenanceWindows
     from .rpc_status_error import RpcStatusErrorNodeIsSyncing
@@ -1793,6 +1794,7 @@ __all__ = [
     'JsonRpcRequestForSendTx',
     'JsonRpcRequestForStatus',
     'JsonRpcRequestForTx',
+    'JsonRpcRequestForTxStatus',
     'JsonRpcRequestForValidators',
     'JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsError',
     'JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorError',
@@ -3032,6 +3034,7 @@ _CLASS_TO_MODULE = {
     'TxExecutionStatus': 'tx_execution_status',
     'PublicKey': 'public_key',
     'SignedTransactionView': 'signed_transaction_view',
+    'JsonRpcRequestForTxStatus': 'json_rpc_request_for_tx_status',
     'JsonRpcRequestForExperimentalSplitStorageInfo': 'json_rpc_request_for_experimental_split_storage_info',
     'JsonRpcRequestForMaintenanceWindows': 'json_rpc_request_for_maintenance_windows',
     'RpcStatusErrorNodeIsSyncing': 'rpc_status_error',
