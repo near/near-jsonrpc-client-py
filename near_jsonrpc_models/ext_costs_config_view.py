@@ -152,6 +152,10 @@ class ExtCostsConfigView(BaseModel):
     storage_write_value_byte: NearGas = None
     # Cost per reading trie node from DB
     touching_trie_node: NearGas = None
+    # Base cost of deriving a `0u` account id from a raw state init.
+    universal_state_init_to_account_id_base: NearGas = None
+    # Per byte of the raw state init.
+    universal_state_init_to_account_id_byte: NearGas = None
     # Base cost of decoding utf16. It's used for `log_utf16`.
     utf16_decoding_base: NearGas = None
     # Cost per byte of decoding utf16. It's used for `log_utf16`.
