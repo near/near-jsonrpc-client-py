@@ -1137,6 +1137,7 @@ if TYPE_CHECKING:
     from .validator_kickout_reason import ValidatorKickoutReasonProtocolVersionTooOldPayload
     from .validator_kickout_reason import ValidatorKickoutReasonProtocolVersionTooOld
     from .validator_kickout_reason import ValidatorKickoutReason
+    from .account_state import AccountState
     from .store_value import StoreValue
     from .catchup_status_view import CatchupStatusView
     from .json_rpc_response_for_rpc_view_account_response_and_rpc_view_account_error import JsonRpcResponseForRpcViewAccountResponseAndRpcViewAccountErrorResult
@@ -1215,6 +1216,8 @@ if TYPE_CHECKING:
     from .action_error_kind import ActionErrorKindReceiptStorageProofSizeExceededPayload
     from .action_error_kind import ActionErrorKindReceiptStorageProofSizeExceeded
     from .action_error_kind import ActionErrorKindMalformedUniversalStateInit
+    from .action_error_kind import ActionErrorKindAccountNotInitializedPayload
+    from .action_error_kind import ActionErrorKindAccountNotInitialized
     from .action_error_kind import ActionErrorKind
     from .epoch_sync_config import EpochSyncConfig
     from .rpc_light_client_chunk_execution_proof_response import RpcLightClientChunkExecutionProofResponse
@@ -1278,6 +1281,7 @@ __all__ = [
     'AccountId',
     'AccountIdValidityRulesVersion',
     'AccountInfo',
+    'AccountState',
     'AccountView',
     'AccountWithPublicKey',
     'ActionCreationConfigView',
@@ -1287,6 +1291,8 @@ __all__ = [
     'ActionErrorKindAccountAlreadyExistsPayload',
     'ActionErrorKindAccountDoesNotExist',
     'ActionErrorKindAccountDoesNotExistPayload',
+    'ActionErrorKindAccountNotInitialized',
+    'ActionErrorKindAccountNotInitializedPayload',
     'ActionErrorKindActorNoPermission',
     'ActionErrorKindActorNoPermissionPayload',
     'ActionErrorKindAddKeyAlreadyExists',
@@ -3634,6 +3640,7 @@ _CLASS_TO_MODULE = {
     'ValidatorKickoutReasonProtocolVersionTooOldPayload': 'validator_kickout_reason',
     'ValidatorKickoutReasonProtocolVersionTooOld': 'validator_kickout_reason',
     'ValidatorKickoutReason': 'validator_kickout_reason',
+    'AccountState': 'account_state',
     'StoreValue': 'store_value',
     'CatchupStatusView': 'catchup_status_view',
     'JsonRpcResponseForRpcViewAccountResponseAndRpcViewAccountErrorResult': 'json_rpc_response_for_rpc_view_account_response_and_rpc_view_account_error',
@@ -3712,6 +3719,8 @@ _CLASS_TO_MODULE = {
     'ActionErrorKindReceiptStorageProofSizeExceededPayload': 'action_error_kind',
     'ActionErrorKindReceiptStorageProofSizeExceeded': 'action_error_kind',
     'ActionErrorKindMalformedUniversalStateInit': 'action_error_kind',
+    'ActionErrorKindAccountNotInitializedPayload': 'action_error_kind',
+    'ActionErrorKindAccountNotInitialized': 'action_error_kind',
     'ActionErrorKind': 'action_error_kind',
     'EpochSyncConfig': 'epoch_sync_config',
     'RpcLightClientChunkExecutionProofResponse': 'rpc_light_client_chunk_execution_proof_response',
