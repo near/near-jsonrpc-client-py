@@ -103,6 +103,8 @@ class LimitConfig(BaseModel):
     max_types_per_contract: conint(ge=0, le=18446744073709551615) | None = None
     # Maximum number of bytes for payload passed over a yield resume.
     max_yield_payload_size: conint(ge=0, le=18446744073709551615) = None
+    # If present, requires at least this many bytes of contract code per local.
+    min_contract_size_per_local: conint(ge=0, le=18446744073709551615) | None = None
     # Hard limit on the size of storage proof generated while executing a single receipt.
     per_receipt_storage_proof_size_limit: conint(ge=0, le=4294967295) = None
     # Limit of memory used by registers.
