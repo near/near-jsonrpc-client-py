@@ -15,7 +15,7 @@ class CloudArchivalWriterConfig(BaseModel):
     # how fast it uploads to the storage backend.
     catch_up_throttle: DurationAsStdSchemaProvider = Field(default_factory=lambda: DurationAsStdSchemaProvider(**{'nanos': 100000000, 'secs': 1}))
     # Interval at which the system checks for new blocks or chunks to archive.
-    polling_interval: DurationAsStdSchemaProvider = Field(default_factory=lambda: DurationAsStdSchemaProvider(**{'nanos': 0, 'secs': 1}))
+    polling_interval: DurationAsStdSchemaProvider = Field(default_factory=lambda: DurationAsStdSchemaProvider(**{'nanos': 0, 'secs': 5}))
     # Cadence of state snapshots, in epochs. Higher values reduce bucket cost at
     # the expense of potentially longer delta replay during reader bootstrap.
     snapshot_every_n_epochs: conint(ge=0, le=18446744073709551615) = 10
