@@ -3,91 +3,16 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from .rpc_split_storage_info_request import RpcSplitStorageInfoRequest
-    from .delete_account_action import DeleteAccountAction
-    from .error_wrapper_for_rpc_state_changes_error import ErrorWrapperForRpcStateChangesErrorRequestValidationError
-    from .error_wrapper_for_rpc_state_changes_error import ErrorWrapperForRpcStateChangesErrorHandlerError
-    from .error_wrapper_for_rpc_state_changes_error import ErrorWrapperForRpcStateChangesErrorInternalError
-    from .error_wrapper_for_rpc_state_changes_error import ErrorWrapperForRpcStateChangesError
-    from .contract_code_view import ContractCodeView
-    from .range_of_uint64 import RangeOfUint64
-    from .internal_error import InternalErrorInternalErrorInfo
-    from .internal_error import InternalErrorInternalError
-    from .internal_error import InternalError
-    from .shard_layout_v0 import ShardLayoutV0
-    from .error_wrapper_for_rpc_receipt_to_tx_error import ErrorWrapperForRpcReceiptToTxErrorRequestValidationError
-    from .error_wrapper_for_rpc_receipt_to_tx_error import ErrorWrapperForRpcReceiptToTxErrorHandlerError
-    from .error_wrapper_for_rpc_receipt_to_tx_error import ErrorWrapperForRpcReceiptToTxErrorInternalError
-    from .error_wrapper_for_rpc_receipt_to_tx_error import ErrorWrapperForRpcReceiptToTxError
-    from .rpc_query_response import RpcQueryResponseAccountView
-    from .rpc_query_response import RpcQueryResponseContractCodeView
-    from .rpc_query_response import RpcQueryResponseViewStateResult
-    from .rpc_query_response import RpcQueryResponseCallResult
-    from .rpc_query_response import RpcQueryResponseAccessKeyView
-    from .rpc_query_response import RpcQueryResponseAccessKeyList
-    from .rpc_query_response import RpcQueryResponseGasKeyNoncesView
-    from .rpc_query_response import RpcQueryResponse
-    from .state_change_with_cause_view import StateChangeWithCauseViewAccountUpdateChange
-    from .state_change_with_cause_view import StateChangeWithCauseViewAccountUpdate
-    from .state_change_with_cause_view import StateChangeWithCauseViewAccountDeletionChange
-    from .state_change_with_cause_view import StateChangeWithCauseViewAccountDeletion
-    from .state_change_with_cause_view import StateChangeWithCauseViewAccessKeyUpdateChange
-    from .state_change_with_cause_view import StateChangeWithCauseViewAccessKeyUpdate
-    from .state_change_with_cause_view import StateChangeWithCauseViewAccessKeyDeletionChange
-    from .state_change_with_cause_view import StateChangeWithCauseViewAccessKeyDeletion
-    from .state_change_with_cause_view import StateChangeWithCauseViewGasKeyNonceUpdateChange
-    from .state_change_with_cause_view import StateChangeWithCauseViewGasKeyNonceUpdate
-    from .state_change_with_cause_view import StateChangeWithCauseViewDataUpdateChange
-    from .state_change_with_cause_view import StateChangeWithCauseViewDataUpdate
-    from .state_change_with_cause_view import StateChangeWithCauseViewDataDeletionChange
-    from .state_change_with_cause_view import StateChangeWithCauseViewDataDeletion
-    from .state_change_with_cause_view import StateChangeWithCauseViewContractCodeUpdateChange
-    from .state_change_with_cause_view import StateChangeWithCauseViewContractCodeUpdate
-    from .state_change_with_cause_view import StateChangeWithCauseViewContractCodeDeletionChange
-    from .state_change_with_cause_view import StateChangeWithCauseViewContractCodeDeletion
-    from .state_change_with_cause_view import StateChangeWithCauseView
-    from .state_change_kind_view import StateChangeKindViewAccountTouched
-    from .state_change_kind_view import StateChangeKindViewAccessKeyTouched
-    from .state_change_kind_view import StateChangeKindViewDataTouched
-    from .state_change_kind_view import StateChangeKindViewContractCodeTouched
-    from .state_change_kind_view import StateChangeKindView
-    from .rpc_split_storage_info_error import RpcSplitStorageInfoErrorInternalErrorInfo
-    from .rpc_split_storage_info_error import RpcSplitStorageInfoErrorInternalError
-    from .rpc_split_storage_info_error import RpcSplitStorageInfoError
-    from .rpc_transaction_status_request import RpcTransactionStatusRequestSignedTxBase64
-    from .rpc_transaction_status_request import RpcTransactionStatusRequestSenderAccountIdTxHash
-    from .rpc_transaction_status_request import RpcTransactionStatusRequest
-    from .rpc_view_access_key_error import RpcViewAccessKeyErrorUnknownBlockInfo
-    from .rpc_view_access_key_error import RpcViewAccessKeyErrorUnknownBlock
-    from .rpc_view_access_key_error import RpcViewAccessKeyErrorInvalidAccountInfo
-    from .rpc_view_access_key_error import RpcViewAccessKeyErrorInvalidAccount
-    from .rpc_view_access_key_error import RpcViewAccessKeyErrorUnknownAccountInfo
-    from .rpc_view_access_key_error import RpcViewAccessKeyErrorUnknownAccount
-    from .rpc_view_access_key_error import RpcViewAccessKeyErrorUnknownAccessKeyInfo
-    from .rpc_view_access_key_error import RpcViewAccessKeyErrorUnknownAccessKey
-    from .rpc_view_access_key_error import RpcViewAccessKeyErrorInternalErrorInfo
-    from .rpc_view_access_key_error import RpcViewAccessKeyErrorInternalError
-    from .rpc_view_access_key_error import RpcViewAccessKeyError
-    from .rpc_view_gas_key_error import RpcViewGasKeyErrorUnknownBlockInfo
-    from .rpc_view_gas_key_error import RpcViewGasKeyErrorUnknownBlock
-    from .rpc_view_gas_key_error import RpcViewGasKeyErrorInvalidAccountInfo
-    from .rpc_view_gas_key_error import RpcViewGasKeyErrorInvalidAccount
-    from .rpc_view_gas_key_error import RpcViewGasKeyErrorUnknownAccountInfo
-    from .rpc_view_gas_key_error import RpcViewGasKeyErrorUnknownAccount
-    from .rpc_view_gas_key_error import RpcViewGasKeyErrorUnknownGasKeyInfo
-    from .rpc_view_gas_key_error import RpcViewGasKeyErrorUnknownGasKey
-    from .rpc_view_gas_key_error import RpcViewGasKeyErrorInternalErrorInfo
-    from .rpc_view_gas_key_error import RpcViewGasKeyErrorInternalError
-    from .rpc_view_gas_key_error import RpcViewGasKeyError
-    from .json_rpc_request_for_block_effects import JsonRpcRequestForBlockEffects
-    from .json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error import JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyErrorResult
-    from .json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error import JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyErrorError
-    from .json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error import JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyError
-    from .action_creation_config_view import ActionCreationConfigView
-    from .rpc_light_client_execution_outcome_proof_response import RpcLightClientExecutionOutcomeProofResponse
-    from .merkle_path_item import MerklePathItem
-    from .chunk_execution_roots import ChunkExecutionRootsV1Option
-    from .chunk_execution_roots import ChunkExecutionRoots
+    from .json_rpc_request_for_send_tx import JsonRpcRequestForSendTx
+    from .rpc_protocol_config_request import RpcProtocolConfigRequestBlockId
+    from .rpc_protocol_config_request import RpcProtocolConfigRequestFinality
+    from .rpc_protocol_config_request import RpcProtocolConfigRequestSyncCheckpoint
+    from .rpc_protocol_config_request import RpcProtocolConfigRequest
+    from .error_wrapper_for_rpc_block_error import ErrorWrapperForRpcBlockErrorRequestValidationError
+    from .error_wrapper_for_rpc_block_error import ErrorWrapperForRpcBlockErrorHandlerError
+    from .error_wrapper_for_rpc_block_error import ErrorWrapperForRpcBlockErrorInternalError
+    from .error_wrapper_for_rpc_block_error import ErrorWrapperForRpcBlockError
+    from .transfer_to_gas_key_action import TransferToGasKeyAction
     from .rpc_light_client_proof_error import RpcLightClientProofErrorUnknownBlock
     from .rpc_light_client_proof_error import RpcLightClientProofErrorInconsistentStateInfo
     from .rpc_light_client_proof_error import RpcLightClientProofErrorInconsistentState
@@ -110,292 +35,12 @@ if TYPE_CHECKING:
     from .rpc_light_client_proof_error import RpcLightClientProofErrorInternalErrorInfo
     from .rpc_light_client_proof_error import RpcLightClientProofErrorInternalError
     from .rpc_light_client_proof_error import RpcLightClientProofError
-    from .global_contract_deploy_mode import GlobalContractDeployMode
-    from .json_rpc_request_for_gas_price import JsonRpcRequestForGasPrice
-    from .rpc_protocol_config_response import RpcProtocolConfigResponse
-    from .rpc_protocol_config_response import s
-    from .rpc_transaction_response import RpcTransactionResponseFinalExecutionOutcomeWithReceiptView
-    from .rpc_transaction_response import RpcTransactionResponseFinalExecutionOutcomeView
-    from .rpc_transaction_response import RpcTransactionResponse
-    from .signed_transaction import SignedTransaction
-    from .rpc_health_response import RpcHealthResponse
-    from .timeout_error_cause import TimeoutErrorCauseCause
-    from .timeout_error_cause import TimeoutErrorCauseCauseStatus
-    from .timeout_error_cause import TimeoutErrorCauseCauseShardId
-    from .timeout_error_cause import TimeoutErrorCauseCauseDebugInfo
-    from .timeout_error_cause import TimeoutErrorCause
-    from .key_handle import KeyHandle
-    from .execution_outcome_view import ExecutionOutcomeView
-    from .gas_key_nonces_view import GasKeyNoncesView
-    from .receipt_enum_view import ReceiptEnumViewActionPayload
-    from .receipt_enum_view import ReceiptEnumViewAction
-    from .receipt_enum_view import ReceiptEnumViewDataPayload
-    from .receipt_enum_view import ReceiptEnumViewData
-    from .receipt_enum_view import ReceiptEnumViewGlobalContractDistributionPayload
-    from .receipt_enum_view import ReceiptEnumViewGlobalContractDistribution
-    from .receipt_enum_view import ReceiptEnumView
-    from .json_rpc_request_for_health import JsonRpcRequestForHealth
-    from .account_id import AccountId
-    from .rpc_light_client_state_proof_response import RpcLightClientStateProofResponse
-    from .json_rpc_request_for_status import JsonRpcRequestForStatus
-    from .validator_kickout_view import ValidatorKickoutView
-    from .json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error import JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorResult
-    from .json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error import JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorError
-    from .json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error import JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeError
-    from .json_rpc_response_for_rpc_view_access_key_list_response_and_rpc_view_access_key_list_error import JsonRpcResponseForRpcViewAccessKeyListResponseAndRpcViewAccessKeyListErrorResult
-    from .json_rpc_response_for_rpc_view_access_key_list_response_and_rpc_view_access_key_list_error import JsonRpcResponseForRpcViewAccessKeyListResponseAndRpcViewAccessKeyListErrorError
-    from .json_rpc_response_for_rpc_view_access_key_list_response_and_rpc_view_access_key_list_error import JsonRpcResponseForRpcViewAccessKeyListResponseAndRpcViewAccessKeyListError
-    from .gcconfig import GCConfig
-    from .rpc_view_account_response import RpcViewAccountResponse
-    from .json_rpc_request_for_experimental_changes import JsonRpcRequestForExperimentalChanges
-    from .state_sync_config import StateSyncConfig
-    from .external_storage_config import ExternalStorageConfig
-    from .external_storage_location import ExternalStorageLocationS3Payload
-    from .external_storage_location import ExternalStorageLocationS3
-    from .external_storage_location import ExternalStorageLocationFilesystemPayload
-    from .external_storage_location import ExternalStorageLocationFilesystem
-    from .external_storage_location import ExternalStorageLocationGcsPayload
-    from .external_storage_location import ExternalStorageLocationGcs
-    from .external_storage_location import ExternalStorageLocation
-    from .access_key_permission import AccessKeyPermissionFunctionCall
-    from .access_key_permission import AccessKeyPermissionFullAccess
-    from .access_key_permission import AccessKeyPermissionGasKeyFunctionCall
-    from .access_key_permission import AccessKeyPermissionGasKeyFullAccess
-    from .access_key_permission import AccessKeyPermission
-    from .json_rpc_request_for_experimental_call_function import JsonRpcRequestForExperimentalCallFunction
+    from .rpc_receipt_request import RpcReceiptRequest
+    from .json_rpc_request_for_experimental_view_state import JsonRpcRequestForExperimentalViewState
+    from .bandwidth_request import BandwidthRequest
+    from .state_item import StateItem
     from .light_client_block_lite_view import LightClientBlockLiteView
-    from .version import Version
-    from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorUnknownBlockInfo
-    from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorUnknownBlock
-    from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorInvalidAccountInfo
-    from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorInvalidAccount
-    from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorUnknownAccountInfo
-    from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorUnknownAccount
-    from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorInternalErrorInfo
-    from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorInternalError
-    from .rpc_view_access_key_list_error import RpcViewAccessKeyListError
-    from .rpc_view_access_key_response import RpcViewAccessKeyResponse
-    from .shard_layout import ShardLayoutV0Option
-    from .shard_layout import ShardLayoutV1Option
-    from .shard_layout import ShardLayoutV2Option
-    from .shard_layout import ShardLayoutV3Option
-    from .shard_layout import ShardLayout
-    from .rpc_view_account_request import RpcViewAccountRequestBlockId
-    from .rpc_view_account_request import RpcViewAccountRequestFinality
-    from .rpc_view_account_request import RpcViewAccountRequestSyncCheckpoint
-    from .rpc_view_account_request import RpcViewAccountRequest
-    from .rpc_state_changes_in_block_by_type_response import RpcStateChangesInBlockByTypeResponse
-    from .ext_costs_config_view import ExtCostsConfigView
-    from .cost_gas_used import CostGasUsed
-    from .receipt_validation_error import ReceiptValidationErrorInvalidPredecessorIdPayload
-    from .receipt_validation_error import ReceiptValidationErrorInvalidPredecessorId
-    from .receipt_validation_error import ReceiptValidationErrorInvalidReceiverIdPayload
-    from .receipt_validation_error import ReceiptValidationErrorInvalidReceiverId
-    from .receipt_validation_error import ReceiptValidationErrorInvalidSignerIdPayload
-    from .receipt_validation_error import ReceiptValidationErrorInvalidSignerId
-    from .receipt_validation_error import ReceiptValidationErrorInvalidDataReceiverIdPayload
-    from .receipt_validation_error import ReceiptValidationErrorInvalidDataReceiverId
-    from .receipt_validation_error import ReceiptValidationErrorReturnedValueLengthExceededPayload
-    from .receipt_validation_error import ReceiptValidationErrorReturnedValueLengthExceeded
-    from .receipt_validation_error import ReceiptValidationErrorNumberInputDataDependenciesExceededPayload
-    from .receipt_validation_error import ReceiptValidationErrorNumberInputDataDependenciesExceeded
-    from .receipt_validation_error import ReceiptValidationErrorActionsValidation
-    from .receipt_validation_error import ReceiptValidationErrorReceiptSizeExceededPayload
-    from .receipt_validation_error import ReceiptValidationErrorReceiptSizeExceeded
-    from .receipt_validation_error import ReceiptValidationErrorInvalidRefundToPayload
-    from .receipt_validation_error import ReceiptValidationErrorInvalidRefundTo
-    from .receipt_validation_error import ReceiptValidationError
-    from .view_state_result import ViewStateResult
-    from .wasm_trap import WasmTrap
-    from .json_rpc_response_for_rpc_receipt_response_and_rpc_receipt_error import JsonRpcResponseForRpcReceiptResponseAndRpcReceiptErrorResult
-    from .json_rpc_response_for_rpc_receipt_response_and_rpc_receipt_error import JsonRpcResponseForRpcReceiptResponseAndRpcReceiptErrorError
-    from .json_rpc_response_for_rpc_receipt_response_and_rpc_receipt_error import JsonRpcResponseForRpcReceiptResponseAndRpcReceiptError
-    from .delegate_action_v2 import DelegateActionV2
-    from .global_contract_identifier_view import GlobalContractIdentifierViewHash
-    from .global_contract_identifier_view import GlobalContractIdentifierViewAccountId
-    from .global_contract_identifier_view import GlobalContractIdentifierView
-    from .rpc_light_client_execution_proof_response import RpcLightClientExecutionProofResponse
-    from .json_rpc_request_for_genesis_config import JsonRpcRequestForGenesisConfig
-    from .network_info_view import NetworkInfoView
-    from .rpc_chunk_request import RpcChunkRequestBlockShardId
-    from .rpc_chunk_request import RpcChunkRequestChunkHash
-    from .rpc_chunk_request import RpcChunkRequest
-    from .rpc_status_request import RpcStatusRequest
-    from .json_rpc_request_for_experimental_light_client_chunk_execution_proof import JsonRpcRequestForExperimentalLightClientChunkExecutionProof
-    from .nonce_mode import NonceMode
-    from .tx_execution_error import TxExecutionErrorActionError
-    from .tx_execution_error import TxExecutionErrorInvalidTxError
-    from .tx_execution_error import TxExecutionError
-    from .json_rpc_response_for_crypto_hash_and_rpc_transaction_error import JsonRpcResponseForCryptoHashAndRpcTransactionErrorResult
-    from .json_rpc_response_for_crypto_hash_and_rpc_transaction_error import JsonRpcResponseForCryptoHashAndRpcTransactionErrorError
-    from .json_rpc_response_for_crypto_hash_and_rpc_transaction_error import JsonRpcResponseForCryptoHashAndRpcTransactionError
-    from .chunk_distribution_network_config import ChunkDistributionNetworkConfig
-    from .json_rpc_response_for_rpc_light_client_chunk_execution_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientChunkExecutionProofResponseAndRpcLightClientProofErrorResult
-    from .json_rpc_response_for_rpc_light_client_chunk_execution_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientChunkExecutionProofResponseAndRpcLightClientProofErrorError
-    from .json_rpc_response_for_rpc_light_client_chunk_execution_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientChunkExecutionProofResponseAndRpcLightClientProofError
-    from .error_wrapper_for_rpc_view_access_key_error import ErrorWrapperForRpcViewAccessKeyErrorRequestValidationError
-    from .error_wrapper_for_rpc_view_access_key_error import ErrorWrapperForRpcViewAccessKeyErrorHandlerError
-    from .error_wrapper_for_rpc_view_access_key_error import ErrorWrapperForRpcViewAccessKeyErrorInternalError
-    from .error_wrapper_for_rpc_view_access_key_error import ErrorWrapperForRpcViewAccessKeyError
-    from .validator_stake_view import ValidatorStakeViewValidatorStakeStructVersion
-    from .validator_stake_view import ValidatorStakeView
-    from .error_wrapper_for_rpc_light_client_next_block_error import ErrorWrapperForRpcLightClientNextBlockErrorRequestValidationError
-    from .error_wrapper_for_rpc_light_client_next_block_error import ErrorWrapperForRpcLightClientNextBlockErrorHandlerError
-    from .error_wrapper_for_rpc_light_client_next_block_error import ErrorWrapperForRpcLightClientNextBlockErrorInternalError
-    from .error_wrapper_for_rpc_light_client_next_block_error import ErrorWrapperForRpcLightClientNextBlockError
-    from .json_rpc_request_for_experimental_view_gas_key import JsonRpcRequestForExperimentalViewGasKey
-    from .error_wrapper_for_rpc_transaction_error import ErrorWrapperForRpcTransactionErrorRequestValidationError
-    from .error_wrapper_for_rpc_transaction_error import ErrorWrapperForRpcTransactionErrorHandlerError
-    from .error_wrapper_for_rpc_transaction_error import ErrorWrapperForRpcTransactionErrorInternalError
-    from .error_wrapper_for_rpc_transaction_error import ErrorWrapperForRpcTransactionError
-    from .rpc_client_config_request import RpcClientConfigRequest
-    from .json_rpc_request_for_experimental_receipt_to_tx import JsonRpcRequestForExperimentalReceiptToTx
-    from .finality import Finality
-    from .near_gas import NearGas
-    from .spice_chunk_id import SpiceChunkId
-    from .bandwidth_requests_v1 import BandwidthRequestsV1
-    from .json_rpc_response_for_rpc_light_client_state_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofErrorResult
-    from .json_rpc_response_for_rpc_light_client_state_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofErrorError
-    from .json_rpc_response_for_rpc_light_client_state_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofError
-    from .json_rpc_request_for_validators import JsonRpcRequestForValidators
-    from .rpc_client_config_response import RpcClientConfigResponse
-    from .rpc_view_state_error import RpcViewStateErrorUnknownBlockInfo
-    from .rpc_view_state_error import RpcViewStateErrorUnknownBlock
-    from .rpc_view_state_error import RpcViewStateErrorInvalidAccountInfo
-    from .rpc_view_state_error import RpcViewStateErrorInvalidAccount
-    from .rpc_view_state_error import RpcViewStateErrorUnknownAccountInfo
-    from .rpc_view_state_error import RpcViewStateErrorUnknownAccount
-    from .rpc_view_state_error import RpcViewStateErrorTooLargeContractStateInfo
-    from .rpc_view_state_error import RpcViewStateErrorTooLargeContractState
-    from .rpc_view_state_error import RpcViewStateErrorInternalErrorInfo
-    from .rpc_view_state_error import RpcViewStateErrorInternalError
-    from .rpc_view_state_error import RpcViewStateError
-    from .rpc_validator_request import RpcValidatorRequestEpochId
-    from .rpc_validator_request import RpcValidatorRequestBlockId
-    from .rpc_validator_request import RpcValidatorRequestLatest
-    from .rpc_validator_request import RpcValidatorRequest
-    from .action_view import ActionViewCreateAccount
-    from .action_view import ActionViewDeployContractPayload
-    from .action_view import ActionViewDeployContract
-    from .action_view import ActionViewFunctionCallPayload
-    from .action_view import ActionViewFunctionCall
-    from .action_view import ActionViewTransferPayload
-    from .action_view import ActionViewTransfer
-    from .action_view import ActionViewStakePayload
-    from .action_view import ActionViewStake
-    from .action_view import ActionViewAddKeyPayload
-    from .action_view import ActionViewAddKey
-    from .action_view import ActionViewDeleteKeyPayload
-    from .action_view import ActionViewDeleteKey
-    from .action_view import ActionViewDeleteAccountPayload
-    from .action_view import ActionViewDeleteAccount
-    from .action_view import ActionViewDelegatePayload
-    from .action_view import ActionViewDelegate
-    from .action_view import ActionViewDelegateV2Payload
-    from .action_view import ActionViewDelegateV2
-    from .action_view import ActionViewDeployGlobalContractPayload
-    from .action_view import ActionViewDeployGlobalContract
-    from .action_view import ActionViewDeployGlobalContractByAccountIdPayload
-    from .action_view import ActionViewDeployGlobalContractByAccountId
-    from .action_view import ActionViewUseGlobalContractPayload
-    from .action_view import ActionViewUseGlobalContract
-    from .action_view import ActionViewUseGlobalContractByAccountIdPayload
-    from .action_view import ActionViewUseGlobalContractByAccountId
-    from .action_view import ActionViewDeterministicStateInitPayload
-    from .action_view import ActionViewDeterministicStateInit
-    from .action_view import ActionViewTransferToGasKeyPayload
-    from .action_view import ActionViewTransferToGasKey
-    from .action_view import ActionViewWithdrawFromGasKeyPayload
-    from .action_view import ActionViewWithdrawFromGasKey
-    from .action_view import ActionViewUniversalStateInitPayload
-    from .action_view import ActionViewUniversalStateInit
-    from .action_view import ActionView
-    from .shard_layout_v2 import ShardLayoutV2
-    from .compilation_error import CompilationErrorCodeDoesNotExistPayload
-    from .compilation_error import CompilationErrorCodeDoesNotExist
-    from .compilation_error import CompilationErrorPrepareError
-    from .compilation_error import CompilationErrorWasmerCompileErrorPayload
-    from .compilation_error import CompilationErrorWasmerCompileError
-    from .compilation_error import CompilationError
-    from .function_args import FunctionArgs
-    from .congestion_control_config_view import CongestionControlConfigView
-    from .rpc_split_storage_info_response import RpcSplitStorageInfoResponse
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAccountChangesByBlockId
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesByBlockId
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesByBlockId
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestContractCodeChangesByBlockId
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestDataChangesByBlockId
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAccountChangesByFinality
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesByFinality
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesByFinality
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestContractCodeChangesByFinality
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestDataChangesByFinality
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAccountChangesBySyncCheckpoint
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesBySyncCheckpoint
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesBySyncCheckpoint
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestContractCodeChangesBySyncCheckpoint
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestDataChangesBySyncCheckpoint
-    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequest
-    from .json_rpc_request_for_block import JsonRpcRequestForBlock
-    from .rpc_view_access_key_request import RpcViewAccessKeyRequestBlockId
-    from .rpc_view_access_key_request import RpcViewAccessKeyRequestFinality
-    from .rpc_view_access_key_request import RpcViewAccessKeyRequestSyncCheckpoint
-    from .rpc_view_access_key_request import RpcViewAccessKeyRequest
-    from .error_wrapper_for_rpc_light_client_proof_error import ErrorWrapperForRpcLightClientProofErrorRequestValidationError
-    from .error_wrapper_for_rpc_light_client_proof_error import ErrorWrapperForRpcLightClientProofErrorHandlerError
-    from .error_wrapper_for_rpc_light_client_proof_error import ErrorWrapperForRpcLightClientProofErrorInternalError
-    from .error_wrapper_for_rpc_light_client_proof_error import ErrorWrapperForRpcLightClientProofError
-    from .invalid_tx_error import InvalidTxErrorInvalidAccessKeyError
-    from .invalid_tx_error import InvalidTxErrorInvalidSignerIdPayload
-    from .invalid_tx_error import InvalidTxErrorInvalidSignerId
-    from .invalid_tx_error import InvalidTxErrorSignerDoesNotExistPayload
-    from .invalid_tx_error import InvalidTxErrorSignerDoesNotExist
-    from .invalid_tx_error import InvalidTxErrorInvalidNoncePayload
-    from .invalid_tx_error import InvalidTxErrorInvalidNonce
-    from .invalid_tx_error import InvalidTxErrorNonceTooLargePayload
-    from .invalid_tx_error import InvalidTxErrorNonceTooLarge
-    from .invalid_tx_error import InvalidTxErrorInvalidReceiverIdPayload
-    from .invalid_tx_error import InvalidTxErrorInvalidReceiverId
-    from .invalid_tx_error import InvalidTxErrorInvalidSignature
-    from .invalid_tx_error import InvalidTxErrorNotEnoughBalancePayload
-    from .invalid_tx_error import InvalidTxErrorNotEnoughBalance
-    from .invalid_tx_error import InvalidTxErrorLackBalanceForStatePayload
-    from .invalid_tx_error import InvalidTxErrorLackBalanceForState
-    from .invalid_tx_error import InvalidTxErrorCostOverflow
-    from .invalid_tx_error import InvalidTxErrorInvalidChain
-    from .invalid_tx_error import InvalidTxErrorExpired
-    from .invalid_tx_error import InvalidTxErrorActionsValidation
-    from .invalid_tx_error import InvalidTxErrorTransactionSizeExceededPayload
-    from .invalid_tx_error import InvalidTxErrorTransactionSizeExceeded
-    from .invalid_tx_error import InvalidTxErrorInvalidTransactionVersion
-    from .invalid_tx_error import InvalidTxErrorStorageError
-    from .invalid_tx_error import InvalidTxErrorShardCongestedPayload
-    from .invalid_tx_error import InvalidTxErrorShardCongested
-    from .invalid_tx_error import InvalidTxErrorShardStuckPayload
-    from .invalid_tx_error import InvalidTxErrorShardStuck
-    from .invalid_tx_error import InvalidTxErrorInvalidNonceIndexPayload
-    from .invalid_tx_error import InvalidTxErrorInvalidNonceIndex
-    from .invalid_tx_error import InvalidTxErrorNotEnoughGasKeyBalancePayload
-    from .invalid_tx_error import InvalidTxErrorNotEnoughGasKeyBalance
-    from .invalid_tx_error import InvalidTxErrorNotEnoughBalanceForDepositPayload
-    from .invalid_tx_error import InvalidTxErrorNotEnoughBalanceForDeposit
-    from .invalid_tx_error import InvalidTxError
-    from .sync_concurrency import SyncConcurrency
-    from .json_rpc_response_for_rpc_view_state_response_and_rpc_view_state_error import JsonRpcResponseForRpcViewStateResponseAndRpcViewStateErrorResult
-    from .json_rpc_response_for_rpc_view_state_response_and_rpc_view_state_error import JsonRpcResponseForRpcViewStateResponseAndRpcViewStateErrorError
-    from .json_rpc_response_for_rpc_view_state_response_and_rpc_view_state_error import JsonRpcResponseForRpcViewStateResponseAndRpcViewStateError
-    from .shard_id import ShardId
-    from .rpc_maintenance_windows_error import RpcMaintenanceWindowsErrorInternalErrorInfo
-    from .rpc_maintenance_windows_error import RpcMaintenanceWindowsErrorInternalError
-    from .rpc_maintenance_windows_error import RpcMaintenanceWindowsError
-    from .universal_state_init_action import UniversalStateInitAction
-    from .storage_error import StorageErrorStorageInternalError
-    from .storage_error import StorageErrorMissingTrieValue
-    from .storage_error import StorageErrorUnexpectedTrieValue
-    from .storage_error import StorageErrorStorageInconsistentState
-    from .storage_error import StorageErrorFlatStorageBlockNotSupported
-    from .storage_error import StorageErrorMemTrieLoadingError
-    from .storage_error import StorageError
+    from .chunk_execution_roots_v1 import ChunkExecutionRootsV1
     from .rpc_state_changes_error import RpcStateChangesErrorUnknownBlock
     from .rpc_state_changes_error import RpcStateChangesErrorNotSyncedYet
     from .rpc_state_changes_error import RpcStateChangesErrorInternalErrorInfo
@@ -403,6 +48,8 @@ if TYPE_CHECKING:
     from .rpc_state_changes_error import RpcStateChangesErrorShardNotAppliedInfo
     from .rpc_state_changes_error import RpcStateChangesErrorShardNotApplied
     from .rpc_state_changes_error import RpcStateChangesError
+    from .status_sync_info import StatusSyncInfo
+    from .universal_state_init_action import UniversalStateInitAction
     from .rpc_view_gas_key_list_error import RpcViewGasKeyListErrorUnknownBlockInfo
     from .rpc_view_gas_key_list_error import RpcViewGasKeyListErrorUnknownBlock
     from .rpc_view_gas_key_list_error import RpcViewGasKeyListErrorInvalidAccountInfo
@@ -412,111 +59,17 @@ if TYPE_CHECKING:
     from .rpc_view_gas_key_list_error import RpcViewGasKeyListErrorInternalErrorInfo
     from .rpc_view_gas_key_list_error import RpcViewGasKeyListErrorInternalError
     from .rpc_view_gas_key_list_error import RpcViewGasKeyListError
-    from .data_receiver_view import DataReceiverView
-    from .storage_get_mode import StorageGetMode
-    from .log_summary_style import LogSummaryStyle
-    from .error_wrapper_for_rpc_receipt_error import ErrorWrapperForRpcReceiptErrorRequestValidationError
-    from .error_wrapper_for_rpc_receipt_error import ErrorWrapperForRpcReceiptErrorHandlerError
-    from .error_wrapper_for_rpc_receipt_error import ErrorWrapperForRpcReceiptErrorInternalError
-    from .error_wrapper_for_rpc_receipt_error import ErrorWrapperForRpcReceiptError
-    from .block_header_inner_lite_view import BlockHeaderInnerLiteView
-    from .delegate_action import DelegateAction
-    from .error_wrapper_for_rpc_view_gas_key_list_error import ErrorWrapperForRpcViewGasKeyListErrorRequestValidationError
-    from .error_wrapper_for_rpc_view_gas_key_list_error import ErrorWrapperForRpcViewGasKeyListErrorHandlerError
-    from .error_wrapper_for_rpc_view_gas_key_list_error import ErrorWrapperForRpcViewGasKeyListErrorInternalError
-    from .error_wrapper_for_rpc_view_gas_key_list_error import ErrorWrapperForRpcViewGasKeyListError
-    from .access_key import AccessKey
-    from .json_rpc_response_for_rpc_view_access_key_response_and_rpc_view_access_key_error import JsonRpcResponseForRpcViewAccessKeyResponseAndRpcViewAccessKeyErrorResult
-    from .json_rpc_response_for_rpc_view_access_key_response_and_rpc_view_access_key_error import JsonRpcResponseForRpcViewAccessKeyResponseAndRpcViewAccessKeyErrorError
-    from .json_rpc_response_for_rpc_view_access_key_response_and_rpc_view_access_key_error import JsonRpcResponseForRpcViewAccessKeyResponseAndRpcViewAccessKeyError
-    from .gas_key import GasKey
-    from .json_rpc_response_for_rpc_query_response_and_rpc_query_error import JsonRpcResponseForRpcQueryResponseAndRpcQueryErrorResult
-    from .json_rpc_response_for_rpc_query_response_and_rpc_query_error import JsonRpcResponseForRpcQueryResponseAndRpcQueryErrorError
-    from .json_rpc_response_for_rpc_query_response_and_rpc_query_error import JsonRpcResponseForRpcQueryResponseAndRpcQueryError
-    from .json_rpc_request_for_client_config import JsonRpcRequestForClientConfig
-    from .signature import Signature
     from .execution_outcome_with_id_view import ExecutionOutcomeWithIdView
-    from .witness_config_view import WitnessConfigView
-    from .rpc_view_gas_key_list_request import RpcViewGasKeyListRequestBlockId
-    from .rpc_view_gas_key_list_request import RpcViewGasKeyListRequestFinality
-    from .rpc_view_gas_key_list_request import RpcViewGasKeyListRequestSyncCheckpoint
-    from .rpc_view_gas_key_list_request import RpcViewGasKeyListRequest
-    from .json_rpc_request_for_experimental_view_gas_key_list import JsonRpcRequestForExperimentalViewGasKeyList
-    from .json_rpc_request_for_light_client_proof import JsonRpcRequestForLightClientProof
-    from .access_key_permission_view import AccessKeyPermissionViewFullAccess
-    from .access_key_permission_view import AccessKeyPermissionViewFunctionCallPayload
-    from .access_key_permission_view import AccessKeyPermissionViewFunctionCall
-    from .access_key_permission_view import AccessKeyPermissionViewGasKeyFunctionCallPayload
-    from .access_key_permission_view import AccessKeyPermissionViewGasKeyFunctionCall
-    from .access_key_permission_view import AccessKeyPermissionViewGasKeyFullAccessPayload
-    from .access_key_permission_view import AccessKeyPermissionViewGasKeyFullAccess
-    from .access_key_permission_view import AccessKeyPermissionView
-    from .deploy_global_contract_action import DeployGlobalContractAction
-    from .block_header_view import BlockHeaderView
-    from .json_rpc_response_for_rpc_call_function_response_and_rpc_call_function_error import JsonRpcResponseForRpcCallFunctionResponseAndRpcCallFunctionErrorResult
-    from .json_rpc_response_for_rpc_call_function_response_and_rpc_call_function_error import JsonRpcResponseForRpcCallFunctionResponseAndRpcCallFunctionErrorError
-    from .json_rpc_response_for_rpc_call_function_response_and_rpc_call_function_error import JsonRpcResponseForRpcCallFunctionResponseAndRpcCallFunctionError
-    from .json_rpc_request_for_experimental_view_state import JsonRpcRequestForExperimentalViewState
-    from .json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error import JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorResult
-    from .json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error import JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorError
-    from .json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error import JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsError
-    from .json_rpc_response_for_rpc_light_client_execution_outcome_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofErrorResult
-    from .json_rpc_response_for_rpc_light_client_execution_outcome_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofErrorError
-    from .json_rpc_response_for_rpc_light_client_execution_outcome_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofError
-    from .account_with_public_key import AccountWithPublicKey
-    from .chunk_hash import ChunkHash
-    from .account_data_view import AccountDataView
-    from .json_rpc_request_for_experimental_light_client_block_proof import JsonRpcRequestForExperimentalLightClientBlockProof
-    from .rpc_status_response import RpcStatusResponse
-    from .delete_key_action import DeleteKeyAction
-    from .rpc_gas_price_response import RpcGasPriceResponse
-    from .json_rpc_request_for_send_tx import JsonRpcRequestForSendTx
-    from .json_rpc_request_for_experimental_congestion_level import JsonRpcRequestForExperimentalCongestionLevel
-    from .bandwidth_request_bitmap import BandwidthRequestBitmap
-    from .error_wrapper_for_rpc_chunk_error import ErrorWrapperForRpcChunkErrorRequestValidationError
-    from .error_wrapper_for_rpc_chunk_error import ErrorWrapperForRpcChunkErrorHandlerError
-    from .error_wrapper_for_rpc_chunk_error import ErrorWrapperForRpcChunkErrorInternalError
-    from .error_wrapper_for_rpc_chunk_error import ErrorWrapperForRpcChunkError
-    from .account_creation_config_view import AccountCreationConfigView
-    from .rpc_chunk_response import RpcChunkResponse
-    from .vmconfig_view import VMConfigView
-    from .json_rpc_response_for_rpc_congestion_level_response_and_rpc_chunk_error import JsonRpcResponseForRpcCongestionLevelResponseAndRpcChunkErrorResult
-    from .json_rpc_response_for_rpc_congestion_level_response_and_rpc_chunk_error import JsonRpcResponseForRpcCongestionLevelResponseAndRpcChunkErrorError
-    from .json_rpc_response_for_rpc_congestion_level_response_and_rpc_chunk_error import JsonRpcResponseForRpcCongestionLevelResponseAndRpcChunkError
-    from .rpc_chunk_error import RpcChunkErrorInternalErrorInfo
-    from .rpc_chunk_error import RpcChunkErrorInternalError
-    from .rpc_chunk_error import RpcChunkErrorUnknownBlock
-    from .rpc_chunk_error import RpcChunkErrorInvalidShardIdInfo
-    from .rpc_chunk_error import RpcChunkErrorInvalidShardId
-    from .rpc_chunk_error import RpcChunkErrorUnknownChunkInfo
-    from .rpc_chunk_error import RpcChunkErrorUnknownChunk
-    from .rpc_chunk_error import RpcChunkError
-    from .rpc_light_client_block_proof_response import RpcLightClientBlockProofResponse
-    from .validator_stake_view_v1 import ValidatorStakeViewV1
-    from .call_result import CallResult
-    from .rpc_view_account_error import RpcViewAccountErrorUnknownBlockInfo
-    from .rpc_view_account_error import RpcViewAccountErrorUnknownBlock
-    from .rpc_view_account_error import RpcViewAccountErrorInvalidAccountInfo
-    from .rpc_view_account_error import RpcViewAccountErrorInvalidAccount
-    from .rpc_view_account_error import RpcViewAccountErrorUnknownAccountInfo
-    from .rpc_view_account_error import RpcViewAccountErrorUnknownAccount
-    from .rpc_view_account_error import RpcViewAccountErrorInternalErrorInfo
-    from .rpc_view_account_error import RpcViewAccountErrorInternalError
-    from .rpc_view_account_error import RpcViewAccountError
-    from .rpc_light_client_execution_outcome_proof_request import RpcLightClientExecutionOutcomeProofRequestTransaction
-    from .rpc_light_client_execution_outcome_proof_request import RpcLightClientExecutionOutcomeProofRequestReceipt
-    from .rpc_light_client_execution_outcome_proof_request import RpcLightClientExecutionOutcomeProofRequest
-    from .function_call_permission import FunctionCallPermission
+    from .rpc_protocol_config_response import RpcProtocolConfigResponse
+    from .rpc_protocol_config_response import s
+    from .state_change_kind_view import StateChangeKindViewAccountTouched
+    from .state_change_kind_view import StateChangeKindViewAccessKeyTouched
+    from .state_change_kind_view import StateChangeKindViewDataTouched
+    from .state_change_kind_view import StateChangeKindViewContractCodeTouched
+    from .state_change_kind_view import StateChangeKindView
     from .rpc_health_request import RpcHealthRequest
-    from .congestion_info_view import CongestionInfoView
-    from .versioned_signed_delegate_action import VersionedSignedDelegateAction
-    from .peer_info_view import PeerInfoView
-    from .bandwidth_request import BandwidthRequest
-    from .json_rpc_request_for_experimental_view_code import JsonRpcRequestForExperimentalViewCode
-    from .rpc_state_changes_in_block_request import RpcStateChangesInBlockRequestBlockId
-    from .rpc_state_changes_in_block_request import RpcStateChangesInBlockRequestFinality
-    from .rpc_state_changes_in_block_request import RpcStateChangesInBlockRequestSyncCheckpoint
-    from .rpc_state_changes_in_block_request import RpcStateChangesInBlockRequest
+    from .rpc_view_access_key_list_response import RpcViewAccessKeyListResponse
+    from .json_rpc_request_for_broadcast_tx_commit import JsonRpcRequestForBroadcastTxCommit
     from .non_delegate_action import NonDelegateActionCreateAccount
     from .non_delegate_action import NonDelegateActionDeployContract
     from .non_delegate_action import NonDelegateActionFunctionCall
@@ -532,14 +85,77 @@ if TYPE_CHECKING:
     from .non_delegate_action import NonDelegateActionWithdrawFromGasKey
     from .non_delegate_action import NonDelegateActionUniversalStateInit
     from .non_delegate_action import NonDelegateAction
+    from .json_rpc_request_for_genesis_config import JsonRpcRequestForGenesisConfig
+    from .rpc_client_config_request import RpcClientConfigRequest
+    from .rpc_view_gas_key_list_request import RpcViewGasKeyListRequestBlockId
+    from .rpc_view_gas_key_list_request import RpcViewGasKeyListRequestFinality
+    from .rpc_view_gas_key_list_request import RpcViewGasKeyListRequestSyncCheckpoint
+    from .rpc_view_gas_key_list_request import RpcViewGasKeyListRequest
+    from .rpc_network_info_response import RpcNetworkInfoResponse
+    from .rpc_maintenance_windows_error import RpcMaintenanceWindowsErrorInternalErrorInfo
+    from .rpc_maintenance_windows_error import RpcMaintenanceWindowsErrorInternalError
+    from .rpc_maintenance_windows_error import RpcMaintenanceWindowsError
     from .json_rpc_request_for_experimental_view_access_key import JsonRpcRequestForExperimentalViewAccessKey
-    from .rpc_maintenance_windows_request import RpcMaintenanceWindowsRequest
-    from .tx_execution_status import TxExecutionStatus
-    from .public_key import PublicKey
-    from .signed_transaction_view import SignedTransactionView
-    from .json_rpc_request_for_tx_status import JsonRpcRequestForTxStatus
-    from .json_rpc_request_for_experimental_split_storage_info import JsonRpcRequestForExperimentalSplitStorageInfo
-    from .json_rpc_request_for_maintenance_windows import JsonRpcRequestForMaintenanceWindows
+    from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorUnknownBlockInfo
+    from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorUnknownBlock
+    from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorInvalidAccountInfo
+    from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorInvalidAccount
+    from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorUnknownAccountInfo
+    from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorUnknownAccount
+    from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorInternalErrorInfo
+    from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorInternalError
+    from .rpc_view_access_key_list_error import RpcViewAccessKeyListError
+    from .chunk_hash import ChunkHash
+    from .bandwidth_requests_v1 import BandwidthRequestsV1
+    from .public_key_handle import PublicKeyHandle
+    from .duration_as_std_schema_provider import DurationAsStdSchemaProvider
+    from .nonce_mode import NonceMode
+    from .json_rpc_request_for_experimental_tx_status import JsonRpcRequestForExperimentalTxStatus
+    from .delete_account_action import DeleteAccountAction
+    from .state_proof_target import StateProofTargetAccountIdTargetType
+    from .state_proof_target import StateProofTargetAccountIdTargetType1
+    from .state_proof_target import StateProofTargetAccountIdKeyTargetType
+    from .state_proof_target import StateProofTargetAccountIdPublicKeyTargetType
+    from .state_proof_target import StateProofTarget
+    from .tier1proxy_view import Tier1ProxyView
+    from .wasm_trap import WasmTrap
+    from .rpc_query_response import RpcQueryResponseAccountView
+    from .rpc_query_response import RpcQueryResponseContractCodeView
+    from .rpc_query_response import RpcQueryResponseViewStateResult
+    from .rpc_query_response import RpcQueryResponseCallResult
+    from .rpc_query_response import RpcQueryResponseAccessKeyView
+    from .rpc_query_response import RpcQueryResponseAccessKeyList
+    from .rpc_query_response import RpcQueryResponseGasKeyNoncesView
+    from .rpc_query_response import RpcQueryResponse
+    from .rpc_send_transaction_request import RpcSendTransactionRequest
+    from .stake_action import StakeAction
+    from .access_key import AccessKey
+    from .protocol_version_check_config import ProtocolVersionCheckConfig
+    from .account_creation_config_view import AccountCreationConfigView
+    from .final_execution_outcome_with_receipt_view import FinalExecutionOutcomeWithReceiptView
+    from .rpc_client_config_error import RpcClientConfigErrorInternalErrorInfo
+    from .rpc_client_config_error import RpcClientConfigErrorInternalError
+    from .rpc_client_config_error import RpcClientConfigError
+    from .json_rpc_response_for_rpc_state_changes_in_block_by_type_response_and_rpc_state_changes_error import JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesErrorResult
+    from .json_rpc_response_for_rpc_state_changes_in_block_by_type_response_and_rpc_state_changes_error import JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesErrorError
+    from .json_rpc_response_for_rpc_state_changes_in_block_by_type_response_and_rpc_state_changes_error import JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesError
+    from .json_rpc_request_for_block import JsonRpcRequestForBlock
+    from .storage_get_mode import StorageGetMode
+    from .function_call_action import FunctionCallAction
+    from .error_wrapper_for_rpc_transaction_error import ErrorWrapperForRpcTransactionErrorRequestValidationError
+    from .error_wrapper_for_rpc_transaction_error import ErrorWrapperForRpcTransactionErrorHandlerError
+    from .error_wrapper_for_rpc_transaction_error import ErrorWrapperForRpcTransactionErrorInternalError
+    from .error_wrapper_for_rpc_transaction_error import ErrorWrapperForRpcTransactionError
+    from .external_storage_config import ExternalStorageConfig
+    from .validator_stake_view_v1 import ValidatorStakeViewV1
+    from .near_token import NearToken
+    from .next_epoch_validator_info import NextEpochValidatorInfo
+    from .internal_error import InternalErrorInternalErrorInfo
+    from .internal_error import InternalErrorInternalError
+    from .internal_error import InternalError
+    from .tx_execution_error import TxExecutionErrorActionError
+    from .tx_execution_error import TxExecutionErrorInvalidTxError
+    from .tx_execution_error import TxExecutionError
     from .rpc_status_error import RpcStatusErrorNodeIsSyncing
     from .rpc_status_error import RpcStatusErrorNoNewBlocksInfo
     from .rpc_status_error import RpcStatusErrorNoNewBlocks
@@ -548,142 +164,102 @@ if TYPE_CHECKING:
     from .rpc_status_error import RpcStatusErrorInternalErrorInfo
     from .rpc_status_error import RpcStatusErrorInternalError
     from .rpc_status_error import RpcStatusError
-    from .chunk_execution_roots_v1 import ChunkExecutionRootsV1
-    from .gas_key_info_view import GasKeyInfoView
-    from .withdraw_from_gas_key_action import WithdrawFromGasKeyAction
-    from .stake_action import StakeAction
-    from .invalid_access_key_error import InvalidAccessKeyErrorAccessKeyNotFoundPayload
-    from .invalid_access_key_error import InvalidAccessKeyErrorAccessKeyNotFound
-    from .invalid_access_key_error import InvalidAccessKeyErrorReceiverMismatchPayload
-    from .invalid_access_key_error import InvalidAccessKeyErrorReceiverMismatch
-    from .invalid_access_key_error import InvalidAccessKeyErrorMethodNameMismatchPayload
-    from .invalid_access_key_error import InvalidAccessKeyErrorMethodNameMismatch
-    from .invalid_access_key_error import InvalidAccessKeyErrorRequiresFullAccess
-    from .invalid_access_key_error import InvalidAccessKeyErrorNotEnoughAllowancePayload
-    from .invalid_access_key_error import InvalidAccessKeyErrorNotEnoughAllowance
-    from .invalid_access_key_error import InvalidAccessKeyErrorDepositWithFunctionCall
-    from .invalid_access_key_error import InvalidAccessKeyErrorDelegateActionRequiresNonGasKey
-    from .invalid_access_key_error import InvalidAccessKeyErrorDelegateActionRequiresGasKey
-    from .invalid_access_key_error import InvalidAccessKeyError
-    from .missing_trie_value import MissingTrieValue
-    from .current_epoch_validator_info import CurrentEpochValidatorInfo
-    from .create_account_action import CreateAccountAction
-    from .json_rpc_response_for_rpc_client_config_response_and_rpc_client_config_error import JsonRpcResponseForRpcClientConfigResponseAndRpcClientConfigErrorResult
-    from .json_rpc_response_for_rpc_client_config_response_and_rpc_client_config_error import JsonRpcResponseForRpcClientConfigResponseAndRpcClientConfigErrorError
-    from .json_rpc_response_for_rpc_client_config_response_and_rpc_client_config_error import JsonRpcResponseForRpcClientConfigResponseAndRpcClientConfigError
-    from .limit_config import LimitConfig
-    from .signed_delegate_action import SignedDelegateAction
-    from .genesis_config_request import GenesisConfigRequest
-    from .json_rpc_response_for_rpc_light_client_execution_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientExecutionProofResponseAndRpcLightClientProofErrorResult
-    from .json_rpc_response_for_rpc_light_client_execution_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientExecutionProofResponseAndRpcLightClientProofErrorError
-    from .json_rpc_response_for_rpc_light_client_execution_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientExecutionProofResponseAndRpcLightClientProofError
-    from .dynamic_resharding_config_view import DynamicReshardingConfigView
-    from .json_rpc_request_for_changes import JsonRpcRequestForChanges
-    from .rpc_call_function_error import RpcCallFunctionErrorUnknownBlockInfo
-    from .rpc_call_function_error import RpcCallFunctionErrorUnknownBlock
-    from .rpc_call_function_error import RpcCallFunctionErrorInvalidAccountInfo
-    from .rpc_call_function_error import RpcCallFunctionErrorInvalidAccount
-    from .rpc_call_function_error import RpcCallFunctionErrorUnknownAccountInfo
-    from .rpc_call_function_error import RpcCallFunctionErrorUnknownAccount
-    from .rpc_call_function_error import RpcCallFunctionErrorNoContractCodeInfo
-    from .rpc_call_function_error import RpcCallFunctionErrorNoContractCode
-    from .rpc_call_function_error import RpcCallFunctionErrorContractExecutionErrorInfo
-    from .rpc_call_function_error import RpcCallFunctionErrorContractExecutionError
-    from .rpc_call_function_error import RpcCallFunctionErrorInternalErrorInfo
-    from .rpc_call_function_error import RpcCallFunctionErrorInternalError
-    from .rpc_call_function_error import RpcCallFunctionError
-    from .shard_layout_v3 import ShardLayoutV3
-    from .state_change_cause_view import StateChangeCauseViewNotWritableToDisk
-    from .state_change_cause_view import StateChangeCauseViewInitialState
-    from .state_change_cause_view import StateChangeCauseViewTransactionProcessing
-    from .state_change_cause_view import StateChangeCauseViewActionReceiptProcessingStarted
-    from .state_change_cause_view import StateChangeCauseViewActionReceiptGasReward
-    from .state_change_cause_view import StateChangeCauseViewReceiptProcessing
-    from .state_change_cause_view import StateChangeCauseViewPostponedReceipt
-    from .state_change_cause_view import StateChangeCauseViewUpdatedDelayedReceipts
-    from .state_change_cause_view import StateChangeCauseViewValidatorAccountsUpdate
-    from .state_change_cause_view import StateChangeCauseViewMigration
-    from .state_change_cause_view import StateChangeCauseViewBandwidthSchedulerStateUpdate
-    from .state_change_cause_view import StateChangeCauseView
-    from .error_wrapper_for_rpc_network_info_error import ErrorWrapperForRpcNetworkInfoErrorRequestValidationError
-    from .error_wrapper_for_rpc_network_info_error import ErrorWrapperForRpcNetworkInfoErrorHandlerError
-    from .error_wrapper_for_rpc_network_info_error import ErrorWrapperForRpcNetworkInfoErrorInternalError
-    from .error_wrapper_for_rpc_network_info_error import ErrorWrapperForRpcNetworkInfoError
-    from .rpc_view_gas_key_list_response import RpcViewGasKeyListResponse
-    from .known_producer_view import KnownProducerView
-    from .json_rpc_response_for_array_of_validator_stake_view_and_rpc_validator_error import JsonRpcResponseForArrayOfValidatorStakeViewAndRpcValidatorErrorResult
-    from .json_rpc_response_for_array_of_validator_stake_view_and_rpc_validator_error import JsonRpcResponseForArrayOfValidatorStakeViewAndRpcValidatorErrorError
-    from .json_rpc_response_for_array_of_validator_stake_view_and_rpc_validator_error import JsonRpcResponseForArrayOfValidatorStakeViewAndRpcValidatorError
-    from .deterministic_account_state_init import DeterministicAccountStateInitV1Option
-    from .deterministic_account_state_init import DeterministicAccountStateInit
-    from .access_key_info_view import AccessKeyInfoView
+    from .crypto_hash import CryptoHash
+    from .account_state import AccountState
+    from .bandwidth_requests import BandwidthRequestsV1Option
+    from .bandwidth_requests import BandwidthRequests
+    from .cost_gas_used import CostGasUsed
+    from .json_rpc_response_for_rpc_view_access_key_response_and_rpc_view_access_key_error import JsonRpcResponseForRpcViewAccessKeyResponseAndRpcViewAccessKeyErrorResult
+    from .json_rpc_response_for_rpc_view_access_key_response_and_rpc_view_access_key_error import JsonRpcResponseForRpcViewAccessKeyResponseAndRpcViewAccessKeyErrorError
+    from .json_rpc_response_for_rpc_view_access_key_response_and_rpc_view_access_key_error import JsonRpcResponseForRpcViewAccessKeyResponseAndRpcViewAccessKeyError
+    from .rpc_call_function_request import RpcCallFunctionRequestBlockId
+    from .rpc_call_function_request import RpcCallFunctionRequestFinality
+    from .rpc_call_function_request import RpcCallFunctionRequestSyncCheckpoint
+    from .rpc_call_function_request import RpcCallFunctionRequest
     from .json_rpc_response_for_rpc_network_info_response_and_rpc_network_info_error import JsonRpcResponseForRpcNetworkInfoResponseAndRpcNetworkInfoErrorResult
     from .json_rpc_response_for_rpc_network_info_response_and_rpc_network_info_error import JsonRpcResponseForRpcNetworkInfoResponseAndRpcNetworkInfoErrorError
     from .json_rpc_response_for_rpc_network_info_response_and_rpc_network_info_error import JsonRpcResponseForRpcNetworkInfoResponseAndRpcNetworkInfoError
-    from .store_key import StoreKey
-    from .json_rpc_response_for_rpc_block_response_and_rpc_block_error import JsonRpcResponseForRpcBlockResponseAndRpcBlockErrorResult
-    from .json_rpc_response_for_rpc_block_response_and_rpc_block_error import JsonRpcResponseForRpcBlockResponseAndRpcBlockErrorError
-    from .json_rpc_response_for_rpc_block_response_and_rpc_block_error import JsonRpcResponseForRpcBlockResponseAndRpcBlockError
-    from .genesis_config import GenesisConfig
-    from .genesis_config import s
-    from .rpc_known_producer import RpcKnownProducer
-    from .transfer_action import TransferAction
-    from .json_rpc_response_for_rpc_protocol_config_response_and_rpc_protocol_config_error import JsonRpcResponseForRpcProtocolConfigResponseAndRpcProtocolConfigErrorResult
-    from .json_rpc_response_for_rpc_protocol_config_response_and_rpc_protocol_config_error import JsonRpcResponseForRpcProtocolConfigResponseAndRpcProtocolConfigErrorError
-    from .json_rpc_response_for_rpc_protocol_config_response_and_rpc_protocol_config_error import JsonRpcResponseForRpcProtocolConfigResponseAndRpcProtocolConfigError
-    from .gas_key_list import GasKeyList
-    from .rpc_receipt_error import RpcReceiptErrorInternalErrorInfo
-    from .rpc_receipt_error import RpcReceiptErrorInternalError
-    from .rpc_receipt_error import RpcReceiptErrorUnknownReceiptInfo
-    from .rpc_receipt_error import RpcReceiptErrorUnknownReceipt
-    from .rpc_receipt_error import RpcReceiptError
-    from .shard_layout_v1 import ShardLayoutV1
-    from .json_rpc_response_for_rpc_light_client_next_block_response_and_rpc_light_client_next_block_error import JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockErrorResult
-    from .json_rpc_response_for_rpc_light_client_next_block_response_and_rpc_light_client_next_block_error import JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockErrorError
-    from .json_rpc_response_for_rpc_light_client_next_block_response_and_rpc_light_client_next_block_error import JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockError
-    from .json_rpc_request_for_experimental_light_client_execution_outcome_proof import JsonRpcRequestForExperimentalLightClientExecutionOutcomeProof
-    from .next_epoch_validator_info import NextEpochValidatorInfo
-    from .json_rpc_request_for_experimental_view_access_key_list import JsonRpcRequestForExperimentalViewAccessKeyList
-    from .versioned_delegate_action_payload import VersionedDelegateActionPayloadV2
-    from .versioned_delegate_action_payload import VersionedDelegateActionPayload
-    from .gas_key_view import GasKeyView
-    from .use_global_contract_action import UseGlobalContractAction
-    from .sync_checkpoint import SyncCheckpoint
-    from .json_rpc_response_for_rpc_view_gas_key_list_response_and_rpc_view_gas_key_list_error import JsonRpcResponseForRpcViewGasKeyListResponseAndRpcViewGasKeyListErrorResult
-    from .json_rpc_response_for_rpc_view_gas_key_list_response_and_rpc_view_gas_key_list_error import JsonRpcResponseForRpcViewGasKeyListResponseAndRpcViewGasKeyListErrorError
-    from .json_rpc_response_for_rpc_view_gas_key_list_response_and_rpc_view_gas_key_list_error import JsonRpcResponseForRpcViewGasKeyListResponseAndRpcViewGasKeyListError
-    from .dump_config import DumpConfig
-    from .tier1proxy_view import Tier1ProxyView
+    from .rpc_light_client_state_proof_request import RpcLightClientStateProofRequest
+    from .access_key_creation_config_view import AccessKeyCreationConfigView
+    from .actions_validation_error import ActionsValidationErrorDeleteActionMustBeFinal
+    from .actions_validation_error import ActionsValidationErrorTotalPrepaidGasExceededPayload
+    from .actions_validation_error import ActionsValidationErrorTotalPrepaidGasExceeded
+    from .actions_validation_error import ActionsValidationErrorTotalNumberOfActionsExceededPayload
+    from .actions_validation_error import ActionsValidationErrorTotalNumberOfActionsExceeded
+    from .actions_validation_error import ActionsValidationErrorAddKeyMethodNamesNumberOfBytesExceededPayload
+    from .actions_validation_error import ActionsValidationErrorAddKeyMethodNamesNumberOfBytesExceeded
+    from .actions_validation_error import ActionsValidationErrorAddKeyMethodNameLengthExceededPayload
+    from .actions_validation_error import ActionsValidationErrorAddKeyMethodNameLengthExceeded
+    from .actions_validation_error import ActionsValidationErrorIntegerOverflow
+    from .actions_validation_error import ActionsValidationErrorInvalidAccountIdPayload
+    from .actions_validation_error import ActionsValidationErrorInvalidAccountId
+    from .actions_validation_error import ActionsValidationErrorContractSizeExceededPayload
+    from .actions_validation_error import ActionsValidationErrorContractSizeExceeded
+    from .actions_validation_error import ActionsValidationErrorFunctionCallMethodNameLengthExceededPayload
+    from .actions_validation_error import ActionsValidationErrorFunctionCallMethodNameLengthExceeded
+    from .actions_validation_error import ActionsValidationErrorFunctionCallArgumentsLengthExceededPayload
+    from .actions_validation_error import ActionsValidationErrorFunctionCallArgumentsLengthExceeded
+    from .actions_validation_error import ActionsValidationErrorUnsuitableStakingKeyPayload
+    from .actions_validation_error import ActionsValidationErrorUnsuitableStakingKey
+    from .actions_validation_error import ActionsValidationErrorFunctionCallZeroAttachedGas
+    from .actions_validation_error import ActionsValidationErrorDelegateActionMustBeOnlyOne
+    from .actions_validation_error import ActionsValidationErrorUnsupportedProtocolFeaturePayload
+    from .actions_validation_error import ActionsValidationErrorUnsupportedProtocolFeature
+    from .actions_validation_error import ActionsValidationErrorInvalidDeterministicStateInitReceiverPayload
+    from .actions_validation_error import ActionsValidationErrorInvalidDeterministicStateInitReceiver
+    from .actions_validation_error import ActionsValidationErrorDeterministicStateInitKeyLengthExceededPayload
+    from .actions_validation_error import ActionsValidationErrorDeterministicStateInitKeyLengthExceeded
+    from .actions_validation_error import ActionsValidationErrorDeterministicStateInitValueLengthExceededPayload
+    from .actions_validation_error import ActionsValidationErrorDeterministicStateInitValueLengthExceeded
+    from .actions_validation_error import ActionsValidationErrorGasKeyInvalidNumNoncesPayload
+    from .actions_validation_error import ActionsValidationErrorGasKeyInvalidNumNonces
+    from .actions_validation_error import ActionsValidationErrorAddGasKeyWithNonZeroBalancePayload
+    from .actions_validation_error import ActionsValidationErrorAddGasKeyWithNonZeroBalance
+    from .actions_validation_error import ActionsValidationErrorGasKeyFunctionCallAllowanceNotAllowed
+    from .actions_validation_error import ActionsValidationErrorTotalNumberOfDeployActionsExceededPayload
+    from .actions_validation_error import ActionsValidationErrorTotalNumberOfDeployActionsExceeded
+    from .actions_validation_error import ActionsValidationErrorFunctionCallEmptyMethodName
+    from .actions_validation_error import ActionsValidationErrorInvalidUniversalStateInitReceiverPayload
+    from .actions_validation_error import ActionsValidationErrorInvalidUniversalStateInitReceiver
+    from .actions_validation_error import ActionsValidationErrorUniversalStateInitKeyLengthExceededPayload
+    from .actions_validation_error import ActionsValidationErrorUniversalStateInitKeyLengthExceeded
+    from .actions_validation_error import ActionsValidationErrorUniversalStateInitValueLengthExceededPayload
+    from .actions_validation_error import ActionsValidationErrorUniversalStateInitValueLengthExceeded
+    from .actions_validation_error import ActionsValidationErrorMalformedUniversalStateInit
+    from .actions_validation_error import ActionsValidationErrorRemovedProtocolFeaturePayload
+    from .actions_validation_error import ActionsValidationErrorRemovedProtocolFeature
+    from .actions_validation_error import ActionsValidationErrorWithdrawFromGasKeyNotAllowedInDelegate
+    from .actions_validation_error import ActionsValidationError
+    from .json_rpc_request_for_network_info import JsonRpcRequestForNetworkInfo
     from .account_view import AccountView
-    from .json_rpc_request_for_tx import JsonRpcRequestForTx
-    from .rpc_light_client_block_proof_request import RpcLightClientBlockProofRequest
-    from .json_rpc_response_for_nullable_rpc_health_response_and_rpc_status_error import JsonRpcResponseForNullableRpcHealthResponseAndRpcStatusErrorResult
-    from .json_rpc_response_for_nullable_rpc_health_response_and_rpc_status_error import JsonRpcResponseForNullableRpcHealthResponseAndRpcStatusErrorError
-    from .json_rpc_response_for_nullable_rpc_health_response_and_rpc_status_error import JsonRpcResponseForNullableRpcHealthResponseAndRpcStatusError
-    from .json_rpc_response_for_rpc_receipt_to_tx_response_and_rpc_receipt_to_tx_error import JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxErrorResult
-    from .json_rpc_response_for_rpc_receipt_to_tx_response_and_rpc_receipt_to_tx_error import JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxErrorError
-    from .json_rpc_response_for_rpc_receipt_to_tx_response_and_rpc_receipt_to_tx_error import JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxError
-    from .bandwidth_requests import BandwidthRequestsV1Option
-    from .bandwidth_requests import BandwidthRequests
-    from .fee import Fee
-    from .json_rpc_response_for_rpc_status_response_and_rpc_status_error import JsonRpcResponseForRpcStatusResponseAndRpcStatusErrorResult
-    from .json_rpc_response_for_rpc_status_response_and_rpc_status_error import JsonRpcResponseForRpcStatusResponseAndRpcStatusErrorError
-    from .json_rpc_response_for_rpc_status_response_and_rpc_status_error import JsonRpcResponseForRpcStatusResponseAndRpcStatusError
-    from .prepare_error import PrepareError
-    from .delete_gas_key_action import DeleteGasKeyAction
-    from .gas_key_info import GasKeyInfo
-    from .json_rpc_request_for_next_light_client_block import JsonRpcRequestForNextLightClientBlock
-    from .state_item import StateItem
-    from .json_rpc_response_for_rpc_chunk_response_and_rpc_chunk_error import JsonRpcResponseForRpcChunkResponseAndRpcChunkErrorResult
-    from .json_rpc_response_for_rpc_chunk_response_and_rpc_chunk_error import JsonRpcResponseForRpcChunkResponseAndRpcChunkErrorError
-    from .json_rpc_response_for_rpc_chunk_response_and_rpc_chunk_error import JsonRpcResponseForRpcChunkResponseAndRpcChunkError
-    from .json_rpc_response_for_genesis_config_and_genesis_config_error import JsonRpcResponseForGenesisConfigAndGenesisConfigErrorResult
-    from .json_rpc_response_for_genesis_config_and_genesis_config_error import JsonRpcResponseForGenesisConfigAndGenesisConfigErrorError
-    from .json_rpc_response_for_genesis_config_and_genesis_config_error import JsonRpcResponseForGenesisConfigAndGenesisConfigError
-    from .error_wrapper_for_rpc_validator_error import ErrorWrapperForRpcValidatorErrorRequestValidationError
-    from .error_wrapper_for_rpc_validator_error import ErrorWrapperForRpcValidatorErrorHandlerError
-    from .error_wrapper_for_rpc_validator_error import ErrorWrapperForRpcValidatorErrorInternalError
-    from .error_wrapper_for_rpc_validator_error import ErrorWrapperForRpcValidatorError
+    from .signature import Signature
+    from .rpc_view_account_error import RpcViewAccountErrorUnknownBlockInfo
+    from .rpc_view_account_error import RpcViewAccountErrorUnknownBlock
+    from .rpc_view_account_error import RpcViewAccountErrorInvalidAccountInfo
+    from .rpc_view_account_error import RpcViewAccountErrorInvalidAccount
+    from .rpc_view_account_error import RpcViewAccountErrorUnknownAccountInfo
+    from .rpc_view_account_error import RpcViewAccountErrorUnknownAccount
+    from .rpc_view_account_error import RpcViewAccountErrorInternalErrorInfo
+    from .rpc_view_account_error import RpcViewAccountErrorInternalError
+    from .rpc_view_account_error import RpcViewAccountError
+    from .rpc_transaction_response import RpcTransactionResponseFinalExecutionOutcomeWithReceiptView
+    from .rpc_transaction_response import RpcTransactionResponseFinalExecutionOutcomeView
+    from .rpc_transaction_response import RpcTransactionResponse
+    from .error_wrapper_for_rpc_call_function_error import ErrorWrapperForRpcCallFunctionErrorRequestValidationError
+    from .error_wrapper_for_rpc_call_function_error import ErrorWrapperForRpcCallFunctionErrorHandlerError
+    from .error_wrapper_for_rpc_call_function_error import ErrorWrapperForRpcCallFunctionErrorInternalError
+    from .error_wrapper_for_rpc_call_function_error import ErrorWrapperForRpcCallFunctionError
+    from .add_key_action import AddKeyAction
+    from .add_gas_key_action import AddGasKeyAction
+    from .action_creation_config_view import ActionCreationConfigView
+    from .rpc_request_validation_error_kind import RpcRequestValidationErrorKindMethodNotFoundInfo
+    from .rpc_request_validation_error_kind import RpcRequestValidationErrorKindMethodNotFound
+    from .rpc_request_validation_error_kind import RpcRequestValidationErrorKindParseErrorInfo
+    from .rpc_request_validation_error_kind import RpcRequestValidationErrorKindParseError
+    from .rpc_request_validation_error_kind import RpcRequestValidationErrorKind
+    from .shard_layout_v2 import ShardLayoutV2
+    from .withdraw_from_gas_key_action import WithdrawFromGasKeyAction
+    from .json_rpc_request_for_experimental_light_client_execution_outcome_proof import JsonRpcRequestForExperimentalLightClientExecutionOutcomeProof
     from .host_error import HostErrorBadUTF16
     from .host_error import HostErrorBadUTF8
     from .host_error import HostErrorGasExceeded
@@ -742,7 +318,157 @@ if TYPE_CHECKING:
     from .host_error import HostErrorMlDsaVerifyInvalidInputPayload
     from .host_error import HostErrorMlDsaVerifyInvalidInput
     from .host_error import HostError
-    from .deterministic_account_state_init_v1 import DeterministicAccountStateInitV1
+    from .rpc_view_gas_key_response import RpcViewGasKeyResponse
+    from .spice_chunk_endorsement_stats import SpiceChunkEndorsementStats
+    from .congestion_info_view import CongestionInfoView
+    from .vmkind import VMKind
+    from .json_rpc_request_for_maintenance_windows import JsonRpcRequestForMaintenanceWindows
+    from .json_rpc_response_for_rpc_view_state_response_and_rpc_view_state_error import JsonRpcResponseForRpcViewStateResponseAndRpcViewStateErrorResult
+    from .json_rpc_response_for_rpc_view_state_response_and_rpc_view_state_error import JsonRpcResponseForRpcViewStateResponseAndRpcViewStateErrorError
+    from .json_rpc_response_for_rpc_view_state_response_and_rpc_view_state_error import JsonRpcResponseForRpcViewStateResponseAndRpcViewStateError
+    from .dynamic_resharding_config_view import DynamicReshardingConfigView
+    from .rpc_gas_price_response import RpcGasPriceResponse
+    from .error_wrapper_for_rpc_validator_error import ErrorWrapperForRpcValidatorErrorRequestValidationError
+    from .error_wrapper_for_rpc_validator_error import ErrorWrapperForRpcValidatorErrorHandlerError
+    from .error_wrapper_for_rpc_validator_error import ErrorWrapperForRpcValidatorErrorInternalError
+    from .error_wrapper_for_rpc_validator_error import ErrorWrapperForRpcValidatorError
+    from .compilation_error import CompilationErrorCodeDoesNotExistPayload
+    from .compilation_error import CompilationErrorCodeDoesNotExist
+    from .compilation_error import CompilationErrorPrepareError
+    from .compilation_error import CompilationErrorWasmerCompileErrorPayload
+    from .compilation_error import CompilationErrorWasmerCompileError
+    from .compilation_error import CompilationError
+    from .json_rpc_request_for_changes import JsonRpcRequestForChanges
+    from .data_receipt_creation_config_view import DataReceiptCreationConfigView
+    from .json_rpc_request_for_experimental_light_client_block_proof import JsonRpcRequestForExperimentalLightClientBlockProof
+    from .rpc_congestion_level_response import RpcCongestionLevelResponse
+    from .json_rpc_request_for_experimental_view_gas_key import JsonRpcRequestForExperimentalViewGasKey
+    from .account_data_view import AccountDataView
+    from .final_execution_outcome_view import FinalExecutionOutcomeView
+    from .rpc_validator_request import RpcValidatorRequestEpochId
+    from .rpc_validator_request import RpcValidatorRequestBlockId
+    from .rpc_validator_request import RpcValidatorRequestLatest
+    from .rpc_validator_request import RpcValidatorRequest
+    from .block_status_view import BlockStatusView
+    from .rpc_light_client_chunk_execution_proof_request import RpcLightClientChunkExecutionProofRequest
+    from .rpc_transaction_error import RpcTransactionErrorInvalidTransaction
+    from .rpc_transaction_error import RpcTransactionErrorDoesNotTrackShard
+    from .rpc_transaction_error import RpcTransactionErrorRequestRoutedInfo
+    from .rpc_transaction_error import RpcTransactionErrorRequestRouted
+    from .rpc_transaction_error import RpcTransactionErrorUnknownTransactionInfo
+    from .rpc_transaction_error import RpcTransactionErrorUnknownTransaction
+    from .rpc_transaction_error import RpcTransactionErrorInternalErrorInfo
+    from .rpc_transaction_error import RpcTransactionErrorInternalError
+    from .rpc_transaction_error import RpcTransactionErrorTimeoutError
+    from .rpc_transaction_error import RpcTransactionError
+    from .json_rpc_response_for_rpc_call_function_response_and_rpc_call_function_error import JsonRpcResponseForRpcCallFunctionResponseAndRpcCallFunctionErrorResult
+    from .json_rpc_response_for_rpc_call_function_response_and_rpc_call_function_error import JsonRpcResponseForRpcCallFunctionResponseAndRpcCallFunctionErrorError
+    from .json_rpc_response_for_rpc_call_function_response_and_rpc_call_function_error import JsonRpcResponseForRpcCallFunctionResponseAndRpcCallFunctionError
+    from .shard_layout_v3 import ShardLayoutV3
+    from .transaction_nonce import TransactionNonceNoncePayload
+    from .transaction_nonce import TransactionNonceNonce
+    from .transaction_nonce import TransactionNonceGasKeyNoncePayload
+    from .transaction_nonce import TransactionNonceGasKeyNonce
+    from .transaction_nonce import TransactionNonce
+    from .final_execution_status import FinalExecutionStatusNotStarted
+    from .final_execution_status import FinalExecutionStatusStarted
+    from .final_execution_status import FinalExecutionStatusFailure
+    from .final_execution_status import FinalExecutionStatusSuccessValue
+    from .final_execution_status import FinalExecutionStatus
+    from .rpc_block_response import RpcBlockResponse
+    from .error_wrapper_for_rpc_query_error import ErrorWrapperForRpcQueryErrorRequestValidationError
+    from .error_wrapper_for_rpc_query_error import ErrorWrapperForRpcQueryErrorHandlerError
+    from .error_wrapper_for_rpc_query_error import ErrorWrapperForRpcQueryErrorInternalError
+    from .error_wrapper_for_rpc_query_error import ErrorWrapperForRpcQueryError
+    from .json_rpc_request_for_experimental_protocol_config import JsonRpcRequestForExperimentalProtocolConfig
+    from .rpc_view_access_key_list_request import RpcViewAccessKeyListRequestBlockId
+    from .rpc_view_access_key_list_request import RpcViewAccessKeyListRequestFinality
+    from .rpc_view_access_key_list_request import RpcViewAccessKeyListRequestSyncCheckpoint
+    from .rpc_view_access_key_list_request import RpcViewAccessKeyListRequest
+    from .tx_execution_status import TxExecutionStatus
+    from .rpc_light_client_execution_outcome_proof_response import RpcLightClientExecutionOutcomeProofResponse
+    from .error_wrapper_for_rpc_light_client_proof_error import ErrorWrapperForRpcLightClientProofErrorRequestValidationError
+    from .error_wrapper_for_rpc_light_client_proof_error import ErrorWrapperForRpcLightClientProofErrorHandlerError
+    from .error_wrapper_for_rpc_light_client_proof_error import ErrorWrapperForRpcLightClientProofErrorInternalError
+    from .error_wrapper_for_rpc_light_client_proof_error import ErrorWrapperForRpcLightClientProofError
+    from .json_rpc_response_for_rpc_congestion_level_response_and_rpc_chunk_error import JsonRpcResponseForRpcCongestionLevelResponseAndRpcChunkErrorResult
+    from .json_rpc_response_for_rpc_congestion_level_response_and_rpc_chunk_error import JsonRpcResponseForRpcCongestionLevelResponseAndRpcChunkErrorError
+    from .json_rpc_response_for_rpc_congestion_level_response_and_rpc_chunk_error import JsonRpcResponseForRpcCongestionLevelResponseAndRpcChunkError
+    from .rpc_view_gas_key_list_response import RpcViewGasKeyListResponse
+    from .versioned_delegate_action_payload import VersionedDelegateActionPayloadV2
+    from .versioned_delegate_action_payload import VersionedDelegateActionPayload
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorUnknownReceiptInfo
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorUnknownReceipt
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorDepthExceededInfo
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorDepthExceeded
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorUnsupportedInfo
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorUnsupported
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorInternalErrorInfo
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorInternalError
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorOutcomesNotStored
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorWindowTooLargeInfo
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorWindowTooLarge
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorMalformedHintInfo
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorMalformedHint
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorBudgetExceededInfo
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorBudgetExceeded
+    from .rpc_receipt_to_tx_error import RpcReceiptToTxError
+    from .block_id import BlockIdBlockHeight
+    from .block_id import BlockIdCryptoHash
+    from .block_id import BlockId
+    from .json_rpc_response_for_rpc_status_response_and_rpc_status_error import JsonRpcResponseForRpcStatusResponseAndRpcStatusErrorResult
+    from .json_rpc_response_for_rpc_status_response_and_rpc_status_error import JsonRpcResponseForRpcStatusResponseAndRpcStatusErrorError
+    from .json_rpc_response_for_rpc_status_response_and_rpc_status_error import JsonRpcResponseForRpcStatusResponseAndRpcStatusError
+    from .sync_concurrency import SyncConcurrency
+    from .error_wrapper_for_rpc_state_changes_error import ErrorWrapperForRpcStateChangesErrorRequestValidationError
+    from .error_wrapper_for_rpc_state_changes_error import ErrorWrapperForRpcStateChangesErrorHandlerError
+    from .error_wrapper_for_rpc_state_changes_error import ErrorWrapperForRpcStateChangesErrorInternalError
+    from .error_wrapper_for_rpc_state_changes_error import ErrorWrapperForRpcStateChangesError
+    from .json_rpc_response_for_rpc_light_client_state_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofErrorResult
+    from .json_rpc_response_for_rpc_light_client_state_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofErrorError
+    from .json_rpc_response_for_rpc_light_client_state_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofError
+    from .deploy_contract_action import DeployContractAction
+    from .account_info import AccountInfo
+    from .contract_code_view import ContractCodeView
+    from .rpc_congestion_level_request import RpcCongestionLevelRequestBlockShardId
+    from .rpc_congestion_level_request import RpcCongestionLevelRequestChunkHash
+    from .rpc_congestion_level_request import RpcCongestionLevelRequest
+    from .runtime_config_view import RuntimeConfigView
+    from .spice_chunk_id import SpiceChunkId
+    from .function_call_error import FunctionCallErrorWasmUnknownError
+    from .function_call_error import FunctionCallErrorCompilationError
+    from .function_call_error import FunctionCallErrorLinkErrorPayload
+    from .function_call_error import FunctionCallErrorLinkError
+    from .function_call_error import FunctionCallErrorMethodResolveError
+    from .function_call_error import FunctionCallErrorWasmTrap
+    from .function_call_error import FunctionCallErrorHostError
+    from .function_call_error import FunctionCallErrorExecutionError
+    from .function_call_error import FunctionCallError
+    from .public_key import PublicKey
+    from .json_rpc_response_for_rpc_light_client_execution_outcome_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofErrorResult
+    from .json_rpc_response_for_rpc_light_client_execution_outcome_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofErrorError
+    from .json_rpc_response_for_rpc_light_client_execution_outcome_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofError
+    from .epoch_sync_config import EpochSyncConfig
+    from .json_rpc_request_for_block_effects import JsonRpcRequestForBlockEffects
+    from .gas_key_nonces_view import GasKeyNoncesView
+    from .rpc_split_storage_info_response import RpcSplitStorageInfoResponse
+    from .version import Version
+    from .storage_error import StorageErrorStorageInternalError
+    from .storage_error import StorageErrorMissingTrieValue
+    from .storage_error import StorageErrorUnexpectedTrieValue
+    from .storage_error import StorageErrorStorageInconsistentState
+    from .storage_error import StorageErrorFlatStorageBlockNotSupported
+    from .storage_error import StorageErrorMemTrieLoadingError
+    from .storage_error import StorageError
+    from .json_rpc_request_for_experimental_maintenance_windows import JsonRpcRequestForExperimentalMaintenanceWindows
+    from .chunk_distribution_network_config import ChunkDistributionNetworkConfig
+    from .json_rpc_response_for_rpc_light_client_execution_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientExecutionProofResponseAndRpcLightClientProofErrorResult
+    from .json_rpc_response_for_rpc_light_client_execution_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientExecutionProofResponseAndRpcLightClientProofErrorError
+    from .json_rpc_response_for_rpc_light_client_execution_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientExecutionProofResponseAndRpcLightClientProofError
+    from .json_rpc_request_for_experimental_light_client_chunk_execution_proof import JsonRpcRequestForExperimentalLightClientChunkExecutionProof
+    from .global_contract_identifier import GlobalContractIdentifierHash
+    from .global_contract_identifier import GlobalContractIdentifierAccountId
+    from .global_contract_identifier import GlobalContractIdentifier
     from .rpc_query_request import RpcQueryRequestViewAccountByBlockId
     from .rpc_query_request import RpcQueryRequestViewCodeByBlockId
     from .rpc_query_request import RpcQueryRequestViewStateByBlockId
@@ -771,239 +497,33 @@ if TYPE_CHECKING:
     from .rpc_query_request import RpcQueryRequestViewGlobalContractCodeBySyncCheckpoint
     from .rpc_query_request import RpcQueryRequestViewGlobalContractCodeByAccountIdBySyncCheckpoint
     from .rpc_query_request import RpcQueryRequest
-    from .genesis_config_error import GenesisConfigError
-    from .status_sync_info import StatusSyncInfo
-    from .error_wrapper_for_rpc_call_function_error import ErrorWrapperForRpcCallFunctionErrorRequestValidationError
-    from .error_wrapper_for_rpc_call_function_error import ErrorWrapperForRpcCallFunctionErrorHandlerError
-    from .error_wrapper_for_rpc_call_function_error import ErrorWrapperForRpcCallFunctionErrorInternalError
-    from .error_wrapper_for_rpc_call_function_error import ErrorWrapperForRpcCallFunctionError
-    from .transfer_to_gas_key_action import TransferToGasKeyAction
-    from .rpc_view_code_response import RpcViewCodeResponse
-    from .error_wrapper_for_rpc_maintenance_windows_error import ErrorWrapperForRpcMaintenanceWindowsErrorRequestValidationError
-    from .error_wrapper_for_rpc_maintenance_windows_error import ErrorWrapperForRpcMaintenanceWindowsErrorHandlerError
-    from .error_wrapper_for_rpc_maintenance_windows_error import ErrorWrapperForRpcMaintenanceWindowsErrorInternalError
-    from .error_wrapper_for_rpc_maintenance_windows_error import ErrorWrapperForRpcMaintenanceWindowsError
-    from .crypto_hash import CryptoHash
-    from .json_rpc_request_for_query import JsonRpcRequestForQuery
-    from .rpc_gas_price_error import RpcGasPriceErrorInternalErrorInfo
-    from .rpc_gas_price_error import RpcGasPriceErrorInternalError
-    from .rpc_gas_price_error import RpcGasPriceErrorUnknownBlock
-    from .rpc_gas_price_error import RpcGasPriceError
-    from .execution_status_view import ExecutionStatusViewUnknown
-    from .execution_status_view import ExecutionStatusViewFailure
-    from .execution_status_view import ExecutionStatusViewSuccessValue
-    from .execution_status_view import ExecutionStatusViewSuccessReceiptId
-    from .execution_status_view import ExecutionStatusView
-    from .rpc_peer_info import RpcPeerInfo
-    from .rpc_congestion_level_request import RpcCongestionLevelRequestBlockShardId
-    from .rpc_congestion_level_request import RpcCongestionLevelRequestChunkHash
-    from .rpc_congestion_level_request import RpcCongestionLevelRequest
-    from .trie_split import TrieSplit
-    from .global_contract_identifier import GlobalContractIdentifierHash
-    from .global_contract_identifier import GlobalContractIdentifierAccountId
-    from .global_contract_identifier import GlobalContractIdentifier
-    from .rpc_view_access_key_list_response import RpcViewAccessKeyListResponse
-    from .slashed_validator import SlashedValidator
-    from .public_key_handle import PublicKeyHandle
-    from .chunk_header_view import ChunkHeaderView
-    from .json_rpc_request_for_experimental_tx_status import JsonRpcRequestForExperimentalTxStatus
-    from .rpc_light_client_next_block_request import RpcLightClientNextBlockRequest
     from .json_rpc_request_for_broadcast_tx_async import JsonRpcRequestForBroadcastTxAsync
-    from .error_wrapper_for_rpc_view_access_key_list_error import ErrorWrapperForRpcViewAccessKeyListErrorRequestValidationError
-    from .error_wrapper_for_rpc_view_access_key_list_error import ErrorWrapperForRpcViewAccessKeyListErrorHandlerError
-    from .error_wrapper_for_rpc_view_access_key_list_error import ErrorWrapperForRpcViewAccessKeyListErrorInternalError
-    from .error_wrapper_for_rpc_view_access_key_list_error import ErrorWrapperForRpcViewAccessKeyListError
-    from .rpc_receipt_to_tx_response import RpcReceiptToTxResponse
-    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorUnknownReceiptInfo
-    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorUnknownReceipt
-    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorDepthExceededInfo
-    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorDepthExceeded
-    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorUnsupportedInfo
-    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorUnsupported
-    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorInternalErrorInfo
-    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorInternalError
-    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorOutcomesNotStored
-    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorWindowTooLargeInfo
-    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorWindowTooLarge
-    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorMalformedHintInfo
-    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorMalformedHint
-    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorBudgetExceededInfo
-    from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorBudgetExceeded
-    from .rpc_receipt_to_tx_error import RpcReceiptToTxError
-    from .rpc_light_client_state_proof_request import RpcLightClientStateProofRequest
-    from .rpc_congestion_level_response import RpcCongestionLevelResponse
-    from .direction import Direction
-    from .rpc_call_function_request import RpcCallFunctionRequestBlockId
-    from .rpc_call_function_request import RpcCallFunctionRequestFinality
-    from .rpc_call_function_request import RpcCallFunctionRequestSyncCheckpoint
-    from .rpc_call_function_request import RpcCallFunctionRequest
-    from .duration_as_std_schema_provider import DurationAsStdSchemaProvider
-    from .json_rpc_response_for_rpc_gas_price_response_and_rpc_gas_price_error import JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceErrorResult
-    from .json_rpc_response_for_rpc_gas_price_response_and_rpc_gas_price_error import JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceErrorError
-    from .json_rpc_response_for_rpc_gas_price_response_and_rpc_gas_price_error import JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceError
-    from .state_proof_target import StateProofTargetAccountIdTargetType
-    from .state_proof_target import StateProofTargetAccountIdTargetType1
-    from .state_proof_target import StateProofTargetAccountIdKeyTargetType
-    from .state_proof_target import StateProofTargetAccountIdPublicKeyTargetType
-    from .state_proof_target import StateProofTarget
-    from .rpc_protocol_config_error import RpcProtocolConfigErrorUnknownBlock
-    from .rpc_protocol_config_error import RpcProtocolConfigErrorInternalErrorInfo
-    from .rpc_protocol_config_error import RpcProtocolConfigErrorInternalError
-    from .rpc_protocol_config_error import RpcProtocolConfigError
-    from .error_wrapper_for_rpc_view_gas_key_error import ErrorWrapperForRpcViewGasKeyErrorRequestValidationError
-    from .error_wrapper_for_rpc_view_gas_key_error import ErrorWrapperForRpcViewGasKeyErrorHandlerError
-    from .error_wrapper_for_rpc_view_gas_key_error import ErrorWrapperForRpcViewGasKeyErrorInternalError
-    from .error_wrapper_for_rpc_view_gas_key_error import ErrorWrapperForRpcViewGasKeyError
-    from .account_info import AccountInfo
-    from .error_wrapper_for_rpc_view_code_error import ErrorWrapperForRpcViewCodeErrorRequestValidationError
-    from .error_wrapper_for_rpc_view_code_error import ErrorWrapperForRpcViewCodeErrorHandlerError
-    from .error_wrapper_for_rpc_view_code_error import ErrorWrapperForRpcViewCodeErrorInternalError
-    from .error_wrapper_for_rpc_view_code_error import ErrorWrapperForRpcViewCodeError
-    from .json_rpc_request_for_experimental_receipt import JsonRpcRequestForExperimentalReceipt
-    from .json_rpc_request_for_experimental_genesis_config import JsonRpcRequestForExperimentalGenesisConfig
-    from .rpc_light_client_next_block_response import RpcLightClientNextBlockResponse
-    from .json_rpc_request_for_chunk import JsonRpcRequestForChunk
-    from .detailed_debug_status import DetailedDebugStatus
-    from .data_receipt_creation_config_view import DataReceiptCreationConfigView
-    from .rpc_block_request import RpcBlockRequestBlockId
-    from .rpc_block_request import RpcBlockRequestFinality
-    from .rpc_block_request import RpcBlockRequestSyncCheckpoint
-    from .rpc_block_request import RpcBlockRequest
-    from .error_wrapper_for_rpc_view_state_error import ErrorWrapperForRpcViewStateErrorRequestValidationError
-    from .error_wrapper_for_rpc_view_state_error import ErrorWrapperForRpcViewStateErrorHandlerError
-    from .error_wrapper_for_rpc_view_state_error import ErrorWrapperForRpcViewStateErrorInternalError
-    from .error_wrapper_for_rpc_view_state_error import ErrorWrapperForRpcViewStateError
-    from .rpc_query_error import RpcQueryErrorNoSyncedBlocks
-    from .rpc_query_error import RpcQueryErrorUnavailableShardInfo
-    from .rpc_query_error import RpcQueryErrorUnavailableShard
-    from .rpc_query_error import RpcQueryErrorGarbageCollectedBlockInfo
-    from .rpc_query_error import RpcQueryErrorGarbageCollectedBlock
-    from .rpc_query_error import RpcQueryErrorUnknownBlockInfo
-    from .rpc_query_error import RpcQueryErrorUnknownBlock
-    from .rpc_query_error import RpcQueryErrorInvalidAccountInfo
-    from .rpc_query_error import RpcQueryErrorInvalidAccount
-    from .rpc_query_error import RpcQueryErrorUnknownAccountInfo
-    from .rpc_query_error import RpcQueryErrorUnknownAccount
-    from .rpc_query_error import RpcQueryErrorNoContractCodeInfo
-    from .rpc_query_error import RpcQueryErrorNoContractCode
-    from .rpc_query_error import RpcQueryErrorTooLargeContractStateInfo
-    from .rpc_query_error import RpcQueryErrorTooLargeContractState
-    from .rpc_query_error import RpcQueryErrorUnknownAccessKeyInfo
-    from .rpc_query_error import RpcQueryErrorUnknownAccessKey
-    from .rpc_query_error import RpcQueryErrorUnknownGasKeyInfo
-    from .rpc_query_error import RpcQueryErrorUnknownGasKey
-    from .rpc_query_error import RpcQueryErrorTooManyAccessKeysInfo
-    from .rpc_query_error import RpcQueryErrorTooManyAccessKeys
-    from .rpc_query_error import RpcQueryErrorContractExecutionErrorInfo
-    from .rpc_query_error import RpcQueryErrorContractExecutionError
-    from .rpc_query_error import RpcQueryErrorNoGlobalContractCodeInfo
-    from .rpc_query_error import RpcQueryErrorNoGlobalContractCode
-    from .rpc_query_error import RpcQueryErrorInternalErrorInfo
-    from .rpc_query_error import RpcQueryErrorInternalError
-    from .rpc_query_error import RpcQueryError
-    from .error_wrapper_for_rpc_status_error import ErrorWrapperForRpcStatusErrorRequestValidationError
-    from .error_wrapper_for_rpc_status_error import ErrorWrapperForRpcStatusErrorHandlerError
-    from .error_wrapper_for_rpc_status_error import ErrorWrapperForRpcStatusErrorInternalError
-    from .error_wrapper_for_rpc_status_error import ErrorWrapperForRpcStatusError
-    from .rpc_gas_price_request import RpcGasPriceRequest
-    from .rpc_state_changes_in_block_response import RpcStateChangesInBlockResponse
-    from .rpc_view_gas_key_response import RpcViewGasKeyResponse
-    from .near_token import NearToken
-    from .error_wrapper_for_genesis_config_error import ErrorWrapperForGenesisConfigErrorRequestValidationError
-    from .error_wrapper_for_genesis_config_error import ErrorWrapperForGenesisConfigErrorHandlerError
-    from .error_wrapper_for_genesis_config_error import ErrorWrapperForGenesisConfigErrorInternalError
-    from .error_wrapper_for_genesis_config_error import ErrorWrapperForGenesisConfigError
-    from .rpc_validators_ordered_request import RpcValidatorsOrderedRequest
-    from .storage_usage_config_view import StorageUsageConfigView
-    from .rpc_light_client_next_block_error import RpcLightClientNextBlockErrorInternalErrorInfo
-    from .rpc_light_client_next_block_error import RpcLightClientNextBlockErrorInternalError
-    from .rpc_light_client_next_block_error import RpcLightClientNextBlockErrorUnknownBlock
-    from .rpc_light_client_next_block_error import RpcLightClientNextBlockErrorEpochOutOfBoundsInfo
-    from .rpc_light_client_next_block_error import RpcLightClientNextBlockErrorEpochOutOfBounds
-    from .rpc_light_client_next_block_error import RpcLightClientNextBlockError
-    from .chunk_execution_proof_view import ChunkExecutionProofView
-    from .rpc_receipt_response import RpcReceiptResponse
-    from .json_rpc_request_for_experimental_validators_ordered import JsonRpcRequestForExperimentalValidatorsOrdered
-    from .account_contract_view import AccountContractViewLocal
-    from .account_contract_view import AccountContractViewGlobalHash
-    from .account_contract_view import AccountContractViewGlobalAccountId
-    from .account_contract_view import AccountContractView
-    from .account_id_validity_rules_version import AccountIdValidityRulesVersion
-    from .epoch_id import EpochId
-    from .rpc_call_function_response import RpcCallFunctionResponse
-    from .block_reference import BlockReferenceBlockId
-    from .block_reference import BlockReferenceFinality
-    from .block_reference import BlockReferenceSyncCheckpoint
-    from .block_reference import BlockReference
-    from .add_gas_key_action import AddGasKeyAction
-    from .method_resolve_error import MethodResolveError
-    from .protocol_version_check_config import ProtocolVersionCheckConfig
-    from .rpc_receipt_request import RpcReceiptRequest
-    from .access_key_view import AccessKeyView
-    from .shard_uid import ShardUId
-    from .final_execution_outcome_with_receipt_view import FinalExecutionOutcomeWithReceiptView
-    from .final_execution_outcome_view import FinalExecutionOutcomeView
-    from .json_rpc_response_for_rpc_state_changes_in_block_response_and_rpc_state_changes_error import JsonRpcResponseForRpcStateChangesInBlockResponseAndRpcStateChangesErrorResult
-    from .json_rpc_response_for_rpc_state_changes_in_block_response_and_rpc_state_changes_error import JsonRpcResponseForRpcStateChangesInBlockResponseAndRpcStateChangesErrorError
-    from .json_rpc_response_for_rpc_state_changes_in_block_response_and_rpc_state_changes_error import JsonRpcResponseForRpcStateChangesInBlockResponseAndRpcStateChangesError
-    from .spice_chunk_endorsement_stats import SpiceChunkEndorsementStats
-    from .error_wrapper_for_rpc_view_account_error import ErrorWrapperForRpcViewAccountErrorRequestValidationError
-    from .error_wrapper_for_rpc_view_account_error import ErrorWrapperForRpcViewAccountErrorHandlerError
-    from .error_wrapper_for_rpc_view_account_error import ErrorWrapperForRpcViewAccountErrorInternalError
-    from .error_wrapper_for_rpc_view_account_error import ErrorWrapperForRpcViewAccountError
-    from .validator_info import ValidatorInfo
-    from .rpc_protocol_config_request import RpcProtocolConfigRequestBlockId
-    from .rpc_protocol_config_request import RpcProtocolConfigRequestFinality
-    from .rpc_protocol_config_request import RpcProtocolConfigRequestSyncCheckpoint
-    from .rpc_protocol_config_request import RpcProtocolConfigRequest
-    from .json_rpc_request_for_experimental_light_client_proof import JsonRpcRequestForExperimentalLightClientProof
-    from .access_key_creation_config_view import AccessKeyCreationConfigView
-    from .rpc_network_info_request import RpcNetworkInfoRequest
-    from .access_key_list import AccessKeyList
-    from .chunk_distribution_uris import ChunkDistributionUris
-    from .function_call_error import FunctionCallErrorWasmUnknownError
-    from .function_call_error import FunctionCallErrorCompilationError
-    from .function_call_error import FunctionCallErrorLinkErrorPayload
-    from .function_call_error import FunctionCallErrorLinkError
-    from .function_call_error import FunctionCallErrorMethodResolveError
-    from .function_call_error import FunctionCallErrorWasmTrap
-    from .function_call_error import FunctionCallErrorHostError
-    from .function_call_error import FunctionCallErrorExecutionError
-    from .function_call_error import FunctionCallError
-    from .rpc_light_client_execution_proof_request import RpcLightClientExecutionProofRequestTransaction
-    from .rpc_light_client_execution_proof_request import RpcLightClientExecutionProofRequestReceipt
-    from .rpc_light_client_execution_proof_request import RpcLightClientExecutionProofRequest
-    from .rpc_view_code_error import RpcViewCodeErrorUnknownBlockInfo
-    from .rpc_view_code_error import RpcViewCodeErrorUnknownBlock
-    from .rpc_view_code_error import RpcViewCodeErrorInvalidAccountInfo
-    from .rpc_view_code_error import RpcViewCodeErrorInvalidAccount
-    from .rpc_view_code_error import RpcViewCodeErrorUnknownAccountInfo
-    from .rpc_view_code_error import RpcViewCodeErrorUnknownAccount
-    from .rpc_view_code_error import RpcViewCodeErrorNoContractCodeInfo
-    from .rpc_view_code_error import RpcViewCodeErrorNoContractCode
-    from .rpc_view_code_error import RpcViewCodeErrorInternalErrorInfo
-    from .rpc_view_code_error import RpcViewCodeErrorInternalError
-    from .rpc_view_code_error import RpcViewCodeError
-    from .rpc_view_gas_key_request import RpcViewGasKeyRequestBlockId
-    from .rpc_view_gas_key_request import RpcViewGasKeyRequestFinality
-    from .rpc_view_gas_key_request import RpcViewGasKeyRequestSyncCheckpoint
-    from .rpc_view_gas_key_request import RpcViewGasKeyRequest
-    from .function_call_action import FunctionCallAction
-    from .runtime_config_view import RuntimeConfigView
-    from .deploy_contract_action import DeployContractAction
-    from .rpc_validator_response import RpcValidatorResponse
-    from .state_proof_view import StateProofView
+    from .access_key_info_view import AccessKeyInfoView
+    from .rpc_view_access_key_request import RpcViewAccessKeyRequestBlockId
+    from .rpc_view_access_key_request import RpcViewAccessKeyRequestFinality
+    from .rpc_view_access_key_request import RpcViewAccessKeyRequestSyncCheckpoint
+    from .rpc_view_access_key_request import RpcViewAccessKeyRequest
+    from .json_rpc_response_for_rpc_receipt_response_and_rpc_receipt_error import JsonRpcResponseForRpcReceiptResponseAndRpcReceiptErrorResult
+    from .json_rpc_response_for_rpc_receipt_response_and_rpc_receipt_error import JsonRpcResponseForRpcReceiptResponseAndRpcReceiptErrorError
+    from .json_rpc_response_for_rpc_receipt_response_and_rpc_receipt_error import JsonRpcResponseForRpcReceiptResponseAndRpcReceiptError
+    from .rpc_transaction_status_request import RpcTransactionStatusRequestSignedTxBase64
+    from .rpc_transaction_status_request import RpcTransactionStatusRequestSenderAccountIdTxHash
+    from .rpc_transaction_status_request import RpcTransactionStatusRequest
+    from .json_rpc_request_for_gas_price import JsonRpcRequestForGasPrice
+    from .json_rpc_request_for_next_light_client_block import JsonRpcRequestForNextLightClientBlock
+    from .error_wrapper_for_rpc_gas_price_error import ErrorWrapperForRpcGasPriceErrorRequestValidationError
+    from .error_wrapper_for_rpc_gas_price_error import ErrorWrapperForRpcGasPriceErrorHandlerError
+    from .error_wrapper_for_rpc_gas_price_error import ErrorWrapperForRpcGasPriceErrorInternalError
+    from .error_wrapper_for_rpc_gas_price_error import ErrorWrapperForRpcGasPriceError
+    from .json_rpc_response_for_array_of_validator_stake_view_and_rpc_validator_error import JsonRpcResponseForArrayOfValidatorStakeViewAndRpcValidatorErrorResult
+    from .json_rpc_response_for_array_of_validator_stake_view_and_rpc_validator_error import JsonRpcResponseForArrayOfValidatorStakeViewAndRpcValidatorErrorError
+    from .json_rpc_response_for_array_of_validator_stake_view_and_rpc_validator_error import JsonRpcResponseForArrayOfValidatorStakeViewAndRpcValidatorError
+    from .rpc_view_code_request import RpcViewCodeRequestBlockId
+    from .rpc_view_code_request import RpcViewCodeRequestFinality
+    from .rpc_view_code_request import RpcViewCodeRequestSyncCheckpoint
+    from .rpc_view_code_request import RpcViewCodeRequest
     from .json_rpc_request_for_experimental_light_client_state_proof import JsonRpcRequestForExperimentalLightClientStateProof
-    from .error_wrapper_for_rpc_split_storage_info_error import ErrorWrapperForRpcSplitStorageInfoErrorRequestValidationError
-    from .error_wrapper_for_rpc_split_storage_info_error import ErrorWrapperForRpcSplitStorageInfoErrorHandlerError
-    from .error_wrapper_for_rpc_split_storage_info_error import ErrorWrapperForRpcSplitStorageInfoErrorInternalError
-    from .error_wrapper_for_rpc_split_storage_info_error import ErrorWrapperForRpcSplitStorageInfoError
-    from .add_key_action import AddKeyAction
-    from .json_rpc_response_for_rpc_state_changes_in_block_by_type_response_and_rpc_state_changes_error import JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesErrorResult
-    from .json_rpc_response_for_rpc_state_changes_in_block_by_type_response_and_rpc_state_changes_error import JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesErrorError
-    from .json_rpc_response_for_rpc_state_changes_in_block_by_type_response_and_rpc_state_changes_error import JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesError
-    from .json_rpc_request_for_experimental_changes_in_block import JsonRpcRequestForExperimentalChangesInBlock
-    from .json_rpc_request_for_experimental_maintenance_windows import JsonRpcRequestForExperimentalMaintenanceWindows
+    from .chunk_header_view import ChunkHeaderView
     from .tracked_shards_config import TrackedShardsConfigNoShards
     from .tracked_shards_config import TrackedShardsConfigShards
     from .tracked_shards_config import TrackedShardsConfigAllShards
@@ -1011,157 +531,20 @@ if TYPE_CHECKING:
     from .tracked_shards_config import TrackedShardsConfigSchedule
     from .tracked_shards_config import TrackedShardsConfigAccounts
     from .tracked_shards_config import TrackedShardsConfig
-    from .error_wrapper_for_rpc_client_config_error import ErrorWrapperForRpcClientConfigErrorRequestValidationError
-    from .error_wrapper_for_rpc_client_config_error import ErrorWrapperForRpcClientConfigErrorHandlerError
-    from .error_wrapper_for_rpc_client_config_error import ErrorWrapperForRpcClientConfigErrorInternalError
-    from .error_wrapper_for_rpc_client_config_error import ErrorWrapperForRpcClientConfigError
-    from .deposit_cost_failure_reason import DepositCostFailureReason
-    from .rpc_view_access_key_list_request import RpcViewAccessKeyListRequestBlockId
-    from .rpc_view_access_key_list_request import RpcViewAccessKeyListRequestFinality
-    from .rpc_view_access_key_list_request import RpcViewAccessKeyListRequestSyncCheckpoint
-    from .rpc_view_access_key_list_request import RpcViewAccessKeyListRequest
-    from .rpc_light_client_chunk_execution_proof_request import RpcLightClientChunkExecutionProofRequest
-    from .action_error import ActionError
-    from .json_rpc_response_for_rpc_transaction_response_and_rpc_transaction_error import JsonRpcResponseForRpcTransactionResponseAndRpcTransactionErrorResult
-    from .json_rpc_response_for_rpc_transaction_response_and_rpc_transaction_error import JsonRpcResponseForRpcTransactionResponseAndRpcTransactionErrorError
-    from .json_rpc_response_for_rpc_transaction_response_and_rpc_transaction_error import JsonRpcResponseForRpcTransactionResponseAndRpcTransactionError
-    from .cloud_archival_writer_config import CloudArchivalWriterConfig
-    from .peer_id import PeerId
-    from .execution_metadata_view import ExecutionMetadataView
-    from .actions_validation_error import ActionsValidationErrorDeleteActionMustBeFinal
-    from .actions_validation_error import ActionsValidationErrorTotalPrepaidGasExceededPayload
-    from .actions_validation_error import ActionsValidationErrorTotalPrepaidGasExceeded
-    from .actions_validation_error import ActionsValidationErrorTotalNumberOfActionsExceededPayload
-    from .actions_validation_error import ActionsValidationErrorTotalNumberOfActionsExceeded
-    from .actions_validation_error import ActionsValidationErrorAddKeyMethodNamesNumberOfBytesExceededPayload
-    from .actions_validation_error import ActionsValidationErrorAddKeyMethodNamesNumberOfBytesExceeded
-    from .actions_validation_error import ActionsValidationErrorAddKeyMethodNameLengthExceededPayload
-    from .actions_validation_error import ActionsValidationErrorAddKeyMethodNameLengthExceeded
-    from .actions_validation_error import ActionsValidationErrorIntegerOverflow
-    from .actions_validation_error import ActionsValidationErrorInvalidAccountIdPayload
-    from .actions_validation_error import ActionsValidationErrorInvalidAccountId
-    from .actions_validation_error import ActionsValidationErrorContractSizeExceededPayload
-    from .actions_validation_error import ActionsValidationErrorContractSizeExceeded
-    from .actions_validation_error import ActionsValidationErrorFunctionCallMethodNameLengthExceededPayload
-    from .actions_validation_error import ActionsValidationErrorFunctionCallMethodNameLengthExceeded
-    from .actions_validation_error import ActionsValidationErrorFunctionCallArgumentsLengthExceededPayload
-    from .actions_validation_error import ActionsValidationErrorFunctionCallArgumentsLengthExceeded
-    from .actions_validation_error import ActionsValidationErrorUnsuitableStakingKeyPayload
-    from .actions_validation_error import ActionsValidationErrorUnsuitableStakingKey
-    from .actions_validation_error import ActionsValidationErrorFunctionCallZeroAttachedGas
-    from .actions_validation_error import ActionsValidationErrorDelegateActionMustBeOnlyOne
-    from .actions_validation_error import ActionsValidationErrorUnsupportedProtocolFeaturePayload
-    from .actions_validation_error import ActionsValidationErrorUnsupportedProtocolFeature
-    from .actions_validation_error import ActionsValidationErrorInvalidDeterministicStateInitReceiverPayload
-    from .actions_validation_error import ActionsValidationErrorInvalidDeterministicStateInitReceiver
-    from .actions_validation_error import ActionsValidationErrorDeterministicStateInitKeyLengthExceededPayload
-    from .actions_validation_error import ActionsValidationErrorDeterministicStateInitKeyLengthExceeded
-    from .actions_validation_error import ActionsValidationErrorDeterministicStateInitValueLengthExceededPayload
-    from .actions_validation_error import ActionsValidationErrorDeterministicStateInitValueLengthExceeded
-    from .actions_validation_error import ActionsValidationErrorGasKeyInvalidNumNoncesPayload
-    from .actions_validation_error import ActionsValidationErrorGasKeyInvalidNumNonces
-    from .actions_validation_error import ActionsValidationErrorAddGasKeyWithNonZeroBalancePayload
-    from .actions_validation_error import ActionsValidationErrorAddGasKeyWithNonZeroBalance
-    from .actions_validation_error import ActionsValidationErrorGasKeyFunctionCallAllowanceNotAllowed
-    from .actions_validation_error import ActionsValidationErrorTotalNumberOfDeployActionsExceededPayload
-    from .actions_validation_error import ActionsValidationErrorTotalNumberOfDeployActionsExceeded
-    from .actions_validation_error import ActionsValidationErrorFunctionCallEmptyMethodName
-    from .actions_validation_error import ActionsValidationErrorInvalidUniversalStateInitReceiverPayload
-    from .actions_validation_error import ActionsValidationErrorInvalidUniversalStateInitReceiver
-    from .actions_validation_error import ActionsValidationErrorUniversalStateInitKeyLengthExceededPayload
-    from .actions_validation_error import ActionsValidationErrorUniversalStateInitKeyLengthExceeded
-    from .actions_validation_error import ActionsValidationErrorUniversalStateInitValueLengthExceededPayload
-    from .actions_validation_error import ActionsValidationErrorUniversalStateInitValueLengthExceeded
-    from .actions_validation_error import ActionsValidationErrorMalformedUniversalStateInit
-    from .actions_validation_error import ActionsValidationErrorRemovedProtocolFeaturePayload
-    from .actions_validation_error import ActionsValidationErrorRemovedProtocolFeature
-    from .actions_validation_error import ActionsValidationErrorWithdrawFromGasKeyNotAllowedInDelegate
-    from .actions_validation_error import ActionsValidationError
-    from .block_id import BlockIdBlockHeight
-    from .block_id import BlockIdCryptoHash
-    from .block_id import BlockId
+    from .use_global_contract_action import UseGlobalContractAction
+    from .rpc_network_info_request import RpcNetworkInfoRequest
+    from .delete_gas_key_action import DeleteGasKeyAction
+    from .slashed_validator import SlashedValidator
+    from .finality import Finality
+    from .json_rpc_response_for_rpc_validator_response_and_rpc_validator_error import JsonRpcResponseForRpcValidatorResponseAndRpcValidatorErrorResult
+    from .json_rpc_response_for_rpc_validator_response_and_rpc_validator_error import JsonRpcResponseForRpcValidatorResponseAndRpcValidatorErrorError
+    from .json_rpc_response_for_rpc_validator_response_and_rpc_validator_error import JsonRpcResponseForRpcValidatorResponseAndRpcValidatorError
+    from .json_rpc_request_for_experimental_receipt_to_tx import JsonRpcRequestForExperimentalReceiptToTx
     from .rpc_block_error import RpcBlockErrorUnknownBlock
     from .rpc_block_error import RpcBlockErrorNotSyncedYet
     from .rpc_block_error import RpcBlockErrorInternalErrorInfo
     from .rpc_block_error import RpcBlockErrorInternalError
     from .rpc_block_error import RpcBlockError
-    from .rpc_client_config_error import RpcClientConfigErrorInternalErrorInfo
-    from .rpc_client_config_error import RpcClientConfigErrorInternalError
-    from .rpc_client_config_error import RpcClientConfigError
-    from .rpc_receipt_to_tx_request import RpcReceiptToTxRequest
-    from .rpc_transaction_error import RpcTransactionErrorInvalidTransaction
-    from .rpc_transaction_error import RpcTransactionErrorDoesNotTrackShard
-    from .rpc_transaction_error import RpcTransactionErrorRequestRoutedInfo
-    from .rpc_transaction_error import RpcTransactionErrorRequestRouted
-    from .rpc_transaction_error import RpcTransactionErrorUnknownTransactionInfo
-    from .rpc_transaction_error import RpcTransactionErrorUnknownTransaction
-    from .rpc_transaction_error import RpcTransactionErrorInternalErrorInfo
-    from .rpc_transaction_error import RpcTransactionErrorInternalError
-    from .rpc_transaction_error import RpcTransactionErrorTimeoutError
-    from .rpc_transaction_error import RpcTransactionError
-    from .rpc_block_response import RpcBlockResponse
-    from .json_rpc_response_for_rpc_validator_response_and_rpc_validator_error import JsonRpcResponseForRpcValidatorResponseAndRpcValidatorErrorResult
-    from .json_rpc_response_for_rpc_validator_response_and_rpc_validator_error import JsonRpcResponseForRpcValidatorResponseAndRpcValidatorErrorError
-    from .json_rpc_response_for_rpc_validator_response_and_rpc_validator_error import JsonRpcResponseForRpcValidatorResponseAndRpcValidatorError
-    from .raw_state_init import RawStateInit
-    from .error_wrapper_for_rpc_block_error import ErrorWrapperForRpcBlockErrorRequestValidationError
-    from .error_wrapper_for_rpc_block_error import ErrorWrapperForRpcBlockErrorHandlerError
-    from .error_wrapper_for_rpc_block_error import ErrorWrapperForRpcBlockErrorInternalError
-    from .error_wrapper_for_rpc_block_error import ErrorWrapperForRpcBlockError
-    from .rpc_network_info_error import RpcNetworkInfoErrorInternalErrorInfo
-    from .rpc_network_info_error import RpcNetworkInfoErrorInternalError
-    from .rpc_network_info_error import RpcNetworkInfoError
-    from .rpc_view_state_response import RpcViewStateResponse
-    from .rpc_validator_error import RpcValidatorErrorUnknownEpoch
-    from .rpc_validator_error import RpcValidatorErrorValidatorInfoUnavailable
-    from .rpc_validator_error import RpcValidatorErrorInternalErrorInfo
-    from .rpc_validator_error import RpcValidatorErrorInternalError
-    from .rpc_validator_error import RpcValidatorError
-    from .json_rpc_request_for_experimental_protocol_config import JsonRpcRequestForExperimentalProtocolConfig
-    from .rpc_view_state_request import RpcViewStateRequestBlockId
-    from .rpc_view_state_request import RpcViewStateRequestFinality
-    from .rpc_view_state_request import RpcViewStateRequestSyncCheckpoint
-    from .rpc_view_state_request import RpcViewStateRequest
-    from .sync_config import SyncConfig
-    from .validator_kickout_reason import ValidatorKickoutReasonUnusedSlashed
-    from .validator_kickout_reason import ValidatorKickoutReasonNotEnoughBlocksPayload
-    from .validator_kickout_reason import ValidatorKickoutReasonNotEnoughBlocks
-    from .validator_kickout_reason import ValidatorKickoutReasonNotEnoughChunksPayload
-    from .validator_kickout_reason import ValidatorKickoutReasonNotEnoughChunks
-    from .validator_kickout_reason import ValidatorKickoutReasonUnstaked
-    from .validator_kickout_reason import ValidatorKickoutReasonNotEnoughStakePayload
-    from .validator_kickout_reason import ValidatorKickoutReasonNotEnoughStake
-    from .validator_kickout_reason import ValidatorKickoutReasonDidNotGetASeat
-    from .validator_kickout_reason import ValidatorKickoutReasonNotEnoughChunkEndorsementsPayload
-    from .validator_kickout_reason import ValidatorKickoutReasonNotEnoughChunkEndorsements
-    from .validator_kickout_reason import ValidatorKickoutReasonProtocolVersionTooOldPayload
-    from .validator_kickout_reason import ValidatorKickoutReasonProtocolVersionTooOld
-    from .validator_kickout_reason import ValidatorKickoutReason
-    from .account_state import AccountState
-    from .store_value import StoreValue
-    from .catchup_status_view import CatchupStatusView
-    from .json_rpc_response_for_rpc_view_account_response_and_rpc_view_account_error import JsonRpcResponseForRpcViewAccountResponseAndRpcViewAccountErrorResult
-    from .json_rpc_response_for_rpc_view_account_response_and_rpc_view_account_error import JsonRpcResponseForRpcViewAccountResponseAndRpcViewAccountErrorError
-    from .json_rpc_response_for_rpc_view_account_response_and_rpc_view_account_error import JsonRpcResponseForRpcViewAccountResponseAndRpcViewAccountError
-    from .json_rpc_request_for_broadcast_tx_commit import JsonRpcRequestForBroadcastTxCommit
-    from .rpc_request_validation_error_kind import RpcRequestValidationErrorKindMethodNotFoundInfo
-    from .rpc_request_validation_error_kind import RpcRequestValidationErrorKindMethodNotFound
-    from .rpc_request_validation_error_kind import RpcRequestValidationErrorKindParseErrorInfo
-    from .rpc_request_validation_error_kind import RpcRequestValidationErrorKindParseError
-    from .rpc_request_validation_error_kind import RpcRequestValidationErrorKind
-    from .error_wrapper_for_rpc_protocol_config_error import ErrorWrapperForRpcProtocolConfigErrorRequestValidationError
-    from .error_wrapper_for_rpc_protocol_config_error import ErrorWrapperForRpcProtocolConfigErrorHandlerError
-    from .error_wrapper_for_rpc_protocol_config_error import ErrorWrapperForRpcProtocolConfigErrorInternalError
-    from .error_wrapper_for_rpc_protocol_config_error import ErrorWrapperForRpcProtocolConfigError
-    from .receipt_view import ReceiptView
-    from .missing_trie_value_context import MissingTrieValueContext
-    from .json_rpc_request_for_network_info import JsonRpcRequestForNetworkInfo
-    from .vmkind import VMKind
-    from .rpc_network_info_response import RpcNetworkInfoResponse
-    from .json_rpc_request_for_experimental_view_account import JsonRpcRequestForExperimentalViewAccount
-    from .mutable_config_value import MutableConfigValue
-    from .block_status_view import BlockStatusView
-    from .runtime_fees_config_view import RuntimeFeesConfigView
     from .action_error_kind import ActionErrorKindAccountAlreadyExistsPayload
     from .action_error_kind import ActionErrorKindAccountAlreadyExists
     from .action_error_kind import ActionErrorKindAccountDoesNotExistPayload
@@ -1219,39 +602,656 @@ if TYPE_CHECKING:
     from .action_error_kind import ActionErrorKindAccountNotInitializedPayload
     from .action_error_kind import ActionErrorKindAccountNotInitialized
     from .action_error_kind import ActionErrorKind
-    from .epoch_sync_config import EpochSyncConfig
-    from .rpc_light_client_chunk_execution_proof_response import RpcLightClientChunkExecutionProofResponse
-    from .rpc_send_transaction_request import RpcSendTransactionRequest
+    from .known_producer_view import KnownProducerView
+    from .json_rpc_response_for_rpc_view_access_key_list_response_and_rpc_view_access_key_list_error import JsonRpcResponseForRpcViewAccessKeyListResponseAndRpcViewAccessKeyListErrorResult
+    from .json_rpc_response_for_rpc_view_access_key_list_response_and_rpc_view_access_key_list_error import JsonRpcResponseForRpcViewAccessKeyListResponseAndRpcViewAccessKeyListErrorError
+    from .json_rpc_response_for_rpc_view_access_key_list_response_and_rpc_view_access_key_list_error import JsonRpcResponseForRpcViewAccessKeyListResponseAndRpcViewAccessKeyListError
+    from .json_rpc_response_for_rpc_state_changes_in_block_response_and_rpc_state_changes_error import JsonRpcResponseForRpcStateChangesInBlockResponseAndRpcStateChangesErrorResult
+    from .json_rpc_response_for_rpc_state_changes_in_block_response_and_rpc_state_changes_error import JsonRpcResponseForRpcStateChangesInBlockResponseAndRpcStateChangesErrorError
+    from .json_rpc_response_for_rpc_state_changes_in_block_response_and_rpc_state_changes_error import JsonRpcResponseForRpcStateChangesInBlockResponseAndRpcStateChangesError
+    from .receipt_view import ReceiptView
+    from .catchup_status_view import CatchupStatusView
+    from .receipt_validation_error import ReceiptValidationErrorInvalidPredecessorIdPayload
+    from .receipt_validation_error import ReceiptValidationErrorInvalidPredecessorId
+    from .receipt_validation_error import ReceiptValidationErrorInvalidReceiverIdPayload
+    from .receipt_validation_error import ReceiptValidationErrorInvalidReceiverId
+    from .receipt_validation_error import ReceiptValidationErrorInvalidSignerIdPayload
+    from .receipt_validation_error import ReceiptValidationErrorInvalidSignerId
+    from .receipt_validation_error import ReceiptValidationErrorInvalidDataReceiverIdPayload
+    from .receipt_validation_error import ReceiptValidationErrorInvalidDataReceiverId
+    from .receipt_validation_error import ReceiptValidationErrorReturnedValueLengthExceededPayload
+    from .receipt_validation_error import ReceiptValidationErrorReturnedValueLengthExceeded
+    from .receipt_validation_error import ReceiptValidationErrorNumberInputDataDependenciesExceededPayload
+    from .receipt_validation_error import ReceiptValidationErrorNumberInputDataDependenciesExceeded
+    from .receipt_validation_error import ReceiptValidationErrorActionsValidation
+    from .receipt_validation_error import ReceiptValidationErrorReceiptSizeExceededPayload
+    from .receipt_validation_error import ReceiptValidationErrorReceiptSizeExceeded
+    from .receipt_validation_error import ReceiptValidationErrorInvalidRefundToPayload
+    from .receipt_validation_error import ReceiptValidationErrorInvalidRefundTo
+    from .receipt_validation_error import ReceiptValidationError
+    from .execution_metadata_view import ExecutionMetadataView
+    from .create_account_action import CreateAccountAction
+    from .congestion_control_config_view import CongestionControlConfigView
+    from .account_contract_view import AccountContractViewLocal
+    from .account_contract_view import AccountContractViewGlobalHash
+    from .account_contract_view import AccountContractViewGlobalAccountId
+    from .account_contract_view import AccountContractView
+    from .validator_kickout_reason import ValidatorKickoutReasonUnusedSlashed
+    from .validator_kickout_reason import ValidatorKickoutReasonNotEnoughBlocksPayload
+    from .validator_kickout_reason import ValidatorKickoutReasonNotEnoughBlocks
+    from .validator_kickout_reason import ValidatorKickoutReasonNotEnoughChunksPayload
+    from .validator_kickout_reason import ValidatorKickoutReasonNotEnoughChunks
+    from .validator_kickout_reason import ValidatorKickoutReasonUnstaked
+    from .validator_kickout_reason import ValidatorKickoutReasonNotEnoughStakePayload
+    from .validator_kickout_reason import ValidatorKickoutReasonNotEnoughStake
+    from .validator_kickout_reason import ValidatorKickoutReasonDidNotGetASeat
+    from .validator_kickout_reason import ValidatorKickoutReasonNotEnoughChunkEndorsementsPayload
+    from .validator_kickout_reason import ValidatorKickoutReasonNotEnoughChunkEndorsements
+    from .validator_kickout_reason import ValidatorKickoutReasonProtocolVersionTooOldPayload
+    from .validator_kickout_reason import ValidatorKickoutReasonProtocolVersionTooOld
+    from .validator_kickout_reason import ValidatorKickoutReason
+    from .key_handle import KeyHandle
+    from .gas_key_view import GasKeyView
+    from .block_header_view import BlockHeaderView
+    from .merkle_path_item import MerklePathItem
     from .json_rpc_response_for_rpc_split_storage_info_response_and_rpc_split_storage_info_error import JsonRpcResponseForRpcSplitStorageInfoResponseAndRpcSplitStorageInfoErrorResult
     from .json_rpc_response_for_rpc_split_storage_info_response_and_rpc_split_storage_info_error import JsonRpcResponseForRpcSplitStorageInfoResponseAndRpcSplitStorageInfoErrorError
     from .json_rpc_response_for_rpc_split_storage_info_response_and_rpc_split_storage_info_error import JsonRpcResponseForRpcSplitStorageInfoResponseAndRpcSplitStorageInfoError
-    from .rpc_view_code_request import RpcViewCodeRequestBlockId
-    from .rpc_view_code_request import RpcViewCodeRequestFinality
-    from .rpc_view_code_request import RpcViewCodeRequestSyncCheckpoint
-    from .rpc_view_code_request import RpcViewCodeRequest
+    from .json_rpc_request_for_client_config import JsonRpcRequestForClientConfig
+    from .prepare_error import PrepareError
+    from .rpc_network_info_error import RpcNetworkInfoErrorInternalErrorInfo
+    from .rpc_network_info_error import RpcNetworkInfoErrorInternalError
+    from .rpc_network_info_error import RpcNetworkInfoError
+    from .json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error import JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorResult
+    from .json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error import JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorError
+    from .json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error import JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeError
+    from .global_contract_deploy_mode import GlobalContractDeployMode
+    from .json_rpc_request_for_validators import JsonRpcRequestForValidators
+    from .rpc_light_client_execution_proof_response import RpcLightClientExecutionProofResponse
+    from .execution_outcome_view import ExecutionOutcomeView
+    from .error_wrapper_for_rpc_status_error import ErrorWrapperForRpcStatusErrorRequestValidationError
+    from .error_wrapper_for_rpc_status_error import ErrorWrapperForRpcStatusErrorHandlerError
+    from .error_wrapper_for_rpc_status_error import ErrorWrapperForRpcStatusErrorInternalError
+    from .error_wrapper_for_rpc_status_error import ErrorWrapperForRpcStatusError
+    from .json_rpc_request_for_experimental_view_code import JsonRpcRequestForExperimentalViewCode
+    from .chunk_execution_proof_view import ChunkExecutionProofView
+    from .access_key_permission_view import AccessKeyPermissionViewFullAccess
+    from .access_key_permission_view import AccessKeyPermissionViewFunctionCallPayload
+    from .access_key_permission_view import AccessKeyPermissionViewFunctionCall
+    from .access_key_permission_view import AccessKeyPermissionViewGasKeyFunctionCallPayload
+    from .access_key_permission_view import AccessKeyPermissionViewGasKeyFunctionCall
+    from .access_key_permission_view import AccessKeyPermissionViewGasKeyFullAccessPayload
+    from .access_key_permission_view import AccessKeyPermissionViewGasKeyFullAccess
+    from .access_key_permission_view import AccessKeyPermissionView
+    from .error_wrapper_for_rpc_network_info_error import ErrorWrapperForRpcNetworkInfoErrorRequestValidationError
+    from .error_wrapper_for_rpc_network_info_error import ErrorWrapperForRpcNetworkInfoErrorHandlerError
+    from .error_wrapper_for_rpc_network_info_error import ErrorWrapperForRpcNetworkInfoErrorInternalError
+    from .error_wrapper_for_rpc_network_info_error import ErrorWrapperForRpcNetworkInfoError
+    from .rpc_light_client_block_proof_response import RpcLightClientBlockProofResponse
+    from .shard_layout_v1 import ShardLayoutV1
+    from .missing_trie_value_context import MissingTrieValueContext
+    from .json_rpc_request_for_chunk import JsonRpcRequestForChunk
+    from .limit_config import LimitConfig
+    from .rpc_state_changes_in_block_request import RpcStateChangesInBlockRequestBlockId
+    from .rpc_state_changes_in_block_request import RpcStateChangesInBlockRequestFinality
+    from .rpc_state_changes_in_block_request import RpcStateChangesInBlockRequestSyncCheckpoint
+    from .rpc_state_changes_in_block_request import RpcStateChangesInBlockRequest
+    from .rpc_status_response import RpcStatusResponse
+    from .invalid_tx_error import InvalidTxErrorInvalidAccessKeyError
+    from .invalid_tx_error import InvalidTxErrorInvalidSignerIdPayload
+    from .invalid_tx_error import InvalidTxErrorInvalidSignerId
+    from .invalid_tx_error import InvalidTxErrorSignerDoesNotExistPayload
+    from .invalid_tx_error import InvalidTxErrorSignerDoesNotExist
+    from .invalid_tx_error import InvalidTxErrorInvalidNoncePayload
+    from .invalid_tx_error import InvalidTxErrorInvalidNonce
+    from .invalid_tx_error import InvalidTxErrorNonceTooLargePayload
+    from .invalid_tx_error import InvalidTxErrorNonceTooLarge
+    from .invalid_tx_error import InvalidTxErrorInvalidReceiverIdPayload
+    from .invalid_tx_error import InvalidTxErrorInvalidReceiverId
+    from .invalid_tx_error import InvalidTxErrorInvalidSignature
+    from .invalid_tx_error import InvalidTxErrorNotEnoughBalancePayload
+    from .invalid_tx_error import InvalidTxErrorNotEnoughBalance
+    from .invalid_tx_error import InvalidTxErrorLackBalanceForStatePayload
+    from .invalid_tx_error import InvalidTxErrorLackBalanceForState
+    from .invalid_tx_error import InvalidTxErrorCostOverflow
+    from .invalid_tx_error import InvalidTxErrorInvalidChain
+    from .invalid_tx_error import InvalidTxErrorExpired
+    from .invalid_tx_error import InvalidTxErrorActionsValidation
+    from .invalid_tx_error import InvalidTxErrorTransactionSizeExceededPayload
+    from .invalid_tx_error import InvalidTxErrorTransactionSizeExceeded
+    from .invalid_tx_error import InvalidTxErrorInvalidTransactionVersion
+    from .invalid_tx_error import InvalidTxErrorStorageError
+    from .invalid_tx_error import InvalidTxErrorShardCongestedPayload
+    from .invalid_tx_error import InvalidTxErrorShardCongested
+    from .invalid_tx_error import InvalidTxErrorShardStuckPayload
+    from .invalid_tx_error import InvalidTxErrorShardStuck
+    from .invalid_tx_error import InvalidTxErrorInvalidNonceIndexPayload
+    from .invalid_tx_error import InvalidTxErrorInvalidNonceIndex
+    from .invalid_tx_error import InvalidTxErrorNotEnoughGasKeyBalancePayload
+    from .invalid_tx_error import InvalidTxErrorNotEnoughGasKeyBalance
+    from .invalid_tx_error import InvalidTxErrorNotEnoughBalanceForDepositPayload
+    from .invalid_tx_error import InvalidTxErrorNotEnoughBalanceForDeposit
+    from .invalid_tx_error import InvalidTxError
+    from .error_wrapper_for_rpc_view_access_key_error import ErrorWrapperForRpcViewAccessKeyErrorRequestValidationError
+    from .error_wrapper_for_rpc_view_access_key_error import ErrorWrapperForRpcViewAccessKeyErrorHandlerError
+    from .error_wrapper_for_rpc_view_access_key_error import ErrorWrapperForRpcViewAccessKeyErrorInternalError
+    from .error_wrapper_for_rpc_view_access_key_error import ErrorWrapperForRpcViewAccessKeyError
+    from .json_rpc_response_for_crypto_hash_and_rpc_transaction_error import JsonRpcResponseForCryptoHashAndRpcTransactionErrorResult
+    from .json_rpc_response_for_crypto_hash_and_rpc_transaction_error import JsonRpcResponseForCryptoHashAndRpcTransactionErrorError
+    from .json_rpc_response_for_crypto_hash_and_rpc_transaction_error import JsonRpcResponseForCryptoHashAndRpcTransactionError
+    from .validator_stake_view import ValidatorStakeViewValidatorStakeStructVersion
+    from .validator_stake_view import ValidatorStakeView
+    from .block_reference import BlockReferenceBlockId
+    from .block_reference import BlockReferenceFinality
+    from .block_reference import BlockReferenceSyncCheckpoint
+    from .block_reference import BlockReference
+    from .rpc_chunk_request import RpcChunkRequestBlockShardId
+    from .rpc_chunk_request import RpcChunkRequestChunkHash
+    from .rpc_chunk_request import RpcChunkRequest
+    from .method_resolve_error import MethodResolveError
+    from .state_change_with_cause_view import StateChangeWithCauseViewAccountUpdateChange
+    from .state_change_with_cause_view import StateChangeWithCauseViewAccountUpdate
+    from .state_change_with_cause_view import StateChangeWithCauseViewAccountDeletionChange
+    from .state_change_with_cause_view import StateChangeWithCauseViewAccountDeletion
+    from .state_change_with_cause_view import StateChangeWithCauseViewAccessKeyUpdateChange
+    from .state_change_with_cause_view import StateChangeWithCauseViewAccessKeyUpdate
+    from .state_change_with_cause_view import StateChangeWithCauseViewAccessKeyDeletionChange
+    from .state_change_with_cause_view import StateChangeWithCauseViewAccessKeyDeletion
+    from .state_change_with_cause_view import StateChangeWithCauseViewGasKeyNonceUpdateChange
+    from .state_change_with_cause_view import StateChangeWithCauseViewGasKeyNonceUpdate
+    from .state_change_with_cause_view import StateChangeWithCauseViewDataUpdateChange
+    from .state_change_with_cause_view import StateChangeWithCauseViewDataUpdate
+    from .state_change_with_cause_view import StateChangeWithCauseViewDataDeletionChange
+    from .state_change_with_cause_view import StateChangeWithCauseViewDataDeletion
+    from .state_change_with_cause_view import StateChangeWithCauseViewContractCodeUpdateChange
+    from .state_change_with_cause_view import StateChangeWithCauseViewContractCodeUpdate
+    from .state_change_with_cause_view import StateChangeWithCauseViewContractCodeDeletionChange
+    from .state_change_with_cause_view import StateChangeWithCauseViewContractCodeDeletion
+    from .state_change_with_cause_view import StateChangeWithCauseView
+    from .shard_layout import ShardLayoutV0Option
+    from .shard_layout import ShardLayoutV1Option
+    from .shard_layout import ShardLayoutV2Option
+    from .shard_layout import ShardLayoutV3Option
+    from .shard_layout import ShardLayout
+    from .rpc_validator_error import RpcValidatorErrorUnknownEpoch
+    from .rpc_validator_error import RpcValidatorErrorValidatorInfoUnavailable
+    from .rpc_validator_error import RpcValidatorErrorInternalErrorInfo
+    from .rpc_validator_error import RpcValidatorErrorInternalError
+    from .rpc_validator_error import RpcValidatorError
+    from .rpc_light_client_next_block_response import RpcLightClientNextBlockResponse
+    from .rpc_light_client_execution_outcome_proof_request import RpcLightClientExecutionOutcomeProofRequestTransaction
+    from .rpc_light_client_execution_outcome_proof_request import RpcLightClientExecutionOutcomeProofRequestReceipt
+    from .rpc_light_client_execution_outcome_proof_request import RpcLightClientExecutionOutcomeProofRequest
+    from .json_rpc_request_for_experimental_view_gas_key_list import JsonRpcRequestForExperimentalViewGasKeyList
+    from .rpc_view_account_response import RpcViewAccountResponse
+    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAccountChangesByBlockId
+    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesByBlockId
+    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesByBlockId
+    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestContractCodeChangesByBlockId
+    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestDataChangesByBlockId
+    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAccountChangesByFinality
+    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesByFinality
+    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesByFinality
+    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestContractCodeChangesByFinality
+    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestDataChangesByFinality
+    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAccountChangesBySyncCheckpoint
+    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesBySyncCheckpoint
+    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesBySyncCheckpoint
+    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestContractCodeChangesBySyncCheckpoint
+    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequestDataChangesBySyncCheckpoint
+    from .rpc_state_changes_in_block_by_type_request import RpcStateChangesInBlockByTypeRequest
+    from .json_rpc_response_for_rpc_light_client_next_block_response_and_rpc_light_client_next_block_error import JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockErrorResult
+    from .json_rpc_response_for_rpc_light_client_next_block_response_and_rpc_light_client_next_block_error import JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockErrorError
+    from .json_rpc_response_for_rpc_light_client_next_block_response_and_rpc_light_client_next_block_error import JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockError
+    from .error_wrapper_for_rpc_client_config_error import ErrorWrapperForRpcClientConfigErrorRequestValidationError
+    from .error_wrapper_for_rpc_client_config_error import ErrorWrapperForRpcClientConfigErrorHandlerError
+    from .error_wrapper_for_rpc_client_config_error import ErrorWrapperForRpcClientConfigErrorInternalError
+    from .error_wrapper_for_rpc_client_config_error import ErrorWrapperForRpcClientConfigError
+    from .json_rpc_request_for_tx_status import JsonRpcRequestForTxStatus
+    from .gas_key import GasKey
+    from .rpc_gas_price_error import RpcGasPriceErrorInternalErrorInfo
+    from .rpc_gas_price_error import RpcGasPriceErrorInternalError
+    from .rpc_gas_price_error import RpcGasPriceErrorUnknownBlock
+    from .rpc_gas_price_error import RpcGasPriceError
+    from .json_rpc_response_for_nullable_rpc_health_response_and_rpc_status_error import JsonRpcResponseForNullableRpcHealthResponseAndRpcStatusErrorResult
+    from .json_rpc_response_for_nullable_rpc_health_response_and_rpc_status_error import JsonRpcResponseForNullableRpcHealthResponseAndRpcStatusErrorError
+    from .json_rpc_response_for_nullable_rpc_health_response_and_rpc_status_error import JsonRpcResponseForNullableRpcHealthResponseAndRpcStatusError
+    from .bandwidth_request_bitmap import BandwidthRequestBitmap
+    from .shard_layout_v0 import ShardLayoutV0
+    from .rpc_view_access_key_response import RpcViewAccessKeyResponse
+    from .rpc_split_storage_info_request import RpcSplitStorageInfoRequest
+    from .invalid_access_key_error import InvalidAccessKeyErrorAccessKeyNotFoundPayload
+    from .invalid_access_key_error import InvalidAccessKeyErrorAccessKeyNotFound
+    from .invalid_access_key_error import InvalidAccessKeyErrorReceiverMismatchPayload
+    from .invalid_access_key_error import InvalidAccessKeyErrorReceiverMismatch
+    from .invalid_access_key_error import InvalidAccessKeyErrorMethodNameMismatchPayload
+    from .invalid_access_key_error import InvalidAccessKeyErrorMethodNameMismatch
+    from .invalid_access_key_error import InvalidAccessKeyErrorRequiresFullAccess
+    from .invalid_access_key_error import InvalidAccessKeyErrorNotEnoughAllowancePayload
+    from .invalid_access_key_error import InvalidAccessKeyErrorNotEnoughAllowance
+    from .invalid_access_key_error import InvalidAccessKeyErrorDepositWithFunctionCall
+    from .invalid_access_key_error import InvalidAccessKeyErrorDelegateActionRequiresNonGasKey
+    from .invalid_access_key_error import InvalidAccessKeyErrorDelegateActionRequiresGasKey
+    from .invalid_access_key_error import InvalidAccessKeyError
+    from .json_rpc_response_for_rpc_client_config_response_and_rpc_client_config_error import JsonRpcResponseForRpcClientConfigResponseAndRpcClientConfigErrorResult
+    from .json_rpc_response_for_rpc_client_config_response_and_rpc_client_config_error import JsonRpcResponseForRpcClientConfigResponseAndRpcClientConfigErrorError
+    from .json_rpc_response_for_rpc_client_config_response_and_rpc_client_config_error import JsonRpcResponseForRpcClientConfigResponseAndRpcClientConfigError
+    from .deterministic_state_init_action import DeterministicStateInitAction
+    from .json_rpc_request_for_experimental_changes_in_block import JsonRpcRequestForExperimentalChangesInBlock
+    from .rpc_peer_info import RpcPeerInfo
+    from .epoch_id import EpochId
+    from .rpc_receipt_error import RpcReceiptErrorInternalErrorInfo
+    from .rpc_receipt_error import RpcReceiptErrorInternalError
+    from .rpc_receipt_error import RpcReceiptErrorUnknownReceiptInfo
+    from .rpc_receipt_error import RpcReceiptErrorUnknownReceipt
+    from .rpc_receipt_error import RpcReceiptError
+    from .mutable_config_value import MutableConfigValue
+    from .rpc_view_account_request import RpcViewAccountRequestBlockId
+    from .rpc_view_account_request import RpcViewAccountRequestFinality
+    from .rpc_view_account_request import RpcViewAccountRequestSyncCheckpoint
+    from .rpc_view_account_request import RpcViewAccountRequest
+    from .receipt_enum_view import ReceiptEnumViewActionPayload
+    from .receipt_enum_view import ReceiptEnumViewAction
+    from .receipt_enum_view import ReceiptEnumViewDataPayload
+    from .receipt_enum_view import ReceiptEnumViewData
+    from .receipt_enum_view import ReceiptEnumViewGlobalContractDistributionPayload
+    from .receipt_enum_view import ReceiptEnumViewGlobalContractDistribution
+    from .receipt_enum_view import ReceiptEnumView
+    from .json_rpc_request_for_experimental_split_storage_info import JsonRpcRequestForExperimentalSplitStorageInfo
+    from .json_rpc_request_for_experimental_genesis_config import JsonRpcRequestForExperimentalGenesisConfig
+    from .rpc_state_changes_in_block_by_type_response import RpcStateChangesInBlockByTypeResponse
+    from .json_rpc_request_for_experimental_receipt import JsonRpcRequestForExperimentalReceipt
+    from .json_rpc_request_for_experimental_view_account import JsonRpcRequestForExperimentalViewAccount
+    from .storage_usage_config_view import StorageUsageConfigView
+    from .validator_kickout_view import ValidatorKickoutView
+    from .delegate_action_v2 import DelegateActionV2
+    from .fee import Fee
+    from .function_args import FunctionArgs
+    from .sync_checkpoint import SyncCheckpoint
+    from .trie_split import TrieSplit
+    from .json_rpc_request_for_status import JsonRpcRequestForStatus
+    from .signed_transaction import SignedTransaction
+    from .chunk_distribution_uris import ChunkDistributionUris
+    from .rpc_chunk_error import RpcChunkErrorInternalErrorInfo
+    from .rpc_chunk_error import RpcChunkErrorInternalError
+    from .rpc_chunk_error import RpcChunkErrorUnknownBlock
+    from .rpc_chunk_error import RpcChunkErrorInvalidShardIdInfo
+    from .rpc_chunk_error import RpcChunkErrorInvalidShardId
+    from .rpc_chunk_error import RpcChunkErrorUnknownChunkInfo
+    from .rpc_chunk_error import RpcChunkErrorUnknownChunk
+    from .rpc_chunk_error import RpcChunkError
+    from .state_change_cause_view import StateChangeCauseViewNotWritableToDisk
+    from .state_change_cause_view import StateChangeCauseViewInitialState
+    from .state_change_cause_view import StateChangeCauseViewTransactionProcessing
+    from .state_change_cause_view import StateChangeCauseViewActionReceiptProcessingStarted
+    from .state_change_cause_view import StateChangeCauseViewActionReceiptGasReward
+    from .state_change_cause_view import StateChangeCauseViewReceiptProcessing
+    from .state_change_cause_view import StateChangeCauseViewPostponedReceipt
+    from .state_change_cause_view import StateChangeCauseViewUpdatedDelayedReceipts
+    from .state_change_cause_view import StateChangeCauseViewValidatorAccountsUpdate
+    from .state_change_cause_view import StateChangeCauseViewMigration
+    from .state_change_cause_view import StateChangeCauseViewBandwidthSchedulerStateUpdate
+    from .state_change_cause_view import StateChangeCauseView
+    from .json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error import JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyErrorResult
+    from .json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error import JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyErrorError
+    from .json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error import JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyError
+    from .ext_costs_config_view import ExtCostsConfigView
+    from .deterministic_account_state_init import DeterministicAccountStateInitV1Option
+    from .deterministic_account_state_init import DeterministicAccountStateInit
+    from .rpc_light_client_block_proof_request import RpcLightClientBlockProofRequest
+    from .json_rpc_response_for_rpc_transaction_response_and_rpc_transaction_error import JsonRpcResponseForRpcTransactionResponseAndRpcTransactionErrorResult
+    from .json_rpc_response_for_rpc_transaction_response_and_rpc_transaction_error import JsonRpcResponseForRpcTransactionResponseAndRpcTransactionErrorError
+    from .json_rpc_response_for_rpc_transaction_response_and_rpc_transaction_error import JsonRpcResponseForRpcTransactionResponseAndRpcTransactionError
+    from .gas_key_info import GasKeyInfo
+    from .delete_key_action import DeleteKeyAction
+    from .json_rpc_request_for_query import JsonRpcRequestForQuery
+    from .json_rpc_request_for_light_client_proof import JsonRpcRequestForLightClientProof
+    from .rpc_light_client_execution_proof_request import RpcLightClientExecutionProofRequestTransaction
+    from .rpc_light_client_execution_proof_request import RpcLightClientExecutionProofRequestReceipt
+    from .rpc_light_client_execution_proof_request import RpcLightClientExecutionProofRequest
+    from .json_rpc_response_for_rpc_view_account_response_and_rpc_view_account_error import JsonRpcResponseForRpcViewAccountResponseAndRpcViewAccountErrorResult
+    from .json_rpc_response_for_rpc_view_account_response_and_rpc_view_account_error import JsonRpcResponseForRpcViewAccountResponseAndRpcViewAccountErrorError
+    from .json_rpc_response_for_rpc_view_account_response_and_rpc_view_account_error import JsonRpcResponseForRpcViewAccountResponseAndRpcViewAccountError
+    from .json_rpc_response_for_rpc_query_response_and_rpc_query_error import JsonRpcResponseForRpcQueryResponseAndRpcQueryErrorResult
+    from .json_rpc_response_for_rpc_query_response_and_rpc_query_error import JsonRpcResponseForRpcQueryResponseAndRpcQueryErrorError
+    from .json_rpc_response_for_rpc_query_response_and_rpc_query_error import JsonRpcResponseForRpcQueryResponseAndRpcQueryError
+    from .validator_info import ValidatorInfo
+    from .rpc_view_state_error import RpcViewStateErrorUnknownBlockInfo
+    from .rpc_view_state_error import RpcViewStateErrorUnknownBlock
+    from .rpc_view_state_error import RpcViewStateErrorInvalidAccountInfo
+    from .rpc_view_state_error import RpcViewStateErrorInvalidAccount
+    from .rpc_view_state_error import RpcViewStateErrorUnknownAccountInfo
+    from .rpc_view_state_error import RpcViewStateErrorUnknownAccount
+    from .rpc_view_state_error import RpcViewStateErrorTooLargeContractStateInfo
+    from .rpc_view_state_error import RpcViewStateErrorTooLargeContractState
+    from .rpc_view_state_error import RpcViewStateErrorInternalErrorInfo
+    from .rpc_view_state_error import RpcViewStateErrorInternalError
+    from .rpc_view_state_error import RpcViewStateError
+    from .rpc_status_request import RpcStatusRequest
+    from .rpc_health_response import RpcHealthResponse
+    from .shard_id import ShardId
+    from .transfer_action import TransferAction
+    from .rpc_view_state_response import RpcViewStateResponse
+    from .peer_info_view import PeerInfoView
+    from .rpc_view_gas_key_error import RpcViewGasKeyErrorUnknownBlockInfo
+    from .rpc_view_gas_key_error import RpcViewGasKeyErrorUnknownBlock
+    from .rpc_view_gas_key_error import RpcViewGasKeyErrorInvalidAccountInfo
+    from .rpc_view_gas_key_error import RpcViewGasKeyErrorInvalidAccount
+    from .rpc_view_gas_key_error import RpcViewGasKeyErrorUnknownAccountInfo
+    from .rpc_view_gas_key_error import RpcViewGasKeyErrorUnknownAccount
+    from .rpc_view_gas_key_error import RpcViewGasKeyErrorUnknownGasKeyInfo
+    from .rpc_view_gas_key_error import RpcViewGasKeyErrorUnknownGasKey
+    from .rpc_view_gas_key_error import RpcViewGasKeyErrorInternalErrorInfo
+    from .rpc_view_gas_key_error import RpcViewGasKeyErrorInternalError
+    from .rpc_view_gas_key_error import RpcViewGasKeyError
+    from .store_value import StoreValue
+    from .rpc_view_code_response import RpcViewCodeResponse
+    from .error_wrapper_for_rpc_maintenance_windows_error import ErrorWrapperForRpcMaintenanceWindowsErrorRequestValidationError
+    from .error_wrapper_for_rpc_maintenance_windows_error import ErrorWrapperForRpcMaintenanceWindowsErrorHandlerError
+    from .error_wrapper_for_rpc_maintenance_windows_error import ErrorWrapperForRpcMaintenanceWindowsErrorInternalError
+    from .error_wrapper_for_rpc_maintenance_windows_error import ErrorWrapperForRpcMaintenanceWindowsError
+    from .json_rpc_request_for_experimental_validators_ordered import JsonRpcRequestForExperimentalValidatorsOrdered
+    from .rpc_split_storage_info_error import RpcSplitStorageInfoErrorInternalErrorInfo
+    from .rpc_split_storage_info_error import RpcSplitStorageInfoErrorInternalError
+    from .rpc_split_storage_info_error import RpcSplitStorageInfoError
+    from .json_rpc_request_for_health import JsonRpcRequestForHealth
+    from .gas_key_list import GasKeyList
+    from .log_summary_style import LogSummaryStyle
+    from .json_rpc_response_for_rpc_gas_price_response_and_rpc_gas_price_error import JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceErrorResult
+    from .json_rpc_response_for_rpc_gas_price_response_and_rpc_gas_price_error import JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceErrorError
+    from .json_rpc_response_for_rpc_gas_price_response_and_rpc_gas_price_error import JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceError
+    from .json_rpc_request_for_experimental_congestion_level import JsonRpcRequestForExperimentalCongestionLevel
+    from .access_key_list import AccessKeyList
+    from .rpc_receipt_to_tx_response import RpcReceiptToTxResponse
+    from .error_wrapper_for_rpc_view_state_error import ErrorWrapperForRpcViewStateErrorRequestValidationError
+    from .error_wrapper_for_rpc_view_state_error import ErrorWrapperForRpcViewStateErrorHandlerError
+    from .error_wrapper_for_rpc_view_state_error import ErrorWrapperForRpcViewStateErrorInternalError
+    from .error_wrapper_for_rpc_view_state_error import ErrorWrapperForRpcViewStateError
+    from .json_rpc_response_for_rpc_light_client_chunk_execution_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientChunkExecutionProofResponseAndRpcLightClientProofErrorResult
+    from .json_rpc_response_for_rpc_light_client_chunk_execution_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientChunkExecutionProofResponseAndRpcLightClientProofErrorError
+    from .json_rpc_response_for_rpc_light_client_chunk_execution_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientChunkExecutionProofResponseAndRpcLightClientProofError
+    from .direction import Direction
+    from .error_wrapper_for_rpc_view_access_key_list_error import ErrorWrapperForRpcViewAccessKeyListErrorRequestValidationError
+    from .error_wrapper_for_rpc_view_access_key_list_error import ErrorWrapperForRpcViewAccessKeyListErrorHandlerError
+    from .error_wrapper_for_rpc_view_access_key_list_error import ErrorWrapperForRpcViewAccessKeyListErrorInternalError
+    from .error_wrapper_for_rpc_view_access_key_list_error import ErrorWrapperForRpcViewAccessKeyListError
+    from .genesis_config import GenesisConfig
+    from .genesis_config import s
+    from .json_rpc_response_for_rpc_receipt_to_tx_response_and_rpc_receipt_to_tx_error import JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxErrorResult
+    from .json_rpc_response_for_rpc_receipt_to_tx_response_and_rpc_receipt_to_tx_error import JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxErrorError
+    from .json_rpc_response_for_rpc_receipt_to_tx_response_and_rpc_receipt_to_tx_error import JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxError
+    from .versioned_signed_delegate_action import VersionedSignedDelegateAction
+    from .rpc_state_changes_in_block_response import RpcStateChangesInBlockResponse
+    from .peer_id import PeerId
+    from .dump_config import DumpConfig
+    from .rpc_view_access_key_error import RpcViewAccessKeyErrorUnknownBlockInfo
+    from .rpc_view_access_key_error import RpcViewAccessKeyErrorUnknownBlock
+    from .rpc_view_access_key_error import RpcViewAccessKeyErrorInvalidAccountInfo
+    from .rpc_view_access_key_error import RpcViewAccessKeyErrorInvalidAccount
+    from .rpc_view_access_key_error import RpcViewAccessKeyErrorUnknownAccountInfo
+    from .rpc_view_access_key_error import RpcViewAccessKeyErrorUnknownAccount
+    from .rpc_view_access_key_error import RpcViewAccessKeyErrorUnknownAccessKeyInfo
+    from .rpc_view_access_key_error import RpcViewAccessKeyErrorUnknownAccessKey
+    from .rpc_view_access_key_error import RpcViewAccessKeyErrorInternalErrorInfo
+    from .rpc_view_access_key_error import RpcViewAccessKeyErrorInternalError
+    from .rpc_view_access_key_error import RpcViewAccessKeyError
+    from .json_rpc_request_for_experimental_changes import JsonRpcRequestForExperimentalChanges
+    from .error_wrapper_for_genesis_config_error import ErrorWrapperForGenesisConfigErrorRequestValidationError
+    from .error_wrapper_for_genesis_config_error import ErrorWrapperForGenesisConfigErrorHandlerError
+    from .error_wrapper_for_genesis_config_error import ErrorWrapperForGenesisConfigErrorInternalError
+    from .error_wrapper_for_genesis_config_error import ErrorWrapperForGenesisConfigError
+    from .network_info_view import NetworkInfoView
+    from .rpc_client_config_response import RpcClientConfigResponse
+    from .rpc_query_error import RpcQueryErrorNoSyncedBlocks
+    from .rpc_query_error import RpcQueryErrorUnavailableShardInfo
+    from .rpc_query_error import RpcQueryErrorUnavailableShard
+    from .rpc_query_error import RpcQueryErrorGarbageCollectedBlockInfo
+    from .rpc_query_error import RpcQueryErrorGarbageCollectedBlock
+    from .rpc_query_error import RpcQueryErrorUnknownBlockInfo
+    from .rpc_query_error import RpcQueryErrorUnknownBlock
+    from .rpc_query_error import RpcQueryErrorInvalidAccountInfo
+    from .rpc_query_error import RpcQueryErrorInvalidAccount
+    from .rpc_query_error import RpcQueryErrorUnknownAccountInfo
+    from .rpc_query_error import RpcQueryErrorUnknownAccount
+    from .rpc_query_error import RpcQueryErrorNoContractCodeInfo
+    from .rpc_query_error import RpcQueryErrorNoContractCode
+    from .rpc_query_error import RpcQueryErrorTooLargeContractStateInfo
+    from .rpc_query_error import RpcQueryErrorTooLargeContractState
+    from .rpc_query_error import RpcQueryErrorUnknownAccessKeyInfo
+    from .rpc_query_error import RpcQueryErrorUnknownAccessKey
+    from .rpc_query_error import RpcQueryErrorUnknownGasKeyInfo
+    from .rpc_query_error import RpcQueryErrorUnknownGasKey
+    from .rpc_query_error import RpcQueryErrorTooManyAccessKeysInfo
+    from .rpc_query_error import RpcQueryErrorTooManyAccessKeys
+    from .rpc_query_error import RpcQueryErrorContractExecutionErrorInfo
+    from .rpc_query_error import RpcQueryErrorContractExecutionError
+    from .rpc_query_error import RpcQueryErrorNoGlobalContractCodeInfo
+    from .rpc_query_error import RpcQueryErrorNoGlobalContractCode
+    from .rpc_query_error import RpcQueryErrorInternalErrorInfo
+    from .rpc_query_error import RpcQueryErrorInternalError
+    from .rpc_query_error import RpcQueryError
+    from .error_wrapper_for_rpc_light_client_next_block_error import ErrorWrapperForRpcLightClientNextBlockErrorRequestValidationError
+    from .error_wrapper_for_rpc_light_client_next_block_error import ErrorWrapperForRpcLightClientNextBlockErrorHandlerError
+    from .error_wrapper_for_rpc_light_client_next_block_error import ErrorWrapperForRpcLightClientNextBlockErrorInternalError
+    from .error_wrapper_for_rpc_light_client_next_block_error import ErrorWrapperForRpcLightClientNextBlockError
+    from .rpc_receipt_response import RpcReceiptResponse
+    from .rpc_light_client_state_proof_response import RpcLightClientStateProofResponse
+    from .gas_key_info_view import GasKeyInfoView
+    from .vmconfig_view import VMConfigView
+    from .error_wrapper_for_rpc_split_storage_info_error import ErrorWrapperForRpcSplitStorageInfoErrorRequestValidationError
+    from .error_wrapper_for_rpc_split_storage_info_error import ErrorWrapperForRpcSplitStorageInfoErrorHandlerError
+    from .error_wrapper_for_rpc_split_storage_info_error import ErrorWrapperForRpcSplitStorageInfoErrorInternalError
+    from .error_wrapper_for_rpc_split_storage_info_error import ErrorWrapperForRpcSplitStorageInfoError
+    from .external_storage_location import ExternalStorageLocationS3Payload
+    from .external_storage_location import ExternalStorageLocationS3
+    from .external_storage_location import ExternalStorageLocationFilesystemPayload
+    from .external_storage_location import ExternalStorageLocationFilesystem
+    from .external_storage_location import ExternalStorageLocationGcsPayload
+    from .external_storage_location import ExternalStorageLocationGcs
+    from .external_storage_location import ExternalStorageLocation
+    from .rpc_call_function_error import RpcCallFunctionErrorUnknownBlockInfo
+    from .rpc_call_function_error import RpcCallFunctionErrorUnknownBlock
+    from .rpc_call_function_error import RpcCallFunctionErrorInvalidAccountInfo
+    from .rpc_call_function_error import RpcCallFunctionErrorInvalidAccount
+    from .rpc_call_function_error import RpcCallFunctionErrorUnknownAccountInfo
+    from .rpc_call_function_error import RpcCallFunctionErrorUnknownAccount
+    from .rpc_call_function_error import RpcCallFunctionErrorNoContractCodeInfo
+    from .rpc_call_function_error import RpcCallFunctionErrorNoContractCode
+    from .rpc_call_function_error import RpcCallFunctionErrorContractExecutionErrorInfo
+    from .rpc_call_function_error import RpcCallFunctionErrorContractExecutionError
+    from .rpc_call_function_error import RpcCallFunctionErrorInternalErrorInfo
+    from .rpc_call_function_error import RpcCallFunctionErrorInternalError
+    from .rpc_call_function_error import RpcCallFunctionError
+    from .signed_transaction_view import SignedTransactionView
+    from .current_epoch_validator_info import CurrentEpochValidatorInfo
+    from .store_key import StoreKey
+    from .error_wrapper_for_rpc_view_code_error import ErrorWrapperForRpcViewCodeErrorRequestValidationError
+    from .error_wrapper_for_rpc_view_code_error import ErrorWrapperForRpcViewCodeErrorHandlerError
+    from .error_wrapper_for_rpc_view_code_error import ErrorWrapperForRpcViewCodeErrorInternalError
+    from .error_wrapper_for_rpc_view_code_error import ErrorWrapperForRpcViewCodeError
+    from .signed_delegate_action import SignedDelegateAction
+    from .delegate_action import DelegateAction
     from .strict_model import StrictBaseModel
+    from .timeout_error_cause import TimeoutErrorCauseCause
+    from .timeout_error_cause import TimeoutErrorCauseCauseStatus
+    from .timeout_error_cause import TimeoutErrorCauseCauseShardId
+    from .timeout_error_cause import TimeoutErrorCauseCauseDebugInfo
+    from .timeout_error_cause import TimeoutErrorCause
+    from .rpc_known_producer import RpcKnownProducer
+    from .json_rpc_request_for_experimental_light_client_proof import JsonRpcRequestForExperimentalLightClientProof
+    from .call_result import CallResult
+    from .raw_state_init import RawStateInit
+    from .rpc_light_client_next_block_error import RpcLightClientNextBlockErrorInternalErrorInfo
+    from .rpc_light_client_next_block_error import RpcLightClientNextBlockErrorInternalError
+    from .rpc_light_client_next_block_error import RpcLightClientNextBlockErrorUnknownBlock
+    from .rpc_light_client_next_block_error import RpcLightClientNextBlockErrorEpochOutOfBoundsInfo
+    from .rpc_light_client_next_block_error import RpcLightClientNextBlockErrorEpochOutOfBounds
+    from .rpc_light_client_next_block_error import RpcLightClientNextBlockError
+    from .state_proof_view import StateProofView
+    from .access_key_view import AccessKeyView
+    from .error_wrapper_for_rpc_view_gas_key_error import ErrorWrapperForRpcViewGasKeyErrorRequestValidationError
+    from .error_wrapper_for_rpc_view_gas_key_error import ErrorWrapperForRpcViewGasKeyErrorHandlerError
+    from .error_wrapper_for_rpc_view_gas_key_error import ErrorWrapperForRpcViewGasKeyErrorInternalError
+    from .error_wrapper_for_rpc_view_gas_key_error import ErrorWrapperForRpcViewGasKeyError
+    from .chunk_execution_roots import ChunkExecutionRootsV1Option
+    from .chunk_execution_roots import ChunkExecutionRoots
+    from .json_rpc_response_for_rpc_chunk_response_and_rpc_chunk_error import JsonRpcResponseForRpcChunkResponseAndRpcChunkErrorResult
+    from .json_rpc_response_for_rpc_chunk_response_and_rpc_chunk_error import JsonRpcResponseForRpcChunkResponseAndRpcChunkErrorError
+    from .json_rpc_response_for_rpc_chunk_response_and_rpc_chunk_error import JsonRpcResponseForRpcChunkResponseAndRpcChunkError
+    from .data_receiver_view import DataReceiverView
+    from .json_rpc_request_for_experimental_view_access_key_list import JsonRpcRequestForExperimentalViewAccessKeyList
+    from .rpc_validators_ordered_request import RpcValidatorsOrderedRequest
+    from .rpc_gas_price_request import RpcGasPriceRequest
+    from .deploy_global_contract_action import DeployGlobalContractAction
+    from .rpc_block_request import RpcBlockRequestBlockId
+    from .rpc_block_request import RpcBlockRequestFinality
+    from .rpc_block_request import RpcBlockRequestSyncCheckpoint
+    from .rpc_block_request import RpcBlockRequest
+    from .action_view import ActionViewCreateAccount
+    from .action_view import ActionViewDeployContractPayload
+    from .action_view import ActionViewDeployContract
+    from .action_view import ActionViewFunctionCallPayload
+    from .action_view import ActionViewFunctionCall
+    from .action_view import ActionViewTransferPayload
+    from .action_view import ActionViewTransfer
+    from .action_view import ActionViewStakePayload
+    from .action_view import ActionViewStake
+    from .action_view import ActionViewAddKeyPayload
+    from .action_view import ActionViewAddKey
+    from .action_view import ActionViewDeleteKeyPayload
+    from .action_view import ActionViewDeleteKey
+    from .action_view import ActionViewDeleteAccountPayload
+    from .action_view import ActionViewDeleteAccount
+    from .action_view import ActionViewDelegatePayload
+    from .action_view import ActionViewDelegate
+    from .action_view import ActionViewDelegateV2Payload
+    from .action_view import ActionViewDelegateV2
+    from .action_view import ActionViewDeployGlobalContractPayload
+    from .action_view import ActionViewDeployGlobalContract
+    from .action_view import ActionViewDeployGlobalContractByAccountIdPayload
+    from .action_view import ActionViewDeployGlobalContractByAccountId
+    from .action_view import ActionViewUseGlobalContractPayload
+    from .action_view import ActionViewUseGlobalContract
+    from .action_view import ActionViewUseGlobalContractByAccountIdPayload
+    from .action_view import ActionViewUseGlobalContractByAccountId
+    from .action_view import ActionViewDeterministicStateInitPayload
+    from .action_view import ActionViewDeterministicStateInit
+    from .action_view import ActionViewTransferToGasKeyPayload
+    from .action_view import ActionViewTransferToGasKey
+    from .action_view import ActionViewWithdrawFromGasKeyPayload
+    from .action_view import ActionViewWithdrawFromGasKey
+    from .action_view import ActionViewUniversalStateInitPayload
+    from .action_view import ActionViewUniversalStateInit
+    from .action_view import ActionView
+    from .genesis_config_error import GenesisConfigError
+    from .rpc_view_gas_key_request import RpcViewGasKeyRequestBlockId
+    from .rpc_view_gas_key_request import RpcViewGasKeyRequestFinality
+    from .rpc_view_gas_key_request import RpcViewGasKeyRequestSyncCheckpoint
+    from .rpc_view_gas_key_request import RpcViewGasKeyRequest
+    from .rpc_maintenance_windows_request import RpcMaintenanceWindowsRequest
+    from .error_wrapper_for_rpc_chunk_error import ErrorWrapperForRpcChunkErrorRequestValidationError
+    from .error_wrapper_for_rpc_chunk_error import ErrorWrapperForRpcChunkErrorHandlerError
+    from .error_wrapper_for_rpc_chunk_error import ErrorWrapperForRpcChunkErrorInternalError
+    from .error_wrapper_for_rpc_chunk_error import ErrorWrapperForRpcChunkError
+    from .action_error import ActionError
+    from .rpc_view_state_request import RpcViewStateRequestBlockId
+    from .rpc_view_state_request import RpcViewStateRequestFinality
+    from .rpc_view_state_request import RpcViewStateRequestSyncCheckpoint
+    from .rpc_view_state_request import RpcViewStateRequest
+    from .gcconfig import GCConfig
+    from .rpc_chunk_response import RpcChunkResponse
+    from .detailed_debug_status import DetailedDebugStatus
+    from .genesis_config_request import GenesisConfigRequest
+    from .rpc_call_function_response import RpcCallFunctionResponse
+    from .rpc_receipt_to_tx_request import RpcReceiptToTxRequest
+    from .block_header_inner_lite_view import BlockHeaderInnerLiteView
+    from .error_wrapper_for_rpc_receipt_error import ErrorWrapperForRpcReceiptErrorRequestValidationError
+    from .error_wrapper_for_rpc_receipt_error import ErrorWrapperForRpcReceiptErrorHandlerError
+    from .error_wrapper_for_rpc_receipt_error import ErrorWrapperForRpcReceiptErrorInternalError
+    from .error_wrapper_for_rpc_receipt_error import ErrorWrapperForRpcReceiptError
+    from .rpc_view_code_error import RpcViewCodeErrorUnknownBlockInfo
+    from .rpc_view_code_error import RpcViewCodeErrorUnknownBlock
+    from .rpc_view_code_error import RpcViewCodeErrorInvalidAccountInfo
+    from .rpc_view_code_error import RpcViewCodeErrorInvalidAccount
+    from .rpc_view_code_error import RpcViewCodeErrorUnknownAccountInfo
+    from .rpc_view_code_error import RpcViewCodeErrorUnknownAccount
+    from .rpc_view_code_error import RpcViewCodeErrorNoContractCodeInfo
+    from .rpc_view_code_error import RpcViewCodeErrorNoContractCode
+    from .rpc_view_code_error import RpcViewCodeErrorInternalErrorInfo
+    from .rpc_view_code_error import RpcViewCodeErrorInternalError
+    from .rpc_view_code_error import RpcViewCodeError
+    from .range_of_uint64 import RangeOfUint64
+    from .deterministic_account_state_init_v1 import DeterministicAccountStateInitV1
+    from .near_gas import NearGas
+    from .shard_uid import ShardUId
+    from .error_wrapper_for_rpc_receipt_to_tx_error import ErrorWrapperForRpcReceiptToTxErrorRequestValidationError
+    from .error_wrapper_for_rpc_receipt_to_tx_error import ErrorWrapperForRpcReceiptToTxErrorHandlerError
+    from .error_wrapper_for_rpc_receipt_to_tx_error import ErrorWrapperForRpcReceiptToTxErrorInternalError
+    from .error_wrapper_for_rpc_receipt_to_tx_error import ErrorWrapperForRpcReceiptToTxError
+    from .rpc_validator_response import RpcValidatorResponse
+    from .global_contract_identifier_view import GlobalContractIdentifierViewHash
+    from .global_contract_identifier_view import GlobalContractIdentifierViewAccountId
+    from .global_contract_identifier_view import GlobalContractIdentifierView
+    from .execution_status_view import ExecutionStatusViewUnknown
+    from .execution_status_view import ExecutionStatusViewFailure
+    from .execution_status_view import ExecutionStatusViewSuccessValue
+    from .execution_status_view import ExecutionStatusViewSuccessReceiptId
+    from .execution_status_view import ExecutionStatusView
+    from .json_rpc_response_for_rpc_block_response_and_rpc_block_error import JsonRpcResponseForRpcBlockResponseAndRpcBlockErrorResult
+    from .json_rpc_response_for_rpc_block_response_and_rpc_block_error import JsonRpcResponseForRpcBlockResponseAndRpcBlockErrorError
+    from .json_rpc_response_for_rpc_block_response_and_rpc_block_error import JsonRpcResponseForRpcBlockResponseAndRpcBlockError
+    from .error_wrapper_for_rpc_view_gas_key_list_error import ErrorWrapperForRpcViewGasKeyListErrorRequestValidationError
+    from .error_wrapper_for_rpc_view_gas_key_list_error import ErrorWrapperForRpcViewGasKeyListErrorHandlerError
+    from .error_wrapper_for_rpc_view_gas_key_list_error import ErrorWrapperForRpcViewGasKeyListErrorInternalError
+    from .error_wrapper_for_rpc_view_gas_key_list_error import ErrorWrapperForRpcViewGasKeyListError
+    from .access_key_permission import AccessKeyPermissionFunctionCall
+    from .access_key_permission import AccessKeyPermissionFullAccess
+    from .access_key_permission import AccessKeyPermissionGasKeyFunctionCall
+    from .access_key_permission import AccessKeyPermissionGasKeyFullAccess
+    from .access_key_permission import AccessKeyPermission
+    from .json_rpc_response_for_rpc_view_gas_key_list_response_and_rpc_view_gas_key_list_error import JsonRpcResponseForRpcViewGasKeyListResponseAndRpcViewGasKeyListErrorResult
+    from .json_rpc_response_for_rpc_view_gas_key_list_response_and_rpc_view_gas_key_list_error import JsonRpcResponseForRpcViewGasKeyListResponseAndRpcViewGasKeyListErrorError
+    from .json_rpc_response_for_rpc_view_gas_key_list_response_and_rpc_view_gas_key_list_error import JsonRpcResponseForRpcViewGasKeyListResponseAndRpcViewGasKeyListError
+    from .error_wrapper_for_rpc_view_account_error import ErrorWrapperForRpcViewAccountErrorRequestValidationError
+    from .error_wrapper_for_rpc_view_account_error import ErrorWrapperForRpcViewAccountErrorHandlerError
+    from .error_wrapper_for_rpc_view_account_error import ErrorWrapperForRpcViewAccountErrorInternalError
+    from .error_wrapper_for_rpc_view_account_error import ErrorWrapperForRpcViewAccountError
+    from .json_rpc_request_for_experimental_call_function import JsonRpcRequestForExperimentalCallFunction
+    from .account_with_public_key import AccountWithPublicKey
+    from .sync_config import SyncConfig
+    from .account_id_validity_rules_version import AccountIdValidityRulesVersion
+    from .json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error import JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorResult
+    from .json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error import JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorError
+    from .json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error import JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsError
+    from .function_call_permission import FunctionCallPermission
+    from .runtime_fees_config_view import RuntimeFeesConfigView
+    from .witness_config_view import WitnessConfigView
+    from .rpc_light_client_chunk_execution_proof_response import RpcLightClientChunkExecutionProofResponse
     from .json_rpc_response_for_rpc_light_client_block_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientBlockProofResponseAndRpcLightClientProofErrorResult
     from .json_rpc_response_for_rpc_light_client_block_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientBlockProofResponseAndRpcLightClientProofErrorError
     from .json_rpc_response_for_rpc_light_client_block_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientBlockProofResponseAndRpcLightClientProofError
-    from .deterministic_state_init_action import DeterministicStateInitAction
-    from .transaction_nonce import TransactionNonceNoncePayload
-    from .transaction_nonce import TransactionNonceNonce
-    from .transaction_nonce import TransactionNonceGasKeyNoncePayload
-    from .transaction_nonce import TransactionNonceGasKeyNonce
-    from .transaction_nonce import TransactionNonce
-    from .error_wrapper_for_rpc_query_error import ErrorWrapperForRpcQueryErrorRequestValidationError
-    from .error_wrapper_for_rpc_query_error import ErrorWrapperForRpcQueryErrorHandlerError
-    from .error_wrapper_for_rpc_query_error import ErrorWrapperForRpcQueryErrorInternalError
-    from .error_wrapper_for_rpc_query_error import ErrorWrapperForRpcQueryError
-    from .error_wrapper_for_rpc_gas_price_error import ErrorWrapperForRpcGasPriceErrorRequestValidationError
-    from .error_wrapper_for_rpc_gas_price_error import ErrorWrapperForRpcGasPriceErrorHandlerError
-    from .error_wrapper_for_rpc_gas_price_error import ErrorWrapperForRpcGasPriceErrorInternalError
-    from .error_wrapper_for_rpc_gas_price_error import ErrorWrapperForRpcGasPriceError
-    from .final_execution_status import FinalExecutionStatusNotStarted
-    from .final_execution_status import FinalExecutionStatusStarted
-    from .final_execution_status import FinalExecutionStatusFailure
-    from .final_execution_status import FinalExecutionStatusSuccessValue
-    from .final_execution_status import FinalExecutionStatus
+    from .json_rpc_request_for_tx import JsonRpcRequestForTx
+    from .json_rpc_response_for_genesis_config_and_genesis_config_error import JsonRpcResponseForGenesisConfigAndGenesisConfigErrorResult
+    from .json_rpc_response_for_genesis_config_and_genesis_config_error import JsonRpcResponseForGenesisConfigAndGenesisConfigErrorError
+    from .json_rpc_response_for_genesis_config_and_genesis_config_error import JsonRpcResponseForGenesisConfigAndGenesisConfigError
+    from .state_sync_config import StateSyncConfig
+    from .account_id import AccountId
+    from .missing_trie_value import MissingTrieValue
+    from .json_rpc_response_for_rpc_protocol_config_response_and_rpc_protocol_config_error import JsonRpcResponseForRpcProtocolConfigResponseAndRpcProtocolConfigErrorResult
+    from .json_rpc_response_for_rpc_protocol_config_response_and_rpc_protocol_config_error import JsonRpcResponseForRpcProtocolConfigResponseAndRpcProtocolConfigErrorError
+    from .json_rpc_response_for_rpc_protocol_config_response_and_rpc_protocol_config_error import JsonRpcResponseForRpcProtocolConfigResponseAndRpcProtocolConfigError
+    from .rpc_protocol_config_error import RpcProtocolConfigErrorUnknownBlock
+    from .rpc_protocol_config_error import RpcProtocolConfigErrorInternalErrorInfo
+    from .rpc_protocol_config_error import RpcProtocolConfigErrorInternalError
+    from .rpc_protocol_config_error import RpcProtocolConfigError
+    from .error_wrapper_for_rpc_protocol_config_error import ErrorWrapperForRpcProtocolConfigErrorRequestValidationError
+    from .error_wrapper_for_rpc_protocol_config_error import ErrorWrapperForRpcProtocolConfigErrorHandlerError
+    from .error_wrapper_for_rpc_protocol_config_error import ErrorWrapperForRpcProtocolConfigErrorInternalError
+    from .error_wrapper_for_rpc_protocol_config_error import ErrorWrapperForRpcProtocolConfigError
+    from .cloud_archival_writer_config import CloudArchivalWriterConfig
+    from .view_state_result import ViewStateResult
+    from .rpc_light_client_next_block_request import RpcLightClientNextBlockRequest
+    from .deposit_cost_failure_reason import DepositCostFailureReason
 
 __all__ = [
     'AccessKey',
@@ -2506,91 +2506,16 @@ __all__ = [
 ]
 
 _CLASS_TO_MODULE = {
-    'RpcSplitStorageInfoRequest': 'rpc_split_storage_info_request',
-    'DeleteAccountAction': 'delete_account_action',
-    'ErrorWrapperForRpcStateChangesErrorRequestValidationError': 'error_wrapper_for_rpc_state_changes_error',
-    'ErrorWrapperForRpcStateChangesErrorHandlerError': 'error_wrapper_for_rpc_state_changes_error',
-    'ErrorWrapperForRpcStateChangesErrorInternalError': 'error_wrapper_for_rpc_state_changes_error',
-    'ErrorWrapperForRpcStateChangesError': 'error_wrapper_for_rpc_state_changes_error',
-    'ContractCodeView': 'contract_code_view',
-    'RangeOfUint64': 'range_of_uint64',
-    'InternalErrorInternalErrorInfo': 'internal_error',
-    'InternalErrorInternalError': 'internal_error',
-    'InternalError': 'internal_error',
-    'ShardLayoutV0': 'shard_layout_v0',
-    'ErrorWrapperForRpcReceiptToTxErrorRequestValidationError': 'error_wrapper_for_rpc_receipt_to_tx_error',
-    'ErrorWrapperForRpcReceiptToTxErrorHandlerError': 'error_wrapper_for_rpc_receipt_to_tx_error',
-    'ErrorWrapperForRpcReceiptToTxErrorInternalError': 'error_wrapper_for_rpc_receipt_to_tx_error',
-    'ErrorWrapperForRpcReceiptToTxError': 'error_wrapper_for_rpc_receipt_to_tx_error',
-    'RpcQueryResponseAccountView': 'rpc_query_response',
-    'RpcQueryResponseContractCodeView': 'rpc_query_response',
-    'RpcQueryResponseViewStateResult': 'rpc_query_response',
-    'RpcQueryResponseCallResult': 'rpc_query_response',
-    'RpcQueryResponseAccessKeyView': 'rpc_query_response',
-    'RpcQueryResponseAccessKeyList': 'rpc_query_response',
-    'RpcQueryResponseGasKeyNoncesView': 'rpc_query_response',
-    'RpcQueryResponse': 'rpc_query_response',
-    'StateChangeWithCauseViewAccountUpdateChange': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewAccountUpdate': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewAccountDeletionChange': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewAccountDeletion': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewAccessKeyUpdateChange': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewAccessKeyUpdate': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewAccessKeyDeletionChange': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewAccessKeyDeletion': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewGasKeyNonceUpdateChange': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewGasKeyNonceUpdate': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewDataUpdateChange': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewDataUpdate': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewDataDeletionChange': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewDataDeletion': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewContractCodeUpdateChange': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewContractCodeUpdate': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewContractCodeDeletionChange': 'state_change_with_cause_view',
-    'StateChangeWithCauseViewContractCodeDeletion': 'state_change_with_cause_view',
-    'StateChangeWithCauseView': 'state_change_with_cause_view',
-    'StateChangeKindViewAccountTouched': 'state_change_kind_view',
-    'StateChangeKindViewAccessKeyTouched': 'state_change_kind_view',
-    'StateChangeKindViewDataTouched': 'state_change_kind_view',
-    'StateChangeKindViewContractCodeTouched': 'state_change_kind_view',
-    'StateChangeKindView': 'state_change_kind_view',
-    'RpcSplitStorageInfoErrorInternalErrorInfo': 'rpc_split_storage_info_error',
-    'RpcSplitStorageInfoErrorInternalError': 'rpc_split_storage_info_error',
-    'RpcSplitStorageInfoError': 'rpc_split_storage_info_error',
-    'RpcTransactionStatusRequestSignedTxBase64': 'rpc_transaction_status_request',
-    'RpcTransactionStatusRequestSenderAccountIdTxHash': 'rpc_transaction_status_request',
-    'RpcTransactionStatusRequest': 'rpc_transaction_status_request',
-    'RpcViewAccessKeyErrorUnknownBlockInfo': 'rpc_view_access_key_error',
-    'RpcViewAccessKeyErrorUnknownBlock': 'rpc_view_access_key_error',
-    'RpcViewAccessKeyErrorInvalidAccountInfo': 'rpc_view_access_key_error',
-    'RpcViewAccessKeyErrorInvalidAccount': 'rpc_view_access_key_error',
-    'RpcViewAccessKeyErrorUnknownAccountInfo': 'rpc_view_access_key_error',
-    'RpcViewAccessKeyErrorUnknownAccount': 'rpc_view_access_key_error',
-    'RpcViewAccessKeyErrorUnknownAccessKeyInfo': 'rpc_view_access_key_error',
-    'RpcViewAccessKeyErrorUnknownAccessKey': 'rpc_view_access_key_error',
-    'RpcViewAccessKeyErrorInternalErrorInfo': 'rpc_view_access_key_error',
-    'RpcViewAccessKeyErrorInternalError': 'rpc_view_access_key_error',
-    'RpcViewAccessKeyError': 'rpc_view_access_key_error',
-    'RpcViewGasKeyErrorUnknownBlockInfo': 'rpc_view_gas_key_error',
-    'RpcViewGasKeyErrorUnknownBlock': 'rpc_view_gas_key_error',
-    'RpcViewGasKeyErrorInvalidAccountInfo': 'rpc_view_gas_key_error',
-    'RpcViewGasKeyErrorInvalidAccount': 'rpc_view_gas_key_error',
-    'RpcViewGasKeyErrorUnknownAccountInfo': 'rpc_view_gas_key_error',
-    'RpcViewGasKeyErrorUnknownAccount': 'rpc_view_gas_key_error',
-    'RpcViewGasKeyErrorUnknownGasKeyInfo': 'rpc_view_gas_key_error',
-    'RpcViewGasKeyErrorUnknownGasKey': 'rpc_view_gas_key_error',
-    'RpcViewGasKeyErrorInternalErrorInfo': 'rpc_view_gas_key_error',
-    'RpcViewGasKeyErrorInternalError': 'rpc_view_gas_key_error',
-    'RpcViewGasKeyError': 'rpc_view_gas_key_error',
-    'JsonRpcRequestForBlockEffects': 'json_rpc_request_for_block_effects',
-    'JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyErrorResult': 'json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error',
-    'JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyErrorError': 'json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error',
-    'JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyError': 'json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error',
-    'ActionCreationConfigView': 'action_creation_config_view',
-    'RpcLightClientExecutionOutcomeProofResponse': 'rpc_light_client_execution_outcome_proof_response',
-    'MerklePathItem': 'merkle_path_item',
-    'ChunkExecutionRootsV1Option': 'chunk_execution_roots',
-    'ChunkExecutionRoots': 'chunk_execution_roots',
+    'JsonRpcRequestForSendTx': 'json_rpc_request_for_send_tx',
+    'RpcProtocolConfigRequestBlockId': 'rpc_protocol_config_request',
+    'RpcProtocolConfigRequestFinality': 'rpc_protocol_config_request',
+    'RpcProtocolConfigRequestSyncCheckpoint': 'rpc_protocol_config_request',
+    'RpcProtocolConfigRequest': 'rpc_protocol_config_request',
+    'ErrorWrapperForRpcBlockErrorRequestValidationError': 'error_wrapper_for_rpc_block_error',
+    'ErrorWrapperForRpcBlockErrorHandlerError': 'error_wrapper_for_rpc_block_error',
+    'ErrorWrapperForRpcBlockErrorInternalError': 'error_wrapper_for_rpc_block_error',
+    'ErrorWrapperForRpcBlockError': 'error_wrapper_for_rpc_block_error',
+    'TransferToGasKeyAction': 'transfer_to_gas_key_action',
     'RpcLightClientProofErrorUnknownBlock': 'rpc_light_client_proof_error',
     'RpcLightClientProofErrorInconsistentStateInfo': 'rpc_light_client_proof_error',
     'RpcLightClientProofErrorInconsistentState': 'rpc_light_client_proof_error',
@@ -2613,292 +2538,12 @@ _CLASS_TO_MODULE = {
     'RpcLightClientProofErrorInternalErrorInfo': 'rpc_light_client_proof_error',
     'RpcLightClientProofErrorInternalError': 'rpc_light_client_proof_error',
     'RpcLightClientProofError': 'rpc_light_client_proof_error',
-    'GlobalContractDeployMode': 'global_contract_deploy_mode',
-    'JsonRpcRequestForGasPrice': 'json_rpc_request_for_gas_price',
-    'RpcProtocolConfigResponse': 'rpc_protocol_config_response',
-    's': 'rpc_protocol_config_response',
-    'RpcTransactionResponseFinalExecutionOutcomeWithReceiptView': 'rpc_transaction_response',
-    'RpcTransactionResponseFinalExecutionOutcomeView': 'rpc_transaction_response',
-    'RpcTransactionResponse': 'rpc_transaction_response',
-    'SignedTransaction': 'signed_transaction',
-    'RpcHealthResponse': 'rpc_health_response',
-    'TimeoutErrorCauseCause': 'timeout_error_cause',
-    'TimeoutErrorCauseCauseStatus': 'timeout_error_cause',
-    'TimeoutErrorCauseCauseShardId': 'timeout_error_cause',
-    'TimeoutErrorCauseCauseDebugInfo': 'timeout_error_cause',
-    'TimeoutErrorCause': 'timeout_error_cause',
-    'KeyHandle': 'key_handle',
-    'ExecutionOutcomeView': 'execution_outcome_view',
-    'GasKeyNoncesView': 'gas_key_nonces_view',
-    'ReceiptEnumViewActionPayload': 'receipt_enum_view',
-    'ReceiptEnumViewAction': 'receipt_enum_view',
-    'ReceiptEnumViewDataPayload': 'receipt_enum_view',
-    'ReceiptEnumViewData': 'receipt_enum_view',
-    'ReceiptEnumViewGlobalContractDistributionPayload': 'receipt_enum_view',
-    'ReceiptEnumViewGlobalContractDistribution': 'receipt_enum_view',
-    'ReceiptEnumView': 'receipt_enum_view',
-    'JsonRpcRequestForHealth': 'json_rpc_request_for_health',
-    'AccountId': 'account_id',
-    'RpcLightClientStateProofResponse': 'rpc_light_client_state_proof_response',
-    'JsonRpcRequestForStatus': 'json_rpc_request_for_status',
-    'ValidatorKickoutView': 'validator_kickout_view',
-    'JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorResult': 'json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error',
-    'JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorError': 'json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error',
-    'JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeError': 'json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error',
-    'JsonRpcResponseForRpcViewAccessKeyListResponseAndRpcViewAccessKeyListErrorResult': 'json_rpc_response_for_rpc_view_access_key_list_response_and_rpc_view_access_key_list_error',
-    'JsonRpcResponseForRpcViewAccessKeyListResponseAndRpcViewAccessKeyListErrorError': 'json_rpc_response_for_rpc_view_access_key_list_response_and_rpc_view_access_key_list_error',
-    'JsonRpcResponseForRpcViewAccessKeyListResponseAndRpcViewAccessKeyListError': 'json_rpc_response_for_rpc_view_access_key_list_response_and_rpc_view_access_key_list_error',
-    'GCConfig': 'gcconfig',
-    'RpcViewAccountResponse': 'rpc_view_account_response',
-    'JsonRpcRequestForExperimentalChanges': 'json_rpc_request_for_experimental_changes',
-    'StateSyncConfig': 'state_sync_config',
-    'ExternalStorageConfig': 'external_storage_config',
-    'ExternalStorageLocationS3Payload': 'external_storage_location',
-    'ExternalStorageLocationS3': 'external_storage_location',
-    'ExternalStorageLocationFilesystemPayload': 'external_storage_location',
-    'ExternalStorageLocationFilesystem': 'external_storage_location',
-    'ExternalStorageLocationGcsPayload': 'external_storage_location',
-    'ExternalStorageLocationGcs': 'external_storage_location',
-    'ExternalStorageLocation': 'external_storage_location',
-    'AccessKeyPermissionFunctionCall': 'access_key_permission',
-    'AccessKeyPermissionFullAccess': 'access_key_permission',
-    'AccessKeyPermissionGasKeyFunctionCall': 'access_key_permission',
-    'AccessKeyPermissionGasKeyFullAccess': 'access_key_permission',
-    'AccessKeyPermission': 'access_key_permission',
-    'JsonRpcRequestForExperimentalCallFunction': 'json_rpc_request_for_experimental_call_function',
+    'RpcReceiptRequest': 'rpc_receipt_request',
+    'JsonRpcRequestForExperimentalViewState': 'json_rpc_request_for_experimental_view_state',
+    'BandwidthRequest': 'bandwidth_request',
+    'StateItem': 'state_item',
     'LightClientBlockLiteView': 'light_client_block_lite_view',
-    'Version': 'version',
-    'RpcViewAccessKeyListErrorUnknownBlockInfo': 'rpc_view_access_key_list_error',
-    'RpcViewAccessKeyListErrorUnknownBlock': 'rpc_view_access_key_list_error',
-    'RpcViewAccessKeyListErrorInvalidAccountInfo': 'rpc_view_access_key_list_error',
-    'RpcViewAccessKeyListErrorInvalidAccount': 'rpc_view_access_key_list_error',
-    'RpcViewAccessKeyListErrorUnknownAccountInfo': 'rpc_view_access_key_list_error',
-    'RpcViewAccessKeyListErrorUnknownAccount': 'rpc_view_access_key_list_error',
-    'RpcViewAccessKeyListErrorInternalErrorInfo': 'rpc_view_access_key_list_error',
-    'RpcViewAccessKeyListErrorInternalError': 'rpc_view_access_key_list_error',
-    'RpcViewAccessKeyListError': 'rpc_view_access_key_list_error',
-    'RpcViewAccessKeyResponse': 'rpc_view_access_key_response',
-    'ShardLayoutV0Option': 'shard_layout',
-    'ShardLayoutV1Option': 'shard_layout',
-    'ShardLayoutV2Option': 'shard_layout',
-    'ShardLayoutV3Option': 'shard_layout',
-    'ShardLayout': 'shard_layout',
-    'RpcViewAccountRequestBlockId': 'rpc_view_account_request',
-    'RpcViewAccountRequestFinality': 'rpc_view_account_request',
-    'RpcViewAccountRequestSyncCheckpoint': 'rpc_view_account_request',
-    'RpcViewAccountRequest': 'rpc_view_account_request',
-    'RpcStateChangesInBlockByTypeResponse': 'rpc_state_changes_in_block_by_type_response',
-    'ExtCostsConfigView': 'ext_costs_config_view',
-    'CostGasUsed': 'cost_gas_used',
-    'ReceiptValidationErrorInvalidPredecessorIdPayload': 'receipt_validation_error',
-    'ReceiptValidationErrorInvalidPredecessorId': 'receipt_validation_error',
-    'ReceiptValidationErrorInvalidReceiverIdPayload': 'receipt_validation_error',
-    'ReceiptValidationErrorInvalidReceiverId': 'receipt_validation_error',
-    'ReceiptValidationErrorInvalidSignerIdPayload': 'receipt_validation_error',
-    'ReceiptValidationErrorInvalidSignerId': 'receipt_validation_error',
-    'ReceiptValidationErrorInvalidDataReceiverIdPayload': 'receipt_validation_error',
-    'ReceiptValidationErrorInvalidDataReceiverId': 'receipt_validation_error',
-    'ReceiptValidationErrorReturnedValueLengthExceededPayload': 'receipt_validation_error',
-    'ReceiptValidationErrorReturnedValueLengthExceeded': 'receipt_validation_error',
-    'ReceiptValidationErrorNumberInputDataDependenciesExceededPayload': 'receipt_validation_error',
-    'ReceiptValidationErrorNumberInputDataDependenciesExceeded': 'receipt_validation_error',
-    'ReceiptValidationErrorActionsValidation': 'receipt_validation_error',
-    'ReceiptValidationErrorReceiptSizeExceededPayload': 'receipt_validation_error',
-    'ReceiptValidationErrorReceiptSizeExceeded': 'receipt_validation_error',
-    'ReceiptValidationErrorInvalidRefundToPayload': 'receipt_validation_error',
-    'ReceiptValidationErrorInvalidRefundTo': 'receipt_validation_error',
-    'ReceiptValidationError': 'receipt_validation_error',
-    'ViewStateResult': 'view_state_result',
-    'WasmTrap': 'wasm_trap',
-    'JsonRpcResponseForRpcReceiptResponseAndRpcReceiptErrorResult': 'json_rpc_response_for_rpc_receipt_response_and_rpc_receipt_error',
-    'JsonRpcResponseForRpcReceiptResponseAndRpcReceiptErrorError': 'json_rpc_response_for_rpc_receipt_response_and_rpc_receipt_error',
-    'JsonRpcResponseForRpcReceiptResponseAndRpcReceiptError': 'json_rpc_response_for_rpc_receipt_response_and_rpc_receipt_error',
-    'DelegateActionV2': 'delegate_action_v2',
-    'GlobalContractIdentifierViewHash': 'global_contract_identifier_view',
-    'GlobalContractIdentifierViewAccountId': 'global_contract_identifier_view',
-    'GlobalContractIdentifierView': 'global_contract_identifier_view',
-    'RpcLightClientExecutionProofResponse': 'rpc_light_client_execution_proof_response',
-    'JsonRpcRequestForGenesisConfig': 'json_rpc_request_for_genesis_config',
-    'NetworkInfoView': 'network_info_view',
-    'RpcChunkRequestBlockShardId': 'rpc_chunk_request',
-    'RpcChunkRequestChunkHash': 'rpc_chunk_request',
-    'RpcChunkRequest': 'rpc_chunk_request',
-    'RpcStatusRequest': 'rpc_status_request',
-    'JsonRpcRequestForExperimentalLightClientChunkExecutionProof': 'json_rpc_request_for_experimental_light_client_chunk_execution_proof',
-    'NonceMode': 'nonce_mode',
-    'TxExecutionErrorActionError': 'tx_execution_error',
-    'TxExecutionErrorInvalidTxError': 'tx_execution_error',
-    'TxExecutionError': 'tx_execution_error',
-    'JsonRpcResponseForCryptoHashAndRpcTransactionErrorResult': 'json_rpc_response_for_crypto_hash_and_rpc_transaction_error',
-    'JsonRpcResponseForCryptoHashAndRpcTransactionErrorError': 'json_rpc_response_for_crypto_hash_and_rpc_transaction_error',
-    'JsonRpcResponseForCryptoHashAndRpcTransactionError': 'json_rpc_response_for_crypto_hash_and_rpc_transaction_error',
-    'ChunkDistributionNetworkConfig': 'chunk_distribution_network_config',
-    'JsonRpcResponseForRpcLightClientChunkExecutionProofResponseAndRpcLightClientProofErrorResult': 'json_rpc_response_for_rpc_light_client_chunk_execution_proof_response_and_rpc_light_client_proof_error',
-    'JsonRpcResponseForRpcLightClientChunkExecutionProofResponseAndRpcLightClientProofErrorError': 'json_rpc_response_for_rpc_light_client_chunk_execution_proof_response_and_rpc_light_client_proof_error',
-    'JsonRpcResponseForRpcLightClientChunkExecutionProofResponseAndRpcLightClientProofError': 'json_rpc_response_for_rpc_light_client_chunk_execution_proof_response_and_rpc_light_client_proof_error',
-    'ErrorWrapperForRpcViewAccessKeyErrorRequestValidationError': 'error_wrapper_for_rpc_view_access_key_error',
-    'ErrorWrapperForRpcViewAccessKeyErrorHandlerError': 'error_wrapper_for_rpc_view_access_key_error',
-    'ErrorWrapperForRpcViewAccessKeyErrorInternalError': 'error_wrapper_for_rpc_view_access_key_error',
-    'ErrorWrapperForRpcViewAccessKeyError': 'error_wrapper_for_rpc_view_access_key_error',
-    'ValidatorStakeViewValidatorStakeStructVersion': 'validator_stake_view',
-    'ValidatorStakeView': 'validator_stake_view',
-    'ErrorWrapperForRpcLightClientNextBlockErrorRequestValidationError': 'error_wrapper_for_rpc_light_client_next_block_error',
-    'ErrorWrapperForRpcLightClientNextBlockErrorHandlerError': 'error_wrapper_for_rpc_light_client_next_block_error',
-    'ErrorWrapperForRpcLightClientNextBlockErrorInternalError': 'error_wrapper_for_rpc_light_client_next_block_error',
-    'ErrorWrapperForRpcLightClientNextBlockError': 'error_wrapper_for_rpc_light_client_next_block_error',
-    'JsonRpcRequestForExperimentalViewGasKey': 'json_rpc_request_for_experimental_view_gas_key',
-    'ErrorWrapperForRpcTransactionErrorRequestValidationError': 'error_wrapper_for_rpc_transaction_error',
-    'ErrorWrapperForRpcTransactionErrorHandlerError': 'error_wrapper_for_rpc_transaction_error',
-    'ErrorWrapperForRpcTransactionErrorInternalError': 'error_wrapper_for_rpc_transaction_error',
-    'ErrorWrapperForRpcTransactionError': 'error_wrapper_for_rpc_transaction_error',
-    'RpcClientConfigRequest': 'rpc_client_config_request',
-    'JsonRpcRequestForExperimentalReceiptToTx': 'json_rpc_request_for_experimental_receipt_to_tx',
-    'Finality': 'finality',
-    'NearGas': 'near_gas',
-    'SpiceChunkId': 'spice_chunk_id',
-    'BandwidthRequestsV1': 'bandwidth_requests_v1',
-    'JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofErrorResult': 'json_rpc_response_for_rpc_light_client_state_proof_response_and_rpc_light_client_proof_error',
-    'JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofErrorError': 'json_rpc_response_for_rpc_light_client_state_proof_response_and_rpc_light_client_proof_error',
-    'JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofError': 'json_rpc_response_for_rpc_light_client_state_proof_response_and_rpc_light_client_proof_error',
-    'JsonRpcRequestForValidators': 'json_rpc_request_for_validators',
-    'RpcClientConfigResponse': 'rpc_client_config_response',
-    'RpcViewStateErrorUnknownBlockInfo': 'rpc_view_state_error',
-    'RpcViewStateErrorUnknownBlock': 'rpc_view_state_error',
-    'RpcViewStateErrorInvalidAccountInfo': 'rpc_view_state_error',
-    'RpcViewStateErrorInvalidAccount': 'rpc_view_state_error',
-    'RpcViewStateErrorUnknownAccountInfo': 'rpc_view_state_error',
-    'RpcViewStateErrorUnknownAccount': 'rpc_view_state_error',
-    'RpcViewStateErrorTooLargeContractStateInfo': 'rpc_view_state_error',
-    'RpcViewStateErrorTooLargeContractState': 'rpc_view_state_error',
-    'RpcViewStateErrorInternalErrorInfo': 'rpc_view_state_error',
-    'RpcViewStateErrorInternalError': 'rpc_view_state_error',
-    'RpcViewStateError': 'rpc_view_state_error',
-    'RpcValidatorRequestEpochId': 'rpc_validator_request',
-    'RpcValidatorRequestBlockId': 'rpc_validator_request',
-    'RpcValidatorRequestLatest': 'rpc_validator_request',
-    'RpcValidatorRequest': 'rpc_validator_request',
-    'ActionViewCreateAccount': 'action_view',
-    'ActionViewDeployContractPayload': 'action_view',
-    'ActionViewDeployContract': 'action_view',
-    'ActionViewFunctionCallPayload': 'action_view',
-    'ActionViewFunctionCall': 'action_view',
-    'ActionViewTransferPayload': 'action_view',
-    'ActionViewTransfer': 'action_view',
-    'ActionViewStakePayload': 'action_view',
-    'ActionViewStake': 'action_view',
-    'ActionViewAddKeyPayload': 'action_view',
-    'ActionViewAddKey': 'action_view',
-    'ActionViewDeleteKeyPayload': 'action_view',
-    'ActionViewDeleteKey': 'action_view',
-    'ActionViewDeleteAccountPayload': 'action_view',
-    'ActionViewDeleteAccount': 'action_view',
-    'ActionViewDelegatePayload': 'action_view',
-    'ActionViewDelegate': 'action_view',
-    'ActionViewDelegateV2Payload': 'action_view',
-    'ActionViewDelegateV2': 'action_view',
-    'ActionViewDeployGlobalContractPayload': 'action_view',
-    'ActionViewDeployGlobalContract': 'action_view',
-    'ActionViewDeployGlobalContractByAccountIdPayload': 'action_view',
-    'ActionViewDeployGlobalContractByAccountId': 'action_view',
-    'ActionViewUseGlobalContractPayload': 'action_view',
-    'ActionViewUseGlobalContract': 'action_view',
-    'ActionViewUseGlobalContractByAccountIdPayload': 'action_view',
-    'ActionViewUseGlobalContractByAccountId': 'action_view',
-    'ActionViewDeterministicStateInitPayload': 'action_view',
-    'ActionViewDeterministicStateInit': 'action_view',
-    'ActionViewTransferToGasKeyPayload': 'action_view',
-    'ActionViewTransferToGasKey': 'action_view',
-    'ActionViewWithdrawFromGasKeyPayload': 'action_view',
-    'ActionViewWithdrawFromGasKey': 'action_view',
-    'ActionViewUniversalStateInitPayload': 'action_view',
-    'ActionViewUniversalStateInit': 'action_view',
-    'ActionView': 'action_view',
-    'ShardLayoutV2': 'shard_layout_v2',
-    'CompilationErrorCodeDoesNotExistPayload': 'compilation_error',
-    'CompilationErrorCodeDoesNotExist': 'compilation_error',
-    'CompilationErrorPrepareError': 'compilation_error',
-    'CompilationErrorWasmerCompileErrorPayload': 'compilation_error',
-    'CompilationErrorWasmerCompileError': 'compilation_error',
-    'CompilationError': 'compilation_error',
-    'FunctionArgs': 'function_args',
-    'CongestionControlConfigView': 'congestion_control_config_view',
-    'RpcSplitStorageInfoResponse': 'rpc_split_storage_info_response',
-    'RpcStateChangesInBlockByTypeRequestAccountChangesByBlockId': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesByBlockId': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesByBlockId': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequestContractCodeChangesByBlockId': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequestDataChangesByBlockId': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequestAccountChangesByFinality': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesByFinality': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesByFinality': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequestContractCodeChangesByFinality': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequestDataChangesByFinality': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequestAccountChangesBySyncCheckpoint': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesBySyncCheckpoint': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesBySyncCheckpoint': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequestContractCodeChangesBySyncCheckpoint': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequestDataChangesBySyncCheckpoint': 'rpc_state_changes_in_block_by_type_request',
-    'RpcStateChangesInBlockByTypeRequest': 'rpc_state_changes_in_block_by_type_request',
-    'JsonRpcRequestForBlock': 'json_rpc_request_for_block',
-    'RpcViewAccessKeyRequestBlockId': 'rpc_view_access_key_request',
-    'RpcViewAccessKeyRequestFinality': 'rpc_view_access_key_request',
-    'RpcViewAccessKeyRequestSyncCheckpoint': 'rpc_view_access_key_request',
-    'RpcViewAccessKeyRequest': 'rpc_view_access_key_request',
-    'ErrorWrapperForRpcLightClientProofErrorRequestValidationError': 'error_wrapper_for_rpc_light_client_proof_error',
-    'ErrorWrapperForRpcLightClientProofErrorHandlerError': 'error_wrapper_for_rpc_light_client_proof_error',
-    'ErrorWrapperForRpcLightClientProofErrorInternalError': 'error_wrapper_for_rpc_light_client_proof_error',
-    'ErrorWrapperForRpcLightClientProofError': 'error_wrapper_for_rpc_light_client_proof_error',
-    'InvalidTxErrorInvalidAccessKeyError': 'invalid_tx_error',
-    'InvalidTxErrorInvalidSignerIdPayload': 'invalid_tx_error',
-    'InvalidTxErrorInvalidSignerId': 'invalid_tx_error',
-    'InvalidTxErrorSignerDoesNotExistPayload': 'invalid_tx_error',
-    'InvalidTxErrorSignerDoesNotExist': 'invalid_tx_error',
-    'InvalidTxErrorInvalidNoncePayload': 'invalid_tx_error',
-    'InvalidTxErrorInvalidNonce': 'invalid_tx_error',
-    'InvalidTxErrorNonceTooLargePayload': 'invalid_tx_error',
-    'InvalidTxErrorNonceTooLarge': 'invalid_tx_error',
-    'InvalidTxErrorInvalidReceiverIdPayload': 'invalid_tx_error',
-    'InvalidTxErrorInvalidReceiverId': 'invalid_tx_error',
-    'InvalidTxErrorInvalidSignature': 'invalid_tx_error',
-    'InvalidTxErrorNotEnoughBalancePayload': 'invalid_tx_error',
-    'InvalidTxErrorNotEnoughBalance': 'invalid_tx_error',
-    'InvalidTxErrorLackBalanceForStatePayload': 'invalid_tx_error',
-    'InvalidTxErrorLackBalanceForState': 'invalid_tx_error',
-    'InvalidTxErrorCostOverflow': 'invalid_tx_error',
-    'InvalidTxErrorInvalidChain': 'invalid_tx_error',
-    'InvalidTxErrorExpired': 'invalid_tx_error',
-    'InvalidTxErrorActionsValidation': 'invalid_tx_error',
-    'InvalidTxErrorTransactionSizeExceededPayload': 'invalid_tx_error',
-    'InvalidTxErrorTransactionSizeExceeded': 'invalid_tx_error',
-    'InvalidTxErrorInvalidTransactionVersion': 'invalid_tx_error',
-    'InvalidTxErrorStorageError': 'invalid_tx_error',
-    'InvalidTxErrorShardCongestedPayload': 'invalid_tx_error',
-    'InvalidTxErrorShardCongested': 'invalid_tx_error',
-    'InvalidTxErrorShardStuckPayload': 'invalid_tx_error',
-    'InvalidTxErrorShardStuck': 'invalid_tx_error',
-    'InvalidTxErrorInvalidNonceIndexPayload': 'invalid_tx_error',
-    'InvalidTxErrorInvalidNonceIndex': 'invalid_tx_error',
-    'InvalidTxErrorNotEnoughGasKeyBalancePayload': 'invalid_tx_error',
-    'InvalidTxErrorNotEnoughGasKeyBalance': 'invalid_tx_error',
-    'InvalidTxErrorNotEnoughBalanceForDepositPayload': 'invalid_tx_error',
-    'InvalidTxErrorNotEnoughBalanceForDeposit': 'invalid_tx_error',
-    'InvalidTxError': 'invalid_tx_error',
-    'SyncConcurrency': 'sync_concurrency',
-    'JsonRpcResponseForRpcViewStateResponseAndRpcViewStateErrorResult': 'json_rpc_response_for_rpc_view_state_response_and_rpc_view_state_error',
-    'JsonRpcResponseForRpcViewStateResponseAndRpcViewStateErrorError': 'json_rpc_response_for_rpc_view_state_response_and_rpc_view_state_error',
-    'JsonRpcResponseForRpcViewStateResponseAndRpcViewStateError': 'json_rpc_response_for_rpc_view_state_response_and_rpc_view_state_error',
-    'ShardId': 'shard_id',
-    'RpcMaintenanceWindowsErrorInternalErrorInfo': 'rpc_maintenance_windows_error',
-    'RpcMaintenanceWindowsErrorInternalError': 'rpc_maintenance_windows_error',
-    'RpcMaintenanceWindowsError': 'rpc_maintenance_windows_error',
-    'UniversalStateInitAction': 'universal_state_init_action',
-    'StorageErrorStorageInternalError': 'storage_error',
-    'StorageErrorMissingTrieValue': 'storage_error',
-    'StorageErrorUnexpectedTrieValue': 'storage_error',
-    'StorageErrorStorageInconsistentState': 'storage_error',
-    'StorageErrorFlatStorageBlockNotSupported': 'storage_error',
-    'StorageErrorMemTrieLoadingError': 'storage_error',
-    'StorageError': 'storage_error',
+    'ChunkExecutionRootsV1': 'chunk_execution_roots_v1',
     'RpcStateChangesErrorUnknownBlock': 'rpc_state_changes_error',
     'RpcStateChangesErrorNotSyncedYet': 'rpc_state_changes_error',
     'RpcStateChangesErrorInternalErrorInfo': 'rpc_state_changes_error',
@@ -2906,6 +2551,8 @@ _CLASS_TO_MODULE = {
     'RpcStateChangesErrorShardNotAppliedInfo': 'rpc_state_changes_error',
     'RpcStateChangesErrorShardNotApplied': 'rpc_state_changes_error',
     'RpcStateChangesError': 'rpc_state_changes_error',
+    'StatusSyncInfo': 'status_sync_info',
+    'UniversalStateInitAction': 'universal_state_init_action',
     'RpcViewGasKeyListErrorUnknownBlockInfo': 'rpc_view_gas_key_list_error',
     'RpcViewGasKeyListErrorUnknownBlock': 'rpc_view_gas_key_list_error',
     'RpcViewGasKeyListErrorInvalidAccountInfo': 'rpc_view_gas_key_list_error',
@@ -2915,111 +2562,17 @@ _CLASS_TO_MODULE = {
     'RpcViewGasKeyListErrorInternalErrorInfo': 'rpc_view_gas_key_list_error',
     'RpcViewGasKeyListErrorInternalError': 'rpc_view_gas_key_list_error',
     'RpcViewGasKeyListError': 'rpc_view_gas_key_list_error',
-    'DataReceiverView': 'data_receiver_view',
-    'StorageGetMode': 'storage_get_mode',
-    'LogSummaryStyle': 'log_summary_style',
-    'ErrorWrapperForRpcReceiptErrorRequestValidationError': 'error_wrapper_for_rpc_receipt_error',
-    'ErrorWrapperForRpcReceiptErrorHandlerError': 'error_wrapper_for_rpc_receipt_error',
-    'ErrorWrapperForRpcReceiptErrorInternalError': 'error_wrapper_for_rpc_receipt_error',
-    'ErrorWrapperForRpcReceiptError': 'error_wrapper_for_rpc_receipt_error',
-    'BlockHeaderInnerLiteView': 'block_header_inner_lite_view',
-    'DelegateAction': 'delegate_action',
-    'ErrorWrapperForRpcViewGasKeyListErrorRequestValidationError': 'error_wrapper_for_rpc_view_gas_key_list_error',
-    'ErrorWrapperForRpcViewGasKeyListErrorHandlerError': 'error_wrapper_for_rpc_view_gas_key_list_error',
-    'ErrorWrapperForRpcViewGasKeyListErrorInternalError': 'error_wrapper_for_rpc_view_gas_key_list_error',
-    'ErrorWrapperForRpcViewGasKeyListError': 'error_wrapper_for_rpc_view_gas_key_list_error',
-    'AccessKey': 'access_key',
-    'JsonRpcResponseForRpcViewAccessKeyResponseAndRpcViewAccessKeyErrorResult': 'json_rpc_response_for_rpc_view_access_key_response_and_rpc_view_access_key_error',
-    'JsonRpcResponseForRpcViewAccessKeyResponseAndRpcViewAccessKeyErrorError': 'json_rpc_response_for_rpc_view_access_key_response_and_rpc_view_access_key_error',
-    'JsonRpcResponseForRpcViewAccessKeyResponseAndRpcViewAccessKeyError': 'json_rpc_response_for_rpc_view_access_key_response_and_rpc_view_access_key_error',
-    'GasKey': 'gas_key',
-    'JsonRpcResponseForRpcQueryResponseAndRpcQueryErrorResult': 'json_rpc_response_for_rpc_query_response_and_rpc_query_error',
-    'JsonRpcResponseForRpcQueryResponseAndRpcQueryErrorError': 'json_rpc_response_for_rpc_query_response_and_rpc_query_error',
-    'JsonRpcResponseForRpcQueryResponseAndRpcQueryError': 'json_rpc_response_for_rpc_query_response_and_rpc_query_error',
-    'JsonRpcRequestForClientConfig': 'json_rpc_request_for_client_config',
-    'Signature': 'signature',
     'ExecutionOutcomeWithIdView': 'execution_outcome_with_id_view',
-    'WitnessConfigView': 'witness_config_view',
-    'RpcViewGasKeyListRequestBlockId': 'rpc_view_gas_key_list_request',
-    'RpcViewGasKeyListRequestFinality': 'rpc_view_gas_key_list_request',
-    'RpcViewGasKeyListRequestSyncCheckpoint': 'rpc_view_gas_key_list_request',
-    'RpcViewGasKeyListRequest': 'rpc_view_gas_key_list_request',
-    'JsonRpcRequestForExperimentalViewGasKeyList': 'json_rpc_request_for_experimental_view_gas_key_list',
-    'JsonRpcRequestForLightClientProof': 'json_rpc_request_for_light_client_proof',
-    'AccessKeyPermissionViewFullAccess': 'access_key_permission_view',
-    'AccessKeyPermissionViewFunctionCallPayload': 'access_key_permission_view',
-    'AccessKeyPermissionViewFunctionCall': 'access_key_permission_view',
-    'AccessKeyPermissionViewGasKeyFunctionCallPayload': 'access_key_permission_view',
-    'AccessKeyPermissionViewGasKeyFunctionCall': 'access_key_permission_view',
-    'AccessKeyPermissionViewGasKeyFullAccessPayload': 'access_key_permission_view',
-    'AccessKeyPermissionViewGasKeyFullAccess': 'access_key_permission_view',
-    'AccessKeyPermissionView': 'access_key_permission_view',
-    'DeployGlobalContractAction': 'deploy_global_contract_action',
-    'BlockHeaderView': 'block_header_view',
-    'JsonRpcResponseForRpcCallFunctionResponseAndRpcCallFunctionErrorResult': 'json_rpc_response_for_rpc_call_function_response_and_rpc_call_function_error',
-    'JsonRpcResponseForRpcCallFunctionResponseAndRpcCallFunctionErrorError': 'json_rpc_response_for_rpc_call_function_response_and_rpc_call_function_error',
-    'JsonRpcResponseForRpcCallFunctionResponseAndRpcCallFunctionError': 'json_rpc_response_for_rpc_call_function_response_and_rpc_call_function_error',
-    'JsonRpcRequestForExperimentalViewState': 'json_rpc_request_for_experimental_view_state',
-    'JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorResult': 'json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error',
-    'JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorError': 'json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error',
-    'JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsError': 'json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error',
-    'JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofErrorResult': 'json_rpc_response_for_rpc_light_client_execution_outcome_proof_response_and_rpc_light_client_proof_error',
-    'JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofErrorError': 'json_rpc_response_for_rpc_light_client_execution_outcome_proof_response_and_rpc_light_client_proof_error',
-    'JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofError': 'json_rpc_response_for_rpc_light_client_execution_outcome_proof_response_and_rpc_light_client_proof_error',
-    'AccountWithPublicKey': 'account_with_public_key',
-    'ChunkHash': 'chunk_hash',
-    'AccountDataView': 'account_data_view',
-    'JsonRpcRequestForExperimentalLightClientBlockProof': 'json_rpc_request_for_experimental_light_client_block_proof',
-    'RpcStatusResponse': 'rpc_status_response',
-    'DeleteKeyAction': 'delete_key_action',
-    'RpcGasPriceResponse': 'rpc_gas_price_response',
-    'JsonRpcRequestForSendTx': 'json_rpc_request_for_send_tx',
-    'JsonRpcRequestForExperimentalCongestionLevel': 'json_rpc_request_for_experimental_congestion_level',
-    'BandwidthRequestBitmap': 'bandwidth_request_bitmap',
-    'ErrorWrapperForRpcChunkErrorRequestValidationError': 'error_wrapper_for_rpc_chunk_error',
-    'ErrorWrapperForRpcChunkErrorHandlerError': 'error_wrapper_for_rpc_chunk_error',
-    'ErrorWrapperForRpcChunkErrorInternalError': 'error_wrapper_for_rpc_chunk_error',
-    'ErrorWrapperForRpcChunkError': 'error_wrapper_for_rpc_chunk_error',
-    'AccountCreationConfigView': 'account_creation_config_view',
-    'RpcChunkResponse': 'rpc_chunk_response',
-    'VMConfigView': 'vmconfig_view',
-    'JsonRpcResponseForRpcCongestionLevelResponseAndRpcChunkErrorResult': 'json_rpc_response_for_rpc_congestion_level_response_and_rpc_chunk_error',
-    'JsonRpcResponseForRpcCongestionLevelResponseAndRpcChunkErrorError': 'json_rpc_response_for_rpc_congestion_level_response_and_rpc_chunk_error',
-    'JsonRpcResponseForRpcCongestionLevelResponseAndRpcChunkError': 'json_rpc_response_for_rpc_congestion_level_response_and_rpc_chunk_error',
-    'RpcChunkErrorInternalErrorInfo': 'rpc_chunk_error',
-    'RpcChunkErrorInternalError': 'rpc_chunk_error',
-    'RpcChunkErrorUnknownBlock': 'rpc_chunk_error',
-    'RpcChunkErrorInvalidShardIdInfo': 'rpc_chunk_error',
-    'RpcChunkErrorInvalidShardId': 'rpc_chunk_error',
-    'RpcChunkErrorUnknownChunkInfo': 'rpc_chunk_error',
-    'RpcChunkErrorUnknownChunk': 'rpc_chunk_error',
-    'RpcChunkError': 'rpc_chunk_error',
-    'RpcLightClientBlockProofResponse': 'rpc_light_client_block_proof_response',
-    'ValidatorStakeViewV1': 'validator_stake_view_v1',
-    'CallResult': 'call_result',
-    'RpcViewAccountErrorUnknownBlockInfo': 'rpc_view_account_error',
-    'RpcViewAccountErrorUnknownBlock': 'rpc_view_account_error',
-    'RpcViewAccountErrorInvalidAccountInfo': 'rpc_view_account_error',
-    'RpcViewAccountErrorInvalidAccount': 'rpc_view_account_error',
-    'RpcViewAccountErrorUnknownAccountInfo': 'rpc_view_account_error',
-    'RpcViewAccountErrorUnknownAccount': 'rpc_view_account_error',
-    'RpcViewAccountErrorInternalErrorInfo': 'rpc_view_account_error',
-    'RpcViewAccountErrorInternalError': 'rpc_view_account_error',
-    'RpcViewAccountError': 'rpc_view_account_error',
-    'RpcLightClientExecutionOutcomeProofRequestTransaction': 'rpc_light_client_execution_outcome_proof_request',
-    'RpcLightClientExecutionOutcomeProofRequestReceipt': 'rpc_light_client_execution_outcome_proof_request',
-    'RpcLightClientExecutionOutcomeProofRequest': 'rpc_light_client_execution_outcome_proof_request',
-    'FunctionCallPermission': 'function_call_permission',
+    'RpcProtocolConfigResponse': 'rpc_protocol_config_response',
+    's': 'rpc_protocol_config_response',
+    'StateChangeKindViewAccountTouched': 'state_change_kind_view',
+    'StateChangeKindViewAccessKeyTouched': 'state_change_kind_view',
+    'StateChangeKindViewDataTouched': 'state_change_kind_view',
+    'StateChangeKindViewContractCodeTouched': 'state_change_kind_view',
+    'StateChangeKindView': 'state_change_kind_view',
     'RpcHealthRequest': 'rpc_health_request',
-    'CongestionInfoView': 'congestion_info_view',
-    'VersionedSignedDelegateAction': 'versioned_signed_delegate_action',
-    'PeerInfoView': 'peer_info_view',
-    'BandwidthRequest': 'bandwidth_request',
-    'JsonRpcRequestForExperimentalViewCode': 'json_rpc_request_for_experimental_view_code',
-    'RpcStateChangesInBlockRequestBlockId': 'rpc_state_changes_in_block_request',
-    'RpcStateChangesInBlockRequestFinality': 'rpc_state_changes_in_block_request',
-    'RpcStateChangesInBlockRequestSyncCheckpoint': 'rpc_state_changes_in_block_request',
-    'RpcStateChangesInBlockRequest': 'rpc_state_changes_in_block_request',
+    'RpcViewAccessKeyListResponse': 'rpc_view_access_key_list_response',
+    'JsonRpcRequestForBroadcastTxCommit': 'json_rpc_request_for_broadcast_tx_commit',
     'NonDelegateActionCreateAccount': 'non_delegate_action',
     'NonDelegateActionDeployContract': 'non_delegate_action',
     'NonDelegateActionFunctionCall': 'non_delegate_action',
@@ -3035,14 +2588,77 @@ _CLASS_TO_MODULE = {
     'NonDelegateActionWithdrawFromGasKey': 'non_delegate_action',
     'NonDelegateActionUniversalStateInit': 'non_delegate_action',
     'NonDelegateAction': 'non_delegate_action',
+    'JsonRpcRequestForGenesisConfig': 'json_rpc_request_for_genesis_config',
+    'RpcClientConfigRequest': 'rpc_client_config_request',
+    'RpcViewGasKeyListRequestBlockId': 'rpc_view_gas_key_list_request',
+    'RpcViewGasKeyListRequestFinality': 'rpc_view_gas_key_list_request',
+    'RpcViewGasKeyListRequestSyncCheckpoint': 'rpc_view_gas_key_list_request',
+    'RpcViewGasKeyListRequest': 'rpc_view_gas_key_list_request',
+    'RpcNetworkInfoResponse': 'rpc_network_info_response',
+    'RpcMaintenanceWindowsErrorInternalErrorInfo': 'rpc_maintenance_windows_error',
+    'RpcMaintenanceWindowsErrorInternalError': 'rpc_maintenance_windows_error',
+    'RpcMaintenanceWindowsError': 'rpc_maintenance_windows_error',
     'JsonRpcRequestForExperimentalViewAccessKey': 'json_rpc_request_for_experimental_view_access_key',
-    'RpcMaintenanceWindowsRequest': 'rpc_maintenance_windows_request',
-    'TxExecutionStatus': 'tx_execution_status',
-    'PublicKey': 'public_key',
-    'SignedTransactionView': 'signed_transaction_view',
-    'JsonRpcRequestForTxStatus': 'json_rpc_request_for_tx_status',
-    'JsonRpcRequestForExperimentalSplitStorageInfo': 'json_rpc_request_for_experimental_split_storage_info',
-    'JsonRpcRequestForMaintenanceWindows': 'json_rpc_request_for_maintenance_windows',
+    'RpcViewAccessKeyListErrorUnknownBlockInfo': 'rpc_view_access_key_list_error',
+    'RpcViewAccessKeyListErrorUnknownBlock': 'rpc_view_access_key_list_error',
+    'RpcViewAccessKeyListErrorInvalidAccountInfo': 'rpc_view_access_key_list_error',
+    'RpcViewAccessKeyListErrorInvalidAccount': 'rpc_view_access_key_list_error',
+    'RpcViewAccessKeyListErrorUnknownAccountInfo': 'rpc_view_access_key_list_error',
+    'RpcViewAccessKeyListErrorUnknownAccount': 'rpc_view_access_key_list_error',
+    'RpcViewAccessKeyListErrorInternalErrorInfo': 'rpc_view_access_key_list_error',
+    'RpcViewAccessKeyListErrorInternalError': 'rpc_view_access_key_list_error',
+    'RpcViewAccessKeyListError': 'rpc_view_access_key_list_error',
+    'ChunkHash': 'chunk_hash',
+    'BandwidthRequestsV1': 'bandwidth_requests_v1',
+    'PublicKeyHandle': 'public_key_handle',
+    'DurationAsStdSchemaProvider': 'duration_as_std_schema_provider',
+    'NonceMode': 'nonce_mode',
+    'JsonRpcRequestForExperimentalTxStatus': 'json_rpc_request_for_experimental_tx_status',
+    'DeleteAccountAction': 'delete_account_action',
+    'StateProofTargetAccountIdTargetType': 'state_proof_target',
+    'StateProofTargetAccountIdTargetType1': 'state_proof_target',
+    'StateProofTargetAccountIdKeyTargetType': 'state_proof_target',
+    'StateProofTargetAccountIdPublicKeyTargetType': 'state_proof_target',
+    'StateProofTarget': 'state_proof_target',
+    'Tier1ProxyView': 'tier1proxy_view',
+    'WasmTrap': 'wasm_trap',
+    'RpcQueryResponseAccountView': 'rpc_query_response',
+    'RpcQueryResponseContractCodeView': 'rpc_query_response',
+    'RpcQueryResponseViewStateResult': 'rpc_query_response',
+    'RpcQueryResponseCallResult': 'rpc_query_response',
+    'RpcQueryResponseAccessKeyView': 'rpc_query_response',
+    'RpcQueryResponseAccessKeyList': 'rpc_query_response',
+    'RpcQueryResponseGasKeyNoncesView': 'rpc_query_response',
+    'RpcQueryResponse': 'rpc_query_response',
+    'RpcSendTransactionRequest': 'rpc_send_transaction_request',
+    'StakeAction': 'stake_action',
+    'AccessKey': 'access_key',
+    'ProtocolVersionCheckConfig': 'protocol_version_check_config',
+    'AccountCreationConfigView': 'account_creation_config_view',
+    'FinalExecutionOutcomeWithReceiptView': 'final_execution_outcome_with_receipt_view',
+    'RpcClientConfigErrorInternalErrorInfo': 'rpc_client_config_error',
+    'RpcClientConfigErrorInternalError': 'rpc_client_config_error',
+    'RpcClientConfigError': 'rpc_client_config_error',
+    'JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesErrorResult': 'json_rpc_response_for_rpc_state_changes_in_block_by_type_response_and_rpc_state_changes_error',
+    'JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesErrorError': 'json_rpc_response_for_rpc_state_changes_in_block_by_type_response_and_rpc_state_changes_error',
+    'JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesError': 'json_rpc_response_for_rpc_state_changes_in_block_by_type_response_and_rpc_state_changes_error',
+    'JsonRpcRequestForBlock': 'json_rpc_request_for_block',
+    'StorageGetMode': 'storage_get_mode',
+    'FunctionCallAction': 'function_call_action',
+    'ErrorWrapperForRpcTransactionErrorRequestValidationError': 'error_wrapper_for_rpc_transaction_error',
+    'ErrorWrapperForRpcTransactionErrorHandlerError': 'error_wrapper_for_rpc_transaction_error',
+    'ErrorWrapperForRpcTransactionErrorInternalError': 'error_wrapper_for_rpc_transaction_error',
+    'ErrorWrapperForRpcTransactionError': 'error_wrapper_for_rpc_transaction_error',
+    'ExternalStorageConfig': 'external_storage_config',
+    'ValidatorStakeViewV1': 'validator_stake_view_v1',
+    'NearToken': 'near_token',
+    'NextEpochValidatorInfo': 'next_epoch_validator_info',
+    'InternalErrorInternalErrorInfo': 'internal_error',
+    'InternalErrorInternalError': 'internal_error',
+    'InternalError': 'internal_error',
+    'TxExecutionErrorActionError': 'tx_execution_error',
+    'TxExecutionErrorInvalidTxError': 'tx_execution_error',
+    'TxExecutionError': 'tx_execution_error',
     'RpcStatusErrorNodeIsSyncing': 'rpc_status_error',
     'RpcStatusErrorNoNewBlocksInfo': 'rpc_status_error',
     'RpcStatusErrorNoNewBlocks': 'rpc_status_error',
@@ -3051,142 +2667,102 @@ _CLASS_TO_MODULE = {
     'RpcStatusErrorInternalErrorInfo': 'rpc_status_error',
     'RpcStatusErrorInternalError': 'rpc_status_error',
     'RpcStatusError': 'rpc_status_error',
-    'ChunkExecutionRootsV1': 'chunk_execution_roots_v1',
-    'GasKeyInfoView': 'gas_key_info_view',
-    'WithdrawFromGasKeyAction': 'withdraw_from_gas_key_action',
-    'StakeAction': 'stake_action',
-    'InvalidAccessKeyErrorAccessKeyNotFoundPayload': 'invalid_access_key_error',
-    'InvalidAccessKeyErrorAccessKeyNotFound': 'invalid_access_key_error',
-    'InvalidAccessKeyErrorReceiverMismatchPayload': 'invalid_access_key_error',
-    'InvalidAccessKeyErrorReceiverMismatch': 'invalid_access_key_error',
-    'InvalidAccessKeyErrorMethodNameMismatchPayload': 'invalid_access_key_error',
-    'InvalidAccessKeyErrorMethodNameMismatch': 'invalid_access_key_error',
-    'InvalidAccessKeyErrorRequiresFullAccess': 'invalid_access_key_error',
-    'InvalidAccessKeyErrorNotEnoughAllowancePayload': 'invalid_access_key_error',
-    'InvalidAccessKeyErrorNotEnoughAllowance': 'invalid_access_key_error',
-    'InvalidAccessKeyErrorDepositWithFunctionCall': 'invalid_access_key_error',
-    'InvalidAccessKeyErrorDelegateActionRequiresNonGasKey': 'invalid_access_key_error',
-    'InvalidAccessKeyErrorDelegateActionRequiresGasKey': 'invalid_access_key_error',
-    'InvalidAccessKeyError': 'invalid_access_key_error',
-    'MissingTrieValue': 'missing_trie_value',
-    'CurrentEpochValidatorInfo': 'current_epoch_validator_info',
-    'CreateAccountAction': 'create_account_action',
-    'JsonRpcResponseForRpcClientConfigResponseAndRpcClientConfigErrorResult': 'json_rpc_response_for_rpc_client_config_response_and_rpc_client_config_error',
-    'JsonRpcResponseForRpcClientConfigResponseAndRpcClientConfigErrorError': 'json_rpc_response_for_rpc_client_config_response_and_rpc_client_config_error',
-    'JsonRpcResponseForRpcClientConfigResponseAndRpcClientConfigError': 'json_rpc_response_for_rpc_client_config_response_and_rpc_client_config_error',
-    'LimitConfig': 'limit_config',
-    'SignedDelegateAction': 'signed_delegate_action',
-    'GenesisConfigRequest': 'genesis_config_request',
-    'JsonRpcResponseForRpcLightClientExecutionProofResponseAndRpcLightClientProofErrorResult': 'json_rpc_response_for_rpc_light_client_execution_proof_response_and_rpc_light_client_proof_error',
-    'JsonRpcResponseForRpcLightClientExecutionProofResponseAndRpcLightClientProofErrorError': 'json_rpc_response_for_rpc_light_client_execution_proof_response_and_rpc_light_client_proof_error',
-    'JsonRpcResponseForRpcLightClientExecutionProofResponseAndRpcLightClientProofError': 'json_rpc_response_for_rpc_light_client_execution_proof_response_and_rpc_light_client_proof_error',
-    'DynamicReshardingConfigView': 'dynamic_resharding_config_view',
-    'JsonRpcRequestForChanges': 'json_rpc_request_for_changes',
-    'RpcCallFunctionErrorUnknownBlockInfo': 'rpc_call_function_error',
-    'RpcCallFunctionErrorUnknownBlock': 'rpc_call_function_error',
-    'RpcCallFunctionErrorInvalidAccountInfo': 'rpc_call_function_error',
-    'RpcCallFunctionErrorInvalidAccount': 'rpc_call_function_error',
-    'RpcCallFunctionErrorUnknownAccountInfo': 'rpc_call_function_error',
-    'RpcCallFunctionErrorUnknownAccount': 'rpc_call_function_error',
-    'RpcCallFunctionErrorNoContractCodeInfo': 'rpc_call_function_error',
-    'RpcCallFunctionErrorNoContractCode': 'rpc_call_function_error',
-    'RpcCallFunctionErrorContractExecutionErrorInfo': 'rpc_call_function_error',
-    'RpcCallFunctionErrorContractExecutionError': 'rpc_call_function_error',
-    'RpcCallFunctionErrorInternalErrorInfo': 'rpc_call_function_error',
-    'RpcCallFunctionErrorInternalError': 'rpc_call_function_error',
-    'RpcCallFunctionError': 'rpc_call_function_error',
-    'ShardLayoutV3': 'shard_layout_v3',
-    'StateChangeCauseViewNotWritableToDisk': 'state_change_cause_view',
-    'StateChangeCauseViewInitialState': 'state_change_cause_view',
-    'StateChangeCauseViewTransactionProcessing': 'state_change_cause_view',
-    'StateChangeCauseViewActionReceiptProcessingStarted': 'state_change_cause_view',
-    'StateChangeCauseViewActionReceiptGasReward': 'state_change_cause_view',
-    'StateChangeCauseViewReceiptProcessing': 'state_change_cause_view',
-    'StateChangeCauseViewPostponedReceipt': 'state_change_cause_view',
-    'StateChangeCauseViewUpdatedDelayedReceipts': 'state_change_cause_view',
-    'StateChangeCauseViewValidatorAccountsUpdate': 'state_change_cause_view',
-    'StateChangeCauseViewMigration': 'state_change_cause_view',
-    'StateChangeCauseViewBandwidthSchedulerStateUpdate': 'state_change_cause_view',
-    'StateChangeCauseView': 'state_change_cause_view',
-    'ErrorWrapperForRpcNetworkInfoErrorRequestValidationError': 'error_wrapper_for_rpc_network_info_error',
-    'ErrorWrapperForRpcNetworkInfoErrorHandlerError': 'error_wrapper_for_rpc_network_info_error',
-    'ErrorWrapperForRpcNetworkInfoErrorInternalError': 'error_wrapper_for_rpc_network_info_error',
-    'ErrorWrapperForRpcNetworkInfoError': 'error_wrapper_for_rpc_network_info_error',
-    'RpcViewGasKeyListResponse': 'rpc_view_gas_key_list_response',
-    'KnownProducerView': 'known_producer_view',
-    'JsonRpcResponseForArrayOfValidatorStakeViewAndRpcValidatorErrorResult': 'json_rpc_response_for_array_of_validator_stake_view_and_rpc_validator_error',
-    'JsonRpcResponseForArrayOfValidatorStakeViewAndRpcValidatorErrorError': 'json_rpc_response_for_array_of_validator_stake_view_and_rpc_validator_error',
-    'JsonRpcResponseForArrayOfValidatorStakeViewAndRpcValidatorError': 'json_rpc_response_for_array_of_validator_stake_view_and_rpc_validator_error',
-    'DeterministicAccountStateInitV1Option': 'deterministic_account_state_init',
-    'DeterministicAccountStateInit': 'deterministic_account_state_init',
-    'AccessKeyInfoView': 'access_key_info_view',
+    'CryptoHash': 'crypto_hash',
+    'AccountState': 'account_state',
+    'BandwidthRequestsV1Option': 'bandwidth_requests',
+    'BandwidthRequests': 'bandwidth_requests',
+    'CostGasUsed': 'cost_gas_used',
+    'JsonRpcResponseForRpcViewAccessKeyResponseAndRpcViewAccessKeyErrorResult': 'json_rpc_response_for_rpc_view_access_key_response_and_rpc_view_access_key_error',
+    'JsonRpcResponseForRpcViewAccessKeyResponseAndRpcViewAccessKeyErrorError': 'json_rpc_response_for_rpc_view_access_key_response_and_rpc_view_access_key_error',
+    'JsonRpcResponseForRpcViewAccessKeyResponseAndRpcViewAccessKeyError': 'json_rpc_response_for_rpc_view_access_key_response_and_rpc_view_access_key_error',
+    'RpcCallFunctionRequestBlockId': 'rpc_call_function_request',
+    'RpcCallFunctionRequestFinality': 'rpc_call_function_request',
+    'RpcCallFunctionRequestSyncCheckpoint': 'rpc_call_function_request',
+    'RpcCallFunctionRequest': 'rpc_call_function_request',
     'JsonRpcResponseForRpcNetworkInfoResponseAndRpcNetworkInfoErrorResult': 'json_rpc_response_for_rpc_network_info_response_and_rpc_network_info_error',
     'JsonRpcResponseForRpcNetworkInfoResponseAndRpcNetworkInfoErrorError': 'json_rpc_response_for_rpc_network_info_response_and_rpc_network_info_error',
     'JsonRpcResponseForRpcNetworkInfoResponseAndRpcNetworkInfoError': 'json_rpc_response_for_rpc_network_info_response_and_rpc_network_info_error',
-    'StoreKey': 'store_key',
-    'JsonRpcResponseForRpcBlockResponseAndRpcBlockErrorResult': 'json_rpc_response_for_rpc_block_response_and_rpc_block_error',
-    'JsonRpcResponseForRpcBlockResponseAndRpcBlockErrorError': 'json_rpc_response_for_rpc_block_response_and_rpc_block_error',
-    'JsonRpcResponseForRpcBlockResponseAndRpcBlockError': 'json_rpc_response_for_rpc_block_response_and_rpc_block_error',
-    'GenesisConfig': 'genesis_config',
-    's': 'genesis_config',
-    'RpcKnownProducer': 'rpc_known_producer',
-    'TransferAction': 'transfer_action',
-    'JsonRpcResponseForRpcProtocolConfigResponseAndRpcProtocolConfigErrorResult': 'json_rpc_response_for_rpc_protocol_config_response_and_rpc_protocol_config_error',
-    'JsonRpcResponseForRpcProtocolConfigResponseAndRpcProtocolConfigErrorError': 'json_rpc_response_for_rpc_protocol_config_response_and_rpc_protocol_config_error',
-    'JsonRpcResponseForRpcProtocolConfigResponseAndRpcProtocolConfigError': 'json_rpc_response_for_rpc_protocol_config_response_and_rpc_protocol_config_error',
-    'GasKeyList': 'gas_key_list',
-    'RpcReceiptErrorInternalErrorInfo': 'rpc_receipt_error',
-    'RpcReceiptErrorInternalError': 'rpc_receipt_error',
-    'RpcReceiptErrorUnknownReceiptInfo': 'rpc_receipt_error',
-    'RpcReceiptErrorUnknownReceipt': 'rpc_receipt_error',
-    'RpcReceiptError': 'rpc_receipt_error',
-    'ShardLayoutV1': 'shard_layout_v1',
-    'JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockErrorResult': 'json_rpc_response_for_rpc_light_client_next_block_response_and_rpc_light_client_next_block_error',
-    'JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockErrorError': 'json_rpc_response_for_rpc_light_client_next_block_response_and_rpc_light_client_next_block_error',
-    'JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockError': 'json_rpc_response_for_rpc_light_client_next_block_response_and_rpc_light_client_next_block_error',
-    'JsonRpcRequestForExperimentalLightClientExecutionOutcomeProof': 'json_rpc_request_for_experimental_light_client_execution_outcome_proof',
-    'NextEpochValidatorInfo': 'next_epoch_validator_info',
-    'JsonRpcRequestForExperimentalViewAccessKeyList': 'json_rpc_request_for_experimental_view_access_key_list',
-    'VersionedDelegateActionPayloadV2': 'versioned_delegate_action_payload',
-    'VersionedDelegateActionPayload': 'versioned_delegate_action_payload',
-    'GasKeyView': 'gas_key_view',
-    'UseGlobalContractAction': 'use_global_contract_action',
-    'SyncCheckpoint': 'sync_checkpoint',
-    'JsonRpcResponseForRpcViewGasKeyListResponseAndRpcViewGasKeyListErrorResult': 'json_rpc_response_for_rpc_view_gas_key_list_response_and_rpc_view_gas_key_list_error',
-    'JsonRpcResponseForRpcViewGasKeyListResponseAndRpcViewGasKeyListErrorError': 'json_rpc_response_for_rpc_view_gas_key_list_response_and_rpc_view_gas_key_list_error',
-    'JsonRpcResponseForRpcViewGasKeyListResponseAndRpcViewGasKeyListError': 'json_rpc_response_for_rpc_view_gas_key_list_response_and_rpc_view_gas_key_list_error',
-    'DumpConfig': 'dump_config',
-    'Tier1ProxyView': 'tier1proxy_view',
+    'RpcLightClientStateProofRequest': 'rpc_light_client_state_proof_request',
+    'AccessKeyCreationConfigView': 'access_key_creation_config_view',
+    'ActionsValidationErrorDeleteActionMustBeFinal': 'actions_validation_error',
+    'ActionsValidationErrorTotalPrepaidGasExceededPayload': 'actions_validation_error',
+    'ActionsValidationErrorTotalPrepaidGasExceeded': 'actions_validation_error',
+    'ActionsValidationErrorTotalNumberOfActionsExceededPayload': 'actions_validation_error',
+    'ActionsValidationErrorTotalNumberOfActionsExceeded': 'actions_validation_error',
+    'ActionsValidationErrorAddKeyMethodNamesNumberOfBytesExceededPayload': 'actions_validation_error',
+    'ActionsValidationErrorAddKeyMethodNamesNumberOfBytesExceeded': 'actions_validation_error',
+    'ActionsValidationErrorAddKeyMethodNameLengthExceededPayload': 'actions_validation_error',
+    'ActionsValidationErrorAddKeyMethodNameLengthExceeded': 'actions_validation_error',
+    'ActionsValidationErrorIntegerOverflow': 'actions_validation_error',
+    'ActionsValidationErrorInvalidAccountIdPayload': 'actions_validation_error',
+    'ActionsValidationErrorInvalidAccountId': 'actions_validation_error',
+    'ActionsValidationErrorContractSizeExceededPayload': 'actions_validation_error',
+    'ActionsValidationErrorContractSizeExceeded': 'actions_validation_error',
+    'ActionsValidationErrorFunctionCallMethodNameLengthExceededPayload': 'actions_validation_error',
+    'ActionsValidationErrorFunctionCallMethodNameLengthExceeded': 'actions_validation_error',
+    'ActionsValidationErrorFunctionCallArgumentsLengthExceededPayload': 'actions_validation_error',
+    'ActionsValidationErrorFunctionCallArgumentsLengthExceeded': 'actions_validation_error',
+    'ActionsValidationErrorUnsuitableStakingKeyPayload': 'actions_validation_error',
+    'ActionsValidationErrorUnsuitableStakingKey': 'actions_validation_error',
+    'ActionsValidationErrorFunctionCallZeroAttachedGas': 'actions_validation_error',
+    'ActionsValidationErrorDelegateActionMustBeOnlyOne': 'actions_validation_error',
+    'ActionsValidationErrorUnsupportedProtocolFeaturePayload': 'actions_validation_error',
+    'ActionsValidationErrorUnsupportedProtocolFeature': 'actions_validation_error',
+    'ActionsValidationErrorInvalidDeterministicStateInitReceiverPayload': 'actions_validation_error',
+    'ActionsValidationErrorInvalidDeterministicStateInitReceiver': 'actions_validation_error',
+    'ActionsValidationErrorDeterministicStateInitKeyLengthExceededPayload': 'actions_validation_error',
+    'ActionsValidationErrorDeterministicStateInitKeyLengthExceeded': 'actions_validation_error',
+    'ActionsValidationErrorDeterministicStateInitValueLengthExceededPayload': 'actions_validation_error',
+    'ActionsValidationErrorDeterministicStateInitValueLengthExceeded': 'actions_validation_error',
+    'ActionsValidationErrorGasKeyInvalidNumNoncesPayload': 'actions_validation_error',
+    'ActionsValidationErrorGasKeyInvalidNumNonces': 'actions_validation_error',
+    'ActionsValidationErrorAddGasKeyWithNonZeroBalancePayload': 'actions_validation_error',
+    'ActionsValidationErrorAddGasKeyWithNonZeroBalance': 'actions_validation_error',
+    'ActionsValidationErrorGasKeyFunctionCallAllowanceNotAllowed': 'actions_validation_error',
+    'ActionsValidationErrorTotalNumberOfDeployActionsExceededPayload': 'actions_validation_error',
+    'ActionsValidationErrorTotalNumberOfDeployActionsExceeded': 'actions_validation_error',
+    'ActionsValidationErrorFunctionCallEmptyMethodName': 'actions_validation_error',
+    'ActionsValidationErrorInvalidUniversalStateInitReceiverPayload': 'actions_validation_error',
+    'ActionsValidationErrorInvalidUniversalStateInitReceiver': 'actions_validation_error',
+    'ActionsValidationErrorUniversalStateInitKeyLengthExceededPayload': 'actions_validation_error',
+    'ActionsValidationErrorUniversalStateInitKeyLengthExceeded': 'actions_validation_error',
+    'ActionsValidationErrorUniversalStateInitValueLengthExceededPayload': 'actions_validation_error',
+    'ActionsValidationErrorUniversalStateInitValueLengthExceeded': 'actions_validation_error',
+    'ActionsValidationErrorMalformedUniversalStateInit': 'actions_validation_error',
+    'ActionsValidationErrorRemovedProtocolFeaturePayload': 'actions_validation_error',
+    'ActionsValidationErrorRemovedProtocolFeature': 'actions_validation_error',
+    'ActionsValidationErrorWithdrawFromGasKeyNotAllowedInDelegate': 'actions_validation_error',
+    'ActionsValidationError': 'actions_validation_error',
+    'JsonRpcRequestForNetworkInfo': 'json_rpc_request_for_network_info',
     'AccountView': 'account_view',
-    'JsonRpcRequestForTx': 'json_rpc_request_for_tx',
-    'RpcLightClientBlockProofRequest': 'rpc_light_client_block_proof_request',
-    'JsonRpcResponseForNullableRpcHealthResponseAndRpcStatusErrorResult': 'json_rpc_response_for_nullable_rpc_health_response_and_rpc_status_error',
-    'JsonRpcResponseForNullableRpcHealthResponseAndRpcStatusErrorError': 'json_rpc_response_for_nullable_rpc_health_response_and_rpc_status_error',
-    'JsonRpcResponseForNullableRpcHealthResponseAndRpcStatusError': 'json_rpc_response_for_nullable_rpc_health_response_and_rpc_status_error',
-    'JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxErrorResult': 'json_rpc_response_for_rpc_receipt_to_tx_response_and_rpc_receipt_to_tx_error',
-    'JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxErrorError': 'json_rpc_response_for_rpc_receipt_to_tx_response_and_rpc_receipt_to_tx_error',
-    'JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxError': 'json_rpc_response_for_rpc_receipt_to_tx_response_and_rpc_receipt_to_tx_error',
-    'BandwidthRequestsV1Option': 'bandwidth_requests',
-    'BandwidthRequests': 'bandwidth_requests',
-    'Fee': 'fee',
-    'JsonRpcResponseForRpcStatusResponseAndRpcStatusErrorResult': 'json_rpc_response_for_rpc_status_response_and_rpc_status_error',
-    'JsonRpcResponseForRpcStatusResponseAndRpcStatusErrorError': 'json_rpc_response_for_rpc_status_response_and_rpc_status_error',
-    'JsonRpcResponseForRpcStatusResponseAndRpcStatusError': 'json_rpc_response_for_rpc_status_response_and_rpc_status_error',
-    'PrepareError': 'prepare_error',
-    'DeleteGasKeyAction': 'delete_gas_key_action',
-    'GasKeyInfo': 'gas_key_info',
-    'JsonRpcRequestForNextLightClientBlock': 'json_rpc_request_for_next_light_client_block',
-    'StateItem': 'state_item',
-    'JsonRpcResponseForRpcChunkResponseAndRpcChunkErrorResult': 'json_rpc_response_for_rpc_chunk_response_and_rpc_chunk_error',
-    'JsonRpcResponseForRpcChunkResponseAndRpcChunkErrorError': 'json_rpc_response_for_rpc_chunk_response_and_rpc_chunk_error',
-    'JsonRpcResponseForRpcChunkResponseAndRpcChunkError': 'json_rpc_response_for_rpc_chunk_response_and_rpc_chunk_error',
-    'JsonRpcResponseForGenesisConfigAndGenesisConfigErrorResult': 'json_rpc_response_for_genesis_config_and_genesis_config_error',
-    'JsonRpcResponseForGenesisConfigAndGenesisConfigErrorError': 'json_rpc_response_for_genesis_config_and_genesis_config_error',
-    'JsonRpcResponseForGenesisConfigAndGenesisConfigError': 'json_rpc_response_for_genesis_config_and_genesis_config_error',
-    'ErrorWrapperForRpcValidatorErrorRequestValidationError': 'error_wrapper_for_rpc_validator_error',
-    'ErrorWrapperForRpcValidatorErrorHandlerError': 'error_wrapper_for_rpc_validator_error',
-    'ErrorWrapperForRpcValidatorErrorInternalError': 'error_wrapper_for_rpc_validator_error',
-    'ErrorWrapperForRpcValidatorError': 'error_wrapper_for_rpc_validator_error',
+    'Signature': 'signature',
+    'RpcViewAccountErrorUnknownBlockInfo': 'rpc_view_account_error',
+    'RpcViewAccountErrorUnknownBlock': 'rpc_view_account_error',
+    'RpcViewAccountErrorInvalidAccountInfo': 'rpc_view_account_error',
+    'RpcViewAccountErrorInvalidAccount': 'rpc_view_account_error',
+    'RpcViewAccountErrorUnknownAccountInfo': 'rpc_view_account_error',
+    'RpcViewAccountErrorUnknownAccount': 'rpc_view_account_error',
+    'RpcViewAccountErrorInternalErrorInfo': 'rpc_view_account_error',
+    'RpcViewAccountErrorInternalError': 'rpc_view_account_error',
+    'RpcViewAccountError': 'rpc_view_account_error',
+    'RpcTransactionResponseFinalExecutionOutcomeWithReceiptView': 'rpc_transaction_response',
+    'RpcTransactionResponseFinalExecutionOutcomeView': 'rpc_transaction_response',
+    'RpcTransactionResponse': 'rpc_transaction_response',
+    'ErrorWrapperForRpcCallFunctionErrorRequestValidationError': 'error_wrapper_for_rpc_call_function_error',
+    'ErrorWrapperForRpcCallFunctionErrorHandlerError': 'error_wrapper_for_rpc_call_function_error',
+    'ErrorWrapperForRpcCallFunctionErrorInternalError': 'error_wrapper_for_rpc_call_function_error',
+    'ErrorWrapperForRpcCallFunctionError': 'error_wrapper_for_rpc_call_function_error',
+    'AddKeyAction': 'add_key_action',
+    'AddGasKeyAction': 'add_gas_key_action',
+    'ActionCreationConfigView': 'action_creation_config_view',
+    'RpcRequestValidationErrorKindMethodNotFoundInfo': 'rpc_request_validation_error_kind',
+    'RpcRequestValidationErrorKindMethodNotFound': 'rpc_request_validation_error_kind',
+    'RpcRequestValidationErrorKindParseErrorInfo': 'rpc_request_validation_error_kind',
+    'RpcRequestValidationErrorKindParseError': 'rpc_request_validation_error_kind',
+    'RpcRequestValidationErrorKind': 'rpc_request_validation_error_kind',
+    'ShardLayoutV2': 'shard_layout_v2',
+    'WithdrawFromGasKeyAction': 'withdraw_from_gas_key_action',
+    'JsonRpcRequestForExperimentalLightClientExecutionOutcomeProof': 'json_rpc_request_for_experimental_light_client_execution_outcome_proof',
     'HostErrorBadUTF16': 'host_error',
     'HostErrorBadUTF8': 'host_error',
     'HostErrorGasExceeded': 'host_error',
@@ -3245,7 +2821,157 @@ _CLASS_TO_MODULE = {
     'HostErrorMlDsaVerifyInvalidInputPayload': 'host_error',
     'HostErrorMlDsaVerifyInvalidInput': 'host_error',
     'HostError': 'host_error',
-    'DeterministicAccountStateInitV1': 'deterministic_account_state_init_v1',
+    'RpcViewGasKeyResponse': 'rpc_view_gas_key_response',
+    'SpiceChunkEndorsementStats': 'spice_chunk_endorsement_stats',
+    'CongestionInfoView': 'congestion_info_view',
+    'VMKind': 'vmkind',
+    'JsonRpcRequestForMaintenanceWindows': 'json_rpc_request_for_maintenance_windows',
+    'JsonRpcResponseForRpcViewStateResponseAndRpcViewStateErrorResult': 'json_rpc_response_for_rpc_view_state_response_and_rpc_view_state_error',
+    'JsonRpcResponseForRpcViewStateResponseAndRpcViewStateErrorError': 'json_rpc_response_for_rpc_view_state_response_and_rpc_view_state_error',
+    'JsonRpcResponseForRpcViewStateResponseAndRpcViewStateError': 'json_rpc_response_for_rpc_view_state_response_and_rpc_view_state_error',
+    'DynamicReshardingConfigView': 'dynamic_resharding_config_view',
+    'RpcGasPriceResponse': 'rpc_gas_price_response',
+    'ErrorWrapperForRpcValidatorErrorRequestValidationError': 'error_wrapper_for_rpc_validator_error',
+    'ErrorWrapperForRpcValidatorErrorHandlerError': 'error_wrapper_for_rpc_validator_error',
+    'ErrorWrapperForRpcValidatorErrorInternalError': 'error_wrapper_for_rpc_validator_error',
+    'ErrorWrapperForRpcValidatorError': 'error_wrapper_for_rpc_validator_error',
+    'CompilationErrorCodeDoesNotExistPayload': 'compilation_error',
+    'CompilationErrorCodeDoesNotExist': 'compilation_error',
+    'CompilationErrorPrepareError': 'compilation_error',
+    'CompilationErrorWasmerCompileErrorPayload': 'compilation_error',
+    'CompilationErrorWasmerCompileError': 'compilation_error',
+    'CompilationError': 'compilation_error',
+    'JsonRpcRequestForChanges': 'json_rpc_request_for_changes',
+    'DataReceiptCreationConfigView': 'data_receipt_creation_config_view',
+    'JsonRpcRequestForExperimentalLightClientBlockProof': 'json_rpc_request_for_experimental_light_client_block_proof',
+    'RpcCongestionLevelResponse': 'rpc_congestion_level_response',
+    'JsonRpcRequestForExperimentalViewGasKey': 'json_rpc_request_for_experimental_view_gas_key',
+    'AccountDataView': 'account_data_view',
+    'FinalExecutionOutcomeView': 'final_execution_outcome_view',
+    'RpcValidatorRequestEpochId': 'rpc_validator_request',
+    'RpcValidatorRequestBlockId': 'rpc_validator_request',
+    'RpcValidatorRequestLatest': 'rpc_validator_request',
+    'RpcValidatorRequest': 'rpc_validator_request',
+    'BlockStatusView': 'block_status_view',
+    'RpcLightClientChunkExecutionProofRequest': 'rpc_light_client_chunk_execution_proof_request',
+    'RpcTransactionErrorInvalidTransaction': 'rpc_transaction_error',
+    'RpcTransactionErrorDoesNotTrackShard': 'rpc_transaction_error',
+    'RpcTransactionErrorRequestRoutedInfo': 'rpc_transaction_error',
+    'RpcTransactionErrorRequestRouted': 'rpc_transaction_error',
+    'RpcTransactionErrorUnknownTransactionInfo': 'rpc_transaction_error',
+    'RpcTransactionErrorUnknownTransaction': 'rpc_transaction_error',
+    'RpcTransactionErrorInternalErrorInfo': 'rpc_transaction_error',
+    'RpcTransactionErrorInternalError': 'rpc_transaction_error',
+    'RpcTransactionErrorTimeoutError': 'rpc_transaction_error',
+    'RpcTransactionError': 'rpc_transaction_error',
+    'JsonRpcResponseForRpcCallFunctionResponseAndRpcCallFunctionErrorResult': 'json_rpc_response_for_rpc_call_function_response_and_rpc_call_function_error',
+    'JsonRpcResponseForRpcCallFunctionResponseAndRpcCallFunctionErrorError': 'json_rpc_response_for_rpc_call_function_response_and_rpc_call_function_error',
+    'JsonRpcResponseForRpcCallFunctionResponseAndRpcCallFunctionError': 'json_rpc_response_for_rpc_call_function_response_and_rpc_call_function_error',
+    'ShardLayoutV3': 'shard_layout_v3',
+    'TransactionNonceNoncePayload': 'transaction_nonce',
+    'TransactionNonceNonce': 'transaction_nonce',
+    'TransactionNonceGasKeyNoncePayload': 'transaction_nonce',
+    'TransactionNonceGasKeyNonce': 'transaction_nonce',
+    'TransactionNonce': 'transaction_nonce',
+    'FinalExecutionStatusNotStarted': 'final_execution_status',
+    'FinalExecutionStatusStarted': 'final_execution_status',
+    'FinalExecutionStatusFailure': 'final_execution_status',
+    'FinalExecutionStatusSuccessValue': 'final_execution_status',
+    'FinalExecutionStatus': 'final_execution_status',
+    'RpcBlockResponse': 'rpc_block_response',
+    'ErrorWrapperForRpcQueryErrorRequestValidationError': 'error_wrapper_for_rpc_query_error',
+    'ErrorWrapperForRpcQueryErrorHandlerError': 'error_wrapper_for_rpc_query_error',
+    'ErrorWrapperForRpcQueryErrorInternalError': 'error_wrapper_for_rpc_query_error',
+    'ErrorWrapperForRpcQueryError': 'error_wrapper_for_rpc_query_error',
+    'JsonRpcRequestForExperimentalProtocolConfig': 'json_rpc_request_for_experimental_protocol_config',
+    'RpcViewAccessKeyListRequestBlockId': 'rpc_view_access_key_list_request',
+    'RpcViewAccessKeyListRequestFinality': 'rpc_view_access_key_list_request',
+    'RpcViewAccessKeyListRequestSyncCheckpoint': 'rpc_view_access_key_list_request',
+    'RpcViewAccessKeyListRequest': 'rpc_view_access_key_list_request',
+    'TxExecutionStatus': 'tx_execution_status',
+    'RpcLightClientExecutionOutcomeProofResponse': 'rpc_light_client_execution_outcome_proof_response',
+    'ErrorWrapperForRpcLightClientProofErrorRequestValidationError': 'error_wrapper_for_rpc_light_client_proof_error',
+    'ErrorWrapperForRpcLightClientProofErrorHandlerError': 'error_wrapper_for_rpc_light_client_proof_error',
+    'ErrorWrapperForRpcLightClientProofErrorInternalError': 'error_wrapper_for_rpc_light_client_proof_error',
+    'ErrorWrapperForRpcLightClientProofError': 'error_wrapper_for_rpc_light_client_proof_error',
+    'JsonRpcResponseForRpcCongestionLevelResponseAndRpcChunkErrorResult': 'json_rpc_response_for_rpc_congestion_level_response_and_rpc_chunk_error',
+    'JsonRpcResponseForRpcCongestionLevelResponseAndRpcChunkErrorError': 'json_rpc_response_for_rpc_congestion_level_response_and_rpc_chunk_error',
+    'JsonRpcResponseForRpcCongestionLevelResponseAndRpcChunkError': 'json_rpc_response_for_rpc_congestion_level_response_and_rpc_chunk_error',
+    'RpcViewGasKeyListResponse': 'rpc_view_gas_key_list_response',
+    'VersionedDelegateActionPayloadV2': 'versioned_delegate_action_payload',
+    'VersionedDelegateActionPayload': 'versioned_delegate_action_payload',
+    'RpcReceiptToTxErrorUnknownReceiptInfo': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorUnknownReceipt': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorDepthExceededInfo': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorDepthExceeded': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorUnsupportedInfo': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorUnsupported': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorInternalErrorInfo': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorInternalError': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorOutcomesNotStored': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorWindowTooLargeInfo': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorWindowTooLarge': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorMalformedHintInfo': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorMalformedHint': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorBudgetExceededInfo': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxErrorBudgetExceeded': 'rpc_receipt_to_tx_error',
+    'RpcReceiptToTxError': 'rpc_receipt_to_tx_error',
+    'BlockIdBlockHeight': 'block_id',
+    'BlockIdCryptoHash': 'block_id',
+    'BlockId': 'block_id',
+    'JsonRpcResponseForRpcStatusResponseAndRpcStatusErrorResult': 'json_rpc_response_for_rpc_status_response_and_rpc_status_error',
+    'JsonRpcResponseForRpcStatusResponseAndRpcStatusErrorError': 'json_rpc_response_for_rpc_status_response_and_rpc_status_error',
+    'JsonRpcResponseForRpcStatusResponseAndRpcStatusError': 'json_rpc_response_for_rpc_status_response_and_rpc_status_error',
+    'SyncConcurrency': 'sync_concurrency',
+    'ErrorWrapperForRpcStateChangesErrorRequestValidationError': 'error_wrapper_for_rpc_state_changes_error',
+    'ErrorWrapperForRpcStateChangesErrorHandlerError': 'error_wrapper_for_rpc_state_changes_error',
+    'ErrorWrapperForRpcStateChangesErrorInternalError': 'error_wrapper_for_rpc_state_changes_error',
+    'ErrorWrapperForRpcStateChangesError': 'error_wrapper_for_rpc_state_changes_error',
+    'JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofErrorResult': 'json_rpc_response_for_rpc_light_client_state_proof_response_and_rpc_light_client_proof_error',
+    'JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofErrorError': 'json_rpc_response_for_rpc_light_client_state_proof_response_and_rpc_light_client_proof_error',
+    'JsonRpcResponseForRpcLightClientStateProofResponseAndRpcLightClientProofError': 'json_rpc_response_for_rpc_light_client_state_proof_response_and_rpc_light_client_proof_error',
+    'DeployContractAction': 'deploy_contract_action',
+    'AccountInfo': 'account_info',
+    'ContractCodeView': 'contract_code_view',
+    'RpcCongestionLevelRequestBlockShardId': 'rpc_congestion_level_request',
+    'RpcCongestionLevelRequestChunkHash': 'rpc_congestion_level_request',
+    'RpcCongestionLevelRequest': 'rpc_congestion_level_request',
+    'RuntimeConfigView': 'runtime_config_view',
+    'SpiceChunkId': 'spice_chunk_id',
+    'FunctionCallErrorWasmUnknownError': 'function_call_error',
+    'FunctionCallErrorCompilationError': 'function_call_error',
+    'FunctionCallErrorLinkErrorPayload': 'function_call_error',
+    'FunctionCallErrorLinkError': 'function_call_error',
+    'FunctionCallErrorMethodResolveError': 'function_call_error',
+    'FunctionCallErrorWasmTrap': 'function_call_error',
+    'FunctionCallErrorHostError': 'function_call_error',
+    'FunctionCallErrorExecutionError': 'function_call_error',
+    'FunctionCallError': 'function_call_error',
+    'PublicKey': 'public_key',
+    'JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofErrorResult': 'json_rpc_response_for_rpc_light_client_execution_outcome_proof_response_and_rpc_light_client_proof_error',
+    'JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofErrorError': 'json_rpc_response_for_rpc_light_client_execution_outcome_proof_response_and_rpc_light_client_proof_error',
+    'JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofError': 'json_rpc_response_for_rpc_light_client_execution_outcome_proof_response_and_rpc_light_client_proof_error',
+    'EpochSyncConfig': 'epoch_sync_config',
+    'JsonRpcRequestForBlockEffects': 'json_rpc_request_for_block_effects',
+    'GasKeyNoncesView': 'gas_key_nonces_view',
+    'RpcSplitStorageInfoResponse': 'rpc_split_storage_info_response',
+    'Version': 'version',
+    'StorageErrorStorageInternalError': 'storage_error',
+    'StorageErrorMissingTrieValue': 'storage_error',
+    'StorageErrorUnexpectedTrieValue': 'storage_error',
+    'StorageErrorStorageInconsistentState': 'storage_error',
+    'StorageErrorFlatStorageBlockNotSupported': 'storage_error',
+    'StorageErrorMemTrieLoadingError': 'storage_error',
+    'StorageError': 'storage_error',
+    'JsonRpcRequestForExperimentalMaintenanceWindows': 'json_rpc_request_for_experimental_maintenance_windows',
+    'ChunkDistributionNetworkConfig': 'chunk_distribution_network_config',
+    'JsonRpcResponseForRpcLightClientExecutionProofResponseAndRpcLightClientProofErrorResult': 'json_rpc_response_for_rpc_light_client_execution_proof_response_and_rpc_light_client_proof_error',
+    'JsonRpcResponseForRpcLightClientExecutionProofResponseAndRpcLightClientProofErrorError': 'json_rpc_response_for_rpc_light_client_execution_proof_response_and_rpc_light_client_proof_error',
+    'JsonRpcResponseForRpcLightClientExecutionProofResponseAndRpcLightClientProofError': 'json_rpc_response_for_rpc_light_client_execution_proof_response_and_rpc_light_client_proof_error',
+    'JsonRpcRequestForExperimentalLightClientChunkExecutionProof': 'json_rpc_request_for_experimental_light_client_chunk_execution_proof',
+    'GlobalContractIdentifierHash': 'global_contract_identifier',
+    'GlobalContractIdentifierAccountId': 'global_contract_identifier',
+    'GlobalContractIdentifier': 'global_contract_identifier',
     'RpcQueryRequestViewAccountByBlockId': 'rpc_query_request',
     'RpcQueryRequestViewCodeByBlockId': 'rpc_query_request',
     'RpcQueryRequestViewStateByBlockId': 'rpc_query_request',
@@ -3274,239 +3000,33 @@ _CLASS_TO_MODULE = {
     'RpcQueryRequestViewGlobalContractCodeBySyncCheckpoint': 'rpc_query_request',
     'RpcQueryRequestViewGlobalContractCodeByAccountIdBySyncCheckpoint': 'rpc_query_request',
     'RpcQueryRequest': 'rpc_query_request',
-    'GenesisConfigError': 'genesis_config_error',
-    'StatusSyncInfo': 'status_sync_info',
-    'ErrorWrapperForRpcCallFunctionErrorRequestValidationError': 'error_wrapper_for_rpc_call_function_error',
-    'ErrorWrapperForRpcCallFunctionErrorHandlerError': 'error_wrapper_for_rpc_call_function_error',
-    'ErrorWrapperForRpcCallFunctionErrorInternalError': 'error_wrapper_for_rpc_call_function_error',
-    'ErrorWrapperForRpcCallFunctionError': 'error_wrapper_for_rpc_call_function_error',
-    'TransferToGasKeyAction': 'transfer_to_gas_key_action',
-    'RpcViewCodeResponse': 'rpc_view_code_response',
-    'ErrorWrapperForRpcMaintenanceWindowsErrorRequestValidationError': 'error_wrapper_for_rpc_maintenance_windows_error',
-    'ErrorWrapperForRpcMaintenanceWindowsErrorHandlerError': 'error_wrapper_for_rpc_maintenance_windows_error',
-    'ErrorWrapperForRpcMaintenanceWindowsErrorInternalError': 'error_wrapper_for_rpc_maintenance_windows_error',
-    'ErrorWrapperForRpcMaintenanceWindowsError': 'error_wrapper_for_rpc_maintenance_windows_error',
-    'CryptoHash': 'crypto_hash',
-    'JsonRpcRequestForQuery': 'json_rpc_request_for_query',
-    'RpcGasPriceErrorInternalErrorInfo': 'rpc_gas_price_error',
-    'RpcGasPriceErrorInternalError': 'rpc_gas_price_error',
-    'RpcGasPriceErrorUnknownBlock': 'rpc_gas_price_error',
-    'RpcGasPriceError': 'rpc_gas_price_error',
-    'ExecutionStatusViewUnknown': 'execution_status_view',
-    'ExecutionStatusViewFailure': 'execution_status_view',
-    'ExecutionStatusViewSuccessValue': 'execution_status_view',
-    'ExecutionStatusViewSuccessReceiptId': 'execution_status_view',
-    'ExecutionStatusView': 'execution_status_view',
-    'RpcPeerInfo': 'rpc_peer_info',
-    'RpcCongestionLevelRequestBlockShardId': 'rpc_congestion_level_request',
-    'RpcCongestionLevelRequestChunkHash': 'rpc_congestion_level_request',
-    'RpcCongestionLevelRequest': 'rpc_congestion_level_request',
-    'TrieSplit': 'trie_split',
-    'GlobalContractIdentifierHash': 'global_contract_identifier',
-    'GlobalContractIdentifierAccountId': 'global_contract_identifier',
-    'GlobalContractIdentifier': 'global_contract_identifier',
-    'RpcViewAccessKeyListResponse': 'rpc_view_access_key_list_response',
-    'SlashedValidator': 'slashed_validator',
-    'PublicKeyHandle': 'public_key_handle',
-    'ChunkHeaderView': 'chunk_header_view',
-    'JsonRpcRequestForExperimentalTxStatus': 'json_rpc_request_for_experimental_tx_status',
-    'RpcLightClientNextBlockRequest': 'rpc_light_client_next_block_request',
     'JsonRpcRequestForBroadcastTxAsync': 'json_rpc_request_for_broadcast_tx_async',
-    'ErrorWrapperForRpcViewAccessKeyListErrorRequestValidationError': 'error_wrapper_for_rpc_view_access_key_list_error',
-    'ErrorWrapperForRpcViewAccessKeyListErrorHandlerError': 'error_wrapper_for_rpc_view_access_key_list_error',
-    'ErrorWrapperForRpcViewAccessKeyListErrorInternalError': 'error_wrapper_for_rpc_view_access_key_list_error',
-    'ErrorWrapperForRpcViewAccessKeyListError': 'error_wrapper_for_rpc_view_access_key_list_error',
-    'RpcReceiptToTxResponse': 'rpc_receipt_to_tx_response',
-    'RpcReceiptToTxErrorUnknownReceiptInfo': 'rpc_receipt_to_tx_error',
-    'RpcReceiptToTxErrorUnknownReceipt': 'rpc_receipt_to_tx_error',
-    'RpcReceiptToTxErrorDepthExceededInfo': 'rpc_receipt_to_tx_error',
-    'RpcReceiptToTxErrorDepthExceeded': 'rpc_receipt_to_tx_error',
-    'RpcReceiptToTxErrorUnsupportedInfo': 'rpc_receipt_to_tx_error',
-    'RpcReceiptToTxErrorUnsupported': 'rpc_receipt_to_tx_error',
-    'RpcReceiptToTxErrorInternalErrorInfo': 'rpc_receipt_to_tx_error',
-    'RpcReceiptToTxErrorInternalError': 'rpc_receipt_to_tx_error',
-    'RpcReceiptToTxErrorOutcomesNotStored': 'rpc_receipt_to_tx_error',
-    'RpcReceiptToTxErrorWindowTooLargeInfo': 'rpc_receipt_to_tx_error',
-    'RpcReceiptToTxErrorWindowTooLarge': 'rpc_receipt_to_tx_error',
-    'RpcReceiptToTxErrorMalformedHintInfo': 'rpc_receipt_to_tx_error',
-    'RpcReceiptToTxErrorMalformedHint': 'rpc_receipt_to_tx_error',
-    'RpcReceiptToTxErrorBudgetExceededInfo': 'rpc_receipt_to_tx_error',
-    'RpcReceiptToTxErrorBudgetExceeded': 'rpc_receipt_to_tx_error',
-    'RpcReceiptToTxError': 'rpc_receipt_to_tx_error',
-    'RpcLightClientStateProofRequest': 'rpc_light_client_state_proof_request',
-    'RpcCongestionLevelResponse': 'rpc_congestion_level_response',
-    'Direction': 'direction',
-    'RpcCallFunctionRequestBlockId': 'rpc_call_function_request',
-    'RpcCallFunctionRequestFinality': 'rpc_call_function_request',
-    'RpcCallFunctionRequestSyncCheckpoint': 'rpc_call_function_request',
-    'RpcCallFunctionRequest': 'rpc_call_function_request',
-    'DurationAsStdSchemaProvider': 'duration_as_std_schema_provider',
-    'JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceErrorResult': 'json_rpc_response_for_rpc_gas_price_response_and_rpc_gas_price_error',
-    'JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceErrorError': 'json_rpc_response_for_rpc_gas_price_response_and_rpc_gas_price_error',
-    'JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceError': 'json_rpc_response_for_rpc_gas_price_response_and_rpc_gas_price_error',
-    'StateProofTargetAccountIdTargetType': 'state_proof_target',
-    'StateProofTargetAccountIdTargetType1': 'state_proof_target',
-    'StateProofTargetAccountIdKeyTargetType': 'state_proof_target',
-    'StateProofTargetAccountIdPublicKeyTargetType': 'state_proof_target',
-    'StateProofTarget': 'state_proof_target',
-    'RpcProtocolConfigErrorUnknownBlock': 'rpc_protocol_config_error',
-    'RpcProtocolConfigErrorInternalErrorInfo': 'rpc_protocol_config_error',
-    'RpcProtocolConfigErrorInternalError': 'rpc_protocol_config_error',
-    'RpcProtocolConfigError': 'rpc_protocol_config_error',
-    'ErrorWrapperForRpcViewGasKeyErrorRequestValidationError': 'error_wrapper_for_rpc_view_gas_key_error',
-    'ErrorWrapperForRpcViewGasKeyErrorHandlerError': 'error_wrapper_for_rpc_view_gas_key_error',
-    'ErrorWrapperForRpcViewGasKeyErrorInternalError': 'error_wrapper_for_rpc_view_gas_key_error',
-    'ErrorWrapperForRpcViewGasKeyError': 'error_wrapper_for_rpc_view_gas_key_error',
-    'AccountInfo': 'account_info',
-    'ErrorWrapperForRpcViewCodeErrorRequestValidationError': 'error_wrapper_for_rpc_view_code_error',
-    'ErrorWrapperForRpcViewCodeErrorHandlerError': 'error_wrapper_for_rpc_view_code_error',
-    'ErrorWrapperForRpcViewCodeErrorInternalError': 'error_wrapper_for_rpc_view_code_error',
-    'ErrorWrapperForRpcViewCodeError': 'error_wrapper_for_rpc_view_code_error',
-    'JsonRpcRequestForExperimentalReceipt': 'json_rpc_request_for_experimental_receipt',
-    'JsonRpcRequestForExperimentalGenesisConfig': 'json_rpc_request_for_experimental_genesis_config',
-    'RpcLightClientNextBlockResponse': 'rpc_light_client_next_block_response',
-    'JsonRpcRequestForChunk': 'json_rpc_request_for_chunk',
-    'DetailedDebugStatus': 'detailed_debug_status',
-    'DataReceiptCreationConfigView': 'data_receipt_creation_config_view',
-    'RpcBlockRequestBlockId': 'rpc_block_request',
-    'RpcBlockRequestFinality': 'rpc_block_request',
-    'RpcBlockRequestSyncCheckpoint': 'rpc_block_request',
-    'RpcBlockRequest': 'rpc_block_request',
-    'ErrorWrapperForRpcViewStateErrorRequestValidationError': 'error_wrapper_for_rpc_view_state_error',
-    'ErrorWrapperForRpcViewStateErrorHandlerError': 'error_wrapper_for_rpc_view_state_error',
-    'ErrorWrapperForRpcViewStateErrorInternalError': 'error_wrapper_for_rpc_view_state_error',
-    'ErrorWrapperForRpcViewStateError': 'error_wrapper_for_rpc_view_state_error',
-    'RpcQueryErrorNoSyncedBlocks': 'rpc_query_error',
-    'RpcQueryErrorUnavailableShardInfo': 'rpc_query_error',
-    'RpcQueryErrorUnavailableShard': 'rpc_query_error',
-    'RpcQueryErrorGarbageCollectedBlockInfo': 'rpc_query_error',
-    'RpcQueryErrorGarbageCollectedBlock': 'rpc_query_error',
-    'RpcQueryErrorUnknownBlockInfo': 'rpc_query_error',
-    'RpcQueryErrorUnknownBlock': 'rpc_query_error',
-    'RpcQueryErrorInvalidAccountInfo': 'rpc_query_error',
-    'RpcQueryErrorInvalidAccount': 'rpc_query_error',
-    'RpcQueryErrorUnknownAccountInfo': 'rpc_query_error',
-    'RpcQueryErrorUnknownAccount': 'rpc_query_error',
-    'RpcQueryErrorNoContractCodeInfo': 'rpc_query_error',
-    'RpcQueryErrorNoContractCode': 'rpc_query_error',
-    'RpcQueryErrorTooLargeContractStateInfo': 'rpc_query_error',
-    'RpcQueryErrorTooLargeContractState': 'rpc_query_error',
-    'RpcQueryErrorUnknownAccessKeyInfo': 'rpc_query_error',
-    'RpcQueryErrorUnknownAccessKey': 'rpc_query_error',
-    'RpcQueryErrorUnknownGasKeyInfo': 'rpc_query_error',
-    'RpcQueryErrorUnknownGasKey': 'rpc_query_error',
-    'RpcQueryErrorTooManyAccessKeysInfo': 'rpc_query_error',
-    'RpcQueryErrorTooManyAccessKeys': 'rpc_query_error',
-    'RpcQueryErrorContractExecutionErrorInfo': 'rpc_query_error',
-    'RpcQueryErrorContractExecutionError': 'rpc_query_error',
-    'RpcQueryErrorNoGlobalContractCodeInfo': 'rpc_query_error',
-    'RpcQueryErrorNoGlobalContractCode': 'rpc_query_error',
-    'RpcQueryErrorInternalErrorInfo': 'rpc_query_error',
-    'RpcQueryErrorInternalError': 'rpc_query_error',
-    'RpcQueryError': 'rpc_query_error',
-    'ErrorWrapperForRpcStatusErrorRequestValidationError': 'error_wrapper_for_rpc_status_error',
-    'ErrorWrapperForRpcStatusErrorHandlerError': 'error_wrapper_for_rpc_status_error',
-    'ErrorWrapperForRpcStatusErrorInternalError': 'error_wrapper_for_rpc_status_error',
-    'ErrorWrapperForRpcStatusError': 'error_wrapper_for_rpc_status_error',
-    'RpcGasPriceRequest': 'rpc_gas_price_request',
-    'RpcStateChangesInBlockResponse': 'rpc_state_changes_in_block_response',
-    'RpcViewGasKeyResponse': 'rpc_view_gas_key_response',
-    'NearToken': 'near_token',
-    'ErrorWrapperForGenesisConfigErrorRequestValidationError': 'error_wrapper_for_genesis_config_error',
-    'ErrorWrapperForGenesisConfigErrorHandlerError': 'error_wrapper_for_genesis_config_error',
-    'ErrorWrapperForGenesisConfigErrorInternalError': 'error_wrapper_for_genesis_config_error',
-    'ErrorWrapperForGenesisConfigError': 'error_wrapper_for_genesis_config_error',
-    'RpcValidatorsOrderedRequest': 'rpc_validators_ordered_request',
-    'StorageUsageConfigView': 'storage_usage_config_view',
-    'RpcLightClientNextBlockErrorInternalErrorInfo': 'rpc_light_client_next_block_error',
-    'RpcLightClientNextBlockErrorInternalError': 'rpc_light_client_next_block_error',
-    'RpcLightClientNextBlockErrorUnknownBlock': 'rpc_light_client_next_block_error',
-    'RpcLightClientNextBlockErrorEpochOutOfBoundsInfo': 'rpc_light_client_next_block_error',
-    'RpcLightClientNextBlockErrorEpochOutOfBounds': 'rpc_light_client_next_block_error',
-    'RpcLightClientNextBlockError': 'rpc_light_client_next_block_error',
-    'ChunkExecutionProofView': 'chunk_execution_proof_view',
-    'RpcReceiptResponse': 'rpc_receipt_response',
-    'JsonRpcRequestForExperimentalValidatorsOrdered': 'json_rpc_request_for_experimental_validators_ordered',
-    'AccountContractViewLocal': 'account_contract_view',
-    'AccountContractViewGlobalHash': 'account_contract_view',
-    'AccountContractViewGlobalAccountId': 'account_contract_view',
-    'AccountContractView': 'account_contract_view',
-    'AccountIdValidityRulesVersion': 'account_id_validity_rules_version',
-    'EpochId': 'epoch_id',
-    'RpcCallFunctionResponse': 'rpc_call_function_response',
-    'BlockReferenceBlockId': 'block_reference',
-    'BlockReferenceFinality': 'block_reference',
-    'BlockReferenceSyncCheckpoint': 'block_reference',
-    'BlockReference': 'block_reference',
-    'AddGasKeyAction': 'add_gas_key_action',
-    'MethodResolveError': 'method_resolve_error',
-    'ProtocolVersionCheckConfig': 'protocol_version_check_config',
-    'RpcReceiptRequest': 'rpc_receipt_request',
-    'AccessKeyView': 'access_key_view',
-    'ShardUId': 'shard_uid',
-    'FinalExecutionOutcomeWithReceiptView': 'final_execution_outcome_with_receipt_view',
-    'FinalExecutionOutcomeView': 'final_execution_outcome_view',
-    'JsonRpcResponseForRpcStateChangesInBlockResponseAndRpcStateChangesErrorResult': 'json_rpc_response_for_rpc_state_changes_in_block_response_and_rpc_state_changes_error',
-    'JsonRpcResponseForRpcStateChangesInBlockResponseAndRpcStateChangesErrorError': 'json_rpc_response_for_rpc_state_changes_in_block_response_and_rpc_state_changes_error',
-    'JsonRpcResponseForRpcStateChangesInBlockResponseAndRpcStateChangesError': 'json_rpc_response_for_rpc_state_changes_in_block_response_and_rpc_state_changes_error',
-    'SpiceChunkEndorsementStats': 'spice_chunk_endorsement_stats',
-    'ErrorWrapperForRpcViewAccountErrorRequestValidationError': 'error_wrapper_for_rpc_view_account_error',
-    'ErrorWrapperForRpcViewAccountErrorHandlerError': 'error_wrapper_for_rpc_view_account_error',
-    'ErrorWrapperForRpcViewAccountErrorInternalError': 'error_wrapper_for_rpc_view_account_error',
-    'ErrorWrapperForRpcViewAccountError': 'error_wrapper_for_rpc_view_account_error',
-    'ValidatorInfo': 'validator_info',
-    'RpcProtocolConfigRequestBlockId': 'rpc_protocol_config_request',
-    'RpcProtocolConfigRequestFinality': 'rpc_protocol_config_request',
-    'RpcProtocolConfigRequestSyncCheckpoint': 'rpc_protocol_config_request',
-    'RpcProtocolConfigRequest': 'rpc_protocol_config_request',
-    'JsonRpcRequestForExperimentalLightClientProof': 'json_rpc_request_for_experimental_light_client_proof',
-    'AccessKeyCreationConfigView': 'access_key_creation_config_view',
-    'RpcNetworkInfoRequest': 'rpc_network_info_request',
-    'AccessKeyList': 'access_key_list',
-    'ChunkDistributionUris': 'chunk_distribution_uris',
-    'FunctionCallErrorWasmUnknownError': 'function_call_error',
-    'FunctionCallErrorCompilationError': 'function_call_error',
-    'FunctionCallErrorLinkErrorPayload': 'function_call_error',
-    'FunctionCallErrorLinkError': 'function_call_error',
-    'FunctionCallErrorMethodResolveError': 'function_call_error',
-    'FunctionCallErrorWasmTrap': 'function_call_error',
-    'FunctionCallErrorHostError': 'function_call_error',
-    'FunctionCallErrorExecutionError': 'function_call_error',
-    'FunctionCallError': 'function_call_error',
-    'RpcLightClientExecutionProofRequestTransaction': 'rpc_light_client_execution_proof_request',
-    'RpcLightClientExecutionProofRequestReceipt': 'rpc_light_client_execution_proof_request',
-    'RpcLightClientExecutionProofRequest': 'rpc_light_client_execution_proof_request',
-    'RpcViewCodeErrorUnknownBlockInfo': 'rpc_view_code_error',
-    'RpcViewCodeErrorUnknownBlock': 'rpc_view_code_error',
-    'RpcViewCodeErrorInvalidAccountInfo': 'rpc_view_code_error',
-    'RpcViewCodeErrorInvalidAccount': 'rpc_view_code_error',
-    'RpcViewCodeErrorUnknownAccountInfo': 'rpc_view_code_error',
-    'RpcViewCodeErrorUnknownAccount': 'rpc_view_code_error',
-    'RpcViewCodeErrorNoContractCodeInfo': 'rpc_view_code_error',
-    'RpcViewCodeErrorNoContractCode': 'rpc_view_code_error',
-    'RpcViewCodeErrorInternalErrorInfo': 'rpc_view_code_error',
-    'RpcViewCodeErrorInternalError': 'rpc_view_code_error',
-    'RpcViewCodeError': 'rpc_view_code_error',
-    'RpcViewGasKeyRequestBlockId': 'rpc_view_gas_key_request',
-    'RpcViewGasKeyRequestFinality': 'rpc_view_gas_key_request',
-    'RpcViewGasKeyRequestSyncCheckpoint': 'rpc_view_gas_key_request',
-    'RpcViewGasKeyRequest': 'rpc_view_gas_key_request',
-    'FunctionCallAction': 'function_call_action',
-    'RuntimeConfigView': 'runtime_config_view',
-    'DeployContractAction': 'deploy_contract_action',
-    'RpcValidatorResponse': 'rpc_validator_response',
-    'StateProofView': 'state_proof_view',
+    'AccessKeyInfoView': 'access_key_info_view',
+    'RpcViewAccessKeyRequestBlockId': 'rpc_view_access_key_request',
+    'RpcViewAccessKeyRequestFinality': 'rpc_view_access_key_request',
+    'RpcViewAccessKeyRequestSyncCheckpoint': 'rpc_view_access_key_request',
+    'RpcViewAccessKeyRequest': 'rpc_view_access_key_request',
+    'JsonRpcResponseForRpcReceiptResponseAndRpcReceiptErrorResult': 'json_rpc_response_for_rpc_receipt_response_and_rpc_receipt_error',
+    'JsonRpcResponseForRpcReceiptResponseAndRpcReceiptErrorError': 'json_rpc_response_for_rpc_receipt_response_and_rpc_receipt_error',
+    'JsonRpcResponseForRpcReceiptResponseAndRpcReceiptError': 'json_rpc_response_for_rpc_receipt_response_and_rpc_receipt_error',
+    'RpcTransactionStatusRequestSignedTxBase64': 'rpc_transaction_status_request',
+    'RpcTransactionStatusRequestSenderAccountIdTxHash': 'rpc_transaction_status_request',
+    'RpcTransactionStatusRequest': 'rpc_transaction_status_request',
+    'JsonRpcRequestForGasPrice': 'json_rpc_request_for_gas_price',
+    'JsonRpcRequestForNextLightClientBlock': 'json_rpc_request_for_next_light_client_block',
+    'ErrorWrapperForRpcGasPriceErrorRequestValidationError': 'error_wrapper_for_rpc_gas_price_error',
+    'ErrorWrapperForRpcGasPriceErrorHandlerError': 'error_wrapper_for_rpc_gas_price_error',
+    'ErrorWrapperForRpcGasPriceErrorInternalError': 'error_wrapper_for_rpc_gas_price_error',
+    'ErrorWrapperForRpcGasPriceError': 'error_wrapper_for_rpc_gas_price_error',
+    'JsonRpcResponseForArrayOfValidatorStakeViewAndRpcValidatorErrorResult': 'json_rpc_response_for_array_of_validator_stake_view_and_rpc_validator_error',
+    'JsonRpcResponseForArrayOfValidatorStakeViewAndRpcValidatorErrorError': 'json_rpc_response_for_array_of_validator_stake_view_and_rpc_validator_error',
+    'JsonRpcResponseForArrayOfValidatorStakeViewAndRpcValidatorError': 'json_rpc_response_for_array_of_validator_stake_view_and_rpc_validator_error',
+    'RpcViewCodeRequestBlockId': 'rpc_view_code_request',
+    'RpcViewCodeRequestFinality': 'rpc_view_code_request',
+    'RpcViewCodeRequestSyncCheckpoint': 'rpc_view_code_request',
+    'RpcViewCodeRequest': 'rpc_view_code_request',
     'JsonRpcRequestForExperimentalLightClientStateProof': 'json_rpc_request_for_experimental_light_client_state_proof',
-    'ErrorWrapperForRpcSplitStorageInfoErrorRequestValidationError': 'error_wrapper_for_rpc_split_storage_info_error',
-    'ErrorWrapperForRpcSplitStorageInfoErrorHandlerError': 'error_wrapper_for_rpc_split_storage_info_error',
-    'ErrorWrapperForRpcSplitStorageInfoErrorInternalError': 'error_wrapper_for_rpc_split_storage_info_error',
-    'ErrorWrapperForRpcSplitStorageInfoError': 'error_wrapper_for_rpc_split_storage_info_error',
-    'AddKeyAction': 'add_key_action',
-    'JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesErrorResult': 'json_rpc_response_for_rpc_state_changes_in_block_by_type_response_and_rpc_state_changes_error',
-    'JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesErrorError': 'json_rpc_response_for_rpc_state_changes_in_block_by_type_response_and_rpc_state_changes_error',
-    'JsonRpcResponseForRpcStateChangesInBlockByTypeResponseAndRpcStateChangesError': 'json_rpc_response_for_rpc_state_changes_in_block_by_type_response_and_rpc_state_changes_error',
-    'JsonRpcRequestForExperimentalChangesInBlock': 'json_rpc_request_for_experimental_changes_in_block',
-    'JsonRpcRequestForExperimentalMaintenanceWindows': 'json_rpc_request_for_experimental_maintenance_windows',
+    'ChunkHeaderView': 'chunk_header_view',
     'TrackedShardsConfigNoShards': 'tracked_shards_config',
     'TrackedShardsConfigShards': 'tracked_shards_config',
     'TrackedShardsConfigAllShards': 'tracked_shards_config',
@@ -3514,157 +3034,20 @@ _CLASS_TO_MODULE = {
     'TrackedShardsConfigSchedule': 'tracked_shards_config',
     'TrackedShardsConfigAccounts': 'tracked_shards_config',
     'TrackedShardsConfig': 'tracked_shards_config',
-    'ErrorWrapperForRpcClientConfigErrorRequestValidationError': 'error_wrapper_for_rpc_client_config_error',
-    'ErrorWrapperForRpcClientConfigErrorHandlerError': 'error_wrapper_for_rpc_client_config_error',
-    'ErrorWrapperForRpcClientConfigErrorInternalError': 'error_wrapper_for_rpc_client_config_error',
-    'ErrorWrapperForRpcClientConfigError': 'error_wrapper_for_rpc_client_config_error',
-    'DepositCostFailureReason': 'deposit_cost_failure_reason',
-    'RpcViewAccessKeyListRequestBlockId': 'rpc_view_access_key_list_request',
-    'RpcViewAccessKeyListRequestFinality': 'rpc_view_access_key_list_request',
-    'RpcViewAccessKeyListRequestSyncCheckpoint': 'rpc_view_access_key_list_request',
-    'RpcViewAccessKeyListRequest': 'rpc_view_access_key_list_request',
-    'RpcLightClientChunkExecutionProofRequest': 'rpc_light_client_chunk_execution_proof_request',
-    'ActionError': 'action_error',
-    'JsonRpcResponseForRpcTransactionResponseAndRpcTransactionErrorResult': 'json_rpc_response_for_rpc_transaction_response_and_rpc_transaction_error',
-    'JsonRpcResponseForRpcTransactionResponseAndRpcTransactionErrorError': 'json_rpc_response_for_rpc_transaction_response_and_rpc_transaction_error',
-    'JsonRpcResponseForRpcTransactionResponseAndRpcTransactionError': 'json_rpc_response_for_rpc_transaction_response_and_rpc_transaction_error',
-    'CloudArchivalWriterConfig': 'cloud_archival_writer_config',
-    'PeerId': 'peer_id',
-    'ExecutionMetadataView': 'execution_metadata_view',
-    'ActionsValidationErrorDeleteActionMustBeFinal': 'actions_validation_error',
-    'ActionsValidationErrorTotalPrepaidGasExceededPayload': 'actions_validation_error',
-    'ActionsValidationErrorTotalPrepaidGasExceeded': 'actions_validation_error',
-    'ActionsValidationErrorTotalNumberOfActionsExceededPayload': 'actions_validation_error',
-    'ActionsValidationErrorTotalNumberOfActionsExceeded': 'actions_validation_error',
-    'ActionsValidationErrorAddKeyMethodNamesNumberOfBytesExceededPayload': 'actions_validation_error',
-    'ActionsValidationErrorAddKeyMethodNamesNumberOfBytesExceeded': 'actions_validation_error',
-    'ActionsValidationErrorAddKeyMethodNameLengthExceededPayload': 'actions_validation_error',
-    'ActionsValidationErrorAddKeyMethodNameLengthExceeded': 'actions_validation_error',
-    'ActionsValidationErrorIntegerOverflow': 'actions_validation_error',
-    'ActionsValidationErrorInvalidAccountIdPayload': 'actions_validation_error',
-    'ActionsValidationErrorInvalidAccountId': 'actions_validation_error',
-    'ActionsValidationErrorContractSizeExceededPayload': 'actions_validation_error',
-    'ActionsValidationErrorContractSizeExceeded': 'actions_validation_error',
-    'ActionsValidationErrorFunctionCallMethodNameLengthExceededPayload': 'actions_validation_error',
-    'ActionsValidationErrorFunctionCallMethodNameLengthExceeded': 'actions_validation_error',
-    'ActionsValidationErrorFunctionCallArgumentsLengthExceededPayload': 'actions_validation_error',
-    'ActionsValidationErrorFunctionCallArgumentsLengthExceeded': 'actions_validation_error',
-    'ActionsValidationErrorUnsuitableStakingKeyPayload': 'actions_validation_error',
-    'ActionsValidationErrorUnsuitableStakingKey': 'actions_validation_error',
-    'ActionsValidationErrorFunctionCallZeroAttachedGas': 'actions_validation_error',
-    'ActionsValidationErrorDelegateActionMustBeOnlyOne': 'actions_validation_error',
-    'ActionsValidationErrorUnsupportedProtocolFeaturePayload': 'actions_validation_error',
-    'ActionsValidationErrorUnsupportedProtocolFeature': 'actions_validation_error',
-    'ActionsValidationErrorInvalidDeterministicStateInitReceiverPayload': 'actions_validation_error',
-    'ActionsValidationErrorInvalidDeterministicStateInitReceiver': 'actions_validation_error',
-    'ActionsValidationErrorDeterministicStateInitKeyLengthExceededPayload': 'actions_validation_error',
-    'ActionsValidationErrorDeterministicStateInitKeyLengthExceeded': 'actions_validation_error',
-    'ActionsValidationErrorDeterministicStateInitValueLengthExceededPayload': 'actions_validation_error',
-    'ActionsValidationErrorDeterministicStateInitValueLengthExceeded': 'actions_validation_error',
-    'ActionsValidationErrorGasKeyInvalidNumNoncesPayload': 'actions_validation_error',
-    'ActionsValidationErrorGasKeyInvalidNumNonces': 'actions_validation_error',
-    'ActionsValidationErrorAddGasKeyWithNonZeroBalancePayload': 'actions_validation_error',
-    'ActionsValidationErrorAddGasKeyWithNonZeroBalance': 'actions_validation_error',
-    'ActionsValidationErrorGasKeyFunctionCallAllowanceNotAllowed': 'actions_validation_error',
-    'ActionsValidationErrorTotalNumberOfDeployActionsExceededPayload': 'actions_validation_error',
-    'ActionsValidationErrorTotalNumberOfDeployActionsExceeded': 'actions_validation_error',
-    'ActionsValidationErrorFunctionCallEmptyMethodName': 'actions_validation_error',
-    'ActionsValidationErrorInvalidUniversalStateInitReceiverPayload': 'actions_validation_error',
-    'ActionsValidationErrorInvalidUniversalStateInitReceiver': 'actions_validation_error',
-    'ActionsValidationErrorUniversalStateInitKeyLengthExceededPayload': 'actions_validation_error',
-    'ActionsValidationErrorUniversalStateInitKeyLengthExceeded': 'actions_validation_error',
-    'ActionsValidationErrorUniversalStateInitValueLengthExceededPayload': 'actions_validation_error',
-    'ActionsValidationErrorUniversalStateInitValueLengthExceeded': 'actions_validation_error',
-    'ActionsValidationErrorMalformedUniversalStateInit': 'actions_validation_error',
-    'ActionsValidationErrorRemovedProtocolFeaturePayload': 'actions_validation_error',
-    'ActionsValidationErrorRemovedProtocolFeature': 'actions_validation_error',
-    'ActionsValidationErrorWithdrawFromGasKeyNotAllowedInDelegate': 'actions_validation_error',
-    'ActionsValidationError': 'actions_validation_error',
-    'BlockIdBlockHeight': 'block_id',
-    'BlockIdCryptoHash': 'block_id',
-    'BlockId': 'block_id',
+    'UseGlobalContractAction': 'use_global_contract_action',
+    'RpcNetworkInfoRequest': 'rpc_network_info_request',
+    'DeleteGasKeyAction': 'delete_gas_key_action',
+    'SlashedValidator': 'slashed_validator',
+    'Finality': 'finality',
+    'JsonRpcResponseForRpcValidatorResponseAndRpcValidatorErrorResult': 'json_rpc_response_for_rpc_validator_response_and_rpc_validator_error',
+    'JsonRpcResponseForRpcValidatorResponseAndRpcValidatorErrorError': 'json_rpc_response_for_rpc_validator_response_and_rpc_validator_error',
+    'JsonRpcResponseForRpcValidatorResponseAndRpcValidatorError': 'json_rpc_response_for_rpc_validator_response_and_rpc_validator_error',
+    'JsonRpcRequestForExperimentalReceiptToTx': 'json_rpc_request_for_experimental_receipt_to_tx',
     'RpcBlockErrorUnknownBlock': 'rpc_block_error',
     'RpcBlockErrorNotSyncedYet': 'rpc_block_error',
     'RpcBlockErrorInternalErrorInfo': 'rpc_block_error',
     'RpcBlockErrorInternalError': 'rpc_block_error',
     'RpcBlockError': 'rpc_block_error',
-    'RpcClientConfigErrorInternalErrorInfo': 'rpc_client_config_error',
-    'RpcClientConfigErrorInternalError': 'rpc_client_config_error',
-    'RpcClientConfigError': 'rpc_client_config_error',
-    'RpcReceiptToTxRequest': 'rpc_receipt_to_tx_request',
-    'RpcTransactionErrorInvalidTransaction': 'rpc_transaction_error',
-    'RpcTransactionErrorDoesNotTrackShard': 'rpc_transaction_error',
-    'RpcTransactionErrorRequestRoutedInfo': 'rpc_transaction_error',
-    'RpcTransactionErrorRequestRouted': 'rpc_transaction_error',
-    'RpcTransactionErrorUnknownTransactionInfo': 'rpc_transaction_error',
-    'RpcTransactionErrorUnknownTransaction': 'rpc_transaction_error',
-    'RpcTransactionErrorInternalErrorInfo': 'rpc_transaction_error',
-    'RpcTransactionErrorInternalError': 'rpc_transaction_error',
-    'RpcTransactionErrorTimeoutError': 'rpc_transaction_error',
-    'RpcTransactionError': 'rpc_transaction_error',
-    'RpcBlockResponse': 'rpc_block_response',
-    'JsonRpcResponseForRpcValidatorResponseAndRpcValidatorErrorResult': 'json_rpc_response_for_rpc_validator_response_and_rpc_validator_error',
-    'JsonRpcResponseForRpcValidatorResponseAndRpcValidatorErrorError': 'json_rpc_response_for_rpc_validator_response_and_rpc_validator_error',
-    'JsonRpcResponseForRpcValidatorResponseAndRpcValidatorError': 'json_rpc_response_for_rpc_validator_response_and_rpc_validator_error',
-    'RawStateInit': 'raw_state_init',
-    'ErrorWrapperForRpcBlockErrorRequestValidationError': 'error_wrapper_for_rpc_block_error',
-    'ErrorWrapperForRpcBlockErrorHandlerError': 'error_wrapper_for_rpc_block_error',
-    'ErrorWrapperForRpcBlockErrorInternalError': 'error_wrapper_for_rpc_block_error',
-    'ErrorWrapperForRpcBlockError': 'error_wrapper_for_rpc_block_error',
-    'RpcNetworkInfoErrorInternalErrorInfo': 'rpc_network_info_error',
-    'RpcNetworkInfoErrorInternalError': 'rpc_network_info_error',
-    'RpcNetworkInfoError': 'rpc_network_info_error',
-    'RpcViewStateResponse': 'rpc_view_state_response',
-    'RpcValidatorErrorUnknownEpoch': 'rpc_validator_error',
-    'RpcValidatorErrorValidatorInfoUnavailable': 'rpc_validator_error',
-    'RpcValidatorErrorInternalErrorInfo': 'rpc_validator_error',
-    'RpcValidatorErrorInternalError': 'rpc_validator_error',
-    'RpcValidatorError': 'rpc_validator_error',
-    'JsonRpcRequestForExperimentalProtocolConfig': 'json_rpc_request_for_experimental_protocol_config',
-    'RpcViewStateRequestBlockId': 'rpc_view_state_request',
-    'RpcViewStateRequestFinality': 'rpc_view_state_request',
-    'RpcViewStateRequestSyncCheckpoint': 'rpc_view_state_request',
-    'RpcViewStateRequest': 'rpc_view_state_request',
-    'SyncConfig': 'sync_config',
-    'ValidatorKickoutReasonUnusedSlashed': 'validator_kickout_reason',
-    'ValidatorKickoutReasonNotEnoughBlocksPayload': 'validator_kickout_reason',
-    'ValidatorKickoutReasonNotEnoughBlocks': 'validator_kickout_reason',
-    'ValidatorKickoutReasonNotEnoughChunksPayload': 'validator_kickout_reason',
-    'ValidatorKickoutReasonNotEnoughChunks': 'validator_kickout_reason',
-    'ValidatorKickoutReasonUnstaked': 'validator_kickout_reason',
-    'ValidatorKickoutReasonNotEnoughStakePayload': 'validator_kickout_reason',
-    'ValidatorKickoutReasonNotEnoughStake': 'validator_kickout_reason',
-    'ValidatorKickoutReasonDidNotGetASeat': 'validator_kickout_reason',
-    'ValidatorKickoutReasonNotEnoughChunkEndorsementsPayload': 'validator_kickout_reason',
-    'ValidatorKickoutReasonNotEnoughChunkEndorsements': 'validator_kickout_reason',
-    'ValidatorKickoutReasonProtocolVersionTooOldPayload': 'validator_kickout_reason',
-    'ValidatorKickoutReasonProtocolVersionTooOld': 'validator_kickout_reason',
-    'ValidatorKickoutReason': 'validator_kickout_reason',
-    'AccountState': 'account_state',
-    'StoreValue': 'store_value',
-    'CatchupStatusView': 'catchup_status_view',
-    'JsonRpcResponseForRpcViewAccountResponseAndRpcViewAccountErrorResult': 'json_rpc_response_for_rpc_view_account_response_and_rpc_view_account_error',
-    'JsonRpcResponseForRpcViewAccountResponseAndRpcViewAccountErrorError': 'json_rpc_response_for_rpc_view_account_response_and_rpc_view_account_error',
-    'JsonRpcResponseForRpcViewAccountResponseAndRpcViewAccountError': 'json_rpc_response_for_rpc_view_account_response_and_rpc_view_account_error',
-    'JsonRpcRequestForBroadcastTxCommit': 'json_rpc_request_for_broadcast_tx_commit',
-    'RpcRequestValidationErrorKindMethodNotFoundInfo': 'rpc_request_validation_error_kind',
-    'RpcRequestValidationErrorKindMethodNotFound': 'rpc_request_validation_error_kind',
-    'RpcRequestValidationErrorKindParseErrorInfo': 'rpc_request_validation_error_kind',
-    'RpcRequestValidationErrorKindParseError': 'rpc_request_validation_error_kind',
-    'RpcRequestValidationErrorKind': 'rpc_request_validation_error_kind',
-    'ErrorWrapperForRpcProtocolConfigErrorRequestValidationError': 'error_wrapper_for_rpc_protocol_config_error',
-    'ErrorWrapperForRpcProtocolConfigErrorHandlerError': 'error_wrapper_for_rpc_protocol_config_error',
-    'ErrorWrapperForRpcProtocolConfigErrorInternalError': 'error_wrapper_for_rpc_protocol_config_error',
-    'ErrorWrapperForRpcProtocolConfigError': 'error_wrapper_for_rpc_protocol_config_error',
-    'ReceiptView': 'receipt_view',
-    'MissingTrieValueContext': 'missing_trie_value_context',
-    'JsonRpcRequestForNetworkInfo': 'json_rpc_request_for_network_info',
-    'VMKind': 'vmkind',
-    'RpcNetworkInfoResponse': 'rpc_network_info_response',
-    'JsonRpcRequestForExperimentalViewAccount': 'json_rpc_request_for_experimental_view_account',
-    'MutableConfigValue': 'mutable_config_value',
-    'BlockStatusView': 'block_status_view',
-    'RuntimeFeesConfigView': 'runtime_fees_config_view',
     'ActionErrorKindAccountAlreadyExistsPayload': 'action_error_kind',
     'ActionErrorKindAccountAlreadyExists': 'action_error_kind',
     'ActionErrorKindAccountDoesNotExistPayload': 'action_error_kind',
@@ -3722,39 +3105,656 @@ _CLASS_TO_MODULE = {
     'ActionErrorKindAccountNotInitializedPayload': 'action_error_kind',
     'ActionErrorKindAccountNotInitialized': 'action_error_kind',
     'ActionErrorKind': 'action_error_kind',
-    'EpochSyncConfig': 'epoch_sync_config',
-    'RpcLightClientChunkExecutionProofResponse': 'rpc_light_client_chunk_execution_proof_response',
-    'RpcSendTransactionRequest': 'rpc_send_transaction_request',
+    'KnownProducerView': 'known_producer_view',
+    'JsonRpcResponseForRpcViewAccessKeyListResponseAndRpcViewAccessKeyListErrorResult': 'json_rpc_response_for_rpc_view_access_key_list_response_and_rpc_view_access_key_list_error',
+    'JsonRpcResponseForRpcViewAccessKeyListResponseAndRpcViewAccessKeyListErrorError': 'json_rpc_response_for_rpc_view_access_key_list_response_and_rpc_view_access_key_list_error',
+    'JsonRpcResponseForRpcViewAccessKeyListResponseAndRpcViewAccessKeyListError': 'json_rpc_response_for_rpc_view_access_key_list_response_and_rpc_view_access_key_list_error',
+    'JsonRpcResponseForRpcStateChangesInBlockResponseAndRpcStateChangesErrorResult': 'json_rpc_response_for_rpc_state_changes_in_block_response_and_rpc_state_changes_error',
+    'JsonRpcResponseForRpcStateChangesInBlockResponseAndRpcStateChangesErrorError': 'json_rpc_response_for_rpc_state_changes_in_block_response_and_rpc_state_changes_error',
+    'JsonRpcResponseForRpcStateChangesInBlockResponseAndRpcStateChangesError': 'json_rpc_response_for_rpc_state_changes_in_block_response_and_rpc_state_changes_error',
+    'ReceiptView': 'receipt_view',
+    'CatchupStatusView': 'catchup_status_view',
+    'ReceiptValidationErrorInvalidPredecessorIdPayload': 'receipt_validation_error',
+    'ReceiptValidationErrorInvalidPredecessorId': 'receipt_validation_error',
+    'ReceiptValidationErrorInvalidReceiverIdPayload': 'receipt_validation_error',
+    'ReceiptValidationErrorInvalidReceiverId': 'receipt_validation_error',
+    'ReceiptValidationErrorInvalidSignerIdPayload': 'receipt_validation_error',
+    'ReceiptValidationErrorInvalidSignerId': 'receipt_validation_error',
+    'ReceiptValidationErrorInvalidDataReceiverIdPayload': 'receipt_validation_error',
+    'ReceiptValidationErrorInvalidDataReceiverId': 'receipt_validation_error',
+    'ReceiptValidationErrorReturnedValueLengthExceededPayload': 'receipt_validation_error',
+    'ReceiptValidationErrorReturnedValueLengthExceeded': 'receipt_validation_error',
+    'ReceiptValidationErrorNumberInputDataDependenciesExceededPayload': 'receipt_validation_error',
+    'ReceiptValidationErrorNumberInputDataDependenciesExceeded': 'receipt_validation_error',
+    'ReceiptValidationErrorActionsValidation': 'receipt_validation_error',
+    'ReceiptValidationErrorReceiptSizeExceededPayload': 'receipt_validation_error',
+    'ReceiptValidationErrorReceiptSizeExceeded': 'receipt_validation_error',
+    'ReceiptValidationErrorInvalidRefundToPayload': 'receipt_validation_error',
+    'ReceiptValidationErrorInvalidRefundTo': 'receipt_validation_error',
+    'ReceiptValidationError': 'receipt_validation_error',
+    'ExecutionMetadataView': 'execution_metadata_view',
+    'CreateAccountAction': 'create_account_action',
+    'CongestionControlConfigView': 'congestion_control_config_view',
+    'AccountContractViewLocal': 'account_contract_view',
+    'AccountContractViewGlobalHash': 'account_contract_view',
+    'AccountContractViewGlobalAccountId': 'account_contract_view',
+    'AccountContractView': 'account_contract_view',
+    'ValidatorKickoutReasonUnusedSlashed': 'validator_kickout_reason',
+    'ValidatorKickoutReasonNotEnoughBlocksPayload': 'validator_kickout_reason',
+    'ValidatorKickoutReasonNotEnoughBlocks': 'validator_kickout_reason',
+    'ValidatorKickoutReasonNotEnoughChunksPayload': 'validator_kickout_reason',
+    'ValidatorKickoutReasonNotEnoughChunks': 'validator_kickout_reason',
+    'ValidatorKickoutReasonUnstaked': 'validator_kickout_reason',
+    'ValidatorKickoutReasonNotEnoughStakePayload': 'validator_kickout_reason',
+    'ValidatorKickoutReasonNotEnoughStake': 'validator_kickout_reason',
+    'ValidatorKickoutReasonDidNotGetASeat': 'validator_kickout_reason',
+    'ValidatorKickoutReasonNotEnoughChunkEndorsementsPayload': 'validator_kickout_reason',
+    'ValidatorKickoutReasonNotEnoughChunkEndorsements': 'validator_kickout_reason',
+    'ValidatorKickoutReasonProtocolVersionTooOldPayload': 'validator_kickout_reason',
+    'ValidatorKickoutReasonProtocolVersionTooOld': 'validator_kickout_reason',
+    'ValidatorKickoutReason': 'validator_kickout_reason',
+    'KeyHandle': 'key_handle',
+    'GasKeyView': 'gas_key_view',
+    'BlockHeaderView': 'block_header_view',
+    'MerklePathItem': 'merkle_path_item',
     'JsonRpcResponseForRpcSplitStorageInfoResponseAndRpcSplitStorageInfoErrorResult': 'json_rpc_response_for_rpc_split_storage_info_response_and_rpc_split_storage_info_error',
     'JsonRpcResponseForRpcSplitStorageInfoResponseAndRpcSplitStorageInfoErrorError': 'json_rpc_response_for_rpc_split_storage_info_response_and_rpc_split_storage_info_error',
     'JsonRpcResponseForRpcSplitStorageInfoResponseAndRpcSplitStorageInfoError': 'json_rpc_response_for_rpc_split_storage_info_response_and_rpc_split_storage_info_error',
-    'RpcViewCodeRequestBlockId': 'rpc_view_code_request',
-    'RpcViewCodeRequestFinality': 'rpc_view_code_request',
-    'RpcViewCodeRequestSyncCheckpoint': 'rpc_view_code_request',
-    'RpcViewCodeRequest': 'rpc_view_code_request',
+    'JsonRpcRequestForClientConfig': 'json_rpc_request_for_client_config',
+    'PrepareError': 'prepare_error',
+    'RpcNetworkInfoErrorInternalErrorInfo': 'rpc_network_info_error',
+    'RpcNetworkInfoErrorInternalError': 'rpc_network_info_error',
+    'RpcNetworkInfoError': 'rpc_network_info_error',
+    'JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorResult': 'json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error',
+    'JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorError': 'json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error',
+    'JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeError': 'json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error',
+    'GlobalContractDeployMode': 'global_contract_deploy_mode',
+    'JsonRpcRequestForValidators': 'json_rpc_request_for_validators',
+    'RpcLightClientExecutionProofResponse': 'rpc_light_client_execution_proof_response',
+    'ExecutionOutcomeView': 'execution_outcome_view',
+    'ErrorWrapperForRpcStatusErrorRequestValidationError': 'error_wrapper_for_rpc_status_error',
+    'ErrorWrapperForRpcStatusErrorHandlerError': 'error_wrapper_for_rpc_status_error',
+    'ErrorWrapperForRpcStatusErrorInternalError': 'error_wrapper_for_rpc_status_error',
+    'ErrorWrapperForRpcStatusError': 'error_wrapper_for_rpc_status_error',
+    'JsonRpcRequestForExperimentalViewCode': 'json_rpc_request_for_experimental_view_code',
+    'ChunkExecutionProofView': 'chunk_execution_proof_view',
+    'AccessKeyPermissionViewFullAccess': 'access_key_permission_view',
+    'AccessKeyPermissionViewFunctionCallPayload': 'access_key_permission_view',
+    'AccessKeyPermissionViewFunctionCall': 'access_key_permission_view',
+    'AccessKeyPermissionViewGasKeyFunctionCallPayload': 'access_key_permission_view',
+    'AccessKeyPermissionViewGasKeyFunctionCall': 'access_key_permission_view',
+    'AccessKeyPermissionViewGasKeyFullAccessPayload': 'access_key_permission_view',
+    'AccessKeyPermissionViewGasKeyFullAccess': 'access_key_permission_view',
+    'AccessKeyPermissionView': 'access_key_permission_view',
+    'ErrorWrapperForRpcNetworkInfoErrorRequestValidationError': 'error_wrapper_for_rpc_network_info_error',
+    'ErrorWrapperForRpcNetworkInfoErrorHandlerError': 'error_wrapper_for_rpc_network_info_error',
+    'ErrorWrapperForRpcNetworkInfoErrorInternalError': 'error_wrapper_for_rpc_network_info_error',
+    'ErrorWrapperForRpcNetworkInfoError': 'error_wrapper_for_rpc_network_info_error',
+    'RpcLightClientBlockProofResponse': 'rpc_light_client_block_proof_response',
+    'ShardLayoutV1': 'shard_layout_v1',
+    'MissingTrieValueContext': 'missing_trie_value_context',
+    'JsonRpcRequestForChunk': 'json_rpc_request_for_chunk',
+    'LimitConfig': 'limit_config',
+    'RpcStateChangesInBlockRequestBlockId': 'rpc_state_changes_in_block_request',
+    'RpcStateChangesInBlockRequestFinality': 'rpc_state_changes_in_block_request',
+    'RpcStateChangesInBlockRequestSyncCheckpoint': 'rpc_state_changes_in_block_request',
+    'RpcStateChangesInBlockRequest': 'rpc_state_changes_in_block_request',
+    'RpcStatusResponse': 'rpc_status_response',
+    'InvalidTxErrorInvalidAccessKeyError': 'invalid_tx_error',
+    'InvalidTxErrorInvalidSignerIdPayload': 'invalid_tx_error',
+    'InvalidTxErrorInvalidSignerId': 'invalid_tx_error',
+    'InvalidTxErrorSignerDoesNotExistPayload': 'invalid_tx_error',
+    'InvalidTxErrorSignerDoesNotExist': 'invalid_tx_error',
+    'InvalidTxErrorInvalidNoncePayload': 'invalid_tx_error',
+    'InvalidTxErrorInvalidNonce': 'invalid_tx_error',
+    'InvalidTxErrorNonceTooLargePayload': 'invalid_tx_error',
+    'InvalidTxErrorNonceTooLarge': 'invalid_tx_error',
+    'InvalidTxErrorInvalidReceiverIdPayload': 'invalid_tx_error',
+    'InvalidTxErrorInvalidReceiverId': 'invalid_tx_error',
+    'InvalidTxErrorInvalidSignature': 'invalid_tx_error',
+    'InvalidTxErrorNotEnoughBalancePayload': 'invalid_tx_error',
+    'InvalidTxErrorNotEnoughBalance': 'invalid_tx_error',
+    'InvalidTxErrorLackBalanceForStatePayload': 'invalid_tx_error',
+    'InvalidTxErrorLackBalanceForState': 'invalid_tx_error',
+    'InvalidTxErrorCostOverflow': 'invalid_tx_error',
+    'InvalidTxErrorInvalidChain': 'invalid_tx_error',
+    'InvalidTxErrorExpired': 'invalid_tx_error',
+    'InvalidTxErrorActionsValidation': 'invalid_tx_error',
+    'InvalidTxErrorTransactionSizeExceededPayload': 'invalid_tx_error',
+    'InvalidTxErrorTransactionSizeExceeded': 'invalid_tx_error',
+    'InvalidTxErrorInvalidTransactionVersion': 'invalid_tx_error',
+    'InvalidTxErrorStorageError': 'invalid_tx_error',
+    'InvalidTxErrorShardCongestedPayload': 'invalid_tx_error',
+    'InvalidTxErrorShardCongested': 'invalid_tx_error',
+    'InvalidTxErrorShardStuckPayload': 'invalid_tx_error',
+    'InvalidTxErrorShardStuck': 'invalid_tx_error',
+    'InvalidTxErrorInvalidNonceIndexPayload': 'invalid_tx_error',
+    'InvalidTxErrorInvalidNonceIndex': 'invalid_tx_error',
+    'InvalidTxErrorNotEnoughGasKeyBalancePayload': 'invalid_tx_error',
+    'InvalidTxErrorNotEnoughGasKeyBalance': 'invalid_tx_error',
+    'InvalidTxErrorNotEnoughBalanceForDepositPayload': 'invalid_tx_error',
+    'InvalidTxErrorNotEnoughBalanceForDeposit': 'invalid_tx_error',
+    'InvalidTxError': 'invalid_tx_error',
+    'ErrorWrapperForRpcViewAccessKeyErrorRequestValidationError': 'error_wrapper_for_rpc_view_access_key_error',
+    'ErrorWrapperForRpcViewAccessKeyErrorHandlerError': 'error_wrapper_for_rpc_view_access_key_error',
+    'ErrorWrapperForRpcViewAccessKeyErrorInternalError': 'error_wrapper_for_rpc_view_access_key_error',
+    'ErrorWrapperForRpcViewAccessKeyError': 'error_wrapper_for_rpc_view_access_key_error',
+    'JsonRpcResponseForCryptoHashAndRpcTransactionErrorResult': 'json_rpc_response_for_crypto_hash_and_rpc_transaction_error',
+    'JsonRpcResponseForCryptoHashAndRpcTransactionErrorError': 'json_rpc_response_for_crypto_hash_and_rpc_transaction_error',
+    'JsonRpcResponseForCryptoHashAndRpcTransactionError': 'json_rpc_response_for_crypto_hash_and_rpc_transaction_error',
+    'ValidatorStakeViewValidatorStakeStructVersion': 'validator_stake_view',
+    'ValidatorStakeView': 'validator_stake_view',
+    'BlockReferenceBlockId': 'block_reference',
+    'BlockReferenceFinality': 'block_reference',
+    'BlockReferenceSyncCheckpoint': 'block_reference',
+    'BlockReference': 'block_reference',
+    'RpcChunkRequestBlockShardId': 'rpc_chunk_request',
+    'RpcChunkRequestChunkHash': 'rpc_chunk_request',
+    'RpcChunkRequest': 'rpc_chunk_request',
+    'MethodResolveError': 'method_resolve_error',
+    'StateChangeWithCauseViewAccountUpdateChange': 'state_change_with_cause_view',
+    'StateChangeWithCauseViewAccountUpdate': 'state_change_with_cause_view',
+    'StateChangeWithCauseViewAccountDeletionChange': 'state_change_with_cause_view',
+    'StateChangeWithCauseViewAccountDeletion': 'state_change_with_cause_view',
+    'StateChangeWithCauseViewAccessKeyUpdateChange': 'state_change_with_cause_view',
+    'StateChangeWithCauseViewAccessKeyUpdate': 'state_change_with_cause_view',
+    'StateChangeWithCauseViewAccessKeyDeletionChange': 'state_change_with_cause_view',
+    'StateChangeWithCauseViewAccessKeyDeletion': 'state_change_with_cause_view',
+    'StateChangeWithCauseViewGasKeyNonceUpdateChange': 'state_change_with_cause_view',
+    'StateChangeWithCauseViewGasKeyNonceUpdate': 'state_change_with_cause_view',
+    'StateChangeWithCauseViewDataUpdateChange': 'state_change_with_cause_view',
+    'StateChangeWithCauseViewDataUpdate': 'state_change_with_cause_view',
+    'StateChangeWithCauseViewDataDeletionChange': 'state_change_with_cause_view',
+    'StateChangeWithCauseViewDataDeletion': 'state_change_with_cause_view',
+    'StateChangeWithCauseViewContractCodeUpdateChange': 'state_change_with_cause_view',
+    'StateChangeWithCauseViewContractCodeUpdate': 'state_change_with_cause_view',
+    'StateChangeWithCauseViewContractCodeDeletionChange': 'state_change_with_cause_view',
+    'StateChangeWithCauseViewContractCodeDeletion': 'state_change_with_cause_view',
+    'StateChangeWithCauseView': 'state_change_with_cause_view',
+    'ShardLayoutV0Option': 'shard_layout',
+    'ShardLayoutV1Option': 'shard_layout',
+    'ShardLayoutV2Option': 'shard_layout',
+    'ShardLayoutV3Option': 'shard_layout',
+    'ShardLayout': 'shard_layout',
+    'RpcValidatorErrorUnknownEpoch': 'rpc_validator_error',
+    'RpcValidatorErrorValidatorInfoUnavailable': 'rpc_validator_error',
+    'RpcValidatorErrorInternalErrorInfo': 'rpc_validator_error',
+    'RpcValidatorErrorInternalError': 'rpc_validator_error',
+    'RpcValidatorError': 'rpc_validator_error',
+    'RpcLightClientNextBlockResponse': 'rpc_light_client_next_block_response',
+    'RpcLightClientExecutionOutcomeProofRequestTransaction': 'rpc_light_client_execution_outcome_proof_request',
+    'RpcLightClientExecutionOutcomeProofRequestReceipt': 'rpc_light_client_execution_outcome_proof_request',
+    'RpcLightClientExecutionOutcomeProofRequest': 'rpc_light_client_execution_outcome_proof_request',
+    'JsonRpcRequestForExperimentalViewGasKeyList': 'json_rpc_request_for_experimental_view_gas_key_list',
+    'RpcViewAccountResponse': 'rpc_view_account_response',
+    'RpcStateChangesInBlockByTypeRequestAccountChangesByBlockId': 'rpc_state_changes_in_block_by_type_request',
+    'RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesByBlockId': 'rpc_state_changes_in_block_by_type_request',
+    'RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesByBlockId': 'rpc_state_changes_in_block_by_type_request',
+    'RpcStateChangesInBlockByTypeRequestContractCodeChangesByBlockId': 'rpc_state_changes_in_block_by_type_request',
+    'RpcStateChangesInBlockByTypeRequestDataChangesByBlockId': 'rpc_state_changes_in_block_by_type_request',
+    'RpcStateChangesInBlockByTypeRequestAccountChangesByFinality': 'rpc_state_changes_in_block_by_type_request',
+    'RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesByFinality': 'rpc_state_changes_in_block_by_type_request',
+    'RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesByFinality': 'rpc_state_changes_in_block_by_type_request',
+    'RpcStateChangesInBlockByTypeRequestContractCodeChangesByFinality': 'rpc_state_changes_in_block_by_type_request',
+    'RpcStateChangesInBlockByTypeRequestDataChangesByFinality': 'rpc_state_changes_in_block_by_type_request',
+    'RpcStateChangesInBlockByTypeRequestAccountChangesBySyncCheckpoint': 'rpc_state_changes_in_block_by_type_request',
+    'RpcStateChangesInBlockByTypeRequestSingleAccessKeyChangesBySyncCheckpoint': 'rpc_state_changes_in_block_by_type_request',
+    'RpcStateChangesInBlockByTypeRequestAllAccessKeyChangesBySyncCheckpoint': 'rpc_state_changes_in_block_by_type_request',
+    'RpcStateChangesInBlockByTypeRequestContractCodeChangesBySyncCheckpoint': 'rpc_state_changes_in_block_by_type_request',
+    'RpcStateChangesInBlockByTypeRequestDataChangesBySyncCheckpoint': 'rpc_state_changes_in_block_by_type_request',
+    'RpcStateChangesInBlockByTypeRequest': 'rpc_state_changes_in_block_by_type_request',
+    'JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockErrorResult': 'json_rpc_response_for_rpc_light_client_next_block_response_and_rpc_light_client_next_block_error',
+    'JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockErrorError': 'json_rpc_response_for_rpc_light_client_next_block_response_and_rpc_light_client_next_block_error',
+    'JsonRpcResponseForRpcLightClientNextBlockResponseAndRpcLightClientNextBlockError': 'json_rpc_response_for_rpc_light_client_next_block_response_and_rpc_light_client_next_block_error',
+    'ErrorWrapperForRpcClientConfigErrorRequestValidationError': 'error_wrapper_for_rpc_client_config_error',
+    'ErrorWrapperForRpcClientConfigErrorHandlerError': 'error_wrapper_for_rpc_client_config_error',
+    'ErrorWrapperForRpcClientConfigErrorInternalError': 'error_wrapper_for_rpc_client_config_error',
+    'ErrorWrapperForRpcClientConfigError': 'error_wrapper_for_rpc_client_config_error',
+    'JsonRpcRequestForTxStatus': 'json_rpc_request_for_tx_status',
+    'GasKey': 'gas_key',
+    'RpcGasPriceErrorInternalErrorInfo': 'rpc_gas_price_error',
+    'RpcGasPriceErrorInternalError': 'rpc_gas_price_error',
+    'RpcGasPriceErrorUnknownBlock': 'rpc_gas_price_error',
+    'RpcGasPriceError': 'rpc_gas_price_error',
+    'JsonRpcResponseForNullableRpcHealthResponseAndRpcStatusErrorResult': 'json_rpc_response_for_nullable_rpc_health_response_and_rpc_status_error',
+    'JsonRpcResponseForNullableRpcHealthResponseAndRpcStatusErrorError': 'json_rpc_response_for_nullable_rpc_health_response_and_rpc_status_error',
+    'JsonRpcResponseForNullableRpcHealthResponseAndRpcStatusError': 'json_rpc_response_for_nullable_rpc_health_response_and_rpc_status_error',
+    'BandwidthRequestBitmap': 'bandwidth_request_bitmap',
+    'ShardLayoutV0': 'shard_layout_v0',
+    'RpcViewAccessKeyResponse': 'rpc_view_access_key_response',
+    'RpcSplitStorageInfoRequest': 'rpc_split_storage_info_request',
+    'InvalidAccessKeyErrorAccessKeyNotFoundPayload': 'invalid_access_key_error',
+    'InvalidAccessKeyErrorAccessKeyNotFound': 'invalid_access_key_error',
+    'InvalidAccessKeyErrorReceiverMismatchPayload': 'invalid_access_key_error',
+    'InvalidAccessKeyErrorReceiverMismatch': 'invalid_access_key_error',
+    'InvalidAccessKeyErrorMethodNameMismatchPayload': 'invalid_access_key_error',
+    'InvalidAccessKeyErrorMethodNameMismatch': 'invalid_access_key_error',
+    'InvalidAccessKeyErrorRequiresFullAccess': 'invalid_access_key_error',
+    'InvalidAccessKeyErrorNotEnoughAllowancePayload': 'invalid_access_key_error',
+    'InvalidAccessKeyErrorNotEnoughAllowance': 'invalid_access_key_error',
+    'InvalidAccessKeyErrorDepositWithFunctionCall': 'invalid_access_key_error',
+    'InvalidAccessKeyErrorDelegateActionRequiresNonGasKey': 'invalid_access_key_error',
+    'InvalidAccessKeyErrorDelegateActionRequiresGasKey': 'invalid_access_key_error',
+    'InvalidAccessKeyError': 'invalid_access_key_error',
+    'JsonRpcResponseForRpcClientConfigResponseAndRpcClientConfigErrorResult': 'json_rpc_response_for_rpc_client_config_response_and_rpc_client_config_error',
+    'JsonRpcResponseForRpcClientConfigResponseAndRpcClientConfigErrorError': 'json_rpc_response_for_rpc_client_config_response_and_rpc_client_config_error',
+    'JsonRpcResponseForRpcClientConfigResponseAndRpcClientConfigError': 'json_rpc_response_for_rpc_client_config_response_and_rpc_client_config_error',
+    'DeterministicStateInitAction': 'deterministic_state_init_action',
+    'JsonRpcRequestForExperimentalChangesInBlock': 'json_rpc_request_for_experimental_changes_in_block',
+    'RpcPeerInfo': 'rpc_peer_info',
+    'EpochId': 'epoch_id',
+    'RpcReceiptErrorInternalErrorInfo': 'rpc_receipt_error',
+    'RpcReceiptErrorInternalError': 'rpc_receipt_error',
+    'RpcReceiptErrorUnknownReceiptInfo': 'rpc_receipt_error',
+    'RpcReceiptErrorUnknownReceipt': 'rpc_receipt_error',
+    'RpcReceiptError': 'rpc_receipt_error',
+    'MutableConfigValue': 'mutable_config_value',
+    'RpcViewAccountRequestBlockId': 'rpc_view_account_request',
+    'RpcViewAccountRequestFinality': 'rpc_view_account_request',
+    'RpcViewAccountRequestSyncCheckpoint': 'rpc_view_account_request',
+    'RpcViewAccountRequest': 'rpc_view_account_request',
+    'ReceiptEnumViewActionPayload': 'receipt_enum_view',
+    'ReceiptEnumViewAction': 'receipt_enum_view',
+    'ReceiptEnumViewDataPayload': 'receipt_enum_view',
+    'ReceiptEnumViewData': 'receipt_enum_view',
+    'ReceiptEnumViewGlobalContractDistributionPayload': 'receipt_enum_view',
+    'ReceiptEnumViewGlobalContractDistribution': 'receipt_enum_view',
+    'ReceiptEnumView': 'receipt_enum_view',
+    'JsonRpcRequestForExperimentalSplitStorageInfo': 'json_rpc_request_for_experimental_split_storage_info',
+    'JsonRpcRequestForExperimentalGenesisConfig': 'json_rpc_request_for_experimental_genesis_config',
+    'RpcStateChangesInBlockByTypeResponse': 'rpc_state_changes_in_block_by_type_response',
+    'JsonRpcRequestForExperimentalReceipt': 'json_rpc_request_for_experimental_receipt',
+    'JsonRpcRequestForExperimentalViewAccount': 'json_rpc_request_for_experimental_view_account',
+    'StorageUsageConfigView': 'storage_usage_config_view',
+    'ValidatorKickoutView': 'validator_kickout_view',
+    'DelegateActionV2': 'delegate_action_v2',
+    'Fee': 'fee',
+    'FunctionArgs': 'function_args',
+    'SyncCheckpoint': 'sync_checkpoint',
+    'TrieSplit': 'trie_split',
+    'JsonRpcRequestForStatus': 'json_rpc_request_for_status',
+    'SignedTransaction': 'signed_transaction',
+    'ChunkDistributionUris': 'chunk_distribution_uris',
+    'RpcChunkErrorInternalErrorInfo': 'rpc_chunk_error',
+    'RpcChunkErrorInternalError': 'rpc_chunk_error',
+    'RpcChunkErrorUnknownBlock': 'rpc_chunk_error',
+    'RpcChunkErrorInvalidShardIdInfo': 'rpc_chunk_error',
+    'RpcChunkErrorInvalidShardId': 'rpc_chunk_error',
+    'RpcChunkErrorUnknownChunkInfo': 'rpc_chunk_error',
+    'RpcChunkErrorUnknownChunk': 'rpc_chunk_error',
+    'RpcChunkError': 'rpc_chunk_error',
+    'StateChangeCauseViewNotWritableToDisk': 'state_change_cause_view',
+    'StateChangeCauseViewInitialState': 'state_change_cause_view',
+    'StateChangeCauseViewTransactionProcessing': 'state_change_cause_view',
+    'StateChangeCauseViewActionReceiptProcessingStarted': 'state_change_cause_view',
+    'StateChangeCauseViewActionReceiptGasReward': 'state_change_cause_view',
+    'StateChangeCauseViewReceiptProcessing': 'state_change_cause_view',
+    'StateChangeCauseViewPostponedReceipt': 'state_change_cause_view',
+    'StateChangeCauseViewUpdatedDelayedReceipts': 'state_change_cause_view',
+    'StateChangeCauseViewValidatorAccountsUpdate': 'state_change_cause_view',
+    'StateChangeCauseViewMigration': 'state_change_cause_view',
+    'StateChangeCauseViewBandwidthSchedulerStateUpdate': 'state_change_cause_view',
+    'StateChangeCauseView': 'state_change_cause_view',
+    'JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyErrorResult': 'json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error',
+    'JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyErrorError': 'json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error',
+    'JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyError': 'json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error',
+    'ExtCostsConfigView': 'ext_costs_config_view',
+    'DeterministicAccountStateInitV1Option': 'deterministic_account_state_init',
+    'DeterministicAccountStateInit': 'deterministic_account_state_init',
+    'RpcLightClientBlockProofRequest': 'rpc_light_client_block_proof_request',
+    'JsonRpcResponseForRpcTransactionResponseAndRpcTransactionErrorResult': 'json_rpc_response_for_rpc_transaction_response_and_rpc_transaction_error',
+    'JsonRpcResponseForRpcTransactionResponseAndRpcTransactionErrorError': 'json_rpc_response_for_rpc_transaction_response_and_rpc_transaction_error',
+    'JsonRpcResponseForRpcTransactionResponseAndRpcTransactionError': 'json_rpc_response_for_rpc_transaction_response_and_rpc_transaction_error',
+    'GasKeyInfo': 'gas_key_info',
+    'DeleteKeyAction': 'delete_key_action',
+    'JsonRpcRequestForQuery': 'json_rpc_request_for_query',
+    'JsonRpcRequestForLightClientProof': 'json_rpc_request_for_light_client_proof',
+    'RpcLightClientExecutionProofRequestTransaction': 'rpc_light_client_execution_proof_request',
+    'RpcLightClientExecutionProofRequestReceipt': 'rpc_light_client_execution_proof_request',
+    'RpcLightClientExecutionProofRequest': 'rpc_light_client_execution_proof_request',
+    'JsonRpcResponseForRpcViewAccountResponseAndRpcViewAccountErrorResult': 'json_rpc_response_for_rpc_view_account_response_and_rpc_view_account_error',
+    'JsonRpcResponseForRpcViewAccountResponseAndRpcViewAccountErrorError': 'json_rpc_response_for_rpc_view_account_response_and_rpc_view_account_error',
+    'JsonRpcResponseForRpcViewAccountResponseAndRpcViewAccountError': 'json_rpc_response_for_rpc_view_account_response_and_rpc_view_account_error',
+    'JsonRpcResponseForRpcQueryResponseAndRpcQueryErrorResult': 'json_rpc_response_for_rpc_query_response_and_rpc_query_error',
+    'JsonRpcResponseForRpcQueryResponseAndRpcQueryErrorError': 'json_rpc_response_for_rpc_query_response_and_rpc_query_error',
+    'JsonRpcResponseForRpcQueryResponseAndRpcQueryError': 'json_rpc_response_for_rpc_query_response_and_rpc_query_error',
+    'ValidatorInfo': 'validator_info',
+    'RpcViewStateErrorUnknownBlockInfo': 'rpc_view_state_error',
+    'RpcViewStateErrorUnknownBlock': 'rpc_view_state_error',
+    'RpcViewStateErrorInvalidAccountInfo': 'rpc_view_state_error',
+    'RpcViewStateErrorInvalidAccount': 'rpc_view_state_error',
+    'RpcViewStateErrorUnknownAccountInfo': 'rpc_view_state_error',
+    'RpcViewStateErrorUnknownAccount': 'rpc_view_state_error',
+    'RpcViewStateErrorTooLargeContractStateInfo': 'rpc_view_state_error',
+    'RpcViewStateErrorTooLargeContractState': 'rpc_view_state_error',
+    'RpcViewStateErrorInternalErrorInfo': 'rpc_view_state_error',
+    'RpcViewStateErrorInternalError': 'rpc_view_state_error',
+    'RpcViewStateError': 'rpc_view_state_error',
+    'RpcStatusRequest': 'rpc_status_request',
+    'RpcHealthResponse': 'rpc_health_response',
+    'ShardId': 'shard_id',
+    'TransferAction': 'transfer_action',
+    'RpcViewStateResponse': 'rpc_view_state_response',
+    'PeerInfoView': 'peer_info_view',
+    'RpcViewGasKeyErrorUnknownBlockInfo': 'rpc_view_gas_key_error',
+    'RpcViewGasKeyErrorUnknownBlock': 'rpc_view_gas_key_error',
+    'RpcViewGasKeyErrorInvalidAccountInfo': 'rpc_view_gas_key_error',
+    'RpcViewGasKeyErrorInvalidAccount': 'rpc_view_gas_key_error',
+    'RpcViewGasKeyErrorUnknownAccountInfo': 'rpc_view_gas_key_error',
+    'RpcViewGasKeyErrorUnknownAccount': 'rpc_view_gas_key_error',
+    'RpcViewGasKeyErrorUnknownGasKeyInfo': 'rpc_view_gas_key_error',
+    'RpcViewGasKeyErrorUnknownGasKey': 'rpc_view_gas_key_error',
+    'RpcViewGasKeyErrorInternalErrorInfo': 'rpc_view_gas_key_error',
+    'RpcViewGasKeyErrorInternalError': 'rpc_view_gas_key_error',
+    'RpcViewGasKeyError': 'rpc_view_gas_key_error',
+    'StoreValue': 'store_value',
+    'RpcViewCodeResponse': 'rpc_view_code_response',
+    'ErrorWrapperForRpcMaintenanceWindowsErrorRequestValidationError': 'error_wrapper_for_rpc_maintenance_windows_error',
+    'ErrorWrapperForRpcMaintenanceWindowsErrorHandlerError': 'error_wrapper_for_rpc_maintenance_windows_error',
+    'ErrorWrapperForRpcMaintenanceWindowsErrorInternalError': 'error_wrapper_for_rpc_maintenance_windows_error',
+    'ErrorWrapperForRpcMaintenanceWindowsError': 'error_wrapper_for_rpc_maintenance_windows_error',
+    'JsonRpcRequestForExperimentalValidatorsOrdered': 'json_rpc_request_for_experimental_validators_ordered',
+    'RpcSplitStorageInfoErrorInternalErrorInfo': 'rpc_split_storage_info_error',
+    'RpcSplitStorageInfoErrorInternalError': 'rpc_split_storage_info_error',
+    'RpcSplitStorageInfoError': 'rpc_split_storage_info_error',
+    'JsonRpcRequestForHealth': 'json_rpc_request_for_health',
+    'GasKeyList': 'gas_key_list',
+    'LogSummaryStyle': 'log_summary_style',
+    'JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceErrorResult': 'json_rpc_response_for_rpc_gas_price_response_and_rpc_gas_price_error',
+    'JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceErrorError': 'json_rpc_response_for_rpc_gas_price_response_and_rpc_gas_price_error',
+    'JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceError': 'json_rpc_response_for_rpc_gas_price_response_and_rpc_gas_price_error',
+    'JsonRpcRequestForExperimentalCongestionLevel': 'json_rpc_request_for_experimental_congestion_level',
+    'AccessKeyList': 'access_key_list',
+    'RpcReceiptToTxResponse': 'rpc_receipt_to_tx_response',
+    'ErrorWrapperForRpcViewStateErrorRequestValidationError': 'error_wrapper_for_rpc_view_state_error',
+    'ErrorWrapperForRpcViewStateErrorHandlerError': 'error_wrapper_for_rpc_view_state_error',
+    'ErrorWrapperForRpcViewStateErrorInternalError': 'error_wrapper_for_rpc_view_state_error',
+    'ErrorWrapperForRpcViewStateError': 'error_wrapper_for_rpc_view_state_error',
+    'JsonRpcResponseForRpcLightClientChunkExecutionProofResponseAndRpcLightClientProofErrorResult': 'json_rpc_response_for_rpc_light_client_chunk_execution_proof_response_and_rpc_light_client_proof_error',
+    'JsonRpcResponseForRpcLightClientChunkExecutionProofResponseAndRpcLightClientProofErrorError': 'json_rpc_response_for_rpc_light_client_chunk_execution_proof_response_and_rpc_light_client_proof_error',
+    'JsonRpcResponseForRpcLightClientChunkExecutionProofResponseAndRpcLightClientProofError': 'json_rpc_response_for_rpc_light_client_chunk_execution_proof_response_and_rpc_light_client_proof_error',
+    'Direction': 'direction',
+    'ErrorWrapperForRpcViewAccessKeyListErrorRequestValidationError': 'error_wrapper_for_rpc_view_access_key_list_error',
+    'ErrorWrapperForRpcViewAccessKeyListErrorHandlerError': 'error_wrapper_for_rpc_view_access_key_list_error',
+    'ErrorWrapperForRpcViewAccessKeyListErrorInternalError': 'error_wrapper_for_rpc_view_access_key_list_error',
+    'ErrorWrapperForRpcViewAccessKeyListError': 'error_wrapper_for_rpc_view_access_key_list_error',
+    'GenesisConfig': 'genesis_config',
+    's': 'genesis_config',
+    'JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxErrorResult': 'json_rpc_response_for_rpc_receipt_to_tx_response_and_rpc_receipt_to_tx_error',
+    'JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxErrorError': 'json_rpc_response_for_rpc_receipt_to_tx_response_and_rpc_receipt_to_tx_error',
+    'JsonRpcResponseForRpcReceiptToTxResponseAndRpcReceiptToTxError': 'json_rpc_response_for_rpc_receipt_to_tx_response_and_rpc_receipt_to_tx_error',
+    'VersionedSignedDelegateAction': 'versioned_signed_delegate_action',
+    'RpcStateChangesInBlockResponse': 'rpc_state_changes_in_block_response',
+    'PeerId': 'peer_id',
+    'DumpConfig': 'dump_config',
+    'RpcViewAccessKeyErrorUnknownBlockInfo': 'rpc_view_access_key_error',
+    'RpcViewAccessKeyErrorUnknownBlock': 'rpc_view_access_key_error',
+    'RpcViewAccessKeyErrorInvalidAccountInfo': 'rpc_view_access_key_error',
+    'RpcViewAccessKeyErrorInvalidAccount': 'rpc_view_access_key_error',
+    'RpcViewAccessKeyErrorUnknownAccountInfo': 'rpc_view_access_key_error',
+    'RpcViewAccessKeyErrorUnknownAccount': 'rpc_view_access_key_error',
+    'RpcViewAccessKeyErrorUnknownAccessKeyInfo': 'rpc_view_access_key_error',
+    'RpcViewAccessKeyErrorUnknownAccessKey': 'rpc_view_access_key_error',
+    'RpcViewAccessKeyErrorInternalErrorInfo': 'rpc_view_access_key_error',
+    'RpcViewAccessKeyErrorInternalError': 'rpc_view_access_key_error',
+    'RpcViewAccessKeyError': 'rpc_view_access_key_error',
+    'JsonRpcRequestForExperimentalChanges': 'json_rpc_request_for_experimental_changes',
+    'ErrorWrapperForGenesisConfigErrorRequestValidationError': 'error_wrapper_for_genesis_config_error',
+    'ErrorWrapperForGenesisConfigErrorHandlerError': 'error_wrapper_for_genesis_config_error',
+    'ErrorWrapperForGenesisConfigErrorInternalError': 'error_wrapper_for_genesis_config_error',
+    'ErrorWrapperForGenesisConfigError': 'error_wrapper_for_genesis_config_error',
+    'NetworkInfoView': 'network_info_view',
+    'RpcClientConfigResponse': 'rpc_client_config_response',
+    'RpcQueryErrorNoSyncedBlocks': 'rpc_query_error',
+    'RpcQueryErrorUnavailableShardInfo': 'rpc_query_error',
+    'RpcQueryErrorUnavailableShard': 'rpc_query_error',
+    'RpcQueryErrorGarbageCollectedBlockInfo': 'rpc_query_error',
+    'RpcQueryErrorGarbageCollectedBlock': 'rpc_query_error',
+    'RpcQueryErrorUnknownBlockInfo': 'rpc_query_error',
+    'RpcQueryErrorUnknownBlock': 'rpc_query_error',
+    'RpcQueryErrorInvalidAccountInfo': 'rpc_query_error',
+    'RpcQueryErrorInvalidAccount': 'rpc_query_error',
+    'RpcQueryErrorUnknownAccountInfo': 'rpc_query_error',
+    'RpcQueryErrorUnknownAccount': 'rpc_query_error',
+    'RpcQueryErrorNoContractCodeInfo': 'rpc_query_error',
+    'RpcQueryErrorNoContractCode': 'rpc_query_error',
+    'RpcQueryErrorTooLargeContractStateInfo': 'rpc_query_error',
+    'RpcQueryErrorTooLargeContractState': 'rpc_query_error',
+    'RpcQueryErrorUnknownAccessKeyInfo': 'rpc_query_error',
+    'RpcQueryErrorUnknownAccessKey': 'rpc_query_error',
+    'RpcQueryErrorUnknownGasKeyInfo': 'rpc_query_error',
+    'RpcQueryErrorUnknownGasKey': 'rpc_query_error',
+    'RpcQueryErrorTooManyAccessKeysInfo': 'rpc_query_error',
+    'RpcQueryErrorTooManyAccessKeys': 'rpc_query_error',
+    'RpcQueryErrorContractExecutionErrorInfo': 'rpc_query_error',
+    'RpcQueryErrorContractExecutionError': 'rpc_query_error',
+    'RpcQueryErrorNoGlobalContractCodeInfo': 'rpc_query_error',
+    'RpcQueryErrorNoGlobalContractCode': 'rpc_query_error',
+    'RpcQueryErrorInternalErrorInfo': 'rpc_query_error',
+    'RpcQueryErrorInternalError': 'rpc_query_error',
+    'RpcQueryError': 'rpc_query_error',
+    'ErrorWrapperForRpcLightClientNextBlockErrorRequestValidationError': 'error_wrapper_for_rpc_light_client_next_block_error',
+    'ErrorWrapperForRpcLightClientNextBlockErrorHandlerError': 'error_wrapper_for_rpc_light_client_next_block_error',
+    'ErrorWrapperForRpcLightClientNextBlockErrorInternalError': 'error_wrapper_for_rpc_light_client_next_block_error',
+    'ErrorWrapperForRpcLightClientNextBlockError': 'error_wrapper_for_rpc_light_client_next_block_error',
+    'RpcReceiptResponse': 'rpc_receipt_response',
+    'RpcLightClientStateProofResponse': 'rpc_light_client_state_proof_response',
+    'GasKeyInfoView': 'gas_key_info_view',
+    'VMConfigView': 'vmconfig_view',
+    'ErrorWrapperForRpcSplitStorageInfoErrorRequestValidationError': 'error_wrapper_for_rpc_split_storage_info_error',
+    'ErrorWrapperForRpcSplitStorageInfoErrorHandlerError': 'error_wrapper_for_rpc_split_storage_info_error',
+    'ErrorWrapperForRpcSplitStorageInfoErrorInternalError': 'error_wrapper_for_rpc_split_storage_info_error',
+    'ErrorWrapperForRpcSplitStorageInfoError': 'error_wrapper_for_rpc_split_storage_info_error',
+    'ExternalStorageLocationS3Payload': 'external_storage_location',
+    'ExternalStorageLocationS3': 'external_storage_location',
+    'ExternalStorageLocationFilesystemPayload': 'external_storage_location',
+    'ExternalStorageLocationFilesystem': 'external_storage_location',
+    'ExternalStorageLocationGcsPayload': 'external_storage_location',
+    'ExternalStorageLocationGcs': 'external_storage_location',
+    'ExternalStorageLocation': 'external_storage_location',
+    'RpcCallFunctionErrorUnknownBlockInfo': 'rpc_call_function_error',
+    'RpcCallFunctionErrorUnknownBlock': 'rpc_call_function_error',
+    'RpcCallFunctionErrorInvalidAccountInfo': 'rpc_call_function_error',
+    'RpcCallFunctionErrorInvalidAccount': 'rpc_call_function_error',
+    'RpcCallFunctionErrorUnknownAccountInfo': 'rpc_call_function_error',
+    'RpcCallFunctionErrorUnknownAccount': 'rpc_call_function_error',
+    'RpcCallFunctionErrorNoContractCodeInfo': 'rpc_call_function_error',
+    'RpcCallFunctionErrorNoContractCode': 'rpc_call_function_error',
+    'RpcCallFunctionErrorContractExecutionErrorInfo': 'rpc_call_function_error',
+    'RpcCallFunctionErrorContractExecutionError': 'rpc_call_function_error',
+    'RpcCallFunctionErrorInternalErrorInfo': 'rpc_call_function_error',
+    'RpcCallFunctionErrorInternalError': 'rpc_call_function_error',
+    'RpcCallFunctionError': 'rpc_call_function_error',
+    'SignedTransactionView': 'signed_transaction_view',
+    'CurrentEpochValidatorInfo': 'current_epoch_validator_info',
+    'StoreKey': 'store_key',
+    'ErrorWrapperForRpcViewCodeErrorRequestValidationError': 'error_wrapper_for_rpc_view_code_error',
+    'ErrorWrapperForRpcViewCodeErrorHandlerError': 'error_wrapper_for_rpc_view_code_error',
+    'ErrorWrapperForRpcViewCodeErrorInternalError': 'error_wrapper_for_rpc_view_code_error',
+    'ErrorWrapperForRpcViewCodeError': 'error_wrapper_for_rpc_view_code_error',
+    'SignedDelegateAction': 'signed_delegate_action',
+    'DelegateAction': 'delegate_action',
     'StrictBaseModel': 'strict_model',
+    'TimeoutErrorCauseCause': 'timeout_error_cause',
+    'TimeoutErrorCauseCauseStatus': 'timeout_error_cause',
+    'TimeoutErrorCauseCauseShardId': 'timeout_error_cause',
+    'TimeoutErrorCauseCauseDebugInfo': 'timeout_error_cause',
+    'TimeoutErrorCause': 'timeout_error_cause',
+    'RpcKnownProducer': 'rpc_known_producer',
+    'JsonRpcRequestForExperimentalLightClientProof': 'json_rpc_request_for_experimental_light_client_proof',
+    'CallResult': 'call_result',
+    'RawStateInit': 'raw_state_init',
+    'RpcLightClientNextBlockErrorInternalErrorInfo': 'rpc_light_client_next_block_error',
+    'RpcLightClientNextBlockErrorInternalError': 'rpc_light_client_next_block_error',
+    'RpcLightClientNextBlockErrorUnknownBlock': 'rpc_light_client_next_block_error',
+    'RpcLightClientNextBlockErrorEpochOutOfBoundsInfo': 'rpc_light_client_next_block_error',
+    'RpcLightClientNextBlockErrorEpochOutOfBounds': 'rpc_light_client_next_block_error',
+    'RpcLightClientNextBlockError': 'rpc_light_client_next_block_error',
+    'StateProofView': 'state_proof_view',
+    'AccessKeyView': 'access_key_view',
+    'ErrorWrapperForRpcViewGasKeyErrorRequestValidationError': 'error_wrapper_for_rpc_view_gas_key_error',
+    'ErrorWrapperForRpcViewGasKeyErrorHandlerError': 'error_wrapper_for_rpc_view_gas_key_error',
+    'ErrorWrapperForRpcViewGasKeyErrorInternalError': 'error_wrapper_for_rpc_view_gas_key_error',
+    'ErrorWrapperForRpcViewGasKeyError': 'error_wrapper_for_rpc_view_gas_key_error',
+    'ChunkExecutionRootsV1Option': 'chunk_execution_roots',
+    'ChunkExecutionRoots': 'chunk_execution_roots',
+    'JsonRpcResponseForRpcChunkResponseAndRpcChunkErrorResult': 'json_rpc_response_for_rpc_chunk_response_and_rpc_chunk_error',
+    'JsonRpcResponseForRpcChunkResponseAndRpcChunkErrorError': 'json_rpc_response_for_rpc_chunk_response_and_rpc_chunk_error',
+    'JsonRpcResponseForRpcChunkResponseAndRpcChunkError': 'json_rpc_response_for_rpc_chunk_response_and_rpc_chunk_error',
+    'DataReceiverView': 'data_receiver_view',
+    'JsonRpcRequestForExperimentalViewAccessKeyList': 'json_rpc_request_for_experimental_view_access_key_list',
+    'RpcValidatorsOrderedRequest': 'rpc_validators_ordered_request',
+    'RpcGasPriceRequest': 'rpc_gas_price_request',
+    'DeployGlobalContractAction': 'deploy_global_contract_action',
+    'RpcBlockRequestBlockId': 'rpc_block_request',
+    'RpcBlockRequestFinality': 'rpc_block_request',
+    'RpcBlockRequestSyncCheckpoint': 'rpc_block_request',
+    'RpcBlockRequest': 'rpc_block_request',
+    'ActionViewCreateAccount': 'action_view',
+    'ActionViewDeployContractPayload': 'action_view',
+    'ActionViewDeployContract': 'action_view',
+    'ActionViewFunctionCallPayload': 'action_view',
+    'ActionViewFunctionCall': 'action_view',
+    'ActionViewTransferPayload': 'action_view',
+    'ActionViewTransfer': 'action_view',
+    'ActionViewStakePayload': 'action_view',
+    'ActionViewStake': 'action_view',
+    'ActionViewAddKeyPayload': 'action_view',
+    'ActionViewAddKey': 'action_view',
+    'ActionViewDeleteKeyPayload': 'action_view',
+    'ActionViewDeleteKey': 'action_view',
+    'ActionViewDeleteAccountPayload': 'action_view',
+    'ActionViewDeleteAccount': 'action_view',
+    'ActionViewDelegatePayload': 'action_view',
+    'ActionViewDelegate': 'action_view',
+    'ActionViewDelegateV2Payload': 'action_view',
+    'ActionViewDelegateV2': 'action_view',
+    'ActionViewDeployGlobalContractPayload': 'action_view',
+    'ActionViewDeployGlobalContract': 'action_view',
+    'ActionViewDeployGlobalContractByAccountIdPayload': 'action_view',
+    'ActionViewDeployGlobalContractByAccountId': 'action_view',
+    'ActionViewUseGlobalContractPayload': 'action_view',
+    'ActionViewUseGlobalContract': 'action_view',
+    'ActionViewUseGlobalContractByAccountIdPayload': 'action_view',
+    'ActionViewUseGlobalContractByAccountId': 'action_view',
+    'ActionViewDeterministicStateInitPayload': 'action_view',
+    'ActionViewDeterministicStateInit': 'action_view',
+    'ActionViewTransferToGasKeyPayload': 'action_view',
+    'ActionViewTransferToGasKey': 'action_view',
+    'ActionViewWithdrawFromGasKeyPayload': 'action_view',
+    'ActionViewWithdrawFromGasKey': 'action_view',
+    'ActionViewUniversalStateInitPayload': 'action_view',
+    'ActionViewUniversalStateInit': 'action_view',
+    'ActionView': 'action_view',
+    'GenesisConfigError': 'genesis_config_error',
+    'RpcViewGasKeyRequestBlockId': 'rpc_view_gas_key_request',
+    'RpcViewGasKeyRequestFinality': 'rpc_view_gas_key_request',
+    'RpcViewGasKeyRequestSyncCheckpoint': 'rpc_view_gas_key_request',
+    'RpcViewGasKeyRequest': 'rpc_view_gas_key_request',
+    'RpcMaintenanceWindowsRequest': 'rpc_maintenance_windows_request',
+    'ErrorWrapperForRpcChunkErrorRequestValidationError': 'error_wrapper_for_rpc_chunk_error',
+    'ErrorWrapperForRpcChunkErrorHandlerError': 'error_wrapper_for_rpc_chunk_error',
+    'ErrorWrapperForRpcChunkErrorInternalError': 'error_wrapper_for_rpc_chunk_error',
+    'ErrorWrapperForRpcChunkError': 'error_wrapper_for_rpc_chunk_error',
+    'ActionError': 'action_error',
+    'RpcViewStateRequestBlockId': 'rpc_view_state_request',
+    'RpcViewStateRequestFinality': 'rpc_view_state_request',
+    'RpcViewStateRequestSyncCheckpoint': 'rpc_view_state_request',
+    'RpcViewStateRequest': 'rpc_view_state_request',
+    'GCConfig': 'gcconfig',
+    'RpcChunkResponse': 'rpc_chunk_response',
+    'DetailedDebugStatus': 'detailed_debug_status',
+    'GenesisConfigRequest': 'genesis_config_request',
+    'RpcCallFunctionResponse': 'rpc_call_function_response',
+    'RpcReceiptToTxRequest': 'rpc_receipt_to_tx_request',
+    'BlockHeaderInnerLiteView': 'block_header_inner_lite_view',
+    'ErrorWrapperForRpcReceiptErrorRequestValidationError': 'error_wrapper_for_rpc_receipt_error',
+    'ErrorWrapperForRpcReceiptErrorHandlerError': 'error_wrapper_for_rpc_receipt_error',
+    'ErrorWrapperForRpcReceiptErrorInternalError': 'error_wrapper_for_rpc_receipt_error',
+    'ErrorWrapperForRpcReceiptError': 'error_wrapper_for_rpc_receipt_error',
+    'RpcViewCodeErrorUnknownBlockInfo': 'rpc_view_code_error',
+    'RpcViewCodeErrorUnknownBlock': 'rpc_view_code_error',
+    'RpcViewCodeErrorInvalidAccountInfo': 'rpc_view_code_error',
+    'RpcViewCodeErrorInvalidAccount': 'rpc_view_code_error',
+    'RpcViewCodeErrorUnknownAccountInfo': 'rpc_view_code_error',
+    'RpcViewCodeErrorUnknownAccount': 'rpc_view_code_error',
+    'RpcViewCodeErrorNoContractCodeInfo': 'rpc_view_code_error',
+    'RpcViewCodeErrorNoContractCode': 'rpc_view_code_error',
+    'RpcViewCodeErrorInternalErrorInfo': 'rpc_view_code_error',
+    'RpcViewCodeErrorInternalError': 'rpc_view_code_error',
+    'RpcViewCodeError': 'rpc_view_code_error',
+    'RangeOfUint64': 'range_of_uint64',
+    'DeterministicAccountStateInitV1': 'deterministic_account_state_init_v1',
+    'NearGas': 'near_gas',
+    'ShardUId': 'shard_uid',
+    'ErrorWrapperForRpcReceiptToTxErrorRequestValidationError': 'error_wrapper_for_rpc_receipt_to_tx_error',
+    'ErrorWrapperForRpcReceiptToTxErrorHandlerError': 'error_wrapper_for_rpc_receipt_to_tx_error',
+    'ErrorWrapperForRpcReceiptToTxErrorInternalError': 'error_wrapper_for_rpc_receipt_to_tx_error',
+    'ErrorWrapperForRpcReceiptToTxError': 'error_wrapper_for_rpc_receipt_to_tx_error',
+    'RpcValidatorResponse': 'rpc_validator_response',
+    'GlobalContractIdentifierViewHash': 'global_contract_identifier_view',
+    'GlobalContractIdentifierViewAccountId': 'global_contract_identifier_view',
+    'GlobalContractIdentifierView': 'global_contract_identifier_view',
+    'ExecutionStatusViewUnknown': 'execution_status_view',
+    'ExecutionStatusViewFailure': 'execution_status_view',
+    'ExecutionStatusViewSuccessValue': 'execution_status_view',
+    'ExecutionStatusViewSuccessReceiptId': 'execution_status_view',
+    'ExecutionStatusView': 'execution_status_view',
+    'JsonRpcResponseForRpcBlockResponseAndRpcBlockErrorResult': 'json_rpc_response_for_rpc_block_response_and_rpc_block_error',
+    'JsonRpcResponseForRpcBlockResponseAndRpcBlockErrorError': 'json_rpc_response_for_rpc_block_response_and_rpc_block_error',
+    'JsonRpcResponseForRpcBlockResponseAndRpcBlockError': 'json_rpc_response_for_rpc_block_response_and_rpc_block_error',
+    'ErrorWrapperForRpcViewGasKeyListErrorRequestValidationError': 'error_wrapper_for_rpc_view_gas_key_list_error',
+    'ErrorWrapperForRpcViewGasKeyListErrorHandlerError': 'error_wrapper_for_rpc_view_gas_key_list_error',
+    'ErrorWrapperForRpcViewGasKeyListErrorInternalError': 'error_wrapper_for_rpc_view_gas_key_list_error',
+    'ErrorWrapperForRpcViewGasKeyListError': 'error_wrapper_for_rpc_view_gas_key_list_error',
+    'AccessKeyPermissionFunctionCall': 'access_key_permission',
+    'AccessKeyPermissionFullAccess': 'access_key_permission',
+    'AccessKeyPermissionGasKeyFunctionCall': 'access_key_permission',
+    'AccessKeyPermissionGasKeyFullAccess': 'access_key_permission',
+    'AccessKeyPermission': 'access_key_permission',
+    'JsonRpcResponseForRpcViewGasKeyListResponseAndRpcViewGasKeyListErrorResult': 'json_rpc_response_for_rpc_view_gas_key_list_response_and_rpc_view_gas_key_list_error',
+    'JsonRpcResponseForRpcViewGasKeyListResponseAndRpcViewGasKeyListErrorError': 'json_rpc_response_for_rpc_view_gas_key_list_response_and_rpc_view_gas_key_list_error',
+    'JsonRpcResponseForRpcViewGasKeyListResponseAndRpcViewGasKeyListError': 'json_rpc_response_for_rpc_view_gas_key_list_response_and_rpc_view_gas_key_list_error',
+    'ErrorWrapperForRpcViewAccountErrorRequestValidationError': 'error_wrapper_for_rpc_view_account_error',
+    'ErrorWrapperForRpcViewAccountErrorHandlerError': 'error_wrapper_for_rpc_view_account_error',
+    'ErrorWrapperForRpcViewAccountErrorInternalError': 'error_wrapper_for_rpc_view_account_error',
+    'ErrorWrapperForRpcViewAccountError': 'error_wrapper_for_rpc_view_account_error',
+    'JsonRpcRequestForExperimentalCallFunction': 'json_rpc_request_for_experimental_call_function',
+    'AccountWithPublicKey': 'account_with_public_key',
+    'SyncConfig': 'sync_config',
+    'AccountIdValidityRulesVersion': 'account_id_validity_rules_version',
+    'JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorResult': 'json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error',
+    'JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorError': 'json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error',
+    'JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsError': 'json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error',
+    'FunctionCallPermission': 'function_call_permission',
+    'RuntimeFeesConfigView': 'runtime_fees_config_view',
+    'WitnessConfigView': 'witness_config_view',
+    'RpcLightClientChunkExecutionProofResponse': 'rpc_light_client_chunk_execution_proof_response',
     'JsonRpcResponseForRpcLightClientBlockProofResponseAndRpcLightClientProofErrorResult': 'json_rpc_response_for_rpc_light_client_block_proof_response_and_rpc_light_client_proof_error',
     'JsonRpcResponseForRpcLightClientBlockProofResponseAndRpcLightClientProofErrorError': 'json_rpc_response_for_rpc_light_client_block_proof_response_and_rpc_light_client_proof_error',
     'JsonRpcResponseForRpcLightClientBlockProofResponseAndRpcLightClientProofError': 'json_rpc_response_for_rpc_light_client_block_proof_response_and_rpc_light_client_proof_error',
-    'DeterministicStateInitAction': 'deterministic_state_init_action',
-    'TransactionNonceNoncePayload': 'transaction_nonce',
-    'TransactionNonceNonce': 'transaction_nonce',
-    'TransactionNonceGasKeyNoncePayload': 'transaction_nonce',
-    'TransactionNonceGasKeyNonce': 'transaction_nonce',
-    'TransactionNonce': 'transaction_nonce',
-    'ErrorWrapperForRpcQueryErrorRequestValidationError': 'error_wrapper_for_rpc_query_error',
-    'ErrorWrapperForRpcQueryErrorHandlerError': 'error_wrapper_for_rpc_query_error',
-    'ErrorWrapperForRpcQueryErrorInternalError': 'error_wrapper_for_rpc_query_error',
-    'ErrorWrapperForRpcQueryError': 'error_wrapper_for_rpc_query_error',
-    'ErrorWrapperForRpcGasPriceErrorRequestValidationError': 'error_wrapper_for_rpc_gas_price_error',
-    'ErrorWrapperForRpcGasPriceErrorHandlerError': 'error_wrapper_for_rpc_gas_price_error',
-    'ErrorWrapperForRpcGasPriceErrorInternalError': 'error_wrapper_for_rpc_gas_price_error',
-    'ErrorWrapperForRpcGasPriceError': 'error_wrapper_for_rpc_gas_price_error',
-    'FinalExecutionStatusNotStarted': 'final_execution_status',
-    'FinalExecutionStatusStarted': 'final_execution_status',
-    'FinalExecutionStatusFailure': 'final_execution_status',
-    'FinalExecutionStatusSuccessValue': 'final_execution_status',
-    'FinalExecutionStatus': 'final_execution_status',
+    'JsonRpcRequestForTx': 'json_rpc_request_for_tx',
+    'JsonRpcResponseForGenesisConfigAndGenesisConfigErrorResult': 'json_rpc_response_for_genesis_config_and_genesis_config_error',
+    'JsonRpcResponseForGenesisConfigAndGenesisConfigErrorError': 'json_rpc_response_for_genesis_config_and_genesis_config_error',
+    'JsonRpcResponseForGenesisConfigAndGenesisConfigError': 'json_rpc_response_for_genesis_config_and_genesis_config_error',
+    'StateSyncConfig': 'state_sync_config',
+    'AccountId': 'account_id',
+    'MissingTrieValue': 'missing_trie_value',
+    'JsonRpcResponseForRpcProtocolConfigResponseAndRpcProtocolConfigErrorResult': 'json_rpc_response_for_rpc_protocol_config_response_and_rpc_protocol_config_error',
+    'JsonRpcResponseForRpcProtocolConfigResponseAndRpcProtocolConfigErrorError': 'json_rpc_response_for_rpc_protocol_config_response_and_rpc_protocol_config_error',
+    'JsonRpcResponseForRpcProtocolConfigResponseAndRpcProtocolConfigError': 'json_rpc_response_for_rpc_protocol_config_response_and_rpc_protocol_config_error',
+    'RpcProtocolConfigErrorUnknownBlock': 'rpc_protocol_config_error',
+    'RpcProtocolConfigErrorInternalErrorInfo': 'rpc_protocol_config_error',
+    'RpcProtocolConfigErrorInternalError': 'rpc_protocol_config_error',
+    'RpcProtocolConfigError': 'rpc_protocol_config_error',
+    'ErrorWrapperForRpcProtocolConfigErrorRequestValidationError': 'error_wrapper_for_rpc_protocol_config_error',
+    'ErrorWrapperForRpcProtocolConfigErrorHandlerError': 'error_wrapper_for_rpc_protocol_config_error',
+    'ErrorWrapperForRpcProtocolConfigErrorInternalError': 'error_wrapper_for_rpc_protocol_config_error',
+    'ErrorWrapperForRpcProtocolConfigError': 'error_wrapper_for_rpc_protocol_config_error',
+    'CloudArchivalWriterConfig': 'cloud_archival_writer_config',
+    'ViewStateResult': 'view_state_result',
+    'RpcLightClientNextBlockRequest': 'rpc_light_client_next_block_request',
+    'DepositCostFailureReason': 'deposit_cost_failure_reason',
 }
 
 def __getattr__(name: str):
