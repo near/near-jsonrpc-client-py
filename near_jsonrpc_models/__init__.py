@@ -229,6 +229,8 @@ if TYPE_CHECKING:
     from .actions_validation_error import ActionsValidationErrorRemovedProtocolFeaturePayload
     from .actions_validation_error import ActionsValidationErrorRemovedProtocolFeature
     from .actions_validation_error import ActionsValidationErrorWithdrawFromGasKeyNotAllowedInDelegate
+    from .actions_validation_error import ActionsValidationErrorUniversalStateInitTooManyKeysPayload
+    from .actions_validation_error import ActionsValidationErrorUniversalStateInitTooManyKeys
     from .actions_validation_error import ActionsValidationError
     from .json_rpc_request_for_network_info import JsonRpcRequestForNetworkInfo
     from .account_view import AccountView
@@ -1421,6 +1423,8 @@ __all__ = [
     'ActionsValidationErrorTotalPrepaidGasExceededPayload',
     'ActionsValidationErrorUniversalStateInitKeyLengthExceeded',
     'ActionsValidationErrorUniversalStateInitKeyLengthExceededPayload',
+    'ActionsValidationErrorUniversalStateInitTooManyKeys',
+    'ActionsValidationErrorUniversalStateInitTooManyKeysPayload',
     'ActionsValidationErrorUniversalStateInitValueLengthExceeded',
     'ActionsValidationErrorUniversalStateInitValueLengthExceededPayload',
     'ActionsValidationErrorUnsuitableStakingKey',
@@ -2732,6 +2736,8 @@ _CLASS_TO_MODULE = {
     'ActionsValidationErrorRemovedProtocolFeaturePayload': 'actions_validation_error',
     'ActionsValidationErrorRemovedProtocolFeature': 'actions_validation_error',
     'ActionsValidationErrorWithdrawFromGasKeyNotAllowedInDelegate': 'actions_validation_error',
+    'ActionsValidationErrorUniversalStateInitTooManyKeysPayload': 'actions_validation_error',
+    'ActionsValidationErrorUniversalStateInitTooManyKeys': 'actions_validation_error',
     'ActionsValidationError': 'actions_validation_error',
     'JsonRpcRequestForNetworkInfo': 'json_rpc_request_for_network_info',
     'AccountView': 'account_view',
