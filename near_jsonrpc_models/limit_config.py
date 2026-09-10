@@ -101,6 +101,14 @@ class LimitConfig(BaseModel):
     # If present, stores max number of entries in the wasm type section that
     # a contract may declare.
     max_types_per_contract: conint(ge=0, le=18446744073709551615) | None = None
+    # Max number of access keys a `UniversalStateInit` action may commit to.
+    # 
+    # Each committed key is priced as a full `AddKey`, at the send rate, so the
+    # whole cost lands when a transaction is converted to a receipt. Without a
+    # cap one transaction converts for more gas than a chunk has, and since
+    # conversion happens before anything is charged, transaction selection
+    # admits it anyway.
+    max_universal_state_init_keys: conint(ge=0, le=18446744073709551615) = None
     # Maximum number of bytes for payload passed over a yield resume.
     max_yield_payload_size: conint(ge=0, le=18446744073709551615) = None
     # If present, requires at least this many bytes of contract code per local.
