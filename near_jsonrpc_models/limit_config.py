@@ -90,6 +90,15 @@ class LimitConfig(BaseModel):
     # See <https://wiki.parity.io/WebAssembly-StackHeight> to find out how the stack frame cost
     # is calculated.
     max_stack_height: conint(ge=0, le=4294967295) = None
+    # Max number of storage entries a `DeterministicStateInit` or
+    # `UniversalStateInit` action may carry.
+    # 
+    # Each entry costs `..._state_init_per_entry` to execute, which is counted
+    # into the receipt's congestion gas whether or not it is ever burnt. Without
+    # a cap one receipt reserves several times `max_congestion_outgoing_gas`,
+    # pinning the sending shard at full outgoing congestion, which stops it
+    # accepting transactions.
+    max_state_init_entries: conint(ge=0, le=18446744073709551615) = None
     # If present, stores max number of tables declared globally in one contract
     max_tables_per_contract: conint(ge=0, le=4294967295) | None = None
     # Maximum total length in bytes of all log messages.

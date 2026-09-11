@@ -70,6 +70,17 @@ class APIMixinSync:
             params=params,
         )
 
+    def experimental_indexer_block(self: NearBaseClientSync, *, params: near_jsonrpc_models.RpcIndexerBlockRequest) -> near_jsonrpc_models.RpcIndexerBlockResponse:
+        """
+        Returns an indexer streamer message and tracked shard coverage for a block hash. Requires enable_indexer_rpc and retained execution data.
+        High-level method: returns the result model or raises NearClientError/NearRpcError/NearHttpError.
+        """
+        return self._call(
+            request_model=near_jsonrpc_models.JsonRpcRequestForExperimentalIndexerBlock,
+            response_model=near_jsonrpc_models.JsonRpcResponseForRpcIndexerBlockResponseAndRpcIndexerBlockError,
+            params=params,
+        )
+
     def experimental_light_client_block_proof(self: NearBaseClientSync, *, params: near_jsonrpc_models.RpcLightClientBlockProofRequest) -> near_jsonrpc_models.RpcLightClientBlockProofResponse:
         """
         Returns the proofs for a transaction execution.
