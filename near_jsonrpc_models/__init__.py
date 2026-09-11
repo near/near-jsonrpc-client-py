@@ -36,6 +36,7 @@ if TYPE_CHECKING:
     from .rpc_light_client_proof_error import RpcLightClientProofErrorInternalError
     from .rpc_light_client_proof_error import RpcLightClientProofError
     from .rpc_receipt_request import RpcReceiptRequest
+    from .rpc_indexer_block_response import RpcIndexerBlockResponse
     from .json_rpc_request_for_experimental_view_state import JsonRpcRequestForExperimentalViewState
     from .bandwidth_request import BandwidthRequest
     from .state_item import StateItem
@@ -231,9 +232,12 @@ if TYPE_CHECKING:
     from .actions_validation_error import ActionsValidationErrorWithdrawFromGasKeyNotAllowedInDelegate
     from .actions_validation_error import ActionsValidationErrorUniversalStateInitTooManyKeysPayload
     from .actions_validation_error import ActionsValidationErrorUniversalStateInitTooManyKeys
+    from .actions_validation_error import ActionsValidationErrorTotalNumberOfStateInitEntriesExceededPayload
+    from .actions_validation_error import ActionsValidationErrorTotalNumberOfStateInitEntriesExceeded
     from .actions_validation_error import ActionsValidationError
     from .json_rpc_request_for_network_info import JsonRpcRequestForNetworkInfo
     from .account_view import AccountView
+    from .indexer_chunk_view import IndexerChunkView
     from .signature import Signature
     from .rpc_view_account_error import RpcViewAccountErrorUnknownBlockInfo
     from .rpc_view_account_error import RpcViewAccountErrorUnknownBlock
@@ -321,6 +325,17 @@ if TYPE_CHECKING:
     from .host_error import HostErrorMlDsaVerifyInvalidInput
     from .host_error import HostError
     from .rpc_view_gas_key_response import RpcViewGasKeyResponse
+    from .rpc_indexer_block_error import RpcIndexerBlockErrorDataUnavailableInfo
+    from .rpc_indexer_block_error import RpcIndexerBlockErrorDataUnavailable
+    from .rpc_indexer_block_error import RpcIndexerBlockErrorIncompleteDataInfo
+    from .rpc_indexer_block_error import RpcIndexerBlockErrorIncompleteData
+    from .rpc_indexer_block_error import RpcIndexerBlockErrorUnsupportedInfo
+    from .rpc_indexer_block_error import RpcIndexerBlockErrorUnsupported
+    from .rpc_indexer_block_error import RpcIndexerBlockErrorLimitExceeded
+    from .rpc_indexer_block_error import RpcIndexerBlockErrorBusy
+    from .rpc_indexer_block_error import RpcIndexerBlockErrorInternalErrorInfo
+    from .rpc_indexer_block_error import RpcIndexerBlockErrorInternalError
+    from .rpc_indexer_block_error import RpcIndexerBlockError
     from .spice_chunk_endorsement_stats import SpiceChunkEndorsementStats
     from .congestion_info_view import CongestionInfoView
     from .vmkind import VMKind
@@ -399,6 +414,10 @@ if TYPE_CHECKING:
     from .rpc_view_gas_key_list_response import RpcViewGasKeyListResponse
     from .versioned_delegate_action_payload import VersionedDelegateActionPayloadV2
     from .versioned_delegate_action_payload import VersionedDelegateActionPayload
+    from .error_wrapper_for_rpc_indexer_block_error import ErrorWrapperForRpcIndexerBlockErrorRequestValidationError
+    from .error_wrapper_for_rpc_indexer_block_error import ErrorWrapperForRpcIndexerBlockErrorHandlerError
+    from .error_wrapper_for_rpc_indexer_block_error import ErrorWrapperForRpcIndexerBlockErrorInternalError
+    from .error_wrapper_for_rpc_indexer_block_error import ErrorWrapperForRpcIndexerBlockError
     from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorUnknownReceiptInfo
     from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorUnknownReceipt
     from .rpc_receipt_to_tx_error import RpcReceiptToTxErrorDepthExceededInfo
@@ -463,6 +482,7 @@ if TYPE_CHECKING:
     from .storage_error import StorageErrorMemTrieLoadingError
     from .storage_error import StorageError
     from .json_rpc_request_for_experimental_maintenance_windows import JsonRpcRequestForExperimentalMaintenanceWindows
+    from .json_rpc_request_for_experimental_indexer_block import JsonRpcRequestForExperimentalIndexerBlock
     from .chunk_distribution_network_config import ChunkDistributionNetworkConfig
     from .json_rpc_response_for_rpc_light_client_execution_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientExecutionProofResponseAndRpcLightClientProofErrorResult
     from .json_rpc_response_for_rpc_light_client_execution_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientExecutionProofResponseAndRpcLightClientProofErrorError
@@ -671,6 +691,7 @@ if TYPE_CHECKING:
     from .json_rpc_request_for_validators import JsonRpcRequestForValidators
     from .rpc_light_client_execution_proof_response import RpcLightClientExecutionProofResponse
     from .execution_outcome_view import ExecutionOutcomeView
+    from .indexer_execution_outcome_with_optional_receipt import IndexerExecutionOutcomeWithOptionalReceipt
     from .error_wrapper_for_rpc_status_error import ErrorWrapperForRpcStatusErrorRequestValidationError
     from .error_wrapper_for_rpc_status_error import ErrorWrapperForRpcStatusErrorHandlerError
     from .error_wrapper_for_rpc_status_error import ErrorWrapperForRpcStatusErrorInternalError
@@ -935,6 +956,7 @@ if TYPE_CHECKING:
     from .transfer_action import TransferAction
     from .rpc_view_state_response import RpcViewStateResponse
     from .peer_info_view import PeerInfoView
+    from .indexer_execution_outcome_with_receipt import IndexerExecutionOutcomeWithReceipt
     from .rpc_view_gas_key_error import RpcViewGasKeyErrorUnknownBlockInfo
     from .rpc_view_gas_key_error import RpcViewGasKeyErrorUnknownBlock
     from .rpc_view_gas_key_error import RpcViewGasKeyErrorInvalidAccountInfo
@@ -1071,6 +1093,7 @@ if TYPE_CHECKING:
     from .error_wrapper_for_rpc_view_code_error import ErrorWrapperForRpcViewCodeErrorHandlerError
     from .error_wrapper_for_rpc_view_code_error import ErrorWrapperForRpcViewCodeErrorInternalError
     from .error_wrapper_for_rpc_view_code_error import ErrorWrapperForRpcViewCodeError
+    from .rpc_indexer_block_request import RpcIndexerBlockRequest
     from .signed_delegate_action import SignedDelegateAction
     from .delegate_action import DelegateAction
     from .strict_model import StrictBaseModel
@@ -1151,6 +1174,7 @@ if TYPE_CHECKING:
     from .rpc_view_gas_key_request import RpcViewGasKeyRequestSyncCheckpoint
     from .rpc_view_gas_key_request import RpcViewGasKeyRequest
     from .rpc_maintenance_windows_request import RpcMaintenanceWindowsRequest
+    from .indexer_transaction_with_outcome import IndexerTransactionWithOutcome
     from .error_wrapper_for_rpc_chunk_error import ErrorWrapperForRpcChunkErrorRequestValidationError
     from .error_wrapper_for_rpc_chunk_error import ErrorWrapperForRpcChunkErrorHandlerError
     from .error_wrapper_for_rpc_chunk_error import ErrorWrapperForRpcChunkErrorInternalError
@@ -1161,6 +1185,9 @@ if TYPE_CHECKING:
     from .rpc_view_state_request import RpcViewStateRequestSyncCheckpoint
     from .rpc_view_state_request import RpcViewStateRequest
     from .gcconfig import GCConfig
+    from .json_rpc_response_for_rpc_indexer_block_response_and_rpc_indexer_block_error import JsonRpcResponseForRpcIndexerBlockResponseAndRpcIndexerBlockErrorResult
+    from .json_rpc_response_for_rpc_indexer_block_response_and_rpc_indexer_block_error import JsonRpcResponseForRpcIndexerBlockResponseAndRpcIndexerBlockErrorError
+    from .json_rpc_response_for_rpc_indexer_block_response_and_rpc_indexer_block_error import JsonRpcResponseForRpcIndexerBlockResponseAndRpcIndexerBlockError
     from .rpc_chunk_response import RpcChunkResponse
     from .detailed_debug_status import DetailedDebugStatus
     from .genesis_config_request import GenesisConfigRequest
@@ -1190,6 +1217,7 @@ if TYPE_CHECKING:
     from .error_wrapper_for_rpc_receipt_to_tx_error import ErrorWrapperForRpcReceiptToTxErrorHandlerError
     from .error_wrapper_for_rpc_receipt_to_tx_error import ErrorWrapperForRpcReceiptToTxErrorInternalError
     from .error_wrapper_for_rpc_receipt_to_tx_error import ErrorWrapperForRpcReceiptToTxError
+    from .block_view import BlockView
     from .rpc_validator_response import RpcValidatorResponse
     from .global_contract_identifier_view import GlobalContractIdentifierViewHash
     from .global_contract_identifier_view import GlobalContractIdentifierViewAccountId
@@ -1226,6 +1254,7 @@ if TYPE_CHECKING:
     from .json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error import JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorError
     from .json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error import JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsError
     from .function_call_permission import FunctionCallPermission
+    from .indexer_shard import IndexerShard
     from .runtime_fees_config_view import RuntimeFeesConfigView
     from .witness_config_view import WitnessConfigView
     from .rpc_light_client_chunk_execution_proof_response import RpcLightClientChunkExecutionProofResponse
@@ -1419,6 +1448,8 @@ __all__ = [
     'ActionsValidationErrorTotalNumberOfActionsExceededPayload',
     'ActionsValidationErrorTotalNumberOfDeployActionsExceeded',
     'ActionsValidationErrorTotalNumberOfDeployActionsExceededPayload',
+    'ActionsValidationErrorTotalNumberOfStateInitEntriesExceeded',
+    'ActionsValidationErrorTotalNumberOfStateInitEntriesExceededPayload',
     'ActionsValidationErrorTotalPrepaidGasExceeded',
     'ActionsValidationErrorTotalPrepaidGasExceededPayload',
     'ActionsValidationErrorUniversalStateInitKeyLengthExceeded',
@@ -1449,6 +1480,7 @@ __all__ = [
     'BlockReferenceFinality',
     'BlockReferenceSyncCheckpoint',
     'BlockStatusView',
+    'BlockView',
     'CallResult',
     'CatchupStatusView',
     'ChunkDistributionNetworkConfig',
@@ -1518,6 +1550,10 @@ __all__ = [
     'ErrorWrapperForRpcGasPriceErrorHandlerError',
     'ErrorWrapperForRpcGasPriceErrorInternalError',
     'ErrorWrapperForRpcGasPriceErrorRequestValidationError',
+    'ErrorWrapperForRpcIndexerBlockError',
+    'ErrorWrapperForRpcIndexerBlockErrorHandlerError',
+    'ErrorWrapperForRpcIndexerBlockErrorInternalError',
+    'ErrorWrapperForRpcIndexerBlockErrorRequestValidationError',
     'ErrorWrapperForRpcLightClientNextBlockError',
     'ErrorWrapperForRpcLightClientNextBlockErrorHandlerError',
     'ErrorWrapperForRpcLightClientNextBlockErrorInternalError',
@@ -1711,6 +1747,11 @@ __all__ = [
     'HostErrorTotalLogLengthExceededPayload',
     'HostErrorValueLengthExceeded',
     'HostErrorValueLengthExceededPayload',
+    'IndexerChunkView',
+    'IndexerExecutionOutcomeWithOptionalReceipt',
+    'IndexerExecutionOutcomeWithReceipt',
+    'IndexerShard',
+    'IndexerTransactionWithOutcome',
     'InternalError',
     'InternalErrorInternalError',
     'InternalErrorInternalErrorInfo',
@@ -1774,6 +1815,7 @@ __all__ = [
     'JsonRpcRequestForExperimentalChangesInBlock',
     'JsonRpcRequestForExperimentalCongestionLevel',
     'JsonRpcRequestForExperimentalGenesisConfig',
+    'JsonRpcRequestForExperimentalIndexerBlock',
     'JsonRpcRequestForExperimentalLightClientBlockProof',
     'JsonRpcRequestForExperimentalLightClientChunkExecutionProof',
     'JsonRpcRequestForExperimentalLightClientExecutionOutcomeProof',
@@ -1839,6 +1881,9 @@ __all__ = [
     'JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceError',
     'JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceErrorError',
     'JsonRpcResponseForRpcGasPriceResponseAndRpcGasPriceErrorResult',
+    'JsonRpcResponseForRpcIndexerBlockResponseAndRpcIndexerBlockError',
+    'JsonRpcResponseForRpcIndexerBlockResponseAndRpcIndexerBlockErrorError',
+    'JsonRpcResponseForRpcIndexerBlockResponseAndRpcIndexerBlockErrorResult',
     'JsonRpcResponseForRpcLightClientBlockProofResponseAndRpcLightClientProofError',
     'JsonRpcResponseForRpcLightClientBlockProofResponseAndRpcLightClientProofErrorError',
     'JsonRpcResponseForRpcLightClientBlockProofResponseAndRpcLightClientProofErrorResult',
@@ -2032,6 +2077,19 @@ __all__ = [
     'RpcGasPriceResponse',
     'RpcHealthRequest',
     'RpcHealthResponse',
+    'RpcIndexerBlockError',
+    'RpcIndexerBlockErrorBusy',
+    'RpcIndexerBlockErrorDataUnavailable',
+    'RpcIndexerBlockErrorDataUnavailableInfo',
+    'RpcIndexerBlockErrorIncompleteData',
+    'RpcIndexerBlockErrorIncompleteDataInfo',
+    'RpcIndexerBlockErrorInternalError',
+    'RpcIndexerBlockErrorInternalErrorInfo',
+    'RpcIndexerBlockErrorLimitExceeded',
+    'RpcIndexerBlockErrorUnsupported',
+    'RpcIndexerBlockErrorUnsupportedInfo',
+    'RpcIndexerBlockRequest',
+    'RpcIndexerBlockResponse',
     'RpcKnownProducer',
     'RpcLightClientBlockProofRequest',
     'RpcLightClientBlockProofResponse',
@@ -2543,6 +2601,7 @@ _CLASS_TO_MODULE = {
     'RpcLightClientProofErrorInternalError': 'rpc_light_client_proof_error',
     'RpcLightClientProofError': 'rpc_light_client_proof_error',
     'RpcReceiptRequest': 'rpc_receipt_request',
+    'RpcIndexerBlockResponse': 'rpc_indexer_block_response',
     'JsonRpcRequestForExperimentalViewState': 'json_rpc_request_for_experimental_view_state',
     'BandwidthRequest': 'bandwidth_request',
     'StateItem': 'state_item',
@@ -2738,9 +2797,12 @@ _CLASS_TO_MODULE = {
     'ActionsValidationErrorWithdrawFromGasKeyNotAllowedInDelegate': 'actions_validation_error',
     'ActionsValidationErrorUniversalStateInitTooManyKeysPayload': 'actions_validation_error',
     'ActionsValidationErrorUniversalStateInitTooManyKeys': 'actions_validation_error',
+    'ActionsValidationErrorTotalNumberOfStateInitEntriesExceededPayload': 'actions_validation_error',
+    'ActionsValidationErrorTotalNumberOfStateInitEntriesExceeded': 'actions_validation_error',
     'ActionsValidationError': 'actions_validation_error',
     'JsonRpcRequestForNetworkInfo': 'json_rpc_request_for_network_info',
     'AccountView': 'account_view',
+    'IndexerChunkView': 'indexer_chunk_view',
     'Signature': 'signature',
     'RpcViewAccountErrorUnknownBlockInfo': 'rpc_view_account_error',
     'RpcViewAccountErrorUnknownBlock': 'rpc_view_account_error',
@@ -2828,6 +2890,17 @@ _CLASS_TO_MODULE = {
     'HostErrorMlDsaVerifyInvalidInput': 'host_error',
     'HostError': 'host_error',
     'RpcViewGasKeyResponse': 'rpc_view_gas_key_response',
+    'RpcIndexerBlockErrorDataUnavailableInfo': 'rpc_indexer_block_error',
+    'RpcIndexerBlockErrorDataUnavailable': 'rpc_indexer_block_error',
+    'RpcIndexerBlockErrorIncompleteDataInfo': 'rpc_indexer_block_error',
+    'RpcIndexerBlockErrorIncompleteData': 'rpc_indexer_block_error',
+    'RpcIndexerBlockErrorUnsupportedInfo': 'rpc_indexer_block_error',
+    'RpcIndexerBlockErrorUnsupported': 'rpc_indexer_block_error',
+    'RpcIndexerBlockErrorLimitExceeded': 'rpc_indexer_block_error',
+    'RpcIndexerBlockErrorBusy': 'rpc_indexer_block_error',
+    'RpcIndexerBlockErrorInternalErrorInfo': 'rpc_indexer_block_error',
+    'RpcIndexerBlockErrorInternalError': 'rpc_indexer_block_error',
+    'RpcIndexerBlockError': 'rpc_indexer_block_error',
     'SpiceChunkEndorsementStats': 'spice_chunk_endorsement_stats',
     'CongestionInfoView': 'congestion_info_view',
     'VMKind': 'vmkind',
@@ -2906,6 +2979,10 @@ _CLASS_TO_MODULE = {
     'RpcViewGasKeyListResponse': 'rpc_view_gas_key_list_response',
     'VersionedDelegateActionPayloadV2': 'versioned_delegate_action_payload',
     'VersionedDelegateActionPayload': 'versioned_delegate_action_payload',
+    'ErrorWrapperForRpcIndexerBlockErrorRequestValidationError': 'error_wrapper_for_rpc_indexer_block_error',
+    'ErrorWrapperForRpcIndexerBlockErrorHandlerError': 'error_wrapper_for_rpc_indexer_block_error',
+    'ErrorWrapperForRpcIndexerBlockErrorInternalError': 'error_wrapper_for_rpc_indexer_block_error',
+    'ErrorWrapperForRpcIndexerBlockError': 'error_wrapper_for_rpc_indexer_block_error',
     'RpcReceiptToTxErrorUnknownReceiptInfo': 'rpc_receipt_to_tx_error',
     'RpcReceiptToTxErrorUnknownReceipt': 'rpc_receipt_to_tx_error',
     'RpcReceiptToTxErrorDepthExceededInfo': 'rpc_receipt_to_tx_error',
@@ -2970,6 +3047,7 @@ _CLASS_TO_MODULE = {
     'StorageErrorMemTrieLoadingError': 'storage_error',
     'StorageError': 'storage_error',
     'JsonRpcRequestForExperimentalMaintenanceWindows': 'json_rpc_request_for_experimental_maintenance_windows',
+    'JsonRpcRequestForExperimentalIndexerBlock': 'json_rpc_request_for_experimental_indexer_block',
     'ChunkDistributionNetworkConfig': 'chunk_distribution_network_config',
     'JsonRpcResponseForRpcLightClientExecutionProofResponseAndRpcLightClientProofErrorResult': 'json_rpc_response_for_rpc_light_client_execution_proof_response_and_rpc_light_client_proof_error',
     'JsonRpcResponseForRpcLightClientExecutionProofResponseAndRpcLightClientProofErrorError': 'json_rpc_response_for_rpc_light_client_execution_proof_response_and_rpc_light_client_proof_error',
@@ -3178,6 +3256,7 @@ _CLASS_TO_MODULE = {
     'JsonRpcRequestForValidators': 'json_rpc_request_for_validators',
     'RpcLightClientExecutionProofResponse': 'rpc_light_client_execution_proof_response',
     'ExecutionOutcomeView': 'execution_outcome_view',
+    'IndexerExecutionOutcomeWithOptionalReceipt': 'indexer_execution_outcome_with_optional_receipt',
     'ErrorWrapperForRpcStatusErrorRequestValidationError': 'error_wrapper_for_rpc_status_error',
     'ErrorWrapperForRpcStatusErrorHandlerError': 'error_wrapper_for_rpc_status_error',
     'ErrorWrapperForRpcStatusErrorInternalError': 'error_wrapper_for_rpc_status_error',
@@ -3442,6 +3521,7 @@ _CLASS_TO_MODULE = {
     'TransferAction': 'transfer_action',
     'RpcViewStateResponse': 'rpc_view_state_response',
     'PeerInfoView': 'peer_info_view',
+    'IndexerExecutionOutcomeWithReceipt': 'indexer_execution_outcome_with_receipt',
     'RpcViewGasKeyErrorUnknownBlockInfo': 'rpc_view_gas_key_error',
     'RpcViewGasKeyErrorUnknownBlock': 'rpc_view_gas_key_error',
     'RpcViewGasKeyErrorInvalidAccountInfo': 'rpc_view_gas_key_error',
@@ -3578,6 +3658,7 @@ _CLASS_TO_MODULE = {
     'ErrorWrapperForRpcViewCodeErrorHandlerError': 'error_wrapper_for_rpc_view_code_error',
     'ErrorWrapperForRpcViewCodeErrorInternalError': 'error_wrapper_for_rpc_view_code_error',
     'ErrorWrapperForRpcViewCodeError': 'error_wrapper_for_rpc_view_code_error',
+    'RpcIndexerBlockRequest': 'rpc_indexer_block_request',
     'SignedDelegateAction': 'signed_delegate_action',
     'DelegateAction': 'delegate_action',
     'StrictBaseModel': 'strict_model',
@@ -3658,6 +3739,7 @@ _CLASS_TO_MODULE = {
     'RpcViewGasKeyRequestSyncCheckpoint': 'rpc_view_gas_key_request',
     'RpcViewGasKeyRequest': 'rpc_view_gas_key_request',
     'RpcMaintenanceWindowsRequest': 'rpc_maintenance_windows_request',
+    'IndexerTransactionWithOutcome': 'indexer_transaction_with_outcome',
     'ErrorWrapperForRpcChunkErrorRequestValidationError': 'error_wrapper_for_rpc_chunk_error',
     'ErrorWrapperForRpcChunkErrorHandlerError': 'error_wrapper_for_rpc_chunk_error',
     'ErrorWrapperForRpcChunkErrorInternalError': 'error_wrapper_for_rpc_chunk_error',
@@ -3668,6 +3750,9 @@ _CLASS_TO_MODULE = {
     'RpcViewStateRequestSyncCheckpoint': 'rpc_view_state_request',
     'RpcViewStateRequest': 'rpc_view_state_request',
     'GCConfig': 'gcconfig',
+    'JsonRpcResponseForRpcIndexerBlockResponseAndRpcIndexerBlockErrorResult': 'json_rpc_response_for_rpc_indexer_block_response_and_rpc_indexer_block_error',
+    'JsonRpcResponseForRpcIndexerBlockResponseAndRpcIndexerBlockErrorError': 'json_rpc_response_for_rpc_indexer_block_response_and_rpc_indexer_block_error',
+    'JsonRpcResponseForRpcIndexerBlockResponseAndRpcIndexerBlockError': 'json_rpc_response_for_rpc_indexer_block_response_and_rpc_indexer_block_error',
     'RpcChunkResponse': 'rpc_chunk_response',
     'DetailedDebugStatus': 'detailed_debug_status',
     'GenesisConfigRequest': 'genesis_config_request',
@@ -3697,6 +3782,7 @@ _CLASS_TO_MODULE = {
     'ErrorWrapperForRpcReceiptToTxErrorHandlerError': 'error_wrapper_for_rpc_receipt_to_tx_error',
     'ErrorWrapperForRpcReceiptToTxErrorInternalError': 'error_wrapper_for_rpc_receipt_to_tx_error',
     'ErrorWrapperForRpcReceiptToTxError': 'error_wrapper_for_rpc_receipt_to_tx_error',
+    'BlockView': 'block_view',
     'RpcValidatorResponse': 'rpc_validator_response',
     'GlobalContractIdentifierViewHash': 'global_contract_identifier_view',
     'GlobalContractIdentifierViewAccountId': 'global_contract_identifier_view',
@@ -3733,6 +3819,7 @@ _CLASS_TO_MODULE = {
     'JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorError': 'json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error',
     'JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsError': 'json_rpc_response_for_array_of_range_of_uint64_and_rpc_maintenance_windows_error',
     'FunctionCallPermission': 'function_call_permission',
+    'IndexerShard': 'indexer_shard',
     'RuntimeFeesConfigView': 'runtime_fees_config_view',
     'WitnessConfigView': 'witness_config_view',
     'RpcLightClientChunkExecutionProofResponse': 'rpc_light_client_chunk_execution_proof_response',
