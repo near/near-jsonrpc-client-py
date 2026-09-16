@@ -90,8 +90,8 @@ class LimitConfig(BaseModel):
     # See <https://wiki.parity.io/WebAssembly-StackHeight> to find out how the stack frame cost
     # is calculated.
     max_stack_height: conint(ge=0, le=4294967295) = None
-    # Max number of storage entries a `DeterministicStateInit` or
-    # `UniversalStateInit` action may carry.
+    # Max number of storage entries the `DeterministicStateInit` and
+    # `UniversalStateInit` actions in one receipt may carry, in total.
     # 
     # Each entry costs `..._state_init_per_entry` to execute, which is counted
     # into the receipt's congestion gas whether or not it is ever burnt. Without
@@ -110,13 +110,15 @@ class LimitConfig(BaseModel):
     # If present, stores max number of entries in the wasm type section that
     # a contract may declare.
     max_types_per_contract: conint(ge=0, le=18446744073709551615) | None = None
-    # Max number of access keys a `UniversalStateInit` action may commit to.
+    # Max number of access keys the `UniversalStateInit` actions in one receipt
+    # may commit to, in total.
     # 
     # Each committed key is priced as a full `AddKey`, at the send rate, so the
     # whole cost lands when a transaction is converted to a receipt. Without a
     # cap one transaction converts for more gas than a chunk has, and since
     # conversion happens before anything is charged, transaction selection
-    # admits it anyway.
+    # admits it anyway. The bound is per receipt because a receipt can carry
+    # many byte-identical copies of a state init and pays for each of them.
     max_universal_state_init_keys: conint(ge=0, le=18446744073709551615) = None
     # Maximum number of bytes for payload passed over a yield resume.
     max_yield_payload_size: conint(ge=0, le=18446744073709551615) = None
