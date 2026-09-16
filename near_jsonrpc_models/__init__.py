@@ -230,8 +230,8 @@ if TYPE_CHECKING:
     from .actions_validation_error import ActionsValidationErrorRemovedProtocolFeaturePayload
     from .actions_validation_error import ActionsValidationErrorRemovedProtocolFeature
     from .actions_validation_error import ActionsValidationErrorWithdrawFromGasKeyNotAllowedInDelegate
-    from .actions_validation_error import ActionsValidationErrorUniversalStateInitTooManyKeysPayload
-    from .actions_validation_error import ActionsValidationErrorUniversalStateInitTooManyKeys
+    from .actions_validation_error import ActionsValidationErrorTotalNumberOfStateInitKeysExceededPayload
+    from .actions_validation_error import ActionsValidationErrorTotalNumberOfStateInitKeysExceeded
     from .actions_validation_error import ActionsValidationErrorTotalNumberOfStateInitEntriesExceededPayload
     from .actions_validation_error import ActionsValidationErrorTotalNumberOfStateInitEntriesExceeded
     from .actions_validation_error import ActionsValidationError
@@ -1450,12 +1450,12 @@ __all__ = [
     'ActionsValidationErrorTotalNumberOfDeployActionsExceededPayload',
     'ActionsValidationErrorTotalNumberOfStateInitEntriesExceeded',
     'ActionsValidationErrorTotalNumberOfStateInitEntriesExceededPayload',
+    'ActionsValidationErrorTotalNumberOfStateInitKeysExceeded',
+    'ActionsValidationErrorTotalNumberOfStateInitKeysExceededPayload',
     'ActionsValidationErrorTotalPrepaidGasExceeded',
     'ActionsValidationErrorTotalPrepaidGasExceededPayload',
     'ActionsValidationErrorUniversalStateInitKeyLengthExceeded',
     'ActionsValidationErrorUniversalStateInitKeyLengthExceededPayload',
-    'ActionsValidationErrorUniversalStateInitTooManyKeys',
-    'ActionsValidationErrorUniversalStateInitTooManyKeysPayload',
     'ActionsValidationErrorUniversalStateInitValueLengthExceeded',
     'ActionsValidationErrorUniversalStateInitValueLengthExceededPayload',
     'ActionsValidationErrorUnsuitableStakingKey',
@@ -2795,8 +2795,8 @@ _CLASS_TO_MODULE = {
     'ActionsValidationErrorRemovedProtocolFeaturePayload': 'actions_validation_error',
     'ActionsValidationErrorRemovedProtocolFeature': 'actions_validation_error',
     'ActionsValidationErrorWithdrawFromGasKeyNotAllowedInDelegate': 'actions_validation_error',
-    'ActionsValidationErrorUniversalStateInitTooManyKeysPayload': 'actions_validation_error',
-    'ActionsValidationErrorUniversalStateInitTooManyKeys': 'actions_validation_error',
+    'ActionsValidationErrorTotalNumberOfStateInitKeysExceededPayload': 'actions_validation_error',
+    'ActionsValidationErrorTotalNumberOfStateInitKeysExceeded': 'actions_validation_error',
     'ActionsValidationErrorTotalNumberOfStateInitEntriesExceededPayload': 'actions_validation_error',
     'ActionsValidationErrorTotalNumberOfStateInitEntriesExceeded': 'actions_validation_error',
     'ActionsValidationError': 'actions_validation_error',
