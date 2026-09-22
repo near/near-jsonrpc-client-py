@@ -48,7 +48,8 @@ class VMConfigView(BaseModel):
     regular_op_cost: conint(ge=0, le=4294967295) = None
     # See [VMConfig::sha3_host_fns](crate::vm::Config::sha3_host_fns).
     sha3_host_fns: bool = None
-    # See [VMConfig::storage_get_mode](crate::vm::Config::storage_get_mode).
+    # Deprecated: contract storage is always read through flat storage, so this is
+    # always `FlatStorage`.
     storage_get_mode: StorageGetMode = None
     # See [VMConfig::universal_accounts](crate::vm::Config::universal_accounts).
     universal_accounts: bool = None
