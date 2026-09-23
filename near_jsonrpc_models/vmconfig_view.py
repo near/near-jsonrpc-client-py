@@ -11,9 +11,9 @@ class VMConfigView(BaseModel):
     bls12381_not_in_group_fix: bool = None
     # See [VMConfig::chain_id_host_fn](crate::vm::Config::chain_id_host_fn).
     chain_id_host_fn: bool = None
-    # See [VMConfig::discard_custom_sections](crate::vm::Config::discard_custom_sections).
+    # Deprecated: custom sections are always discarded, so this is always `true`.
     discard_custom_sections: bool = None
-    # See [VMConfig::eth_implicit_accounts](crate::vm::Config::eth_implicit_accounts).
+    # Deprecated: ETH-implicit accounts are always enabled, so this is always `true`.
     eth_implicit_accounts: bool = None
     # Costs for runtime externals
     ext_costs: ExtCostsConfigView = None
@@ -21,7 +21,8 @@ class VMConfigView(BaseModel):
     fix_contract_loading_cost: bool = None
     # See [VMConfig::gas_key_host_fns](crate::vm::Config::gas_key_host_fns).
     gas_key_host_fns: bool = None
-    # See [VMConfig::global_contract_host_fns](crate::vm::Config::global_contract_host_fns).
+    # Deprecated: the global contract host functions are always enabled, so this is
+    # always `true`.
     global_contract_host_fns: bool = None
     # Gas cost of a growing memory by single page.
     grow_mem_cost: conint(ge=0, le=4294967295) = None
@@ -42,7 +43,8 @@ class VMConfigView(BaseModel):
     one_yocto_on_promise: bool = None
     # See [VMConfig::p256_verify_host_fn](crate::vm::Config::p256_verify_host_fn).
     p256_verify_host_fn: bool = None
-    # See [VMConfig::reftypes_bulk_memory](crate::vm::Config::reftypes_bulk_memory).
+    # Deprecated: reference types and bulk memory wasm extensions are always
+    # enabled, so this is always `true`.
     reftypes_bulk_memory: bool = None
     # Gas cost of a regular operation.
     regular_op_cost: conint(ge=0, le=4294967295) = None
