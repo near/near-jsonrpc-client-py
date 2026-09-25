@@ -1,17 +1,15 @@
 """Describes limits for VM and Runtime.
 TODO #4139: consider switching to strongly-typed wrappers instead of raw quantities"""
 
-from near_jsonrpc_models.account_id_validity_rules_version import AccountIdValidityRulesVersion
 from near_jsonrpc_models.near_gas import NearGas
 from pydantic import BaseModel
-from pydantic import Field
 from pydantic import conint
 
 
 class LimitConfig(BaseModel):
-    # Whether to enforce account_id well-formed-ness where it wasn't enforced
-    # historically.
-    account_id_validity_rules_version: AccountIdValidityRulesVersion = Field(default_factory=lambda: AccountIdValidityRulesVersion(0))
+    # Deprecated: full account id validation is always enforced, so this is
+    # always `2`.
+    account_id_validity_rules_version: conint(ge=0, le=18446744073709551615) = 2
     # The initial number of memory pages.
     # NOTE: It's not a limiter itself, but it's a value we use for initial_memory_pages.
     initial_memory_pages: conint(ge=0, le=4294967295) = None
