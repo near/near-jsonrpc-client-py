@@ -253,6 +253,9 @@ if TYPE_CHECKING:
     from .rpc_view_code_request import RpcViewCodeRequestSyncCheckpoint
     from .rpc_view_code_request import RpcViewCodeRequest
     from .rpc_chunk_response import RpcChunkResponse
+    from .transaction_envelope_view import TransactionEnvelopeViewSignedTransactionView
+    from .transaction_envelope_view import TransactionEnvelopeViewEccTransactionView
+    from .transaction_envelope_view import TransactionEnvelopeView
     from .rpc_congestion_level_request import RpcCongestionLevelRequestBlockShardId
     from .rpc_congestion_level_request import RpcCongestionLevelRequestChunkHash
     from .rpc_congestion_level_request import RpcCongestionLevelRequest
@@ -680,6 +683,7 @@ if TYPE_CHECKING:
     from .rpc_gas_price_error import RpcGasPriceError
     from .peer_id import PeerId
     from .json_rpc_request_for_block_effects import JsonRpcRequestForBlockEffects
+    from .ecc_transaction_view import EccTransactionView
     from .congestion_control_config_view import CongestionControlConfigView
     from .validator_info import ValidatorInfo
     from .rpc_protocol_config_response import RpcProtocolConfigResponse
@@ -1524,6 +1528,7 @@ __all__ = [
     'DumpConfig',
     'DurationAsStdSchemaProvider',
     'DynamicReshardingConfigView',
+    'EccTransactionView',
     'EpochId',
     'EpochSyncConfig',
     'ErrorWrapperForGenesisConfigError',
@@ -2520,6 +2525,9 @@ __all__ = [
     'TrackedShardsConfigSchedule',
     'TrackedShardsConfigShadowValidator',
     'TrackedShardsConfigShards',
+    'TransactionEnvelopeView',
+    'TransactionEnvelopeViewEccTransactionView',
+    'TransactionEnvelopeViewSignedTransactionView',
     'TransactionNonce',
     'TransactionNonceGasKeyNonce',
     'TransactionNonceGasKeyNoncePayload',
@@ -2818,6 +2826,9 @@ _CLASS_TO_MODULE = {
     'RpcViewCodeRequestSyncCheckpoint': 'rpc_view_code_request',
     'RpcViewCodeRequest': 'rpc_view_code_request',
     'RpcChunkResponse': 'rpc_chunk_response',
+    'TransactionEnvelopeViewSignedTransactionView': 'transaction_envelope_view',
+    'TransactionEnvelopeViewEccTransactionView': 'transaction_envelope_view',
+    'TransactionEnvelopeView': 'transaction_envelope_view',
     'RpcCongestionLevelRequestBlockShardId': 'rpc_congestion_level_request',
     'RpcCongestionLevelRequestChunkHash': 'rpc_congestion_level_request',
     'RpcCongestionLevelRequest': 'rpc_congestion_level_request',
@@ -3245,6 +3256,7 @@ _CLASS_TO_MODULE = {
     'RpcGasPriceError': 'rpc_gas_price_error',
     'PeerId': 'peer_id',
     'JsonRpcRequestForBlockEffects': 'json_rpc_request_for_block_effects',
+    'EccTransactionView': 'ecc_transaction_view',
     'CongestionControlConfigView': 'congestion_control_config_view',
     'ValidatorInfo': 'validator_info',
     'RpcProtocolConfigResponse': 'rpc_protocol_config_response',
