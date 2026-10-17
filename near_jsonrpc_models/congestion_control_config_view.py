@@ -45,14 +45,6 @@ class CongestionControlConfigView(BaseModel):
     # 
     # See [`CongestionControlConfig`] for more details.
     min_tx_gas: NearGas = None
-    # Large size limit for outgoing receipts to a shard, used when it's safe
-    # to send a lot of receipts without making the state witness too large.
-    # It limits the total sum of outgoing receipts, not individual receipts.
-    outgoing_receipts_big_size_limit: conint(ge=0, le=18446744073709551615) = None
-    # The standard size limit for outgoing receipts aimed at a single shard.
-    # This limit is pretty small to keep the size of source_receipt_proofs under control.
-    # It limits the total sum of outgoing receipts, not individual receipts.
-    outgoing_receipts_usual_size_limit: conint(ge=0, le=18446744073709551615) = None
     # How much congestion a shard can tolerate before it stops all shards from
     # accepting new transactions with the receiver set to the congested shard.
     reject_tx_congestion_threshold: float = None
