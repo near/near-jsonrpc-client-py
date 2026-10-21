@@ -36,6 +36,9 @@ class LimitConfig(BaseModel):
     max_functions_number_per_contract: conint(ge=0, le=18446744073709551615) | None = None
     # Max amount of gas that can be used, excluding gas attached to promises.
     max_gas_burnt: NearGas = None
+    # Max amount of gas that can be burnt by an external contract call,
+    # excluding gas attached to promises.
+    max_gas_burnt_external: NearGas = None
     # If present, stores max number of globals (entries in the wasm global
     # section) a contract may declare.
     max_globals_per_contract: conint(ge=0, le=18446744073709551615) | None = None

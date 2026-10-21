@@ -199,8 +199,6 @@ class RpcClientConfigResponse(BaseModel):
     transaction_request_handler_threads: conint(ge=0, le=4294967295) = None
     # Upper bound of the byte size of contract state that is still viewable. None is no limit
     trie_viewer_state_size_limit: conint(ge=0, le=18446744073709551615) | None = None
-    # Time to persist Accounts Id in the router without removing them.
-    ttl_account_id_router: conlist(conint(ge=0, le=18446744073709551615), min_length=2, max_length=2) = None
     # If the node is not a chunk producer within that many blocks, then route
     # to upcoming chunk producers.
     tx_routing_height_horizon: conint(ge=0, le=18446744073709551615) = None

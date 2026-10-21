@@ -226,6 +226,17 @@ otherwise well-sized inputs return 0 from the host function instead of
 aborting."""
     MlDsaVerifyInvalidInput: HostErrorMlDsaVerifyInvalidInputPayload
 
-class HostError(RootModel[Union[HostErrorBadUTF16, HostErrorBadUTF8, HostErrorGasExceeded, HostErrorGasLimitExceeded, HostErrorBalanceExceeded, HostErrorEmptyMethodName, HostErrorGuestPanic, HostErrorIntegerOverflow, HostErrorInvalidPromiseIndex, HostErrorCannotAppendActionToJointPromise, HostErrorCannotReturnJointPromise, HostErrorInvalidPromiseResultIndex, HostErrorInvalidRegisterId, HostErrorIteratorWasInvalidated, HostErrorMemoryAccessViolation, HostErrorInvalidReceiptIndex, HostErrorInvalidIteratorIndex, HostErrorInvalidAccountId, HostErrorInvalidMethodName, HostErrorInvalidPublicKey, HostErrorProhibitedInView, HostErrorNumberOfLogsExceeded, HostErrorKeyLengthExceeded, HostErrorValueLengthExceeded, HostErrorTotalLogLengthExceeded, HostErrorNumberPromisesExceeded, HostErrorNumberInputDataDependenciesExceeded, HostErrorReturnedValueLengthExceeded, HostErrorContractSizeExceeded, HostErrorDeprecated, HostErrorECRecoverError, HostErrorAltBn128InvalidInput, HostErrorEd25519VerifyInvalidInput, HostErrorP256VerifyInvalidInput, HostErrorMlDsaVerifyInvalidInput]]):
+class HostErrorProhibitedInExternalCallPayload(BaseModel):
+    method_name: str
+
+class HostErrorProhibitedInExternalCall(StrictBaseModel):
+    """`method_name` is not allowed in external contract calls"""
+    ProhibitedInExternalCall: HostErrorProhibitedInExternalCallPayload
+
+"""An external contract call has an attached deposit, which it cannot have"""
+class HostErrorDepositInExternalCall(RootModel[Literal['DepositInExternalCall']]):
+    pass
+
+class HostError(RootModel[Union[HostErrorBadUTF16, HostErrorBadUTF8, HostErrorGasExceeded, HostErrorGasLimitExceeded, HostErrorBalanceExceeded, HostErrorEmptyMethodName, HostErrorGuestPanic, HostErrorIntegerOverflow, HostErrorInvalidPromiseIndex, HostErrorCannotAppendActionToJointPromise, HostErrorCannotReturnJointPromise, HostErrorInvalidPromiseResultIndex, HostErrorInvalidRegisterId, HostErrorIteratorWasInvalidated, HostErrorMemoryAccessViolation, HostErrorInvalidReceiptIndex, HostErrorInvalidIteratorIndex, HostErrorInvalidAccountId, HostErrorInvalidMethodName, HostErrorInvalidPublicKey, HostErrorProhibitedInView, HostErrorNumberOfLogsExceeded, HostErrorKeyLengthExceeded, HostErrorValueLengthExceeded, HostErrorTotalLogLengthExceeded, HostErrorNumberPromisesExceeded, HostErrorNumberInputDataDependenciesExceeded, HostErrorReturnedValueLengthExceeded, HostErrorContractSizeExceeded, HostErrorDeprecated, HostErrorECRecoverError, HostErrorAltBn128InvalidInput, HostErrorEd25519VerifyInvalidInput, HostErrorP256VerifyInvalidInput, HostErrorMlDsaVerifyInvalidInput, HostErrorProhibitedInExternalCall, HostErrorDepositInExternalCall]]):
     pass
 
