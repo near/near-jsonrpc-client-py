@@ -33,6 +33,16 @@ class RpcViewAccessKeyListErrorUnknownAccount(BaseModel):
     info: RpcViewAccessKeyListErrorUnknownAccountInfo
     name: Literal['UNKNOWN_ACCOUNT']
 
+class RpcViewAccessKeyListErrorTooManyAccessKeysInfo(BaseModel):
+    block_hash: CryptoHash
+    block_height: conint(ge=0, le=18446744073709551615)
+    limit: conint(ge=0, le=4294967295)
+    requested_account_id: AccountId
+
+class RpcViewAccessKeyListErrorTooManyAccessKeys(BaseModel):
+    info: RpcViewAccessKeyListErrorTooManyAccessKeysInfo
+    name: Literal['TOO_MANY_ACCESS_KEYS']
+
 class RpcViewAccessKeyListErrorInternalErrorInfo(BaseModel):
     error_message: str
 
@@ -40,6 +50,6 @@ class RpcViewAccessKeyListErrorInternalError(BaseModel):
     info: RpcViewAccessKeyListErrorInternalErrorInfo
     name: Literal['INTERNAL_ERROR']
 
-class RpcViewAccessKeyListError(RootModel[Union[RpcViewAccessKeyListErrorUnknownBlock, RpcViewAccessKeyListErrorInvalidAccount, RpcViewAccessKeyListErrorUnknownAccount, RpcViewAccessKeyListErrorInternalError]]):
+class RpcViewAccessKeyListError(RootModel[Union[RpcViewAccessKeyListErrorUnknownBlock, RpcViewAccessKeyListErrorInvalidAccount, RpcViewAccessKeyListErrorUnknownAccount, RpcViewAccessKeyListErrorTooManyAccessKeys, RpcViewAccessKeyListErrorInternalError]]):
     pass
 
