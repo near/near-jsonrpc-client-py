@@ -234,9 +234,9 @@ class ActionErrorKindReceiptStorageProofSizeExceeded(StrictBaseModel):
 `per_receipt_storage_proof_size_limit` allows."""
     ReceiptStorageProofSizeExceeded: ActionErrorKindReceiptStorageProofSizeExceededPayload
 
-"""The bytes of a `UniversalStateInit` action do not decode into a state init.
-Action validation rejects such an action before it runs, so this only fires
-if that check was bypassed."""
+"""The bytes of a `UniversalStateInit` action are not the canonical borsh of a
+state init. Action validation rejects such an action before it runs, so this
+only fires if that check was bypassed."""
 class ActionErrorKindMalformedUniversalStateInit(RootModel[Literal['MalformedUniversalStateInit']]):
     pass
 
