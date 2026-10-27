@@ -426,6 +426,8 @@ if TYPE_CHECKING:
     from .actions_validation_error import ActionsValidationErrorTotalNumberOfStateInitKeysExceeded
     from .actions_validation_error import ActionsValidationErrorTotalNumberOfStateInitEntriesExceededPayload
     from .actions_validation_error import ActionsValidationErrorTotalNumberOfStateInitEntriesExceeded
+    from .actions_validation_error import ActionsValidationErrorTransferToUniversalAccountNotAllowedPayload
+    from .actions_validation_error import ActionsValidationErrorTransferToUniversalAccountNotAllowed
     from .actions_validation_error import ActionsValidationError
     from .next_epoch_validator_info import NextEpochValidatorInfo
     from .json_rpc_request_for_experimental_changes import JsonRpcRequestForExperimentalChanges
@@ -1463,6 +1465,8 @@ __all__ = [
     'ActionsValidationErrorTotalNumberOfStateInitKeysExceededPayload',
     'ActionsValidationErrorTotalPrepaidGasExceeded',
     'ActionsValidationErrorTotalPrepaidGasExceededPayload',
+    'ActionsValidationErrorTransferToUniversalAccountNotAllowed',
+    'ActionsValidationErrorTransferToUniversalAccountNotAllowedPayload',
     'ActionsValidationErrorUniversalStateInitKeyLengthExceeded',
     'ActionsValidationErrorUniversalStateInitKeyLengthExceededPayload',
     'ActionsValidationErrorUniversalStateInitValueLengthExceeded',
@@ -3009,6 +3013,8 @@ _CLASS_TO_MODULE = {
     'ActionsValidationErrorTotalNumberOfStateInitKeysExceeded': 'actions_validation_error',
     'ActionsValidationErrorTotalNumberOfStateInitEntriesExceededPayload': 'actions_validation_error',
     'ActionsValidationErrorTotalNumberOfStateInitEntriesExceeded': 'actions_validation_error',
+    'ActionsValidationErrorTransferToUniversalAccountNotAllowedPayload': 'actions_validation_error',
+    'ActionsValidationErrorTransferToUniversalAccountNotAllowed': 'actions_validation_error',
     'ActionsValidationError': 'actions_validation_error',
     'NextEpochValidatorInfo': 'next_epoch_validator_info',
     'JsonRpcRequestForExperimentalChanges': 'json_rpc_request_for_experimental_changes',
