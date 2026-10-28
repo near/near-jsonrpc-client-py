@@ -9,8 +9,6 @@ from pydantic import conint
 class VMConfigView(BaseModel):
     # See [VMConfig::bls12381_not_in_group_fix](crate::vm::Config::bls12381_not_in_group_fix).
     bls12381_not_in_group_fix: bool = None
-    # See [VMConfig::chain_id_host_fn](crate::vm::Config::chain_id_host_fn).
-    chain_id_host_fn: bool = None
     # Deprecated: custom sections are always discarded, so this is always `true`.
     discard_custom_sections: bool = None
     # Deprecated: ETH-implicit accounts are always enabled, so this is always `true`.
@@ -19,8 +17,6 @@ class VMConfigView(BaseModel):
     ext_costs: ExtCostsConfigView = None
     # See [VMConfig::fix_contract_loading_cost](crate::vm::Config::fix_contract_loading_cost).
     fix_contract_loading_cost: bool = None
-    # See [VMConfig::gas_key_host_fns](crate::vm::Config::gas_key_host_fns).
-    gas_key_host_fns: bool = None
     # Deprecated: the global contract host functions are always enabled, so this is
     # always `true`.
     global_contract_host_fns: bool = None
@@ -39,10 +35,6 @@ class VMConfigView(BaseModel):
     linear_op_unit_cost: conint(ge=0, le=18446744073709551615) = None
     # See [VMConfig::ml_dsa_verify_host_fn](crate::vm::Config::ml_dsa_verify_host_fn).
     ml_dsa_verify_host_fn: bool = None
-    # See [VMConfig::one_yocto_on_promise](crate::vm::Config::one_yocto_on_promise).
-    one_yocto_on_promise: bool = None
-    # See [VMConfig::p256_verify_host_fn](crate::vm::Config::p256_verify_host_fn).
-    p256_verify_host_fn: bool = None
     # Deprecated: reference types and bulk memory wasm extensions are always
     # enabled, so this is always `true`.
     reftypes_bulk_memory: bool = None
@@ -57,5 +49,3 @@ class VMConfigView(BaseModel):
     universal_accounts: bool = None
     # See [VMConfig::vm_kind](crate::vm::Config::vm_kind).
     vm_kind: VMKind = None
-    # See [VMConfig::yield_with_id_host_fns](crate::vm::Config::yield_with_id_host_fns).
-    yield_with_id_host_fns: bool = None

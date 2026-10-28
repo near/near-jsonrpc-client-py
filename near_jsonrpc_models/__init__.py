@@ -947,6 +947,8 @@ if TYPE_CHECKING:
     from .action_error_kind import ActionErrorKindMalformedUniversalStateInit
     from .action_error_kind import ActionErrorKindAccountNotInitializedPayload
     from .action_error_kind import ActionErrorKindAccountNotInitialized
+    from .action_error_kind import ActionErrorKindReservedMethodNamePayload
+    from .action_error_kind import ActionErrorKindReservedMethodName
     from .action_error_kind import ActionErrorKind
     from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorUnknownBlockInfo
     from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorUnknownBlock
@@ -1379,6 +1381,8 @@ __all__ = [
     'ActionErrorKindOnlyImplicitAccountCreationAllowedPayload',
     'ActionErrorKindReceiptStorageProofSizeExceeded',
     'ActionErrorKindReceiptStorageProofSizeExceededPayload',
+    'ActionErrorKindReservedMethodName',
+    'ActionErrorKindReservedMethodNamePayload',
     'ActionErrorKindTotalPromiseInputSizeExceeded',
     'ActionErrorKindTotalPromiseInputSizeExceededPayload',
     'ActionErrorKindTriesToStake',
@@ -3534,6 +3538,8 @@ _CLASS_TO_MODULE = {
     'ActionErrorKindMalformedUniversalStateInit': 'action_error_kind',
     'ActionErrorKindAccountNotInitializedPayload': 'action_error_kind',
     'ActionErrorKindAccountNotInitialized': 'action_error_kind',
+    'ActionErrorKindReservedMethodNamePayload': 'action_error_kind',
+    'ActionErrorKindReservedMethodName': 'action_error_kind',
     'ActionErrorKind': 'action_error_kind',
     'RpcViewAccessKeyListErrorUnknownBlockInfo': 'rpc_view_access_key_list_error',
     'RpcViewAccessKeyListErrorUnknownBlock': 'rpc_view_access_key_list_error',
