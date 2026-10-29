@@ -38,8 +38,6 @@ class ExtCostsConfigView(BaseModel):
     bls12381_p2_sum_element: NearGas = None
     bls12381_pairing_base: NearGas = None
     bls12381_pairing_element: NearGas = None
-    contract_compile_base: NearGas = None
-    contract_compile_bytes: NearGas = None
     # Base cost of loading a pre-compiled contract
     contract_loading_base: NearGas = None
     # Cost per byte of loading a pre-compiled contract
