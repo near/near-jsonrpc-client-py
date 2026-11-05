@@ -11,7 +11,8 @@ from pydantic import conint
 
 class AccessKey(BaseModel):
     # Nonce for this access key, used for tx nonce generation. When access key is created, nonce
-    # is set to `(block_height - 1) * 1e6` to avoid tx hash collision on access key re-creation.
+    # is set to `block_height * 1e6 - 1` (`(block_height - 1) * 1e6` before protocol version 89)
+    # to avoid tx hash collision on access key re-creation.
     # See <https://github.com/near/nearcore/issues/3779> for more details.
     nonce: conint(ge=0, le=18446744073709551615)
     # Defines permissions for this access key.
