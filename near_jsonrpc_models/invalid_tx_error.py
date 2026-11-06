@@ -162,6 +162,13 @@ class InvalidTxErrorNotEnoughBalanceForDeposit(StrictBaseModel):
 Gas is still charged from the gas key in this case."""
     NotEnoughBalanceForDeposit: InvalidTxErrorNotEnoughBalanceForDepositPayload
 
-class InvalidTxError(RootModel[Union[InvalidTxErrorInvalidAccessKeyError, InvalidTxErrorInvalidSignerId, InvalidTxErrorSignerDoesNotExist, InvalidTxErrorInvalidNonce, InvalidTxErrorNonceTooLarge, InvalidTxErrorInvalidReceiverId, InvalidTxErrorInvalidSignature, InvalidTxErrorNotEnoughBalance, InvalidTxErrorLackBalanceForState, InvalidTxErrorCostOverflow, InvalidTxErrorInvalidChain, InvalidTxErrorExpired, InvalidTxErrorActionsValidation, InvalidTxErrorTransactionSizeExceeded, InvalidTxErrorInvalidTransactionVersion, InvalidTxErrorStorageError, InvalidTxErrorShardCongested, InvalidTxErrorShardStuck, InvalidTxErrorInvalidNonceIndex, InvalidTxErrorNotEnoughGasKeyBalance, InvalidTxErrorNotEnoughBalanceForDeposit]]):
+class InvalidTxErrorContractNotFoundPayload(BaseModel):
+    contract_id: AccountId
+
+class InvalidTxErrorContractNotFound(StrictBaseModel):
+    """The target of an external contract call has no contract, or no account."""
+    ContractNotFound: InvalidTxErrorContractNotFoundPayload
+
+class InvalidTxError(RootModel[Union[InvalidTxErrorInvalidAccessKeyError, InvalidTxErrorInvalidSignerId, InvalidTxErrorSignerDoesNotExist, InvalidTxErrorInvalidNonce, InvalidTxErrorNonceTooLarge, InvalidTxErrorInvalidReceiverId, InvalidTxErrorInvalidSignature, InvalidTxErrorNotEnoughBalance, InvalidTxErrorLackBalanceForState, InvalidTxErrorCostOverflow, InvalidTxErrorInvalidChain, InvalidTxErrorExpired, InvalidTxErrorActionsValidation, InvalidTxErrorTransactionSizeExceeded, InvalidTxErrorInvalidTransactionVersion, InvalidTxErrorStorageError, InvalidTxErrorShardCongested, InvalidTxErrorShardStuck, InvalidTxErrorInvalidNonceIndex, InvalidTxErrorNotEnoughGasKeyBalance, InvalidTxErrorNotEnoughBalanceForDeposit, InvalidTxErrorContractNotFound]]):
     pass
 
