@@ -33,6 +33,15 @@ class RpcViewStateErrorUnknownAccount(BaseModel):
     info: RpcViewStateErrorUnknownAccountInfo
     name: Literal['UNKNOWN_ACCOUNT']
 
+class RpcViewStateErrorUninitializedAccountInfo(BaseModel):
+    block_hash: CryptoHash
+    block_height: conint(ge=0, le=18446744073709551615)
+    requested_account_id: AccountId
+
+class RpcViewStateErrorUninitializedAccount(BaseModel):
+    info: RpcViewStateErrorUninitializedAccountInfo
+    name: Literal['UNINITIALIZED_ACCOUNT']
+
 class RpcViewStateErrorTooLargeContractStateInfo(BaseModel):
     block_hash: CryptoHash
     block_height: conint(ge=0, le=18446744073709551615)
@@ -49,6 +58,6 @@ class RpcViewStateErrorInternalError(BaseModel):
     info: RpcViewStateErrorInternalErrorInfo
     name: Literal['INTERNAL_ERROR']
 
-class RpcViewStateError(RootModel[Union[RpcViewStateErrorUnknownBlock, RpcViewStateErrorInvalidAccount, RpcViewStateErrorUnknownAccount, RpcViewStateErrorTooLargeContractState, RpcViewStateErrorInternalError]]):
+class RpcViewStateError(RootModel[Union[RpcViewStateErrorUnknownBlock, RpcViewStateErrorInvalidAccount, RpcViewStateErrorUnknownAccount, RpcViewStateErrorUninitializedAccount, RpcViewStateErrorTooLargeContractState, RpcViewStateErrorInternalError]]):
     pass
 

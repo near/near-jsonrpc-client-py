@@ -34,6 +34,15 @@ class RpcCallFunctionErrorUnknownAccount(BaseModel):
     info: RpcCallFunctionErrorUnknownAccountInfo
     name: Literal['UNKNOWN_ACCOUNT']
 
+class RpcCallFunctionErrorUninitializedAccountInfo(BaseModel):
+    block_hash: CryptoHash
+    block_height: conint(ge=0, le=18446744073709551615)
+    requested_account_id: AccountId
+
+class RpcCallFunctionErrorUninitializedAccount(BaseModel):
+    info: RpcCallFunctionErrorUninitializedAccountInfo
+    name: Literal['UNINITIALIZED_ACCOUNT']
+
 class RpcCallFunctionErrorNoContractCodeInfo(BaseModel):
     block_hash: CryptoHash
     block_height: conint(ge=0, le=18446744073709551615)
@@ -59,6 +68,6 @@ class RpcCallFunctionErrorInternalError(BaseModel):
     info: RpcCallFunctionErrorInternalErrorInfo
     name: Literal['INTERNAL_ERROR']
 
-class RpcCallFunctionError(RootModel[Union[RpcCallFunctionErrorUnknownBlock, RpcCallFunctionErrorInvalidAccount, RpcCallFunctionErrorUnknownAccount, RpcCallFunctionErrorNoContractCode, RpcCallFunctionErrorContractExecutionError, RpcCallFunctionErrorInternalError]]):
+class RpcCallFunctionError(RootModel[Union[RpcCallFunctionErrorUnknownBlock, RpcCallFunctionErrorInvalidAccount, RpcCallFunctionErrorUnknownAccount, RpcCallFunctionErrorUninitializedAccount, RpcCallFunctionErrorNoContractCode, RpcCallFunctionErrorContractExecutionError, RpcCallFunctionErrorInternalError]]):
     pass
 
