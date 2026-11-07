@@ -383,6 +383,8 @@ if TYPE_CHECKING:
     from .rpc_view_state_error import RpcViewStateErrorInvalidAccount
     from .rpc_view_state_error import RpcViewStateErrorUnknownAccountInfo
     from .rpc_view_state_error import RpcViewStateErrorUnknownAccount
+    from .rpc_view_state_error import RpcViewStateErrorUninitializedAccountInfo
+    from .rpc_view_state_error import RpcViewStateErrorUninitializedAccount
     from .rpc_view_state_error import RpcViewStateErrorTooLargeContractStateInfo
     from .rpc_view_state_error import RpcViewStateErrorTooLargeContractState
     from .rpc_view_state_error import RpcViewStateErrorInternalErrorInfo
@@ -427,6 +429,8 @@ if TYPE_CHECKING:
     from .rpc_query_error import RpcQueryErrorInvalidAccount
     from .rpc_query_error import RpcQueryErrorUnknownAccountInfo
     from .rpc_query_error import RpcQueryErrorUnknownAccount
+    from .rpc_query_error import RpcQueryErrorUninitializedAccountInfo
+    from .rpc_query_error import RpcQueryErrorUninitializedAccount
     from .rpc_query_error import RpcQueryErrorNoContractCodeInfo
     from .rpc_query_error import RpcQueryErrorNoContractCode
     from .rpc_query_error import RpcQueryErrorTooLargeContractStateInfo
@@ -581,6 +585,8 @@ if TYPE_CHECKING:
     from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorInvalidAccount
     from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorUnknownAccountInfo
     from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorUnknownAccount
+    from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorUninitializedAccountInfo
+    from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorUninitializedAccount
     from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorTooManyAccessKeysInfo
     from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorTooManyAccessKeys
     from .rpc_view_access_key_list_error import RpcViewAccessKeyListErrorInternalErrorInfo
@@ -646,6 +652,8 @@ if TYPE_CHECKING:
     from .rpc_view_code_error import RpcViewCodeErrorInvalidAccount
     from .rpc_view_code_error import RpcViewCodeErrorUnknownAccountInfo
     from .rpc_view_code_error import RpcViewCodeErrorUnknownAccount
+    from .rpc_view_code_error import RpcViewCodeErrorUninitializedAccountInfo
+    from .rpc_view_code_error import RpcViewCodeErrorUninitializedAccount
     from .rpc_view_code_error import RpcViewCodeErrorNoContractCodeInfo
     from .rpc_view_code_error import RpcViewCodeErrorNoContractCode
     from .rpc_view_code_error import RpcViewCodeErrorInternalErrorInfo
@@ -1103,6 +1111,8 @@ if TYPE_CHECKING:
     from .rpc_view_access_key_error import RpcViewAccessKeyErrorInvalidAccount
     from .rpc_view_access_key_error import RpcViewAccessKeyErrorUnknownAccountInfo
     from .rpc_view_access_key_error import RpcViewAccessKeyErrorUnknownAccount
+    from .rpc_view_access_key_error import RpcViewAccessKeyErrorUninitializedAccountInfo
+    from .rpc_view_access_key_error import RpcViewAccessKeyErrorUninitializedAccount
     from .rpc_view_access_key_error import RpcViewAccessKeyErrorUnknownAccessKeyInfo
     from .rpc_view_access_key_error import RpcViewAccessKeyErrorUnknownAccessKey
     from .rpc_view_access_key_error import RpcViewAccessKeyErrorInternalErrorInfo
@@ -1167,6 +1177,8 @@ if TYPE_CHECKING:
     from .rpc_call_function_error import RpcCallFunctionErrorInvalidAccount
     from .rpc_call_function_error import RpcCallFunctionErrorUnknownAccountInfo
     from .rpc_call_function_error import RpcCallFunctionErrorUnknownAccount
+    from .rpc_call_function_error import RpcCallFunctionErrorUninitializedAccountInfo
+    from .rpc_call_function_error import RpcCallFunctionErrorUninitializedAccount
     from .rpc_call_function_error import RpcCallFunctionErrorNoContractCodeInfo
     from .rpc_call_function_error import RpcCallFunctionErrorNoContractCode
     from .rpc_call_function_error import RpcCallFunctionErrorContractExecutionErrorInfo
@@ -2067,6 +2079,8 @@ __all__ = [
     'RpcCallFunctionErrorInvalidAccountInfo',
     'RpcCallFunctionErrorNoContractCode',
     'RpcCallFunctionErrorNoContractCodeInfo',
+    'RpcCallFunctionErrorUninitializedAccount',
+    'RpcCallFunctionErrorUninitializedAccountInfo',
     'RpcCallFunctionErrorUnknownAccount',
     'RpcCallFunctionErrorUnknownAccountInfo',
     'RpcCallFunctionErrorUnknownBlock',
@@ -2202,6 +2216,8 @@ __all__ = [
     'RpcQueryErrorTooManyAccessKeysInfo',
     'RpcQueryErrorUnavailableShard',
     'RpcQueryErrorUnavailableShardInfo',
+    'RpcQueryErrorUninitializedAccount',
+    'RpcQueryErrorUninitializedAccountInfo',
     'RpcQueryErrorUnknownAccessKey',
     'RpcQueryErrorUnknownAccessKeyInfo',
     'RpcQueryErrorUnknownAccount',
@@ -2353,6 +2369,8 @@ __all__ = [
     'RpcViewAccessKeyErrorInternalErrorInfo',
     'RpcViewAccessKeyErrorInvalidAccount',
     'RpcViewAccessKeyErrorInvalidAccountInfo',
+    'RpcViewAccessKeyErrorUninitializedAccount',
+    'RpcViewAccessKeyErrorUninitializedAccountInfo',
     'RpcViewAccessKeyErrorUnknownAccessKey',
     'RpcViewAccessKeyErrorUnknownAccessKeyInfo',
     'RpcViewAccessKeyErrorUnknownAccount',
@@ -2366,6 +2384,8 @@ __all__ = [
     'RpcViewAccessKeyListErrorInvalidAccountInfo',
     'RpcViewAccessKeyListErrorTooManyAccessKeys',
     'RpcViewAccessKeyListErrorTooManyAccessKeysInfo',
+    'RpcViewAccessKeyListErrorUninitializedAccount',
+    'RpcViewAccessKeyListErrorUninitializedAccountInfo',
     'RpcViewAccessKeyListErrorUnknownAccount',
     'RpcViewAccessKeyListErrorUnknownAccountInfo',
     'RpcViewAccessKeyListErrorUnknownBlock',
@@ -2401,6 +2421,8 @@ __all__ = [
     'RpcViewCodeErrorInvalidAccountInfo',
     'RpcViewCodeErrorNoContractCode',
     'RpcViewCodeErrorNoContractCodeInfo',
+    'RpcViewCodeErrorUninitializedAccount',
+    'RpcViewCodeErrorUninitializedAccountInfo',
     'RpcViewCodeErrorUnknownAccount',
     'RpcViewCodeErrorUnknownAccountInfo',
     'RpcViewCodeErrorUnknownBlock',
@@ -2447,6 +2469,8 @@ __all__ = [
     'RpcViewStateErrorInvalidAccountInfo',
     'RpcViewStateErrorTooLargeContractState',
     'RpcViewStateErrorTooLargeContractStateInfo',
+    'RpcViewStateErrorUninitializedAccount',
+    'RpcViewStateErrorUninitializedAccountInfo',
     'RpcViewStateErrorUnknownAccount',
     'RpcViewStateErrorUnknownAccountInfo',
     'RpcViewStateErrorUnknownBlock',
@@ -2982,6 +3006,8 @@ _CLASS_TO_MODULE = {
     'RpcViewStateErrorInvalidAccount': 'rpc_view_state_error',
     'RpcViewStateErrorUnknownAccountInfo': 'rpc_view_state_error',
     'RpcViewStateErrorUnknownAccount': 'rpc_view_state_error',
+    'RpcViewStateErrorUninitializedAccountInfo': 'rpc_view_state_error',
+    'RpcViewStateErrorUninitializedAccount': 'rpc_view_state_error',
     'RpcViewStateErrorTooLargeContractStateInfo': 'rpc_view_state_error',
     'RpcViewStateErrorTooLargeContractState': 'rpc_view_state_error',
     'RpcViewStateErrorInternalErrorInfo': 'rpc_view_state_error',
@@ -3026,6 +3052,8 @@ _CLASS_TO_MODULE = {
     'RpcQueryErrorInvalidAccount': 'rpc_query_error',
     'RpcQueryErrorUnknownAccountInfo': 'rpc_query_error',
     'RpcQueryErrorUnknownAccount': 'rpc_query_error',
+    'RpcQueryErrorUninitializedAccountInfo': 'rpc_query_error',
+    'RpcQueryErrorUninitializedAccount': 'rpc_query_error',
     'RpcQueryErrorNoContractCodeInfo': 'rpc_query_error',
     'RpcQueryErrorNoContractCode': 'rpc_query_error',
     'RpcQueryErrorTooLargeContractStateInfo': 'rpc_query_error',
@@ -3180,6 +3208,8 @@ _CLASS_TO_MODULE = {
     'RpcViewAccessKeyListErrorInvalidAccount': 'rpc_view_access_key_list_error',
     'RpcViewAccessKeyListErrorUnknownAccountInfo': 'rpc_view_access_key_list_error',
     'RpcViewAccessKeyListErrorUnknownAccount': 'rpc_view_access_key_list_error',
+    'RpcViewAccessKeyListErrorUninitializedAccountInfo': 'rpc_view_access_key_list_error',
+    'RpcViewAccessKeyListErrorUninitializedAccount': 'rpc_view_access_key_list_error',
     'RpcViewAccessKeyListErrorTooManyAccessKeysInfo': 'rpc_view_access_key_list_error',
     'RpcViewAccessKeyListErrorTooManyAccessKeys': 'rpc_view_access_key_list_error',
     'RpcViewAccessKeyListErrorInternalErrorInfo': 'rpc_view_access_key_list_error',
@@ -3245,6 +3275,8 @@ _CLASS_TO_MODULE = {
     'RpcViewCodeErrorInvalidAccount': 'rpc_view_code_error',
     'RpcViewCodeErrorUnknownAccountInfo': 'rpc_view_code_error',
     'RpcViewCodeErrorUnknownAccount': 'rpc_view_code_error',
+    'RpcViewCodeErrorUninitializedAccountInfo': 'rpc_view_code_error',
+    'RpcViewCodeErrorUninitializedAccount': 'rpc_view_code_error',
     'RpcViewCodeErrorNoContractCodeInfo': 'rpc_view_code_error',
     'RpcViewCodeErrorNoContractCode': 'rpc_view_code_error',
     'RpcViewCodeErrorInternalErrorInfo': 'rpc_view_code_error',
@@ -3702,6 +3734,8 @@ _CLASS_TO_MODULE = {
     'RpcViewAccessKeyErrorInvalidAccount': 'rpc_view_access_key_error',
     'RpcViewAccessKeyErrorUnknownAccountInfo': 'rpc_view_access_key_error',
     'RpcViewAccessKeyErrorUnknownAccount': 'rpc_view_access_key_error',
+    'RpcViewAccessKeyErrorUninitializedAccountInfo': 'rpc_view_access_key_error',
+    'RpcViewAccessKeyErrorUninitializedAccount': 'rpc_view_access_key_error',
     'RpcViewAccessKeyErrorUnknownAccessKeyInfo': 'rpc_view_access_key_error',
     'RpcViewAccessKeyErrorUnknownAccessKey': 'rpc_view_access_key_error',
     'RpcViewAccessKeyErrorInternalErrorInfo': 'rpc_view_access_key_error',
@@ -3766,6 +3800,8 @@ _CLASS_TO_MODULE = {
     'RpcCallFunctionErrorInvalidAccount': 'rpc_call_function_error',
     'RpcCallFunctionErrorUnknownAccountInfo': 'rpc_call_function_error',
     'RpcCallFunctionErrorUnknownAccount': 'rpc_call_function_error',
+    'RpcCallFunctionErrorUninitializedAccountInfo': 'rpc_call_function_error',
+    'RpcCallFunctionErrorUninitializedAccount': 'rpc_call_function_error',
     'RpcCallFunctionErrorNoContractCodeInfo': 'rpc_call_function_error',
     'RpcCallFunctionErrorNoContractCode': 'rpc_call_function_error',
     'RpcCallFunctionErrorContractExecutionErrorInfo': 'rpc_call_function_error',
