@@ -546,6 +546,7 @@ if TYPE_CHECKING:
     from .json_rpc_response_for_rpc_network_info_response_and_rpc_network_info_error import JsonRpcResponseForRpcNetworkInfoResponseAndRpcNetworkInfoError
     from .shard_layout_v2 import ShardLayoutV2
     from .rpc_light_client_state_proof_request import RpcLightClientStateProofRequest
+    from .external_calls_config_view import ExternalCallsConfigView
     from .error_wrapper_for_rpc_view_gas_key_list_error import ErrorWrapperForRpcViewGasKeyListErrorRequestValidationError
     from .error_wrapper_for_rpc_view_gas_key_list_error import ErrorWrapperForRpcViewGasKeyListErrorHandlerError
     from .error_wrapper_for_rpc_view_gas_key_list_error import ErrorWrapperForRpcViewGasKeyListErrorInternalError
@@ -931,6 +932,11 @@ if TYPE_CHECKING:
     from .delegate_action_v2 import DelegateActionV2
     from .json_rpc_request_for_experimental_light_client_execution_outcome_proof import JsonRpcRequestForExperimentalLightClientExecutionOutcomeProof
     from .deposit_cost_failure_reason import DepositCostFailureReason
+    from .external_call_chunk_limit import ExternalCallChunkLimitComputePayload
+    from .external_call_chunk_limit import ExternalCallChunkLimitCompute
+    from .external_call_chunk_limit import ExternalCallChunkLimitStorageProofPayload
+    from .external_call_chunk_limit import ExternalCallChunkLimitStorageProof
+    from .external_call_chunk_limit import ExternalCallChunkLimit
     from .json_rpc_request_for_genesis_config import JsonRpcRequestForGenesisConfig
     from .json_rpc_request_for_experimental_light_client_state_proof import JsonRpcRequestForExperimentalLightClientStateProof
     from .json_rpc_response_for_rpc_light_client_execution_outcome_proof_response_and_rpc_light_client_proof_error import JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofErrorResult
@@ -1081,6 +1087,8 @@ if TYPE_CHECKING:
     from .storage_error import StorageErrorStorageInconsistentState
     from .storage_error import StorageErrorFlatStorageBlockNotSupported
     from .storage_error import StorageErrorMemTrieLoadingError
+    from .storage_error import StorageErrorRecordingBudgetExceededPayload
+    from .storage_error import StorageErrorRecordingBudgetExceeded
     from .storage_error import StorageError
     from .rpc_view_gas_key_error import RpcViewGasKeyErrorUnknownBlockInfo
     from .rpc_view_gas_key_error import RpcViewGasKeyErrorUnknownBlock
@@ -1223,6 +1231,8 @@ if TYPE_CHECKING:
     from .invalid_tx_error import InvalidTxErrorNotEnoughBalanceForDeposit
     from .invalid_tx_error import InvalidTxErrorContractNotFoundPayload
     from .invalid_tx_error import InvalidTxErrorContractNotFound
+    from .invalid_tx_error import InvalidTxErrorExternalCallChunkShareReachedPayload
+    from .invalid_tx_error import InvalidTxErrorExternalCallChunkShareReached
     from .invalid_tx_error import InvalidTxError
     from .rpc_protocol_config_error import RpcProtocolConfigErrorUnknownBlock
     from .rpc_protocol_config_error import RpcProtocolConfigErrorInternalErrorInfo
@@ -1678,6 +1688,12 @@ __all__ = [
     'ExecutionStatusViewSuccessValue',
     'ExecutionStatusViewUnknown',
     'ExtCostsConfigView',
+    'ExternalCallChunkLimit',
+    'ExternalCallChunkLimitCompute',
+    'ExternalCallChunkLimitComputePayload',
+    'ExternalCallChunkLimitStorageProof',
+    'ExternalCallChunkLimitStorageProofPayload',
+    'ExternalCallsConfigView',
     'ExternalStorageConfig',
     'ExternalStorageLocation',
     'ExternalStorageLocationFilesystem',
@@ -1812,6 +1828,8 @@ __all__ = [
     'InvalidTxErrorContractNotFoundPayload',
     'InvalidTxErrorCostOverflow',
     'InvalidTxErrorExpired',
+    'InvalidTxErrorExternalCallChunkShareReached',
+    'InvalidTxErrorExternalCallChunkShareReachedPayload',
     'InvalidTxErrorInvalidAccessKeyError',
     'InvalidTxErrorInvalidChain',
     'InvalidTxErrorInvalidNonce',
@@ -2551,6 +2569,8 @@ __all__ = [
     'StorageErrorFlatStorageBlockNotSupported',
     'StorageErrorMemTrieLoadingError',
     'StorageErrorMissingTrieValue',
+    'StorageErrorRecordingBudgetExceeded',
+    'StorageErrorRecordingBudgetExceededPayload',
     'StorageErrorStorageInconsistentState',
     'StorageErrorStorageInternalError',
     'StorageErrorUnexpectedTrieValue',
@@ -3169,6 +3189,7 @@ _CLASS_TO_MODULE = {
     'JsonRpcResponseForRpcNetworkInfoResponseAndRpcNetworkInfoError': 'json_rpc_response_for_rpc_network_info_response_and_rpc_network_info_error',
     'ShardLayoutV2': 'shard_layout_v2',
     'RpcLightClientStateProofRequest': 'rpc_light_client_state_proof_request',
+    'ExternalCallsConfigView': 'external_calls_config_view',
     'ErrorWrapperForRpcViewGasKeyListErrorRequestValidationError': 'error_wrapper_for_rpc_view_gas_key_list_error',
     'ErrorWrapperForRpcViewGasKeyListErrorHandlerError': 'error_wrapper_for_rpc_view_gas_key_list_error',
     'ErrorWrapperForRpcViewGasKeyListErrorInternalError': 'error_wrapper_for_rpc_view_gas_key_list_error',
@@ -3554,6 +3575,11 @@ _CLASS_TO_MODULE = {
     'DelegateActionV2': 'delegate_action_v2',
     'JsonRpcRequestForExperimentalLightClientExecutionOutcomeProof': 'json_rpc_request_for_experimental_light_client_execution_outcome_proof',
     'DepositCostFailureReason': 'deposit_cost_failure_reason',
+    'ExternalCallChunkLimitComputePayload': 'external_call_chunk_limit',
+    'ExternalCallChunkLimitCompute': 'external_call_chunk_limit',
+    'ExternalCallChunkLimitStorageProofPayload': 'external_call_chunk_limit',
+    'ExternalCallChunkLimitStorageProof': 'external_call_chunk_limit',
+    'ExternalCallChunkLimit': 'external_call_chunk_limit',
     'JsonRpcRequestForGenesisConfig': 'json_rpc_request_for_genesis_config',
     'JsonRpcRequestForExperimentalLightClientStateProof': 'json_rpc_request_for_experimental_light_client_state_proof',
     'JsonRpcResponseForRpcLightClientExecutionOutcomeProofResponseAndRpcLightClientProofErrorResult': 'json_rpc_response_for_rpc_light_client_execution_outcome_proof_response_and_rpc_light_client_proof_error',
@@ -3704,6 +3730,8 @@ _CLASS_TO_MODULE = {
     'StorageErrorStorageInconsistentState': 'storage_error',
     'StorageErrorFlatStorageBlockNotSupported': 'storage_error',
     'StorageErrorMemTrieLoadingError': 'storage_error',
+    'StorageErrorRecordingBudgetExceededPayload': 'storage_error',
+    'StorageErrorRecordingBudgetExceeded': 'storage_error',
     'StorageError': 'storage_error',
     'RpcViewGasKeyErrorUnknownBlockInfo': 'rpc_view_gas_key_error',
     'RpcViewGasKeyErrorUnknownBlock': 'rpc_view_gas_key_error',
@@ -3846,6 +3874,8 @@ _CLASS_TO_MODULE = {
     'InvalidTxErrorNotEnoughBalanceForDeposit': 'invalid_tx_error',
     'InvalidTxErrorContractNotFoundPayload': 'invalid_tx_error',
     'InvalidTxErrorContractNotFound': 'invalid_tx_error',
+    'InvalidTxErrorExternalCallChunkShareReachedPayload': 'invalid_tx_error',
+    'InvalidTxErrorExternalCallChunkShareReached': 'invalid_tx_error',
     'InvalidTxError': 'invalid_tx_error',
     'RpcProtocolConfigErrorUnknownBlock': 'rpc_protocol_config_error',
     'RpcProtocolConfigErrorInternalErrorInfo': 'rpc_protocol_config_error',

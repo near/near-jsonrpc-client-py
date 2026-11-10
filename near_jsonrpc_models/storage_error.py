@@ -5,6 +5,7 @@ from near_jsonrpc_models.missing_trie_value import MissingTrieValue
 from near_jsonrpc_models.strict_model import StrictBaseModel
 from pydantic import BaseModel
 from pydantic import RootModel
+from pydantic import conint
 from typing import Literal
 from typing import Union
 
@@ -41,6 +42,15 @@ class StorageErrorMemTrieLoadingError(StrictBaseModel):
     """In-memory trie could not be loaded for some reason."""
     MemTrieLoadingError: str
 
-class StorageError(RootModel[Union[StorageErrorStorageInternalError, StorageErrorMissingTrieValue, StorageErrorUnexpectedTrieValue, StorageErrorStorageInconsistentState, StorageErrorFlatStorageBlockNotSupported, StorageErrorMemTrieLoadingError]]):
+class StorageErrorRecordingBudgetExceededPayload(BaseModel):
+    # The budget, in bytes of recorded storage proof.
+    limit: conint(ge=0, le=18446744073709551615)
+
+class StorageErrorRecordingBudgetExceeded(StrictBaseModel):
+    """A read would record more of the trie than the recording budget set on it allows.
+See `TrieUpdate::with_recording_budget`."""
+    RecordingBudgetExceeded: StorageErrorRecordingBudgetExceededPayload
+
+class StorageError(RootModel[Union[StorageErrorStorageInternalError, StorageErrorMissingTrieValue, StorageErrorUnexpectedTrieValue, StorageErrorStorageInconsistentState, StorageErrorFlatStorageBlockNotSupported, StorageErrorMemTrieLoadingError, StorageErrorRecordingBudgetExceeded]]):
     pass
 
