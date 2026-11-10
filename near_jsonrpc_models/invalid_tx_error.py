@@ -3,6 +3,7 @@
 from near_jsonrpc_models.account_id import AccountId
 from near_jsonrpc_models.actions_validation_error import ActionsValidationError
 from near_jsonrpc_models.deposit_cost_failure_reason import DepositCostFailureReason
+from near_jsonrpc_models.external_call_chunk_limit import ExternalCallChunkLimit
 from near_jsonrpc_models.invalid_access_key_error import InvalidAccessKeyError
 from near_jsonrpc_models.near_token import NearToken
 from near_jsonrpc_models.storage_error import StorageError
@@ -169,6 +170,16 @@ class InvalidTxErrorContractNotFound(StrictBaseModel):
     """The target of an external contract call has no contract, or no account."""
     ContractNotFound: InvalidTxErrorContractNotFoundPayload
 
-class InvalidTxError(RootModel[Union[InvalidTxErrorInvalidAccessKeyError, InvalidTxErrorInvalidSignerId, InvalidTxErrorSignerDoesNotExist, InvalidTxErrorInvalidNonce, InvalidTxErrorNonceTooLarge, InvalidTxErrorInvalidReceiverId, InvalidTxErrorInvalidSignature, InvalidTxErrorNotEnoughBalance, InvalidTxErrorLackBalanceForState, InvalidTxErrorCostOverflow, InvalidTxErrorInvalidChain, InvalidTxErrorExpired, InvalidTxErrorActionsValidation, InvalidTxErrorTransactionSizeExceeded, InvalidTxErrorInvalidTransactionVersion, InvalidTxErrorStorageError, InvalidTxErrorShardCongested, InvalidTxErrorShardStuck, InvalidTxErrorInvalidNonceIndex, InvalidTxErrorNotEnoughGasKeyBalance, InvalidTxErrorNotEnoughBalanceForDeposit, InvalidTxErrorContractNotFound]]):
+class InvalidTxErrorExternalCallChunkShareReachedPayload(BaseModel):
+    # The share that was reached: what the chunk's earlier external calls used, and the
+    # share.
+    share: ExternalCallChunkLimit
+
+class InvalidTxErrorExternalCallChunkShareReached(StrictBaseModel):
+    """An external contract call didn't run because the chunk's external calls reached one of
+their shares of the chunk's limits."""
+    ExternalCallChunkShareReached: InvalidTxErrorExternalCallChunkShareReachedPayload
+
+class InvalidTxError(RootModel[Union[InvalidTxErrorInvalidAccessKeyError, InvalidTxErrorInvalidSignerId, InvalidTxErrorSignerDoesNotExist, InvalidTxErrorInvalidNonce, InvalidTxErrorNonceTooLarge, InvalidTxErrorInvalidReceiverId, InvalidTxErrorInvalidSignature, InvalidTxErrorNotEnoughBalance, InvalidTxErrorLackBalanceForState, InvalidTxErrorCostOverflow, InvalidTxErrorInvalidChain, InvalidTxErrorExpired, InvalidTxErrorActionsValidation, InvalidTxErrorTransactionSizeExceeded, InvalidTxErrorInvalidTransactionVersion, InvalidTxErrorStorageError, InvalidTxErrorShardCongested, InvalidTxErrorShardStuck, InvalidTxErrorInvalidNonceIndex, InvalidTxErrorNotEnoughGasKeyBalance, InvalidTxErrorNotEnoughBalanceForDeposit, InvalidTxErrorContractNotFound, InvalidTxErrorExternalCallChunkShareReached]]):
     pass
 
