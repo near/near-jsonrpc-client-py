@@ -54,6 +54,14 @@ class RpcClientConfigResponse(BaseModel):
     disable_tx_routing: bool = None
     # Time between running doomslug timer.
     doomslug_step_period: MutableConfigValue = None
+    # The share of the size limit of the transaction pool that ECCs may fill. Zero keeps ECCs out
+    # of the pool.
+    ecc_pool_size_share: conlist(conint(ge=-2147483648, le=2147483647), min_length=2, max_length=2) = None
+    # The share of `produce_chunk_add_transactions_time_limit` that ECCs may take when a chunk is
+    # produced. Signed transactions go first, and ECCs get what they leave of the limit, but no
+    # more than this share of it. If there is no time limit, the share is of the default one.
+    # Zero keeps ECCs out of chunks.
+    ecc_time_share: MutableConfigValue = None
     # If true, transactions for the next chunk will be prepared early, right after the previous chunk's
     # post-state is ready. This can help produce chunks faster, for high-throughput chains.
     # The current implementation increases latency on low-load chains, which will be fixed in the future.
