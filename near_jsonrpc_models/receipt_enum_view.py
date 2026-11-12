@@ -1,5 +1,6 @@
 from near_jsonrpc_models.account_id import AccountId
 from near_jsonrpc_models.action_view import ActionView
+from near_jsonrpc_models.authorization_context import AuthorizationContext
 from near_jsonrpc_models.crypto_hash import CryptoHash
 from near_jsonrpc_models.data_receiver_view import DataReceiverView
 from near_jsonrpc_models.global_contract_identifier import GlobalContractIdentifier
@@ -16,13 +17,16 @@ from typing import Union
 
 class ReceiptEnumViewActionPayload(BaseModel):
     actions: List[ActionView]
+    # What authorized the chain, absent in views written before external calls
+    authorization_context: AuthorizationContext | None = None
     gas_price: NearToken
     input_data_ids: List[CryptoHash]
     is_promise_yield: bool = False
     output_data_receivers: List[DataReceiverView]
     refund_to: AccountId | None = None
     signer_id: AccountId
-    signer_public_key: PublicKey
+    # The key of the transaction that started the chain, absent in an external call's chain
+    signer_public_key: PublicKey | None = None
 
 class ReceiptEnumViewAction(StrictBaseModel):
     Action: ReceiptEnumViewActionPayload

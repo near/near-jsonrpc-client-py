@@ -5,6 +5,7 @@ from near_jsonrpc_models.finality import Finality
 from near_jsonrpc_models.function_args import FunctionArgs
 from near_jsonrpc_models.public_key import PublicKey
 from near_jsonrpc_models.public_key_handle import PublicKeyHandle
+from near_jsonrpc_models.state_init_view import StateInitView
 from near_jsonrpc_models.store_key import StoreKey
 from near_jsonrpc_models.sync_checkpoint import SyncCheckpoint
 from pydantic import BaseModel
@@ -58,6 +59,8 @@ class RpcQueryRequestCallFunctionByBlockId(BaseModel):
     args_base64: FunctionArgs
     method_name: str
     request_type: Literal['call_function']
+    # Runs the call as if this were installed, unless the account already has its state.
+    state_init: StateInitView | None = None
 
 class RpcQueryRequestViewGlobalContractCodeByBlockId(BaseModel):
     block_id: BlockId
@@ -113,6 +116,8 @@ class RpcQueryRequestCallFunctionByFinality(BaseModel):
     args_base64: FunctionArgs
     method_name: str
     request_type: Literal['call_function']
+    # Runs the call as if this were installed, unless the account already has its state.
+    state_init: StateInitView | None = None
 
 class RpcQueryRequestViewGlobalContractCodeByFinality(BaseModel):
     finality: Finality
@@ -168,6 +173,8 @@ class RpcQueryRequestCallFunctionBySyncCheckpoint(BaseModel):
     args_base64: FunctionArgs
     method_name: str
     request_type: Literal['call_function']
+    # Runs the call as if this were installed, unless the account already has its state.
+    state_init: StateInitView | None = None
 
 class RpcQueryRequestViewGlobalContractCodeBySyncCheckpoint(BaseModel):
     sync_checkpoint: SyncCheckpoint

@@ -230,7 +230,7 @@ class HostErrorProhibitedInExternalCallPayload(BaseModel):
     method_name: str
 
 class HostErrorProhibitedInExternalCall(StrictBaseModel):
-    """`method_name` is not allowed in external contract calls"""
+    """`method_name` is not allowed in external contract calls, or in the receipts they lead to"""
     ProhibitedInExternalCall: HostErrorProhibitedInExternalCallPayload
 
 """An external contract call has an attached deposit, which it cannot have"""

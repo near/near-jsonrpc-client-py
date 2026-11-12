@@ -1,4 +1,5 @@
 from near_jsonrpc_models.account_id import AccountId
+from near_jsonrpc_models.actions_validation_error import ActionsValidationError
 from near_jsonrpc_models.block_reference import BlockReference
 from near_jsonrpc_models.crypto_hash import CryptoHash
 from near_jsonrpc_models.function_call_error import FunctionCallError
@@ -63,6 +64,15 @@ class RpcQueryErrorUninitializedAccountInfo(BaseModel):
 class RpcQueryErrorUninitializedAccount(BaseModel):
     info: RpcQueryErrorUninitializedAccountInfo
     name: Literal['UNINITIALIZED_ACCOUNT']
+
+class RpcQueryErrorInvalidStateInitInfo(BaseModel):
+    block_hash: CryptoHash
+    block_height: conint(ge=0, le=18446744073709551615)
+    error: ActionsValidationError
+
+class RpcQueryErrorInvalidStateInit(BaseModel):
+    info: RpcQueryErrorInvalidStateInitInfo
+    name: Literal['INVALID_STATE_INIT']
 
 class RpcQueryErrorNoContractCodeInfo(BaseModel):
     block_hash: CryptoHash
@@ -136,6 +146,6 @@ class RpcQueryErrorInternalError(BaseModel):
     info: RpcQueryErrorInternalErrorInfo
     name: Literal['INTERNAL_ERROR']
 
-class RpcQueryError(RootModel[Union[RpcQueryErrorNoSyncedBlocks, RpcQueryErrorUnavailableShard, RpcQueryErrorGarbageCollectedBlock, RpcQueryErrorUnknownBlock, RpcQueryErrorInvalidAccount, RpcQueryErrorUnknownAccount, RpcQueryErrorUninitializedAccount, RpcQueryErrorNoContractCode, RpcQueryErrorTooLargeContractState, RpcQueryErrorUnknownAccessKey, RpcQueryErrorUnknownGasKey, RpcQueryErrorTooManyAccessKeys, RpcQueryErrorContractExecutionError, RpcQueryErrorNoGlobalContractCode, RpcQueryErrorInternalError]]):
+class RpcQueryError(RootModel[Union[RpcQueryErrorNoSyncedBlocks, RpcQueryErrorUnavailableShard, RpcQueryErrorGarbageCollectedBlock, RpcQueryErrorUnknownBlock, RpcQueryErrorInvalidAccount, RpcQueryErrorUnknownAccount, RpcQueryErrorUninitializedAccount, RpcQueryErrorInvalidStateInit, RpcQueryErrorNoContractCode, RpcQueryErrorTooLargeContractState, RpcQueryErrorUnknownAccessKey, RpcQueryErrorUnknownGasKey, RpcQueryErrorTooManyAccessKeys, RpcQueryErrorContractExecutionError, RpcQueryErrorNoGlobalContractCode, RpcQueryErrorInternalError]]):
     pass
 
