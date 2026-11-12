@@ -201,6 +201,9 @@ if TYPE_CHECKING:
     from .error_wrapper_for_rpc_client_config_error import ErrorWrapperForRpcClientConfigErrorInternalError
     from .error_wrapper_for_rpc_client_config_error import ErrorWrapperForRpcClientConfigError
     from .cost_gas_used import CostGasUsed
+    from .authorization_context import AuthorizationContextExternalContractCall
+    from .authorization_context import AuthorizationContextAccessKey
+    from .authorization_context import AuthorizationContext
     from .chunk_header_view import ChunkHeaderView
     from .action_view import ActionViewCreateAccount
     from .action_view import ActionViewDeployContractPayload
@@ -431,6 +434,8 @@ if TYPE_CHECKING:
     from .rpc_query_error import RpcQueryErrorUnknownAccount
     from .rpc_query_error import RpcQueryErrorUninitializedAccountInfo
     from .rpc_query_error import RpcQueryErrorUninitializedAccount
+    from .rpc_query_error import RpcQueryErrorInvalidStateInitInfo
+    from .rpc_query_error import RpcQueryErrorInvalidStateInit
     from .rpc_query_error import RpcQueryErrorNoContractCodeInfo
     from .rpc_query_error import RpcQueryErrorNoContractCode
     from .rpc_query_error import RpcQueryErrorTooLargeContractStateInfo
@@ -562,6 +567,10 @@ if TYPE_CHECKING:
     from .access_key_list import AccessKeyList
     from .view_state_result import ViewStateResult
     from .delete_key_action import DeleteKeyAction
+    from .state_init_view import StateInitViewDeterministicPayload
+    from .state_init_view import StateInitViewDeterministic
+    from .state_init_view import StateInitViewUniversal
+    from .state_init_view import StateInitView
     from .json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error import JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorResult
     from .json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error import JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorError
     from .json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error import JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeError
@@ -1187,8 +1196,12 @@ if TYPE_CHECKING:
     from .rpc_call_function_error import RpcCallFunctionErrorUnknownAccount
     from .rpc_call_function_error import RpcCallFunctionErrorUninitializedAccountInfo
     from .rpc_call_function_error import RpcCallFunctionErrorUninitializedAccount
+    from .rpc_call_function_error import RpcCallFunctionErrorInvalidStateInitInfo
+    from .rpc_call_function_error import RpcCallFunctionErrorInvalidStateInit
     from .rpc_call_function_error import RpcCallFunctionErrorNoContractCodeInfo
     from .rpc_call_function_error import RpcCallFunctionErrorNoContractCode
+    from .rpc_call_function_error import RpcCallFunctionErrorNoGlobalContractCodeInfo
+    from .rpc_call_function_error import RpcCallFunctionErrorNoGlobalContractCode
     from .rpc_call_function_error import RpcCallFunctionErrorContractExecutionErrorInfo
     from .rpc_call_function_error import RpcCallFunctionErrorContractExecutionError
     from .rpc_call_function_error import RpcCallFunctionErrorInternalErrorInfo
@@ -1508,6 +1521,9 @@ __all__ = [
     'ActionsValidationErrorWithdrawFromGasKeyNotAllowedInDelegate',
     'AddGasKeyAction',
     'AddKeyAction',
+    'AuthorizationContext',
+    'AuthorizationContextAccessKey',
+    'AuthorizationContextExternalContractCall',
     'BandwidthRequest',
     'BandwidthRequestBitmap',
     'BandwidthRequests',
@@ -2095,8 +2111,12 @@ __all__ = [
     'RpcCallFunctionErrorInternalErrorInfo',
     'RpcCallFunctionErrorInvalidAccount',
     'RpcCallFunctionErrorInvalidAccountInfo',
+    'RpcCallFunctionErrorInvalidStateInit',
+    'RpcCallFunctionErrorInvalidStateInitInfo',
     'RpcCallFunctionErrorNoContractCode',
     'RpcCallFunctionErrorNoContractCodeInfo',
+    'RpcCallFunctionErrorNoGlobalContractCode',
+    'RpcCallFunctionErrorNoGlobalContractCodeInfo',
     'RpcCallFunctionErrorUninitializedAccount',
     'RpcCallFunctionErrorUninitializedAccountInfo',
     'RpcCallFunctionErrorUnknownAccount',
@@ -2223,6 +2243,8 @@ __all__ = [
     'RpcQueryErrorInternalErrorInfo',
     'RpcQueryErrorInvalidAccount',
     'RpcQueryErrorInvalidAccountInfo',
+    'RpcQueryErrorInvalidStateInit',
+    'RpcQueryErrorInvalidStateInitInfo',
     'RpcQueryErrorNoContractCode',
     'RpcQueryErrorNoContractCodeInfo',
     'RpcQueryErrorNoGlobalContractCode',
@@ -2556,6 +2578,10 @@ __all__ = [
     'StateChangeWithCauseViewDataUpdateChange',
     'StateChangeWithCauseViewGasKeyNonceUpdate',
     'StateChangeWithCauseViewGasKeyNonceUpdateChange',
+    'StateInitView',
+    'StateInitViewDeterministic',
+    'StateInitViewDeterministicPayload',
+    'StateInitViewUniversal',
     'StateItem',
     'StateProofTarget',
     'StateProofTargetAccountIdKeyTargetType',
@@ -2844,6 +2870,9 @@ _CLASS_TO_MODULE = {
     'ErrorWrapperForRpcClientConfigErrorInternalError': 'error_wrapper_for_rpc_client_config_error',
     'ErrorWrapperForRpcClientConfigError': 'error_wrapper_for_rpc_client_config_error',
     'CostGasUsed': 'cost_gas_used',
+    'AuthorizationContextExternalContractCall': 'authorization_context',
+    'AuthorizationContextAccessKey': 'authorization_context',
+    'AuthorizationContext': 'authorization_context',
     'ChunkHeaderView': 'chunk_header_view',
     'ActionViewCreateAccount': 'action_view',
     'ActionViewDeployContractPayload': 'action_view',
@@ -3074,6 +3103,8 @@ _CLASS_TO_MODULE = {
     'RpcQueryErrorUnknownAccount': 'rpc_query_error',
     'RpcQueryErrorUninitializedAccountInfo': 'rpc_query_error',
     'RpcQueryErrorUninitializedAccount': 'rpc_query_error',
+    'RpcQueryErrorInvalidStateInitInfo': 'rpc_query_error',
+    'RpcQueryErrorInvalidStateInit': 'rpc_query_error',
     'RpcQueryErrorNoContractCodeInfo': 'rpc_query_error',
     'RpcQueryErrorNoContractCode': 'rpc_query_error',
     'RpcQueryErrorTooLargeContractStateInfo': 'rpc_query_error',
@@ -3205,6 +3236,10 @@ _CLASS_TO_MODULE = {
     'AccessKeyList': 'access_key_list',
     'ViewStateResult': 'view_state_result',
     'DeleteKeyAction': 'delete_key_action',
+    'StateInitViewDeterministicPayload': 'state_init_view',
+    'StateInitViewDeterministic': 'state_init_view',
+    'StateInitViewUniversal': 'state_init_view',
+    'StateInitView': 'state_init_view',
     'JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorResult': 'json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error',
     'JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeErrorError': 'json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error',
     'JsonRpcResponseForRpcViewCodeResponseAndRpcViewCodeError': 'json_rpc_response_for_rpc_view_code_response_and_rpc_view_code_error',
@@ -3830,8 +3865,12 @@ _CLASS_TO_MODULE = {
     'RpcCallFunctionErrorUnknownAccount': 'rpc_call_function_error',
     'RpcCallFunctionErrorUninitializedAccountInfo': 'rpc_call_function_error',
     'RpcCallFunctionErrorUninitializedAccount': 'rpc_call_function_error',
+    'RpcCallFunctionErrorInvalidStateInitInfo': 'rpc_call_function_error',
+    'RpcCallFunctionErrorInvalidStateInit': 'rpc_call_function_error',
     'RpcCallFunctionErrorNoContractCodeInfo': 'rpc_call_function_error',
     'RpcCallFunctionErrorNoContractCode': 'rpc_call_function_error',
+    'RpcCallFunctionErrorNoGlobalContractCodeInfo': 'rpc_call_function_error',
+    'RpcCallFunctionErrorNoGlobalContractCode': 'rpc_call_function_error',
     'RpcCallFunctionErrorContractExecutionErrorInfo': 'rpc_call_function_error',
     'RpcCallFunctionErrorContractExecutionError': 'rpc_call_function_error',
     'RpcCallFunctionErrorInternalErrorInfo': 'rpc_call_function_error',
