@@ -257,14 +257,14 @@ class APIMixinSync:
             params=params,
         )
 
-    def broadcast_tx_async(self: NearBaseClientSync, *, params: near_jsonrpc_models.RpcSendTransactionRequest) -> near_jsonrpc_models.CryptoHash:
+    def broadcast_tx_async(self: NearBaseClientSync, *, params: near_jsonrpc_models.RpcSendTransactionRequest) -> near_jsonrpc_models.JsonRpcResponseForNullableCryptoHashAndRpcTransactionError:
         """
-        [Deprecated] Sends a transaction and immediately returns transaction hash. Consider using send_tx instead.
+        [Deprecated] Sends a transaction and immediately returns transaction hash, or null for an external call, whose id depends on the block that includes it. Consider using send_tx instead.
         High-level method: returns the result model or raises NearClientError/NearRpcError/NearHttpError.
         """
         return self._call(
             request_model=near_jsonrpc_models.JsonRpcRequestForBroadcastTxAsync,
-            response_model=near_jsonrpc_models.JsonRpcResponseForCryptoHashAndRpcTransactionError,
+            response_model=near_jsonrpc_models.JsonRpcResponseForNullableCryptoHashAndRpcTransactionError,
             params=params,
         )
 

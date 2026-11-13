@@ -5,5 +5,8 @@ from pydantic import BaseModel
 
 class EccTransactionView(BaseModel):
     contract_id: AccountId
-    hash: CryptoHash
     payload: str
+    # The universal account state init this copy of the call carries.
+    state_init: str | None = None
+    # The unique id of this copy of the call, its outcome id.
+    transaction_id: CryptoHash

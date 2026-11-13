@@ -1,8 +1,8 @@
 from near_jsonrpc_models.indexer_execution_outcome_with_optional_receipt import IndexerExecutionOutcomeWithOptionalReceipt
-from near_jsonrpc_models.signed_transaction_view import SignedTransactionView
+from near_jsonrpc_models.transaction_envelope_view import TransactionEnvelopeView
 from pydantic import BaseModel
 
 
 class IndexerTransactionWithOutcome(BaseModel):
     outcome: IndexerExecutionOutcomeWithOptionalReceipt
-    transaction: SignedTransactionView
+    transaction: TransactionEnvelopeView
