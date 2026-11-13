@@ -36,6 +36,19 @@ class LimitConfig(BaseModel):
     # Max amount of gas that can be burnt by an external contract call,
     # excluding gas attached to promises.
     max_gas_burnt_external: NearGas = None
+    # Max number of gas key nonces the `AddKey` actions in one receipt may add,
+    # in total, including the actions inside a delegate action.
+    # 
+    # Each nonce adds to the receipt's execution fees and so to its congestion
+    # gas, but the send fee does not depend on the number of nonces.
+    max_gas_key_nonces_added_per_receipt: conint(ge=0, le=18446744073709551615) = None
+    # Max number of gas key nonces the actions in one receipt may remove, in
+    # total. Checked at execution, because the count comes from state.
+    # 
+    # Removals are charged as compute only, and the chunk compute limit is
+    # checked between receipts, so without this bound one receipt can use
+    # many times the chunk compute limit.
+    max_gas_key_nonces_removed_per_receipt: conint(ge=0, le=18446744073709551615) = None
     # If present, stores max number of globals (entries in the wasm global
     # section) a contract may declare.
     max_globals_per_contract: conint(ge=0, le=18446744073709551615) | None = None

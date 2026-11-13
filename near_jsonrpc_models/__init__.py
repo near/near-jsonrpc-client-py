@@ -169,6 +169,8 @@ if TYPE_CHECKING:
     from .actions_validation_error import ActionsValidationErrorTotalNumberOfStateInitEntriesExceeded
     from .actions_validation_error import ActionsValidationErrorTransferToUniversalAccountNotAllowedPayload
     from .actions_validation_error import ActionsValidationErrorTransferToUniversalAccountNotAllowed
+    from .actions_validation_error import ActionsValidationErrorTotalNumberOfGasKeyNoncesAddedExceededPayload
+    from .actions_validation_error import ActionsValidationErrorTotalNumberOfGasKeyNoncesAddedExceeded
     from .actions_validation_error import ActionsValidationError
     from .call_result import CallResult
     from .rpc_health_response import RpcHealthResponse
@@ -376,6 +378,7 @@ if TYPE_CHECKING:
     from .state_change_cause_view import StateChangeCauseViewMigration
     from .state_change_cause_view import StateChangeCauseViewBandwidthSchedulerStateUpdate
     from .state_change_cause_view import StateChangeCauseViewContractCompilationStatusUpdate
+    from .state_change_cause_view import StateChangeCauseViewExternalCallProcessing
     from .state_change_cause_view import StateChangeCauseView
     from .rpc_congestion_level_response import RpcCongestionLevelResponse
     from .public_key_handle import PublicKeyHandle
@@ -798,6 +801,9 @@ if TYPE_CHECKING:
     from .json_rpc_response_for_rpc_query_response_and_rpc_query_error import JsonRpcResponseForRpcQueryResponseAndRpcQueryErrorResult
     from .json_rpc_response_for_rpc_query_response_and_rpc_query_error import JsonRpcResponseForRpcQueryResponseAndRpcQueryErrorError
     from .json_rpc_response_for_rpc_query_response_and_rpc_query_error import JsonRpcResponseForRpcQueryResponseAndRpcQueryError
+    from .json_rpc_response_for_nullable_crypto_hash_and_rpc_transaction_error import JsonRpcResponseForNullableCryptoHashAndRpcTransactionErrorResult
+    from .json_rpc_response_for_nullable_crypto_hash_and_rpc_transaction_error import JsonRpcResponseForNullableCryptoHashAndRpcTransactionErrorError
+    from .json_rpc_response_for_nullable_crypto_hash_and_rpc_transaction_error import JsonRpcResponseForNullableCryptoHashAndRpcTransactionError
     from .missing_trie_value_context import MissingTrieValueContext
     from .delete_gas_key_action import DeleteGasKeyAction
     from .receipt_enum_view import ReceiptEnumViewActionPayload
@@ -1038,6 +1044,8 @@ if TYPE_CHECKING:
     from .action_error_kind import ActionErrorKindAccountNotInitialized
     from .action_error_kind import ActionErrorKindReservedMethodNamePayload
     from .action_error_kind import ActionErrorKindReservedMethodName
+    from .action_error_kind import ActionErrorKindTotalNumberOfGasKeyNoncesRemovedExceededPayload
+    from .action_error_kind import ActionErrorKindTotalNumberOfGasKeyNoncesRemovedExceeded
     from .action_error_kind import ActionErrorKind
     from .gcconfig import GCConfig
     from .chunk_hash import ChunkHash
@@ -1150,8 +1158,8 @@ if TYPE_CHECKING:
     from .rpc_request_validation_error_kind import RpcRequestValidationErrorKindParseErrorInfo
     from .rpc_request_validation_error_kind import RpcRequestValidationErrorKindParseError
     from .rpc_request_validation_error_kind import RpcRequestValidationErrorKind
-    from .transaction_envelope_view import TransactionEnvelopeViewSignedTransactionView
-    from .transaction_envelope_view import TransactionEnvelopeViewEccTransactionView
+    from .transaction_envelope_view import TransactionEnvelopeViewKind
+    from .transaction_envelope_view import TransactionEnvelopeViewKind1
     from .transaction_envelope_view import TransactionEnvelopeView
     from .json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error import JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyErrorResult
     from .json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error import JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyErrorError
@@ -1257,8 +1265,12 @@ if TYPE_CHECKING:
     from .error_wrapper_for_rpc_light_client_proof_error import ErrorWrapperForRpcLightClientProofError
     from .nonce_mode import NonceMode
     from .execution_outcome_view import ExecutionOutcomeView
+    from .chunk_transaction_view import ChunkTransactionViewKind
+    from .chunk_transaction_view import ChunkTransactionViewKind1
+    from .chunk_transaction_view import ChunkTransactionView
     from .validator_info import ValidatorInfo
     from .rpc_light_client_chunk_execution_proof_response import RpcLightClientChunkExecutionProofResponse
+    from .chunk_ecc_transaction_view import ChunkEccTransactionView
     from .timeout_error_cause import TimeoutErrorCauseCause
     from .timeout_error_cause import TimeoutErrorCauseCauseStatus
     from .timeout_error_cause import TimeoutErrorCauseCauseShardId
@@ -1422,6 +1434,8 @@ __all__ = [
     'ActionErrorKindReceiptStorageProofSizeExceededPayload',
     'ActionErrorKindReservedMethodName',
     'ActionErrorKindReservedMethodNamePayload',
+    'ActionErrorKindTotalNumberOfGasKeyNoncesRemovedExceeded',
+    'ActionErrorKindTotalNumberOfGasKeyNoncesRemovedExceededPayload',
     'ActionErrorKindTotalPromiseInputSizeExceeded',
     'ActionErrorKindTotalPromiseInputSizeExceededPayload',
     'ActionErrorKindTriesToStake',
@@ -1502,6 +1516,8 @@ __all__ = [
     'ActionsValidationErrorTotalNumberOfActionsExceededPayload',
     'ActionsValidationErrorTotalNumberOfDeployActionsExceeded',
     'ActionsValidationErrorTotalNumberOfDeployActionsExceededPayload',
+    'ActionsValidationErrorTotalNumberOfGasKeyNoncesAddedExceeded',
+    'ActionsValidationErrorTotalNumberOfGasKeyNoncesAddedExceededPayload',
     'ActionsValidationErrorTotalNumberOfStateInitEntriesExceeded',
     'ActionsValidationErrorTotalNumberOfStateInitEntriesExceededPayload',
     'ActionsValidationErrorTotalNumberOfStateInitKeysExceeded',
@@ -1544,12 +1560,16 @@ __all__ = [
     'CatchupStatusView',
     'ChunkDistributionNetworkConfig',
     'ChunkDistributionUris',
+    'ChunkEccTransactionView',
     'ChunkExecutionProofView',
     'ChunkExecutionRoots',
     'ChunkExecutionRootsV1',
     'ChunkExecutionRootsV1Option',
     'ChunkHash',
     'ChunkHeaderView',
+    'ChunkTransactionView',
+    'ChunkTransactionViewKind',
+    'ChunkTransactionViewKind1',
     'CloudArchivalWriterConfig',
     'CompilationError',
     'CompilationErrorCodeDoesNotExist',
@@ -1934,6 +1954,9 @@ __all__ = [
     'JsonRpcResponseForGenesisConfigAndGenesisConfigError',
     'JsonRpcResponseForGenesisConfigAndGenesisConfigErrorError',
     'JsonRpcResponseForGenesisConfigAndGenesisConfigErrorResult',
+    'JsonRpcResponseForNullableCryptoHashAndRpcTransactionError',
+    'JsonRpcResponseForNullableCryptoHashAndRpcTransactionErrorError',
+    'JsonRpcResponseForNullableCryptoHashAndRpcTransactionErrorResult',
     'JsonRpcResponseForNullableRpcHealthResponseAndRpcStatusError',
     'JsonRpcResponseForNullableRpcHealthResponseAndRpcStatusErrorError',
     'JsonRpcResponseForNullableRpcHealthResponseAndRpcStatusErrorResult',
@@ -2546,6 +2569,7 @@ __all__ = [
     'StateChangeCauseViewActionReceiptProcessingStarted',
     'StateChangeCauseViewBandwidthSchedulerStateUpdate',
     'StateChangeCauseViewContractCompilationStatusUpdate',
+    'StateChangeCauseViewExternalCallProcessing',
     'StateChangeCauseViewInitialState',
     'StateChangeCauseViewMigration',
     'StateChangeCauseViewNotWritableToDisk',
@@ -2622,8 +2646,8 @@ __all__ = [
     'TrackedShardsConfigShadowValidator',
     'TrackedShardsConfigShards',
     'TransactionEnvelopeView',
-    'TransactionEnvelopeViewEccTransactionView',
-    'TransactionEnvelopeViewSignedTransactionView',
+    'TransactionEnvelopeViewKind',
+    'TransactionEnvelopeViewKind1',
     'TransactionNonce',
     'TransactionNonceGasKeyNonce',
     'TransactionNonceGasKeyNoncePayload',
@@ -2838,6 +2862,8 @@ _CLASS_TO_MODULE = {
     'ActionsValidationErrorTotalNumberOfStateInitEntriesExceeded': 'actions_validation_error',
     'ActionsValidationErrorTransferToUniversalAccountNotAllowedPayload': 'actions_validation_error',
     'ActionsValidationErrorTransferToUniversalAccountNotAllowed': 'actions_validation_error',
+    'ActionsValidationErrorTotalNumberOfGasKeyNoncesAddedExceededPayload': 'actions_validation_error',
+    'ActionsValidationErrorTotalNumberOfGasKeyNoncesAddedExceeded': 'actions_validation_error',
     'ActionsValidationError': 'actions_validation_error',
     'CallResult': 'call_result',
     'RpcHealthResponse': 'rpc_health_response',
@@ -3045,6 +3071,7 @@ _CLASS_TO_MODULE = {
     'StateChangeCauseViewMigration': 'state_change_cause_view',
     'StateChangeCauseViewBandwidthSchedulerStateUpdate': 'state_change_cause_view',
     'StateChangeCauseViewContractCompilationStatusUpdate': 'state_change_cause_view',
+    'StateChangeCauseViewExternalCallProcessing': 'state_change_cause_view',
     'StateChangeCauseView': 'state_change_cause_view',
     'RpcCongestionLevelResponse': 'rpc_congestion_level_response',
     'PublicKeyHandle': 'public_key_handle',
@@ -3467,6 +3494,9 @@ _CLASS_TO_MODULE = {
     'JsonRpcResponseForRpcQueryResponseAndRpcQueryErrorResult': 'json_rpc_response_for_rpc_query_response_and_rpc_query_error',
     'JsonRpcResponseForRpcQueryResponseAndRpcQueryErrorError': 'json_rpc_response_for_rpc_query_response_and_rpc_query_error',
     'JsonRpcResponseForRpcQueryResponseAndRpcQueryError': 'json_rpc_response_for_rpc_query_response_and_rpc_query_error',
+    'JsonRpcResponseForNullableCryptoHashAndRpcTransactionErrorResult': 'json_rpc_response_for_nullable_crypto_hash_and_rpc_transaction_error',
+    'JsonRpcResponseForNullableCryptoHashAndRpcTransactionErrorError': 'json_rpc_response_for_nullable_crypto_hash_and_rpc_transaction_error',
+    'JsonRpcResponseForNullableCryptoHashAndRpcTransactionError': 'json_rpc_response_for_nullable_crypto_hash_and_rpc_transaction_error',
     'MissingTrieValueContext': 'missing_trie_value_context',
     'DeleteGasKeyAction': 'delete_gas_key_action',
     'ReceiptEnumViewActionPayload': 'receipt_enum_view',
@@ -3707,6 +3737,8 @@ _CLASS_TO_MODULE = {
     'ActionErrorKindAccountNotInitialized': 'action_error_kind',
     'ActionErrorKindReservedMethodNamePayload': 'action_error_kind',
     'ActionErrorKindReservedMethodName': 'action_error_kind',
+    'ActionErrorKindTotalNumberOfGasKeyNoncesRemovedExceededPayload': 'action_error_kind',
+    'ActionErrorKindTotalNumberOfGasKeyNoncesRemovedExceeded': 'action_error_kind',
     'ActionErrorKind': 'action_error_kind',
     'GCConfig': 'gcconfig',
     'ChunkHash': 'chunk_hash',
@@ -3819,8 +3851,8 @@ _CLASS_TO_MODULE = {
     'RpcRequestValidationErrorKindParseErrorInfo': 'rpc_request_validation_error_kind',
     'RpcRequestValidationErrorKindParseError': 'rpc_request_validation_error_kind',
     'RpcRequestValidationErrorKind': 'rpc_request_validation_error_kind',
-    'TransactionEnvelopeViewSignedTransactionView': 'transaction_envelope_view',
-    'TransactionEnvelopeViewEccTransactionView': 'transaction_envelope_view',
+    'TransactionEnvelopeViewKind': 'transaction_envelope_view',
+    'TransactionEnvelopeViewKind1': 'transaction_envelope_view',
     'TransactionEnvelopeView': 'transaction_envelope_view',
     'JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyErrorResult': 'json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error',
     'JsonRpcResponseForRpcViewGasKeyResponseAndRpcViewGasKeyErrorError': 'json_rpc_response_for_rpc_view_gas_key_response_and_rpc_view_gas_key_error',
@@ -3926,8 +3958,12 @@ _CLASS_TO_MODULE = {
     'ErrorWrapperForRpcLightClientProofError': 'error_wrapper_for_rpc_light_client_proof_error',
     'NonceMode': 'nonce_mode',
     'ExecutionOutcomeView': 'execution_outcome_view',
+    'ChunkTransactionViewKind': 'chunk_transaction_view',
+    'ChunkTransactionViewKind1': 'chunk_transaction_view',
+    'ChunkTransactionView': 'chunk_transaction_view',
     'ValidatorInfo': 'validator_info',
     'RpcLightClientChunkExecutionProofResponse': 'rpc_light_client_chunk_execution_proof_response',
+    'ChunkEccTransactionView': 'chunk_ecc_transaction_view',
     'TimeoutErrorCauseCause': 'timeout_error_cause',
     'TimeoutErrorCauseCauseStatus': 'timeout_error_cause',
     'TimeoutErrorCauseCauseShardId': 'timeout_error_cause',

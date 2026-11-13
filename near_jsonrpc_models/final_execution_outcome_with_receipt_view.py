@@ -4,7 +4,7 @@ the generated receipt."""
 from near_jsonrpc_models.execution_outcome_with_id_view import ExecutionOutcomeWithIdView
 from near_jsonrpc_models.final_execution_status import FinalExecutionStatus
 from near_jsonrpc_models.receipt_view import ReceiptView
-from near_jsonrpc_models.signed_transaction_view import SignedTransactionView
+from near_jsonrpc_models.transaction_envelope_view import TransactionEnvelopeView
 from pydantic import BaseModel
 from typing import List
 
@@ -20,7 +20,7 @@ class FinalExecutionOutcomeWithReceiptView(BaseModel):
     # FinalExecutionStatus::Failure - the result of the first leaf receipt_id
     # FinalExecutionStatus::SuccessValue - the result of the first leaf receipt_id
     status: FinalExecutionStatus
-    # Signed Transaction
-    transaction: SignedTransactionView
-    # The execution outcome of the signed transaction.
+    # The transaction, signed or an external call.
+    transaction: TransactionEnvelopeView
+    # The execution outcome of the transaction.
     transaction_outcome: ExecutionOutcomeWithIdView
