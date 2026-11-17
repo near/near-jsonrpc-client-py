@@ -6,9 +6,11 @@ from near_jsonrpc_models.function_call_error import FunctionCallError
 from near_jsonrpc_models.global_contract_identifier import GlobalContractIdentifier
 from near_jsonrpc_models.public_key import PublicKey
 from near_jsonrpc_models.shard_id import ShardId
+from near_jsonrpc_models.tx_execution_error import TxExecutionError
 from pydantic import BaseModel
 from pydantic import RootModel
 from pydantic import conint
+from typing import List
 from typing import Literal
 from typing import Union
 
@@ -130,6 +132,17 @@ class RpcQueryErrorContractExecutionError(BaseModel):
     info: RpcQueryErrorContractExecutionErrorInfo
     name: Literal['CONTRACT_EXECUTION_ERROR']
 
+class RpcQueryErrorExternalCallRefusedInfo(BaseModel):
+    block_hash: CryptoHash
+    block_height: conint(ge=0, le=18446744073709551615)
+    error: TxExecutionError
+    # The logs of the contract's run. Empty for a call refused before its run.
+    logs: List[str]
+
+class RpcQueryErrorExternalCallRefused(BaseModel):
+    info: RpcQueryErrorExternalCallRefusedInfo
+    name: Literal['EXTERNAL_CALL_REFUSED']
+
 class RpcQueryErrorNoGlobalContractCodeInfo(BaseModel):
     block_hash: CryptoHash
     block_height: conint(ge=0, le=18446744073709551615)
@@ -146,6 +159,6 @@ class RpcQueryErrorInternalError(BaseModel):
     info: RpcQueryErrorInternalErrorInfo
     name: Literal['INTERNAL_ERROR']
 
-class RpcQueryError(RootModel[Union[RpcQueryErrorNoSyncedBlocks, RpcQueryErrorUnavailableShard, RpcQueryErrorGarbageCollectedBlock, RpcQueryErrorUnknownBlock, RpcQueryErrorInvalidAccount, RpcQueryErrorUnknownAccount, RpcQueryErrorUninitializedAccount, RpcQueryErrorInvalidStateInit, RpcQueryErrorNoContractCode, RpcQueryErrorTooLargeContractState, RpcQueryErrorUnknownAccessKey, RpcQueryErrorUnknownGasKey, RpcQueryErrorTooManyAccessKeys, RpcQueryErrorContractExecutionError, RpcQueryErrorNoGlobalContractCode, RpcQueryErrorInternalError]]):
+class RpcQueryError(RootModel[Union[RpcQueryErrorNoSyncedBlocks, RpcQueryErrorUnavailableShard, RpcQueryErrorGarbageCollectedBlock, RpcQueryErrorUnknownBlock, RpcQueryErrorInvalidAccount, RpcQueryErrorUnknownAccount, RpcQueryErrorUninitializedAccount, RpcQueryErrorInvalidStateInit, RpcQueryErrorNoContractCode, RpcQueryErrorTooLargeContractState, RpcQueryErrorUnknownAccessKey, RpcQueryErrorUnknownGasKey, RpcQueryErrorTooManyAccessKeys, RpcQueryErrorContractExecutionError, RpcQueryErrorExternalCallRefused, RpcQueryErrorNoGlobalContractCode, RpcQueryErrorInternalError]]):
     pass
 

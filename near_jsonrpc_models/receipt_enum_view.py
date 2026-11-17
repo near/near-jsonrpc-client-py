@@ -17,8 +17,10 @@ from typing import Union
 
 class ReceiptEnumViewActionPayload(BaseModel):
     actions: List[ActionView]
-    # What authorized the chain, absent in views written before external calls
+    # What authorized the chain, absent if the receipt doesn't record it
     authorization_context: AuthorizationContext | None = None
+    # The protocol version the receipt was created at, absent if the receipt doesn't record it
+    creation_protocol_version: conint(ge=0, le=4294967295) | None = None
     gas_price: NearToken
     input_data_ids: List[CryptoHash]
     is_promise_yield: bool = False
