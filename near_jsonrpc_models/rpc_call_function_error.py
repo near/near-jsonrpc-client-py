@@ -4,9 +4,11 @@ from near_jsonrpc_models.block_reference import BlockReference
 from near_jsonrpc_models.crypto_hash import CryptoHash
 from near_jsonrpc_models.function_call_error import FunctionCallError
 from near_jsonrpc_models.global_contract_identifier import GlobalContractIdentifier
+from near_jsonrpc_models.tx_execution_error import TxExecutionError
 from pydantic import BaseModel
 from pydantic import RootModel
 from pydantic import conint
+from typing import List
 from typing import Literal
 from typing import Union
 
@@ -81,6 +83,17 @@ class RpcCallFunctionErrorContractExecutionError(BaseModel):
     info: RpcCallFunctionErrorContractExecutionErrorInfo
     name: Literal['CONTRACT_EXECUTION_ERROR']
 
+class RpcCallFunctionErrorExternalCallRefusedInfo(BaseModel):
+    block_hash: CryptoHash
+    block_height: conint(ge=0, le=18446744073709551615)
+    error: TxExecutionError
+    # The logs of the contract's run. Empty for a call refused before its run.
+    logs: List[str]
+
+class RpcCallFunctionErrorExternalCallRefused(BaseModel):
+    info: RpcCallFunctionErrorExternalCallRefusedInfo
+    name: Literal['EXTERNAL_CALL_REFUSED']
+
 class RpcCallFunctionErrorInternalErrorInfo(BaseModel):
     error_message: str
 
@@ -88,6 +101,6 @@ class RpcCallFunctionErrorInternalError(BaseModel):
     info: RpcCallFunctionErrorInternalErrorInfo
     name: Literal['INTERNAL_ERROR']
 
-class RpcCallFunctionError(RootModel[Union[RpcCallFunctionErrorUnknownBlock, RpcCallFunctionErrorInvalidAccount, RpcCallFunctionErrorUnknownAccount, RpcCallFunctionErrorUninitializedAccount, RpcCallFunctionErrorInvalidStateInit, RpcCallFunctionErrorNoContractCode, RpcCallFunctionErrorNoGlobalContractCode, RpcCallFunctionErrorContractExecutionError, RpcCallFunctionErrorInternalError]]):
+class RpcCallFunctionError(RootModel[Union[RpcCallFunctionErrorUnknownBlock, RpcCallFunctionErrorInvalidAccount, RpcCallFunctionErrorUnknownAccount, RpcCallFunctionErrorUninitializedAccount, RpcCallFunctionErrorInvalidStateInit, RpcCallFunctionErrorNoContractCode, RpcCallFunctionErrorNoGlobalContractCode, RpcCallFunctionErrorContractExecutionError, RpcCallFunctionErrorExternalCallRefused, RpcCallFunctionErrorInternalError]]):
     pass
 

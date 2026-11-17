@@ -91,6 +91,10 @@ if TYPE_CHECKING:
     from .receipt_validation_error import ReceiptValidationErrorReceiptSizeExceeded
     from .receipt_validation_error import ReceiptValidationErrorInvalidRefundToPayload
     from .receipt_validation_error import ReceiptValidationErrorInvalidRefundTo
+    from .receipt_validation_error import ReceiptValidationErrorInvalidPromiseYieldInputDataCountPayload
+    from .receipt_validation_error import ReceiptValidationErrorInvalidPromiseYieldInputDataCount
+    from .receipt_validation_error import ReceiptValidationErrorDuplicateInputDataIdPayload
+    from .receipt_validation_error import ReceiptValidationErrorDuplicateInputDataId
     from .receipt_validation_error import ReceiptValidationError
     from .rpc_maintenance_windows_error import RpcMaintenanceWindowsErrorInternalErrorInfo
     from .rpc_maintenance_windows_error import RpcMaintenanceWindowsErrorInternalError
@@ -451,6 +455,8 @@ if TYPE_CHECKING:
     from .rpc_query_error import RpcQueryErrorTooManyAccessKeys
     from .rpc_query_error import RpcQueryErrorContractExecutionErrorInfo
     from .rpc_query_error import RpcQueryErrorContractExecutionError
+    from .rpc_query_error import RpcQueryErrorExternalCallRefusedInfo
+    from .rpc_query_error import RpcQueryErrorExternalCallRefused
     from .rpc_query_error import RpcQueryErrorNoGlobalContractCodeInfo
     from .rpc_query_error import RpcQueryErrorNoGlobalContractCode
     from .rpc_query_error import RpcQueryErrorInternalErrorInfo
@@ -1212,6 +1218,8 @@ if TYPE_CHECKING:
     from .rpc_call_function_error import RpcCallFunctionErrorNoGlobalContractCode
     from .rpc_call_function_error import RpcCallFunctionErrorContractExecutionErrorInfo
     from .rpc_call_function_error import RpcCallFunctionErrorContractExecutionError
+    from .rpc_call_function_error import RpcCallFunctionErrorExternalCallRefusedInfo
+    from .rpc_call_function_error import RpcCallFunctionErrorExternalCallRefused
     from .rpc_call_function_error import RpcCallFunctionErrorInternalErrorInfo
     from .rpc_call_function_error import RpcCallFunctionErrorInternalError
     from .rpc_call_function_error import RpcCallFunctionError
@@ -2100,10 +2108,14 @@ __all__ = [
     'ReceiptEnumViewGlobalContractDistributionPayload',
     'ReceiptValidationError',
     'ReceiptValidationErrorActionsValidation',
+    'ReceiptValidationErrorDuplicateInputDataId',
+    'ReceiptValidationErrorDuplicateInputDataIdPayload',
     'ReceiptValidationErrorInvalidDataReceiverId',
     'ReceiptValidationErrorInvalidDataReceiverIdPayload',
     'ReceiptValidationErrorInvalidPredecessorId',
     'ReceiptValidationErrorInvalidPredecessorIdPayload',
+    'ReceiptValidationErrorInvalidPromiseYieldInputDataCount',
+    'ReceiptValidationErrorInvalidPromiseYieldInputDataCountPayload',
     'ReceiptValidationErrorInvalidReceiverId',
     'ReceiptValidationErrorInvalidReceiverIdPayload',
     'ReceiptValidationErrorInvalidRefundTo',
@@ -2130,6 +2142,8 @@ __all__ = [
     'RpcCallFunctionError',
     'RpcCallFunctionErrorContractExecutionError',
     'RpcCallFunctionErrorContractExecutionErrorInfo',
+    'RpcCallFunctionErrorExternalCallRefused',
+    'RpcCallFunctionErrorExternalCallRefusedInfo',
     'RpcCallFunctionErrorInternalError',
     'RpcCallFunctionErrorInternalErrorInfo',
     'RpcCallFunctionErrorInvalidAccount',
@@ -2260,6 +2274,8 @@ __all__ = [
     'RpcQueryError',
     'RpcQueryErrorContractExecutionError',
     'RpcQueryErrorContractExecutionErrorInfo',
+    'RpcQueryErrorExternalCallRefused',
+    'RpcQueryErrorExternalCallRefusedInfo',
     'RpcQueryErrorGarbageCollectedBlock',
     'RpcQueryErrorGarbageCollectedBlockInfo',
     'RpcQueryErrorInternalError',
@@ -2784,6 +2800,10 @@ _CLASS_TO_MODULE = {
     'ReceiptValidationErrorReceiptSizeExceeded': 'receipt_validation_error',
     'ReceiptValidationErrorInvalidRefundToPayload': 'receipt_validation_error',
     'ReceiptValidationErrorInvalidRefundTo': 'receipt_validation_error',
+    'ReceiptValidationErrorInvalidPromiseYieldInputDataCountPayload': 'receipt_validation_error',
+    'ReceiptValidationErrorInvalidPromiseYieldInputDataCount': 'receipt_validation_error',
+    'ReceiptValidationErrorDuplicateInputDataIdPayload': 'receipt_validation_error',
+    'ReceiptValidationErrorDuplicateInputDataId': 'receipt_validation_error',
     'ReceiptValidationError': 'receipt_validation_error',
     'RpcMaintenanceWindowsErrorInternalErrorInfo': 'rpc_maintenance_windows_error',
     'RpcMaintenanceWindowsErrorInternalError': 'rpc_maintenance_windows_error',
@@ -3144,6 +3164,8 @@ _CLASS_TO_MODULE = {
     'RpcQueryErrorTooManyAccessKeys': 'rpc_query_error',
     'RpcQueryErrorContractExecutionErrorInfo': 'rpc_query_error',
     'RpcQueryErrorContractExecutionError': 'rpc_query_error',
+    'RpcQueryErrorExternalCallRefusedInfo': 'rpc_query_error',
+    'RpcQueryErrorExternalCallRefused': 'rpc_query_error',
     'RpcQueryErrorNoGlobalContractCodeInfo': 'rpc_query_error',
     'RpcQueryErrorNoGlobalContractCode': 'rpc_query_error',
     'RpcQueryErrorInternalErrorInfo': 'rpc_query_error',
@@ -3905,6 +3927,8 @@ _CLASS_TO_MODULE = {
     'RpcCallFunctionErrorNoGlobalContractCode': 'rpc_call_function_error',
     'RpcCallFunctionErrorContractExecutionErrorInfo': 'rpc_call_function_error',
     'RpcCallFunctionErrorContractExecutionError': 'rpc_call_function_error',
+    'RpcCallFunctionErrorExternalCallRefusedInfo': 'rpc_call_function_error',
+    'RpcCallFunctionErrorExternalCallRefused': 'rpc_call_function_error',
     'RpcCallFunctionErrorInternalErrorInfo': 'rpc_call_function_error',
     'RpcCallFunctionErrorInternalError': 'rpc_call_function_error',
     'RpcCallFunctionError': 'rpc_call_function_error',

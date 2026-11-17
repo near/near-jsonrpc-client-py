@@ -1,6 +1,7 @@
 """Describes the error for validating a receipt."""
 
 from near_jsonrpc_models.actions_validation_error import ActionsValidationError
+from near_jsonrpc_models.crypto_hash import CryptoHash
 from near_jsonrpc_models.strict_model import StrictBaseModel
 from pydantic import BaseModel
 from pydantic import RootModel
@@ -71,6 +72,20 @@ class ReceiptValidationErrorInvalidRefundTo(StrictBaseModel):
     """The `refund_to` of an ActionReceipt is not valid."""
     InvalidRefundTo: ReceiptValidationErrorInvalidRefundToPayload
 
-class ReceiptValidationError(RootModel[Union[ReceiptValidationErrorInvalidPredecessorId, ReceiptValidationErrorInvalidReceiverId, ReceiptValidationErrorInvalidSignerId, ReceiptValidationErrorInvalidDataReceiverId, ReceiptValidationErrorReturnedValueLengthExceeded, ReceiptValidationErrorNumberInputDataDependenciesExceeded, ReceiptValidationErrorActionsValidation, ReceiptValidationErrorReceiptSizeExceeded, ReceiptValidationErrorInvalidRefundTo]]):
+class ReceiptValidationErrorInvalidPromiseYieldInputDataCountPayload(BaseModel):
+    number_of_input_data_dependencies: conint(ge=0, le=18446744073709551615)
+
+class ReceiptValidationErrorInvalidPromiseYieldInputDataCount(StrictBaseModel):
+    """A `PromiseYield` receipt must have exactly one input data dependency."""
+    InvalidPromiseYieldInputDataCount: ReceiptValidationErrorInvalidPromiseYieldInputDataCountPayload
+
+class ReceiptValidationErrorDuplicateInputDataIdPayload(BaseModel):
+    data_id: CryptoHash
+
+class ReceiptValidationErrorDuplicateInputDataId(StrictBaseModel):
+    """The same input data id is listed more than once in an ActionReceipt."""
+    DuplicateInputDataId: ReceiptValidationErrorDuplicateInputDataIdPayload
+
+class ReceiptValidationError(RootModel[Union[ReceiptValidationErrorInvalidPredecessorId, ReceiptValidationErrorInvalidReceiverId, ReceiptValidationErrorInvalidSignerId, ReceiptValidationErrorInvalidDataReceiverId, ReceiptValidationErrorReturnedValueLengthExceeded, ReceiptValidationErrorNumberInputDataDependenciesExceeded, ReceiptValidationErrorActionsValidation, ReceiptValidationErrorReceiptSizeExceeded, ReceiptValidationErrorInvalidRefundTo, ReceiptValidationErrorInvalidPromiseYieldInputDataCount, ReceiptValidationErrorDuplicateInputDataId]]):
     pass
 

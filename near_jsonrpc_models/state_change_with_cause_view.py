@@ -18,10 +18,10 @@ class StateChangeWithCauseViewAccountUpdateChange(BaseModel):
     account_id: AccountId
     # Liquid (non-staked) account balance, in yoctoNEAR.
     amount: NearToken
-    # The nonce an uninitialized account's own transactions must use, present
-    # only while it is uninitialized. A self-signed state init is the one
-    # transaction such an account can send, and this is the only way for a
-    # client to learn the nonce it must carry: there is no access key to query.
+    # The account's current bootstrap nonce, present only while it is
+    # uninitialized. A self-signed state init, the one transaction such an
+    # account can send, must use exactly `bootstrap_nonce + 1`. This is the
+    # only way for a client to learn it: there is no access key to query.
     bootstrap_nonce: conint(ge=0, le=18446744073709551615) | None = None
     # Hash of the deployed contract code; the all-`1`s hash when no contract is deployed.
     code_hash: CryptoHash
