@@ -40,6 +40,10 @@ class CongestionControlConfigView(BaseModel):
     # 
     # See [`CongestionControlConfig`] for more details.
     min_outgoing_gas: NearGas = None
+    # The smallest size a receipt counts for bandwidth and congestion.
+    # 
+    # See [`CongestionControlConfig`] for more details.
+    min_receipt_congestion_size: conint(ge=0, le=18446744073709551615) = 0
     # The minimum amount of gas in a chunk spent on converting new transactions
     # to receipts, as long as the receiving shard is not congested.
     # 
